@@ -76,7 +76,6 @@ def test_resolve_folder_without_variants(name):
         resolve([name])
 
 
-@pytest.mark.xfail(strict=True, reason="READMEs and examples land in Task 5")
 @pytest.mark.parametrize("name", METHOD_NAMES)
 def test_method_folder_complete(name):
     folder = Path(production_rag.methods.__file__).parent / name

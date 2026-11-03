@@ -1,5 +1,7 @@
 # BM25: IDF and Vietnamese stopwords
 
+Extra: none for search; the eval and example index dense vectors too, so they need `local-models`
+
 Three variants share one index: `bm25_no_idf`, `bm25` (IDF on) and `bm25_vi_stopwords` (Vietnamese stopwords removed before encoding).
 
 ## When to use
@@ -10,9 +12,15 @@ Three variants share one index: `bm25_no_idf`, `bm25` (IDF on) and `bm25_vi_stop
 - Alone, on paraphrased questions: it trails dense retrieval by 0.08 to 0.15 nDCG@10 on both datasets here.
 
 ## How it works
-- [`sparse/bm25.py`](../src/retrieval_playbook/sparse/bm25.py): fastembed `Qdrant/bm25` produces term-frequency weights; Qdrant applies IDF at query time when the sparse vector is created with `modifier=IDF` ([`store.py`](../src/retrieval_playbook/store.py)).
+- [`sparse/bm25.py`](../../core/sparse/bm25.py): fastembed `Qdrant/bm25` produces term-frequency weights; Qdrant applies IDF at query time when the sparse vector is created with `modifier=IDF` ([`store.py`](../../core/store.py)).
 - The same weights are also stored in `sparse_noidf`, a sparse vector with no modifier, to measure what IDF is worth.
 - The Vietnamese variant removes stopword phrases from [stopwords/vietnamese-stopwords](https://github.com/stopwords/vietnamese-stopwords) on whole-syllable boundaries, longest phrase first, because many entries span several syllables ("bởi vì").
+
+## Run
+
+```bash
+uv run --extra local-models python -m production_rag.methods.bm25.example
+```
 
 ## Results
 SciFact:

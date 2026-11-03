@@ -1,5 +1,7 @@
 # Dense retrieval
 
+Extra: `local-models`
+
 ## When to use
 - Queries are phrased differently from the documents (paraphrases, questions against statements).
 - You need one method that is good across domains and languages.
@@ -9,9 +11,15 @@
 - You cannot afford an embedding call per query (it is the slowest leg here, ~20 ms on CPU per query with a 212M model).
 
 ## How it works
-- [`embedders/jina_local.py`](../src/retrieval_playbook/embedders/jina_local.py): `jina-embeddings-v5-text-nano-retrieval` with separate `query` and `document` prompts, 768 dimensions, normalised, cosine in Qdrant. Loaded in float32 because bfloat16 weights run slowly on most CPUs.
-- [`embedders/openai_compat.py`](../src/retrieval_playbook/embedders/openai_compat.py): any OpenAI-compatible `/embeddings` endpoint instead, set `EMBEDDING_BASE_URL`.
-- The query is embedded once per request, whatever the number of specs ([`pipeline/search.py`](../src/retrieval_playbook/pipeline/search.py)).
+- [`embedders/jina_local.py`](../../core/embedders/jina_local.py): `jina-embeddings-v5-text-nano-retrieval` with separate `query` and `document` prompts, 768 dimensions, normalised, cosine in Qdrant. Loaded in float32 because bfloat16 weights run slowly on most CPUs.
+- [`embedders/openai_compat.py`](../../core/embedders/openai_compat.py): any OpenAI-compatible `/embeddings` endpoint instead, set `EMBEDDING_BASE_URL`.
+- The query is embedded once per request, whatever the number of specs ([`pipeline/search.py`](../../core/pipeline/search.py)).
+
+## Run
+
+```bash
+uv run --extra local-models python -m production_rag.methods.dense.example
+```
 
 ## Results
 SciFact:
@@ -26,7 +34,7 @@ TVPL (Vietnamese legal):
 |---|---|---|---|---|---|---|---|---|
 | `dense` | 0.921 | 0.985 | 0.797 | 0.818 | 22 | 30 |  |  |
 
-On TVPL, dense alone is the best method in this repo (see [hybrid fusion](hybrid_fusion.md)).
+On TVPL, dense alone is the best method in this repo (see [hybrid fusion](../hybrid_fusion/README.md)).
 
 ## Lessons from building this repo
-- Load the model before the first request. The first request after starting the service otherwise spent its whole 4 s deadline loading weights and returned 504.
+- Warm every model before the first timed query (`warm_up`). Otherwise the first query spends its whole 4 s deadline loading weights.

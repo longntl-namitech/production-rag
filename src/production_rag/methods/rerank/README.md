@@ -1,5 +1,7 @@
 # Reranking with a cross-encoder
 
+Extra: `local-models`
+
 ## When to use
 - Precision at the top matters (one answer shown, or few chunks sent to an LLM) and you can spend about a second per query, or have a GPU or a hosted reranker.
 - The reranker was trained on data that looks like yours, in your language.
@@ -9,12 +11,18 @@
 - The deadline is tight. Here it adds ~0.8 to 1 s p50 on CPU for a pool of 100.
 
 ## How it works
-- [`pipeline/rerank_stage.py`](../src/retrieval_playbook/pipeline/rerank_stage.py):
+- [`pipeline/rerank_stage.py`](../../core/pipeline/rerank_stage.py):
   - The candidate pool is widened to `min(k * 4, 100)` before reranking, then cut back to `k`.
   - Skipped when less than 300 ms of the request budget is left (`rerank: skipped_budget`), or when there is one candidate (`skipped_trivial`).
   - On error or timeout the retrieval order is kept (`rerank: failed`); the spec still succeeds.
-- Backends ([`rerankers/`](../src/retrieval_playbook/rerankers/)): local `cross-encoder/mmarco-mMiniLMv2-L12-H384-v1`, or any Cohere-compatible `/rerank` endpoint (`RERANK_BASE_URL`, `RERANK_API_KEY`).
+- Backends ([`rerankers/`](../../core/rerankers/)): local `cross-encoder/mmarco-mMiniLMv2-L12-H384-v1`, or any Cohere-compatible `/rerank` endpoint (`RERANK_BASE_URL`, `RERANK_API_KEY`).
 - Rescue: the top result was wrong before reranking and is right after. Damage: the reverse. Both are measured against `hybrid_rrf` on the same query.
+
+## Run
+
+```bash
+uv run --extra local-models python -m production_rag.methods.rerank.example
+```
 
 ## Results
 SciFact:

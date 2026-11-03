@@ -1,5 +1,7 @@
 # Hybrid fusion: RRF, DBSF, weighted RRF
 
+Extra: `local-models`
+
 ## When to use
 - You do not know in advance whether queries will be keyword-like or paraphrased, and want one method that is never the worst.
 
@@ -7,11 +9,17 @@
 - One leg is clearly stronger on your data. On TVPL, dense alone beats every hybrid here: fusing in a weaker BM25 leg pulls good dense results down.
 
 ## How it works
-- [`fusion.py`](../src/retrieval_playbook/fusion.py): each leg is a Qdrant prefetch (`limit = k * 4`) and the outer query fuses them inside Qdrant, so there is one round trip.
+- [`fusion.py`](../../core/fusion.py): each leg is a Qdrant prefetch (`limit = k * 4`) and the outer query fuses them inside Qdrant, so there is one round trip.
   - `hybrid_rrf`: reciprocal rank fusion, uses ranks only.
   - `hybrid_dbsf`: distribution-based score fusion, normalises each leg's scores before adding them.
   - `hybrid_weighted_rrf`: RRF with weights per leg, dense 1.0 and sparse 0.5 (Qdrant 1.17+).
-- Several subqueries are merged by taking each chunk's best score ([multi-query](multi_query.md)).
+- Several subqueries are merged by taking each chunk's best score ([multi-query](../multi_query/README.md)).
+
+## Run
+
+```bash
+uv run --extra local-models python -m production_rag.methods.hybrid_fusion.example
+```
 
 ## Results
 SciFact:
