@@ -2,9 +2,9 @@ import pytest
 from fakes import FakeEmbedder, FakeSparseEncoder
 from qdrant_client import AsyncQdrantClient
 
-from retrieval_playbook.config import Settings
-from retrieval_playbook.pipeline.search import Deps
-from retrieval_playbook.store import ChunkPoint, Store
+from production_rag.core.config import Settings
+from production_rag.core.deps import Deps
+from production_rag.core.store import ChunkPoint, Store
 
 CORPUS = [
     ("d1", 0, "solar panels on roofs", ["a"]),
@@ -35,7 +35,7 @@ async def deps() -> Deps:
     )
     embedder.calls = sparse.calls = 0
     return Deps(
-        settings=Settings(service_token="t"),
+        settings=Settings(),
         store=store,
         embedder=embedder,
         bm25=sparse,

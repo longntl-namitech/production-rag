@@ -3,11 +3,11 @@ import asyncio
 import httpx
 import pytest
 
-from retrieval_playbook.models import Row, SearchRequest
-from retrieval_playbook.pipeline.deadline import Deadline
-from retrieval_playbook.pipeline.rerank_stage import apply_rerank
-from retrieval_playbook.pipeline.search import run_search
-from retrieval_playbook.rerankers.cohere_http import CohereHttpReranker
+from production_rag.core.models import Row, SearchRequest
+from production_rag.core.pipeline.deadline import Deadline
+from production_rag.core.pipeline.rerank_stage import apply_rerank
+from production_rag.core.pipeline.search import run_search
+from production_rag.core.rerankers.cohere_http import CohereHttpReranker
 
 
 def rows(*ids: str) -> list[Row]:
@@ -125,8 +125,8 @@ async def test_method_default_rerank_and_spec_override(deps):
 
 @pytest.mark.integration
 async def test_cross_encoder_scores_relevant_higher():
-    from retrieval_playbook.config import Settings
-    from retrieval_playbook.rerankers.cross_encoder import CrossEncoderReranker
+    from production_rag.core.config import Settings
+    from production_rag.core.rerankers.cross_encoder import CrossEncoderReranker
 
     reranker = CrossEncoderReranker(Settings().cross_encoder_model)
     scores = await reranker.score(

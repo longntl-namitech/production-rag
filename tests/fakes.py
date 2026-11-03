@@ -5,7 +5,7 @@ import math
 
 from qdrant_client import models
 
-from retrieval_playbook.embedders.base import EmbedderUnavailable
+from production_rag.core.embedders.base import EmbedderUnavailable
 
 
 def _bucket(token: str, size: int) -> int:

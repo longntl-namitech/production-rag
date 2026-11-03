@@ -1,8 +1,8 @@
 import asyncio
 
-from retrieval_playbook.models import SearchRequest
-from retrieval_playbook.pipeline.deadline import Deadline
-from retrieval_playbook.pipeline.search import run_search
+from production_rag.core.models import SearchRequest
+from production_rag.core.pipeline.deadline import Deadline
+from production_rag.core.pipeline.search import run_search
 
 
 def request(**kwargs) -> SearchRequest:
@@ -76,7 +76,7 @@ async def test_context_expansion_applied(deps):
 async def test_slow_embedding_bounded_by_deadline(deps, monkeypatch):
     import pytest
 
-    from retrieval_playbook.pipeline.search import DeadlineExpired
+    from production_rag.core.pipeline.search import DeadlineExpired
 
     async def slow(texts):
         await asyncio.sleep(1)

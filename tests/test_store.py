@@ -2,8 +2,8 @@ import pytest
 from fakes import FakeEmbedder, FakeSparseEncoder
 from qdrant_client import AsyncQdrantClient
 
-from retrieval_playbook.fusion import QueryVectors, build_query
-from retrieval_playbook.store import ChunkPoint, Store, build_filter, point_id
+from production_rag.core.fusion import QueryVectors, build_query
+from production_rag.core.store import ChunkPoint, Store, build_filter, point_id
 
 DOCS = [
     ("d1", 0, "solar panels on roofs", ["energy"]),

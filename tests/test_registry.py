@@ -1,6 +1,6 @@
 import pytest
 
-from retrieval_playbook.registry import METHODS, get_method, legs_for
+from production_rag.core.registry import METHODS, get_method, legs_for
 
 
 def test_registry_has_v1_methods():

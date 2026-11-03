@@ -1,7 +1,7 @@
 [project]
-name = "retrieval-playbook"
+name = "production-rag"
 version = "0.1.0"
-description = "Hybrid retrieval methods from production, runnable and measured on public data"
+description = "RAG methods used in production, from naive to advanced, runnable and measured on public data"
 readme = "README.md"
 authors = [
     { name = "Nguyễn Thành Long", email = "long.itptit@gmail.com" }
@@ -9,19 +9,19 @@ authors = [
 license = "MIT"
 requires-python = ">=3.11"
 dependencies = [
-    "fastapi>=0.115",
-    "uvicorn[standard]>=0.30",
     "httpx>=0.27",
     "pydantic>=2",
     "qdrant-client>=1.20",
     "fastembed>=0.8",
+]
+
+[project.optional-dependencies]
+local-models = [
     "sentence-transformers>=5.0.0",
     "transformers>=4.57.0",
     "torch>=2.8.0",
     "peft>=0.15.2",
 ]
-
-[project.optional-dependencies]
 eval = ["datasets>=3"]
 
 [build-system]
@@ -37,7 +37,7 @@ dev = [
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["tests", "."]
+pythonpath = ["tests"]
 asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"
 markers = ["integration: needs models, network or a Qdrant server"]
@@ -51,7 +51,7 @@ target-version = "py311"
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
 
-# CPU-only torch on Linux keeps the Docker image small; macOS uses the default wheels.
+# CPU-only torch wheels on Linux keep the local-models install small.
 [tool.uv.sources]
 torch = { index = "pytorch-cpu", marker = "sys_platform == 'linux'" }
 

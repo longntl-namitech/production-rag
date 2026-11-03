@@ -1,6 +1,12 @@
 import math
 
-from eval.metrics import mrr_at_k, ndcg_at_k, percentile, recall_at_k, rescue_damage
+from production_rag.core.eval.metrics import (
+    mrr_at_k,
+    ndcg_at_k,
+    percentile,
+    recall_at_k,
+    rescue_damage,
+)
 
 
 def test_recall_at_k():
