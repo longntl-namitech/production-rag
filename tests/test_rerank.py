@@ -8,6 +8,7 @@ from production_rag.core.pipeline.deadline import Deadline
 from production_rag.core.pipeline.rerank_stage import apply_rerank
 from production_rag.core.pipeline.search import run_search
 from production_rag.core.rerankers.cohere_http import CohereHttpReranker
+from production_rag.methods import get_variant
 
 
 def rows(*ids: str) -> list[Row]:
@@ -105,7 +106,7 @@ async def test_pool_widened_for_rerank(deps, monkeypatch):
     req = SearchRequest(
         query="solar", collection="c", specs=[{"name": "s", "k": 10, "rerank": True}]
     )
-    await run_search(req, deps, Deadline(4000))
+    await run_search(req, get_variant("hybrid_rrf"), deps, Deadline(4000))
     assert limits == [40]
 
 
@@ -114,10 +115,9 @@ async def test_method_default_rerank_and_spec_override(deps):
     req = SearchRequest(
         query="solar panels",
         collection="c",
-        method="hybrid_rrf_rerank",
         specs=[{"name": "default_on", "k": 3}, {"name": "off", "k": 3, "rerank": False}],
     )
-    response = await run_search(req, deps, Deadline(4000))
+    response = await run_search(req, get_variant("hybrid_rrf_rerank"), deps, Deadline(4000))
     assert response.results["default_on"].rerank == "ok"
     assert response.results["off"].rerank == "off"
     assert len(response.results["default_on"].rows) == 3
@@ -149,7 +149,7 @@ async def test_slow_rerank_with_context_still_returns_rows(deps, monkeypatch):
         collection="c",
         specs=[{"name": "s", "k": 2, "rerank": True, "context": {"prev": 1, "next": 1}}],
     )
-    result = (await run_search(req, deps, Deadline(500))).results["s"]
+    result = (await run_search(req, get_variant("hybrid_rrf"), deps, Deadline(500))).results["s"]
     assert result.status == "ok"
     assert result.rerank == "failed"
     assert result.rows

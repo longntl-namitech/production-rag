@@ -1,4 +1,4 @@
-"""Run every registered method on a public dataset and save the scores.
+"""Run the methods on a public dataset and save the scores.
 
     docker compose up -d qdrant
     uv run --extra eval --extra local-models python -m production_rag.core.eval.run \
@@ -30,7 +30,7 @@ from production_rag.core.indexing import Chunk, index_chunks
 from production_rag.core.models import SearchRequest, SearchSpec
 from production_rag.core.pipeline.deadline import Deadline
 from production_rag.core.pipeline.search import run_search
-from production_rag.core.registry import METHODS
+from production_rag.methods import all_variants, get_variant, resolve
 
 RESULTS = Path("results")
 K = 100
@@ -63,14 +63,28 @@ def summarize(rows: list[dict[str, Any]], methods: list[str]) -> dict[str, Any]:
     return summary
 
 
-async def main() -> None:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", choices=["scifact", "tvpl"], required=True)
-    parser.add_argument("--methods", nargs="+", default=list(METHODS), choices=list(METHODS))
+    parser.add_argument(
+        "--methods",
+        nargs="+",
+        default=list(all_variants()),
+        help="method folders or variant names (default: every variant)",
+    )
     parser.add_argument("--query-limit", type=int)
     parser.add_argument("--concurrency", type=int, default=1)
     parser.add_argument("--name")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
+    try:
+        args.methods = resolve(args.methods)
+    except ValueError as exc:
+        parser.error(str(exc))
+    return args
+
+
+async def main() -> None:
+    args = parse_args()
 
     settings = Settings.from_env()
     deps = build_deps(settings)
@@ -89,12 +103,13 @@ async def main() -> None:
         req = SearchRequest(
             query=text[:2000],
             collection=collection,
-            method=method,
             specs=[SearchSpec(name="s", k=K)],
         )
         async with semaphore:
             t0 = time.perf_counter()
-            result = (await run_search(req, deps, Deadline(30000))).results["s"]
+            result = (await run_search(req, get_variant(method), deps, Deadline(30000))).results[
+                "s"
+            ]
             ms = (time.perf_counter() - t0) * 1000
         ranked = [r.doc_id for r in result.rows]
         rel = ds.qrels[qid]

@@ -17,7 +17,7 @@ from production_rag.core.pipeline.context import expand_context
 from production_rag.core.pipeline.deadline import Deadline
 from production_rag.core.pipeline.merge import merge_max
 from production_rag.core.pipeline.rerank_stage import SAFETY_MS, apply_rerank
-from production_rag.core.registry import Leg, MethodConfig, get_method, legs_for
+from production_rag.core.registry import Leg, MethodConfig, legs_for
 from production_rag.core.store import build_filter
 
 
@@ -127,9 +127,10 @@ async def _guarded(
         return SpecResult(status="failed", elapsed_ms=_ms(start), error=type(exc).__name__)
 
 
-async def run_search(req: SearchRequest, deps: Deps, deadline: Deadline) -> SearchResponse:
+async def run_search(
+    req: SearchRequest, method: MethodConfig, deps: Deps, deadline: Deadline
+) -> SearchResponse:
     start = time.perf_counter()
-    method = get_method(req.method or deps.settings.default_method)
     needed: set[Leg] = {leg for spec in req.specs for leg in legs_for(method, spec.search_type)}
     try:
         vectors = await asyncio.wait_for(

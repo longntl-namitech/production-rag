@@ -36,7 +36,6 @@ class SearchRequest(_Frozen):
     query: Query | Annotated[list[Query], Field(min_length=1, max_length=8)]
     rerank_query: Query | None = None
     collection: str = Field(pattern=r"^[A-Za-z0-9._-]+$")
-    method: str | None = None
     specs: list[SearchSpec] = Field(
         default_factory=lambda: [SearchSpec(name="default")], min_length=1
     )

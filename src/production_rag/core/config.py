@@ -10,7 +10,6 @@ class Settings(BaseModel):
 
     qdrant_url: str = "http://localhost:6333"
     qdrant_grpc_port: int = 6334
-    default_method: str = "hybrid_rrf"
     rerank_min_budget_ms: int = 300
     rerank_pool_multiplier: int = 4
     rerank_pool_max: int = 100
