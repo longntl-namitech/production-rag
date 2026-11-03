@@ -63,6 +63,7 @@ async def _run_spec(
     start = time.perf_counter()
     settings = deps.settings
     rerank = spec.rerank if spec.rerank is not None else method.rerank
+    rerank = rerank and deps.reranker is not None
     legs = legs_for(method, spec.search_type)
     fusion = method.fusion if len(legs) > 1 else "none"
     flt = build_filter(spec.filter)

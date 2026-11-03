@@ -98,3 +98,16 @@ async def test_hybrid_fusion_runs(store, fusion, weights):
     )
     rows = await store.search("c", kwargs, limit=3, threshold=None)
     assert rows[0].doc_id == "d1"
+
+
+async def test_ensure_collection_dimension_mismatch(store):
+    with pytest.raises(ValueError, match="dimension"):
+        await store.ensure_collection("c", 16)
+
+
+async def test_fetch_chunks_past_1000():
+    s = Store(AsyncQdrantClient(":memory:"))
+    await s.ensure_collection("c", 8)
+    await s.upsert("c", await make_points([("d", i, f"part {i}", []) for i in range(1005)]))
+    rows = await s.fetch_chunks("c", "d", None, None)
+    assert len(rows) == 1005 and [r.chunk_index for r in rows] == list(range(1005))

@@ -46,3 +46,7 @@ def test_percentile():
     values = [float(v) for v in range(1, 101)]
     assert percentile(values, 50) == 50.5
     assert percentile(values, 95) == 95.05
+
+
+def test_percentile_single_value():
+    assert percentile([5.0], 50) == percentile([5.0], 95) == 5.0

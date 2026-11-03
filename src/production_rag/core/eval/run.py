@@ -17,7 +17,7 @@ from pathlib import Path
 from typing import Any
 
 from production_rag.core.config import Settings
-from production_rag.core.deps import build_deps
+from production_rag.core.deps import build_deps, warm_up
 from production_rag.core.eval.datasets import load_dataset
 from production_rag.core.eval.metrics import (
     mrr_at_k,
@@ -55,9 +55,14 @@ def summarize(rows: list[dict[str, Any]], methods: list[str]) -> dict[str, Any]:
         base = RERANK_BASELINE.get(method)
         if base in methods:
             before = {r["qid"]: r for r in rows if r["method"] == base}
-            pairs = [rescue_damage(before[r["qid"]]["top"], r["top"], r["rel"]) for r in mine]
-            entry["rescue"] = round(sum(p[0] for p in pairs) / len(pairs), 4)
-            entry["damage"] = round(sum(p[1] for p in pairs) / len(pairs), 4)
+            # a failed query has no ranking, so it cannot be rescued or damaged
+            pairs = [
+                rescue_damage(before[r["qid"]]["top"], r["top"], r["rel"])
+                for r in mine
+                if r["status"] == "ok" and before[r["qid"]]["status"] == "ok"
+            ]
+            entry["rescue"] = round(sum(p[0] for p in pairs) / len(pairs), 4) if pairs else 0.0
+            entry["damage"] = round(sum(p[1] for p in pairs) / len(pairs), 4) if pairs else 0.0
             entry["rerank_skipped_or_failed"] = sum(r["rerank"] != "ok" for r in mine)
         summary[method] = entry
     return summary
@@ -96,6 +101,7 @@ async def main() -> None:
     took = time.perf_counter() - started
     print(f"{collection}: {count} docs ({took:.0f}s), {len(ds.queries)} queries")
 
+    await warm_up(deps)
     semaphore = asyncio.Semaphore(args.concurrency)
     rows: list[dict[str, Any]] = []
 
@@ -150,9 +156,10 @@ async def main() -> None:
     RESULTS.mkdir(exist_ok=True)
     out = RESULTS / f"{args.name or ds.name}.json"
     out.write_text(json.dumps({"meta": meta, "summary": summary, "per_query": rows}, indent=1))
-    from production_rag.core.eval.report import table
+    from production_rag.core.eval.report import failures_note, table
 
     print(table(summary))
+    print(failures_note(summary))
     print(f"saved {out}")
 
 

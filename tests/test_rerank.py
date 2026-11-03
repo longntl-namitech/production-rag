@@ -166,3 +166,35 @@ async def test_rerank_sees_title_and_text():
     rows_ = [Row(id="a", doc_id="a", text="body", title="Title", score=1.0), *rows("b")]
     await apply_rerank(Recording(), "q", rows_, Deadline(4000), 300)
     assert seen == ["Title\nbody", "text b"]
+
+
+async def test_rerank_tiny_min_budget_skips():
+    r = ScoreByText()
+    _, status, _ = await apply_rerank(r, "q", rows("a", "b"), Deadline(30), 0)
+    assert status == "skipped_budget" and r.calls == 0
+
+
+async def test_rerank_wrong_score_count_keeps_order():
+    class Short:
+        async def score(self, query, texts):
+            return [0.9]
+
+    out, status, _ = await apply_rerank(Short(), "q", rows("a", "b"), Deadline(4000), 300)
+    assert (status, [r.id for r in out]) == ("failed", ["a", "b"])
+
+
+async def test_rerank_requested_without_reranker_keeps_k(deps, monkeypatch):
+    limits = []
+    original = deps.store.search
+
+    async def search(name, kwargs, limit, threshold):
+        limits.append(limit)
+        return await original(name, kwargs, limit, threshold)
+
+    monkeypatch.setattr(deps.store, "search", search)
+    assert deps.reranker is None
+    req = SearchRequest(
+        query="solar", collection="c", specs=[{"name": "s", "k": 10, "rerank": True}]
+    )
+    res = (await run_search(req, get_variant("hybrid_rrf"), deps, Deadline(4000))).results["s"]
+    assert limits == [10] and res.rerank == "off"

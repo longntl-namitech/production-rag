@@ -20,6 +20,11 @@ def table(summary: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def failures_note(summary: dict[str, Any]) -> str:
+    failed = [f"`{m}` {s['failed']}" for m, s in summary.items() if s["failed"]]
+    return f"Failed queries: {', '.join(failed)}." if failed else "No failed queries."
+
+
 def main(path: str) -> None:
     run = json.loads(Path(path).read_text())
     meta = run["meta"]
@@ -31,7 +36,7 @@ def main(path: str) -> None:
         "Latency is in-process on CPU, one query at a time.\n\n"
     )
     out = Path(path).with_suffix(".md")
-    out.write_text(header + table(run["summary"]) + "\n")
+    out.write_text(header + table(run["summary"]) + "\n\n" + failures_note(run["summary"]) + "\n")
     print(f"wrote {out}")
 
 

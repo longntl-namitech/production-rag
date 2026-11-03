@@ -31,15 +31,15 @@ async def apply_rerank(
     if len(rows) <= 1:
         return rows, "skipped_trivial", None
     remaining = deadline.remaining_ms()
-    if remaining < min_budget_ms:
+    if remaining < max(min_budget_ms, SAFETY_MS + 1):
         return rows, "skipped_budget", None
     start = time.perf_counter()
     try:
         scores = await asyncio.wait_for(
             reranker.score(query, [_rerank_text(r) for r in rows]), (remaining - SAFETY_MS) / 1000
         )
-    except Exception:  # fall back to retrieval order
+        rescored = [r.model_copy(update={"score": s}) for r, s in zip(rows, scores, strict=True)]
+    except Exception:  # fall back to retrieval order, also on a wrong score count
         return rows, "failed", round((time.perf_counter() - start) * 1000)
-    rescored = [r.model_copy(update={"score": s}) for r, s in zip(rows, scores, strict=True)]
     rescored.sort(key=lambda r: r.score, reverse=True)
     return rescored, "ok", round((time.perf_counter() - start) * 1000)

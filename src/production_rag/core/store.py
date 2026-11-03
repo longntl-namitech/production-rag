@@ -65,6 +65,12 @@ class Store:
 
     async def ensure_collection(self, name: str, dense_dim: int) -> None:
         if await self.client.collection_exists(name):
+            info = await self.client.get_collection(name)
+            size = info.config.params.vectors["dense"].size  # type: ignore[index]
+            if size != dense_dim:
+                raise ValueError(
+                    f"collection {name!r} has dense dimension {size}, embedder gives {dense_dim}"
+                )
             return
         idf = models.SparseVectorParams(modifier=models.Modifier.IDF)
         await self.client.create_collection(
@@ -131,7 +137,17 @@ class Store:
             conditions.append(
                 models.FieldCondition(key="chunk_index", range=models.Range(gte=start, lte=end))
             )
-        points, _ = await self.client.scroll(
-            name, scroll_filter=models.Filter(must=conditions), limit=1000, with_payload=True
-        )
-        return sorted((_row(p) for p in points), key=lambda r: r.chunk_index)
+        rows: list[Row] = []
+        offset = None
+        while True:
+            points, offset = await self.client.scroll(
+                name,
+                scroll_filter=models.Filter(must=conditions),
+                limit=1000,
+                offset=offset,
+                with_payload=True,
+            )
+            rows.extend(_row(p) for p in points)
+            if offset is None:
+                break
+        return sorted(rows, key=lambda r: r.chunk_index)

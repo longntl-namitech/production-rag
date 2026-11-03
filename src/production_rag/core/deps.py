@@ -18,6 +18,15 @@ class Deps:
     reranker: Reranker | None = None
 
 
+async def warm_up(deps: Deps) -> None:
+    """One query through every model, so first-call load time stays out of the timings."""
+    await deps.embedder.embed_queries(["warm up"])
+    deps.bm25.encode_queries(["warm up"])
+    deps.bm25_vi.encode_queries(["warm up"])
+    if deps.reranker is not None:
+        await deps.reranker.score("warm up", ["warm up", "warm up"])
+
+
 def build_deps(settings: Settings) -> Deps:
     from qdrant_client import AsyncQdrantClient
 

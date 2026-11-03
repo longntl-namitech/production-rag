@@ -33,4 +33,6 @@ def rescue_damage(before: list[str], after: list[str], rel: dict[str, int]) -> t
 
 
 def percentile(values: list[float], p: float) -> float:
+    if len(values) == 1:
+        return values[0]
     return statistics.quantiles(values, n=100, method="inclusive")[round(p) - 1]
