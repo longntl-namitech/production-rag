@@ -5,8 +5,6 @@ import math
 
 from qdrant_client import models
 
-from production_rag.core.embedders.base import EmbedderUnavailable
-
 
 def _bucket(token: str, size: int) -> int:
     return int(hashlib.md5(token.encode()).hexdigest(), 16) % size
@@ -31,13 +29,6 @@ class FakeEmbedder:
     async def embed_documents(self, texts: list[str]) -> list[list[float]]:
         self.calls += 1
         return [self._vec(t) for t in texts]
-
-
-class FailingEmbedder(FakeEmbedder):
-    async def embed_queries(self, texts: list[str]) -> list[list[float]]:
-        raise EmbedderUnavailable("down")
-
-    embed_documents = embed_queries
 
 
 class FakeSparseEncoder:
