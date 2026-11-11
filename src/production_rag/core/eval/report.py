@@ -25,6 +25,12 @@ def failures_note(summary: dict[str, Any]) -> str:
     return f"Failed queries: {', '.join(failed)}." if failed else "No failed queries."
 
 
+def _chunk_count(chunks: dict[str, int]) -> str:
+    if len(chunks) == 1:
+        return str(next(iter(chunks.values())))
+    return ", ".join(f"{name}: {n}" for name, n in chunks.items())
+
+
 def main(path: str) -> None:
     run = json.loads(Path(path).read_text())
     meta = run["meta"]
@@ -35,6 +41,12 @@ def main(path: str) -> None:
         f"rerank `{meta['cross_encoder']}` over the top {meta['k']}. "
         "Latency is in-process on CPU, one query at a time.\n\n"
     )
+    if meta.get("chunks"):
+        header += (
+            f"`naive_rag` searches {_chunk_count(meta['chunks'])} chunks of up to 800 characters; "
+            "a document counts once, at its best chunk, so recall@100 counts the documents "
+            "in the top 100 chunks.\n\n"
+        )
     out = Path(path).with_suffix(".md")
     out.write_text(header + table(run["summary"]) + "\n\n" + failures_note(run["summary"]) + "\n")
     print(f"wrote {out}")

@@ -2,6 +2,7 @@ import importlib
 from pathlib import Path
 
 import pytest
+from fakes import FakeLLM
 
 import production_rag.methods
 from production_rag.core.models import SearchSpec
@@ -13,6 +14,7 @@ from production_rag.methods.deadline_fanout import pipeline as deadline_fanout
 from production_rag.methods.dense import pipeline as dense
 from production_rag.methods.hybrid_fusion import pipeline as hybrid_fusion
 from production_rag.methods.multi_query import pipeline as multi_query
+from production_rag.methods.naive_rag import pipeline as naive_rag
 
 V010 = [
     "dense",
@@ -27,7 +29,8 @@ V010 = [
 
 
 def test_variant_names_match_v010_in_order():
-    assert list(all_variants()) == V010
+    names = list(all_variants())
+    assert names[0] == "naive_rag" and names[1:] == V010
 
 
 def test_weighted_rrf_has_two_weights():
@@ -131,3 +134,10 @@ async def test_deadline_fanout_isolates_failed_spec(deps, monkeypatch):
 async def test_multi_query_rerank_query_needs_rerank_base(deps):
     with pytest.raises(ValueError, match="hybrid_rrf_rerank"):
         await multi_query.search(["a", "b"], "c", deps, rerank_query="a")
+
+
+async def test_naive_rag_answer_uses_top_k_passages(deps):
+    llm = FakeLLM(lambda m: "solar panels")
+    out = await naive_rag.answer("solar panels", "c", deps, llm, k=2)
+    assert out.text == "solar panels" and len(out.rows) == 2 and len(llm.calls) == 1
+    assert "solar panels on roofs" in llm.calls[0][-1]["content"]
