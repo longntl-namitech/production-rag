@@ -146,7 +146,7 @@ def test_usage_add():
 
 def test_llm_modules_import_without_key():
     env = {k: v for k, v in os.environ.items() if k != "OPENAI_API_KEY"}
-    code = "import production_rag.core.llm"
+    code = "import production_rag.core.llm, production_rag.core.generation"
     assert subprocess.run([sys.executable, "-c", code], env=env).returncode == 0
 
 

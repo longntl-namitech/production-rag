@@ -7,6 +7,7 @@ from collections.abc import Callable
 from qdrant_client import models
 
 from production_rag.core.llm import Completion, Usage
+from production_rag.core.models import Row
 
 
 def _bucket(token: str, size: int) -> int:
@@ -78,3 +79,21 @@ class FakeLLM:
     ) -> Completion:
         self.calls.append(messages)
         return Completion(self.reply(messages), self.usage, self.finish_reason, "fake")
+
+
+def text_row(
+    text: str,
+    *,
+    title: str | None = None,
+    doc_id: str = "d",
+    chunk_index: int = 0,
+    score: float = 1.0,
+) -> Row:
+    return Row(
+        id=f"{doc_id}:{chunk_index}",
+        doc_id=doc_id,
+        chunk_index=chunk_index,
+        text=text,
+        score=score,
+        title=title,
+    )
