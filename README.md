@@ -38,7 +38,7 @@ nDCG@10 and the other metrics are averaged over the test queries; latency is in-
 
 ### Answer quality
 
-Retrieval is scored against labelled documents; this section scores the generated answer. Each method retrieves the top 5 passages (k = 5), the same generator (`gpt-5.4-nano`) answers from them, and an LLM judge scores correctness against the gold answer and faithfulness to the passages. Judged by the same model that answers, which can flatter its own answers; all methods share the generator and judge. Run 2026-11-12. Full tables: [mini_wiki](results/answer_mini_wiki.md), [vi_legal](results/answer_vi_legal.md).
+Retrieval is scored against labelled documents; this section scores the generated answer. Each method retrieves the top 5 passages (k = 5), the same generator (`gpt-5.4-nano`) answers from them, and an LLM judge scores correctness against the gold answer and faithfulness to the passages. Judged by the same model that answers, which can flatter its own answers; all methods share the generator and judge. Run 2026-11-12. The rag-mini-wikipedia data is `cc-by-3.0` per its dataset card. Full tables: [mini_wiki](results/answer_mini_wiki.md), [vi_legal](results/answer_vi_legal.md).
 
 **rag-mini-wikipedia** (English, 150 sampled questions, 3200 documents)
 
@@ -60,7 +60,7 @@ Retrieval is scored against labelled documents; this section scores the generate
 | `multi_query` | 0.645 | 88.0% | 16.0% | 64 | 1452 | 1196 | 1442 | 1172 | 0 | 0 |
 | `context_expansion` | 0.615 | 88.0% | 19.0% | 39 |  | 1358 | 2452 | 2575 | 0 | 0 |
 
-Abstentions count as incorrect and faithful, so faithfulness is higher for a method that abstains more. Correctness and faithfulness are averaged over judged questions, so the denominators can differ when a judge call fails (no judge failures in these runs). Passage tokens are estimated as characters / 3. The `vi_RAG` gold answers were aligned with LLMs per the dataset card, so the Vietnamese scores are not a human-labelled measure.
+Abstentions count as incorrect and faithful, so faithfulness is higher for a method that abstains more. Correctness and faithfulness are averaged over judged questions, so the denominators can differ when a judge call fails (no judge failures in these runs). Passage tokens are estimated as characters / 3. The `vi_RAG` gold answers were aligned with LLMs per the dataset card, so the Vietnamese scores are not a human-labelled measure. The rag-mini-wikipedia data is `cc-by-3.0` per its dataset card.
 
 What stands out:
 - IDF matters: BM25 without it loses 0.03 to 0.08 nDCG@10 ([BM25](src/production_rag/methods/bm25/README.md)).
@@ -68,8 +68,8 @@ What stands out:
 - Weighted RRF (dense 1.0, sparse 0.5) is the best hybrid on both sets; on TVPL dense alone is still slightly better ([hybrid fusion](src/production_rag/methods/hybrid_fusion/README.md)).
 - The multilingual cross-encoder helps on Vietnamese legal questions and hurts on English scientific claims, at about 1 s per query on CPU ([rerank](src/production_rag/methods/rerank/README.md)).
 - Chunked `naive_rag` retrieval is close to `dense` on whole documents: nDCG@10 0.751 vs 0.762 on SciFact and 0.815 vs 0.818 on TVPL ([naive RAG](src/production_rag/methods/naive_rag/README.md)).
-- On answers, the methods are within a few points of each other on both sets (correctness 0.797 to 0.863 on mini_wiki, 0.605 to 0.645 on vi_legal). These are single runs on small samples, so small gaps are not shown to be real.
-- On vi_legal, `context_expansion` sends about twice the passage tokens of the others (2575 vs about 1150) with no gain in correctness over `naive_rag` (0.615 vs 0.605) ([context expansion](src/production_rag/methods/context_expansion/README.md)).
+- On answers, correctness spans 0.07 across the methods on mini_wiki (0.797 to 0.863) and 0.04 on vi_legal (0.605 to 0.645). These are single runs on small samples, so small gaps are not shown to be real.
+- On vi_legal, `context_expansion` sends about twice the passage tokens of the others (2575 vs about 1150) with no clear gain in correctness over `naive_rag` (0.615 vs 0.605) ([context expansion](src/production_rag/methods/context_expansion/README.md)).
 - `multi_query` adds about 1.2 to 1.5 s of rewrite time per question ([multi query](src/production_rag/methods/multi_query/README.md)).
 - Fan-out under a 150 ms deadline skips the rerank spec on every query and answers in 22 ms p50, against 366 ms at 2000 ms ([deadline fan-out](src/production_rag/methods/deadline_fanout/README.md)).
 
@@ -113,7 +113,7 @@ import asyncio
 
 from production_rag.core.config import Settings
 from production_rag.core.deps import build_deps, warm_up
-from production_rag.core.llm import OpenAIChat
+from production_rag.core.llm import OpenAIChat, TokenBudget
 from production_rag.methods.hybrid_fusion import pipeline as hybrid_fusion
 from production_rag.methods.naive_rag import pipeline as naive_rag
 
@@ -122,7 +122,8 @@ async def main() -> None:
     deps = build_deps(Settings.from_env())
     await warm_up(deps)
     await naive_rag.index(deps, "docs", {"d1": (None, "...")})
-    out = await naive_rag.answer("...", "docs", deps, OpenAIChat.from_env())
+    llm = OpenAIChat.from_env(budget=TokenBudget(5_000))
+    out = await naive_rag.answer("...", "docs", deps, llm)
     print(out.text)
     # retrieval only
     hits = await hybrid_fusion.search("...", "docs", deps)

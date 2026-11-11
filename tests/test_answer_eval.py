@@ -112,6 +112,8 @@ async def test_answered_item_is_judged_and_keeps_no_text(deps):
     assert item["tokens"] == {"rag": 15, "judge": 30, "reasoning": 0}
     dumped = json.dumps(item)
     assert "gold answer" not in dumped and '"reason"' not in dumped
+    faith_prompt = next(c for c in llm.calls if "faithful" in c[0]["content"])[-1]["content"]
+    assert "Question: solar panels" in faith_prompt
 
 
 async def test_judge_bad_output_marks_judge_failed(deps):

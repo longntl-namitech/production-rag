@@ -5,6 +5,7 @@ from production_rag.core.llm import Usage
 from production_rag.core.models import Row
 
 NO_ANSWER = "NO_ANSWER"
+_WRAPPING = " \t\r\n[]()\"'`"
 
 SYSTEM_PROMPT = f"""You answer a question using only the numbered passages provided.
 - Use nothing but the passages. Do not rely on outside knowledge.
@@ -12,6 +13,11 @@ SYSTEM_PROMPT = f"""You answer a question using only the numbered passages provi
 - Be short and direct. If the question is a yes/no question, start with "yes" or "no".
 - If the passages do not contain the answer, reply with exactly {NO_ANSWER} and nothing else.
 - Do not cite passage numbers and do not add any preamble."""
+
+
+def is_abstention(text: str) -> bool:
+    """True when the reply is NO_ANSWER, allowing wrapping brackets, quotes or a final period."""
+    return text.strip(_WRAPPING).removesuffix(".").strip(_WRAPPING) == NO_ANSWER
 
 
 @dataclass(frozen=True)
@@ -40,4 +46,4 @@ async def generate(llm, question: str, rows: list[Row], *, max_tokens: int = 512
     start = time.perf_counter()
     out = await llm.complete(build_messages(question, rows), max_tokens=max_tokens)
     ms = int((time.perf_counter() - start) * 1000)
-    return Generated(out.text, out.text.strip() == NO_ANSWER, out.usage, ms, out.finish_reason)
+    return Generated(out.text, is_abstention(out.text), out.usage, ms, out.finish_reason)

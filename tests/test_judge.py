@@ -27,16 +27,26 @@ async def test_correctness_parses_label():
 
 async def test_faithfulness_parses_label_and_sends_passages():
     llm = FakeLLM(lambda m: '{"label": "unfaithful", "reason": "r"}')
-    v = await judge_faithfulness(llm, "a", [text_row("passage one")])
+    v = await judge_faithfulness(llm, "q", "a", [text_row("passage one")])
     assert (v.label, v.error) == ("unfaithful", None)
     assert "passage one" in llm.calls[0][-1]["content"]
+
+
+async def test_faithfulness_prompt_includes_question_for_short_answers():
+    llm = FakeLLM(lambda m: '{"label": "faithful", "reason": "r"}')
+    await judge_faithfulness(
+        llm, "Was Lincoln a lawyer?", "yes", [text_row("Lincoln was a lawyer.")]
+    )
+    user = llm.calls[0][-1]["content"]
+    assert user.index("Was Lincoln a lawyer?") < user.index("Lincoln was a lawyer.")
+    assert user.rstrip().endswith("yes")
 
 
 @pytest.mark.parametrize(
     "reply", ["not json", '{"label": "maybe", "reason": ""}', '["faithful"]', ""]
 )
 async def test_bad_judge_output_is_not_a_score(reply):
-    v = await judge_faithfulness(FakeLLM(lambda m: reply), "a", [text_row("p")])
+    v = await judge_faithfulness(FakeLLM(lambda m: reply), "q", "a", [text_row("p")])
     assert v.label is None and v.error == "bad_output" and v.usage == Usage(10, 5)
 
 
@@ -53,7 +63,7 @@ async def test_judge_call_error_is_not_a_score(exc):
 
 async def test_judge_budget_exceeded_propagates():
     with pytest.raises(BudgetExceeded):
-        await judge_faithfulness(RaisingLLM(BudgetExceeded("cap")), "a", [text_row("p")])
+        await judge_faithfulness(RaisingLLM(BudgetExceeded("cap")), "q", "a", [text_row("p")])
 
 
 async def test_rewrite_returns_distinct_rephrasings():

@@ -192,7 +192,7 @@ def estimate_item(question: str, gold: str, rows: list[Row], method: str) -> int
     """Upper bound of tokens for one question and front end: every output at its cap."""
     total = _prompt_tokens(build_messages(question, rows)) + GEN_MAX_TOKENS
     total += _prompt_tokens(correctness_messages(question, gold, "")) + ANSWER_IN_JUDGE
-    total += _prompt_tokens(faithfulness_messages("", rows)) + ANSWER_IN_JUDGE
+    total += _prompt_tokens(faithfulness_messages(question, "", rows)) + ANSWER_IN_JUDGE
     total += 2 * JUDGE_MAX_TOKENS
     if method == "multi_query":
         total += _prompt_tokens(rewrite_messages(question)) + REWRITE_MAX_TOKENS
@@ -272,7 +272,7 @@ async def run_one(
     if gen.abstained:
         return {**item, "correctness": "incorrect", "faithfulness": "faithful"}
     correctness = await judge_correctness(llm, question, gold, gen.text)
-    faithfulness = await judge_faithfulness(llm, gen.text, got.rows)
+    faithfulness = await judge_faithfulness(llm, question, gen.text, got.rows)
     item.update(
         correctness=correctness.label,
         faithfulness=faithfulness.label,

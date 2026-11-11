@@ -26,10 +26,13 @@ Labels:
 - incorrect: the answer contradicts the reference, misses its point, or declines to answer.
 Reply in JSON with a label and a one-sentence reason."""
 
-FAITHFULNESS_PROMPT = """You check whether an answer is supported by the numbered passages.
+FAITHFULNESS_PROMPT = """You check whether an answer to a question is supported by the numbered
+passages. Read the answer as a reply to the question: a short answer such as "yes", "no", a name
+or a number makes the claim the question asks about.
 Labels:
-- faithful: every claim in the answer is stated in or follows directly from the passages.
-- unfaithful: at least one claim in the answer is missing from the passages or contradicts them.
+- faithful: every claim the answer makes, read as a reply to the question, is stated in or
+  follows directly from the passages.
+- unfaithful: at least one such claim is missing from the passages or contradicts them.
 Judge support only, not whether the answer is true in the world or complete.
 Reply in JSON with a label and a one-sentence reason."""
 
@@ -72,8 +75,9 @@ def correctness_messages(question: str, gold: str, answer: str) -> list[dict[str
     ]
 
 
-def faithfulness_messages(answer: str, rows: list[Row]) -> list[dict[str, str]]:
-    user = f"Passages:\n\n{format_passages(rows)}\n\nAnswer to check: {answer}"
+def faithfulness_messages(question: str, answer: str, rows: list[Row]) -> list[dict[str, str]]:
+    passages = format_passages(rows)
+    user = f"Question: {question}\n\nPassages:\n\n{passages}\n\nAnswer to check: {answer}"
     return [
         {"role": "system", "content": FAITHFULNESS_PROMPT},
         {"role": "user", "content": user},
@@ -105,6 +109,6 @@ async def judge_correctness(llm, question: str, gold: str, answer: str) -> Verdi
     return await _judge(llm, messages, "correctness", CORRECTNESS_LABELS)
 
 
-async def judge_faithfulness(llm, answer: str, rows: list[Row]) -> Verdict:
-    messages = faithfulness_messages(answer, rows)
+async def judge_faithfulness(llm, question: str, answer: str, rows: list[Row]) -> Verdict:
+    messages = faithfulness_messages(question, answer, rows)
     return await _judge(llm, messages, "faithfulness", FAITHFULNESS_LABELS)

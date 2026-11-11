@@ -1,3 +1,4 @@
+import pytest
 from fakes import FakeLLM, text_row
 
 from production_rag.core.generation import NO_ANSWER, build_messages, generate
@@ -27,3 +28,26 @@ async def test_generate_detects_abstention():
 async def test_generate_returns_answer():
     out = await generate(FakeLLM(lambda m: "Yes."), "q", [text_row("p")])
     assert not out.abstained and out.text == "Yes." and out.finish_reason == "stop"
+
+
+@pytest.mark.parametrize(
+    "reply",
+    ["NO_ANSWER", "[NO_ANSWER]", "NO_ANSWER.", "`NO_ANSWER`", '"NO_ANSWER"', " 'NO_ANSWER' \n"],
+)
+async def test_generate_detects_wrapped_abstention(reply):
+    out = await generate(FakeLLM(lambda m: reply), "q", [text_row("p")])
+    assert out.abstained and out.text == reply
+
+
+@pytest.mark.parametrize(
+    "reply",
+    [
+        "Paris. NO_ANSWER",
+        "The passages give NO_ANSWER for this.",
+        "NO_ANSWER is not it",
+        "NOT_ANSWER",
+    ],
+)
+async def test_answer_containing_token_is_not_abstention(reply):
+    out = await generate(FakeLLM(lambda m: reply), "q", [text_row("p")])
+    assert not out.abstained
