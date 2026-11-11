@@ -16,7 +16,13 @@ Token budget: `--max-tokens` caps the run. The client checks the budget before a
 the usage after it, so calls already in flight can pass the cap. Each question makes its calls
 one after another, so at most `--concurrency` calls are in flight and the overshoot is at most
 that many calls (each at most its prompt plus its max_tokens). A question cut by the budget is
-dropped, the results are written with `"complete": false` and the exit code is 1.
+dropped, the results are written with `"complete": false` and the exit code is 1. The meta
+`tokens.total` is what the client counted (billed), including calls of dropped questions;
+`rag` and `judge` sum the kept items and `dropped` is the difference.
+
+Failures: an OpenAI 401 or 403 stops the run with a message naming `OPENAI_API_KEY` and writes
+no results file. A run where every generation call failed is written as incomplete and exits 1.
+Any other error in one question makes that item `failed` (exception class name only).
 """
 
 import argparse
@@ -48,7 +54,14 @@ from production_rag.core.eval.metrics import percentile
 from production_rag.core.eval.report import answer_table
 from production_rag.core.eval.run import doc_ranking
 from production_rag.core.generation import build_messages, generate
-from production_rag.core.llm import BudgetExceeded, MissingAPIKey, OpenAIChat, TokenBudget, Usage
+from production_rag.core.llm import (
+    BudgetExceeded,
+    LLMError,
+    MissingAPIKey,
+    OpenAIChat,
+    TokenBudget,
+    Usage,
+)
 from production_rag.core.models import ContextOption, Row, SpecResult
 from production_rag.methods.context_expansion import pipeline as context_expansion
 from production_rag.methods.hybrid_fusion import pipeline as hybrid_fusion
@@ -63,10 +76,19 @@ ANSWER_METHODS = ("naive_rag", "hybrid_fusion", "rerank", "multi_query", "contex
 DEADLINE_MS = 30000
 GEN_MAX_TOKENS = 512
 ANSWER_IN_JUDGE = 512  # upper bound for the answer text inside each judge prompt
+RERANK_NOT_APPLIED = ("failed", "skipped_budget")  # rows came back in retrieval order
 NO_RERANKER = (
     "the rerank front end needs a reranker: install the local-models extra "
     "or set RERANK_BASE_URL and RERANK_API_KEY"
 )
+
+
+class AuthFailed(RuntimeError):
+    """OpenAI refused the key: every further call would fail the same way."""
+
+
+def _is_auth_error(exc: Exception) -> bool:
+    return isinstance(exc, LLMError) and str(exc).startswith(("openai 401", "openai 403"))
 
 
 @dataclass
@@ -76,6 +98,7 @@ class Retrieved:
     ms: int
     rewrite_ms: int | None = None
     status: str = "ok"
+    rerank: str = "off"
 
 
 def _ms(start: float) -> int:
@@ -85,7 +108,7 @@ def _ms(start: float) -> int:
 async def _timed(search: Awaitable[SpecResult]) -> Retrieved:
     start = time.perf_counter()
     result = await search
-    return Retrieved(result.rows, Usage(), _ms(start), status=result.status)
+    return Retrieved(result.rows, Usage(), _ms(start), status=result.status, rerank=result.rerank)
 
 
 async def _naive_rag(question: str, collection: str, deps: Deps, llm: Any, k: int) -> Retrieved:
@@ -184,11 +207,8 @@ def _tokens(rag: Usage, judge: Usage) -> dict[str, int]:
     }
 
 
-async def run_one(
-    method: str, qid: str, question: str, gold: str, deps: Deps, collection: str, llm, k: int
-) -> dict[str, Any]:
-    """One question through one front end. `BudgetExceeded` propagates."""
-    item: dict[str, Any] = {
+def _new_item(method: str, qid: str) -> dict[str, Any]:
+    return {
         "qid": qid,
         "front_end": method,
         "status": "ok",
@@ -204,8 +224,16 @@ async def run_one(
         "gen_ms": None,
         "passage_tokens": None,
         "doc_ids": [],
+        "rerank": None,
         "tokens": _tokens(Usage(), Usage()),
     }
+
+
+async def run_one(
+    method: str, qid: str, question: str, gold: str, deps: Deps, collection: str, llm, k: int
+) -> dict[str, Any]:
+    """One question through one front end. `BudgetExceeded` and `AuthFailed` propagate."""
+    item = _new_item(method, qid)
     try:
         got = await FRONT_ENDS[method](question, collection, deps, llm, k)
     except BudgetExceeded:
@@ -213,9 +241,16 @@ async def run_one(
     except Exception as exc:
         return {**item, "status": "failed", "error": f"retrieval {type(exc).__name__}"}
     rag = got.usage
-    item.update(retrieval_ms=got.ms, rewrite_ms=got.rewrite_ms, tokens=_tokens(rag, Usage()))
+    item.update(
+        retrieval_ms=got.ms,
+        rewrite_ms=got.rewrite_ms,
+        rerank=got.rerank,
+        tokens=_tokens(rag, Usage()),
+    )
     if got.status != "ok":
         return {**item, "status": "failed", "error": "retrieval failed"}
+    if got.rerank in RERANK_NOT_APPLIED:  # unreranked rows must not count as reranked
+        return {**item, "status": "failed", "error": f"rerank {got.rerank}"}
     item.update(
         doc_ids=doc_ranking(got.rows), passage_tokens=estimate_tokens(format_passages(got.rows))
     )
@@ -224,6 +259,8 @@ async def run_one(
     except BudgetExceeded:
         raise
     except Exception as exc:
+        if _is_auth_error(exc):
+            raise AuthFailed(str(exc)) from None
         return {**item, "status": "failed", "error": f"generation {type(exc).__name__}"}
     rag += gen.usage
     item.update(
@@ -259,14 +296,18 @@ async def run_items(
     k: int = 5,
     concurrency: int = 4,
 ) -> tuple[list[dict[str, Any]], bool]:
-    """Items in method then question order, and False when the token budget stopped the run."""
+    """Items in method then question order, and False when the token budget stopped the run.
+
+    Raises `AuthFailed` (after in-flight questions finish) when OpenAI refused the key.
+    """
     semaphore = asyncio.Semaphore(concurrency)
     stopped = False
+    auth_error: AuthFailed | None = None
 
     async def one(method: str, qid: str) -> dict[str, Any] | None:
-        nonlocal stopped
+        nonlocal stopped, auth_error
         async with semaphore:  # latency is measured inside, so queueing is not counted
-            if stopped:
+            if stopped or auth_error:
                 return None
             try:
                 return await run_one(
@@ -275,16 +316,31 @@ async def run_items(
             except BudgetExceeded:
                 stopped = True
                 return None
+            except AuthFailed as exc:
+                auth_error = exc
+                return None
+            except Exception as exc:  # one broken question must not lose the others
+                return {**_new_item(method, qid), "status": "failed", "error": type(exc).__name__}
 
     items: list[dict[str, Any]] = []
     for method in methods:
         start = time.perf_counter()
         done = await asyncio.gather(*(one(method, qid) for qid in questions))
         items.extend(item for item in done if item is not None)
+        if auth_error:
+            raise auth_error
         print(f"{method:18} done in {time.perf_counter() - start:.0f}s", flush=True)
         if stopped:
             break
     return items, not stopped
+
+
+def all_generations_failed(items: list[dict[str, Any]]) -> bool:
+    """True when generation was tried and never succeeded (an outage, not a bad question)."""
+    tried = [
+        i for i in items if i["gen_ms"] is not None or (i["error"] or "").startswith("generation")
+    ]
+    return bool(tried) and all(i["status"] == "failed" for i in tried)
 
 
 def _mean(values: list[float]) -> float | None:
@@ -417,19 +473,27 @@ async def main(argv: list[str] | None = None) -> int:
         )
         return 0
 
-    items, complete = await run_items(
-        deps=deps,
-        collection=collection,
-        methods=args.methods,
-        questions=ds.questions,
-        gold=ds.gold,
-        llm=llm,
-        k=args.k,
-        concurrency=args.concurrency,
-    )
+    try:
+        items, complete = await run_items(
+            deps=deps,
+            collection=collection,
+            methods=args.methods,
+            questions=ds.questions,
+            gold=ds.gold,
+            llm=llm,
+            k=args.k,
+            concurrency=args.concurrency,
+        )
+    except AuthFailed as exc:  # the label is status and error code only, never the key
+        raise SystemExit(f"OpenAI refused OPENAI_API_KEY ({exc}); no results written") from None
+    budget_stop = not complete
+    outage = all_generations_failed(items)
+    complete = complete and not outage
     summary = summarize_answers(items, args.methods)
     rag = sum(i["tokens"]["rag"] for i in items)
     judge = sum(i["tokens"]["judge"] for i in items)
+    budget = getattr(llm, "budget", None)
+    billed = budget.used if budget is not None else rag + judge
     meta = {
         "kind": "answer",
         "dataset": args.dataset,
@@ -441,9 +505,10 @@ async def main(argv: list[str] | None = None) -> int:
         "k": args.k,
         "complete": complete,
         "tokens": {
+            "total": billed,
             "rag": rag,
             "judge": judge,
-            "total": rag + judge,
+            "dropped": billed - rag - judge,
             "reasoning": sum(i["tokens"]["reasoning"] for i in items),
         },
     }
@@ -451,9 +516,11 @@ async def main(argv: list[str] | None = None) -> int:
     out = RESULTS / f"{args.name or 'answer_' + args.dataset}.json"
     out.write_text(json.dumps({"meta": meta, "summary": summary, "per_item": items}, indent=1))
     print(answer_table(summary))
-    print(f"tokens: rag={rag} judge={judge} total={rag + judge}")
-    if not complete:
+    print(f"tokens: rag={rag} judge={judge} dropped={billed - rag - judge} total={billed}")
+    if budget_stop:
         print("stopped at the token budget: partial results, questions cut mid-way dropped")
+    if outage:
+        print("every generation call failed: run marked incomplete")
     print(f"saved {out}")
     return 0 if complete else 1
 

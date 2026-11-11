@@ -26,10 +26,16 @@ class FakeReranker:
         return [float(len(set(query.split()) & set(t.split()))) for t in texts]
 
 
-def mock_chat(budget: TokenBudget) -> OpenAIChat:
-    """Every call costs 100 tokens; judge calls get the first label of their schema."""
+def mock_chat(budget: TokenBudget | None = None, status: int = 200) -> OpenAIChat:
+    """Every call costs 100 tokens; judge calls get the first label of their schema.
+
+    With a non-200 status every call fails with that status and an OpenAI-style error body.
+    """
 
     def handler(request: httpx.Request) -> httpx.Response:
+        if status != 200:
+            error = {"code": "invalid_api_key", "message": "Incorrect API key provided: sk-te**st"}
+            return httpx.Response(status, json={"error": error})
         body = json.loads(request.content)
         fmt = body.get("response_format")
         if fmt is None:
@@ -287,7 +293,13 @@ async def test_cli_budget_stop_writes_incomplete_and_exits_nonzero(cli, monkeypa
     run = json.loads((cli / "answer_mini_wiki.json").read_text())
     assert run["meta"]["complete"] is False and run["meta"]["kind"] == "answer"
     assert [i["qid"] for i in run["per_item"]] == ["q1"]
-    assert run["meta"]["tokens"]["total"] == 300
+    assert run["meta"]["tokens"] == {
+        "total": 300,
+        "rag": 100,
+        "judge": 200,
+        "dropped": 0,
+        "reasoning": 0,
+    }
     text = json.dumps(run)
     for secret in ["roof panels", "solar panels on roofs", "sk-test", "reasons"]:
         assert secret not in text
@@ -318,3 +330,110 @@ async def test_cli_without_key_stops_before_deps_and_download(monkeypatch):
     monkeypatch.setattr(answer, "load_answer_dataset", pytest.fail)
     with pytest.raises(SystemExit, match="OPENAI_API_KEY"):
         await answer.main(["--dataset", "vi_legal", "--max-tokens", "10"])
+
+
+class BrokenReranker:
+    async def score(self, query: str, texts: list[str]) -> list[float]:
+        raise RuntimeError("remote reranker down")
+
+
+async def test_rerank_not_applied_is_failed_not_scored(deps):
+    deps = dataclasses.replace(deps, reranker=BrokenReranker())
+    llm = FakeLLM(judged())
+    items, complete = await run_items(
+        deps=deps,
+        collection="c",
+        methods=["rerank"],
+        questions={"q1": "solar panels"},
+        gold={"q1": "g"},
+        llm=llm,
+    )
+    assert complete and llm.calls == []
+    item = items[0]
+    assert (item["status"], item["error"], item["rerank"]) == ("failed", "rerank failed", "failed")
+
+
+async def test_reranked_item_records_rerank_status(deps):
+    deps = dataclasses.replace(deps, reranker=FakeReranker())
+    items, _ = await run_items(
+        deps=deps,
+        collection="c",
+        methods=["rerank"],
+        questions={"q1": "solar panels"},
+        gold={"q1": "g"},
+        llm=FakeLLM(judged()),
+    )
+    assert (items[0]["status"], items[0]["rerank"]) == ("ok", "ok")
+
+
+async def test_unexpected_error_fails_one_question_and_the_run_continues(deps, monkeypatch):
+    real = answer.judge_correctness
+
+    async def flaky(llm, question, gold, text):
+        if question == "solar":
+            raise TypeError("bug")
+        return await real(llm, question, gold, text)
+
+    monkeypatch.setattr(answer, "judge_correctness", flaky)
+    items, complete = await run_items(
+        deps=deps,
+        collection="c",
+        methods=["naive_rag"],
+        questions={"q1": "solar", "q2": "wind"},
+        gold={"q1": "g", "q2": "g"},
+        llm=FakeLLM(judged()),
+    )
+    assert complete
+    assert [(i["qid"], i["status"], i["error"]) for i in items] == [
+        ("q1", "failed", "TypeError"),
+        ("q2", "ok", None),
+    ]
+
+
+async def test_cli_rejected_key_is_fatal_and_writes_nothing(cli, monkeypatch):
+    monkeypatch.setattr(answer, "preflight", lambda args: mock_chat(status=401))
+    with pytest.raises(SystemExit, match="OPENAI_API_KEY") as exc:
+        await answer.main(["--dataset", "mini_wiki", "--methods", "naive_rag", "--max-tokens", "9"])
+    assert "sk-te" not in str(exc.value) and "401" in str(exc.value)
+    assert list(cli.iterdir()) == []
+
+
+async def test_cli_every_generation_failed_is_incomplete(cli, monkeypatch, capsys):
+    monkeypatch.setattr(answer, "preflight", lambda args: mock_chat(status=500))
+    code = await answer.main(
+        ["--dataset", "mini_wiki", "--methods", "naive_rag", "--max-tokens", "9"]
+    )
+    assert code == 1
+    run = json.loads((cli / "answer_mini_wiki.json").read_text())
+    assert run["meta"]["complete"] is False
+    assert {i["error"] for i in run["per_item"]} == {"generation LLMError"}
+    assert "every generation call failed" in capsys.readouterr().out
+
+
+async def test_cli_budget_stop_counts_tokens_of_dropped_questions(cli, monkeypatch):
+    monkeypatch.setattr(answer, "preflight", lambda args: mock_chat(TokenBudget(args.max_tokens)))
+    code = await answer.main(
+        ["--dataset", "mini_wiki", "--methods", "naive_rag", "--max-tokens", "150"]
+        + ["--concurrency", "1"]
+    )
+    run = json.loads((cli / "answer_mini_wiki.json").read_text())
+    assert code == 1 and run["per_item"] == []
+    tokens = run["meta"]["tokens"]
+    assert (tokens["total"], tokens["rag"], tokens["judge"], tokens["dropped"]) == (200, 0, 0, 200)
+
+
+async def test_budget_stop_with_concurrency_drops_cut_questions(deps):
+    chat = mock_chat(TokenBudget(250))
+    items, complete = await run_items(
+        deps=deps,
+        collection="c",
+        methods=["naive_rag"],
+        questions={f"q{i}": "solar" for i in range(4)},
+        gold={f"q{i}": "g" for i in range(4)},
+        llm=chat,
+        concurrency=2,
+    )
+    assert not complete
+    assert all(i["status"] == "ok" and i["faithfulness"] for i in items)
+    # at most `concurrency` calls pass the cap: 250 + 2 * 100
+    assert 300 <= chat.budget.used <= 450
