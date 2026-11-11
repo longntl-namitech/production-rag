@@ -4,8 +4,8 @@
 
 | Method | Correctness | Faithfulness | Abstained | Retrieval p50 ms | Rewrite p50 ms | Generation p50 ms | RAG tokens / question | Passage tokens (est.) | Failed | Judge failed |
 |---|---|---|---|---|---|---|---|---|---|---|
-| `naive_rag` | 0.803 | 69.3% | 8.7% | 30 |  | 942 | 632 | 757 | 0 | 0 |
-| `hybrid_fusion` | 0.833 | 69.3% | 8.7% | 32 |  | 844 | 657 | 797 | 0 | 0 |
-| `rerank` | 0.837 | 63.3% | 6.7% | 131 |  | 846 | 617 | 736 | 0 | 0 |
-| `multi_query` | 0.797 | 64.0% | 10.0% | 40 | 1208 | 870 | 831 | 795 | 0 | 0 |
-| `context_expansion` | 0.863 | 68.7% | 6.7% | 36 |  | 850 | 744 | 931 | 0 | 0 |
+| `naive_rag` | 0.797 | 97.3% | 8.7% | 30 |  | 900 | 633 | 757 | 0 | 0 |
+| `hybrid_fusion` | 0.813 | 96.7% | 8.7% | 31 |  | 837 | 655 | 793 | 0 | 0 |
+| `rerank` | 0.823 | 96.7% | 8.7% | 137 |  | 821 | 617 | 735 | 0 | 0 |
+| `multi_query` | 0.817 | 96.0% | 8.0% | 41 | 1128 | 804 | 834 | 801 | 0 | 0 |
+| `context_expansion` | 0.830 | 96.0% | 8.7% | 35 |  | 804 | 744 | 932 | 0 | 0 |
