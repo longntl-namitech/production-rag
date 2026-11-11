@@ -1,7 +1,7 @@
 import pytest
 from qdrant_client import models
 
-from retrieval_playbook.fusion import QueryVectors, build_query
+from production_rag.core.fusion import QueryVectors, build_query
 
 SPARSE = models.SparseVector(indices=[1], values=[1.0])
 SPARSE_VI = models.SparseVector(indices=[2], values=[1.0])

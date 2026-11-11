@@ -1,11 +1,11 @@
 from qdrant_client import AsyncQdrantClient
 from test_store import make_points
 
-from retrieval_playbook.models import ContextOption, Row
-from retrieval_playbook.pipeline.context import expand_context
-from retrieval_playbook.pipeline.deadline import Deadline
-from retrieval_playbook.pipeline.merge import merge_max
-from retrieval_playbook.store import Store
+from production_rag.core.models import ContextOption, Row
+from production_rag.core.pipeline.context import expand_context
+from production_rag.core.pipeline.deadline import Deadline
+from production_rag.core.pipeline.merge import merge_max
+from production_rag.core.store import Store
 
 
 def row(id: str, score: float, doc_id: str = "d", chunk_index: int = 0, text: str = "") -> Row:

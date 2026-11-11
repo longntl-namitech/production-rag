@@ -3,11 +3,12 @@ import asyncio
 import httpx
 import pytest
 
-from retrieval_playbook.models import Row, SearchRequest
-from retrieval_playbook.pipeline.deadline import Deadline
-from retrieval_playbook.pipeline.rerank_stage import apply_rerank
-from retrieval_playbook.pipeline.search import run_search
-from retrieval_playbook.rerankers.cohere_http import CohereHttpReranker
+from production_rag.core.models import Row, SearchRequest
+from production_rag.core.pipeline.deadline import Deadline
+from production_rag.core.pipeline.rerank_stage import apply_rerank
+from production_rag.core.pipeline.search import run_search
+from production_rag.core.rerankers.cohere_http import CohereHttpReranker
+from production_rag.methods import get_variant
 
 
 def rows(*ids: str) -> list[Row]:
@@ -105,7 +106,7 @@ async def test_pool_widened_for_rerank(deps, monkeypatch):
     req = SearchRequest(
         query="solar", collection="c", specs=[{"name": "s", "k": 10, "rerank": True}]
     )
-    await run_search(req, deps, Deadline(4000))
+    await run_search(req, get_variant("hybrid_rrf"), deps, Deadline(4000))
     assert limits == [40]
 
 
@@ -114,10 +115,9 @@ async def test_method_default_rerank_and_spec_override(deps):
     req = SearchRequest(
         query="solar panels",
         collection="c",
-        method="hybrid_rrf_rerank",
         specs=[{"name": "default_on", "k": 3}, {"name": "off", "k": 3, "rerank": False}],
     )
-    response = await run_search(req, deps, Deadline(4000))
+    response = await run_search(req, get_variant("hybrid_rrf_rerank"), deps, Deadline(4000))
     assert response.results["default_on"].rerank == "ok"
     assert response.results["off"].rerank == "off"
     assert len(response.results["default_on"].rows) == 3
@@ -125,8 +125,8 @@ async def test_method_default_rerank_and_spec_override(deps):
 
 @pytest.mark.integration
 async def test_cross_encoder_scores_relevant_higher():
-    from retrieval_playbook.config import Settings
-    from retrieval_playbook.rerankers.cross_encoder import CrossEncoderReranker
+    from production_rag.core.config import Settings
+    from production_rag.core.rerankers.cross_encoder import CrossEncoderReranker
 
     reranker = CrossEncoderReranker(Settings().cross_encoder_model)
     scores = await reranker.score(
@@ -149,7 +149,7 @@ async def test_slow_rerank_with_context_still_returns_rows(deps, monkeypatch):
         collection="c",
         specs=[{"name": "s", "k": 2, "rerank": True, "context": {"prev": 1, "next": 1}}],
     )
-    result = (await run_search(req, deps, Deadline(500))).results["s"]
+    result = (await run_search(req, get_variant("hybrid_rrf"), deps, Deadline(500))).results["s"]
     assert result.status == "ok"
     assert result.rerank == "failed"
     assert result.rows
@@ -166,3 +166,35 @@ async def test_rerank_sees_title_and_text():
     rows_ = [Row(id="a", doc_id="a", text="body", title="Title", score=1.0), *rows("b")]
     await apply_rerank(Recording(), "q", rows_, Deadline(4000), 300)
     assert seen == ["Title\nbody", "text b"]
+
+
+async def test_rerank_tiny_min_budget_skips():
+    r = ScoreByText()
+    _, status, _ = await apply_rerank(r, "q", rows("a", "b"), Deadline(30), 0)
+    assert status == "skipped_budget" and r.calls == 0
+
+
+async def test_rerank_wrong_score_count_keeps_order():
+    class Short:
+        async def score(self, query, texts):
+            return [0.9]
+
+    out, status, _ = await apply_rerank(Short(), "q", rows("a", "b"), Deadline(4000), 300)
+    assert (status, [r.id for r in out]) == ("failed", ["a", "b"])
+
+
+async def test_rerank_requested_without_reranker_keeps_k(deps, monkeypatch):
+    limits = []
+    original = deps.store.search
+
+    async def search(name, kwargs, limit, threshold):
+        limits.append(limit)
+        return await original(name, kwargs, limit, threshold)
+
+    monkeypatch.setattr(deps.store, "search", search)
+    assert deps.reranker is None
+    req = SearchRequest(
+        query="solar", collection="c", specs=[{"name": "s", "k": 10, "rerank": True}]
+    )
+    res = (await run_search(req, get_variant("hybrid_rrf"), deps, Deadline(4000))).results["s"]
+    assert limits == [10] and res.rerank == "off"

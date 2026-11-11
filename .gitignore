@@ -17,4 +17,4 @@ wheels/
 .ruff_cache/
 
 # Eval
-eval/results/smoke*.json
+results/smoke*

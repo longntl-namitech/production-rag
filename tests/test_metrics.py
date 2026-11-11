@@ -1,6 +1,12 @@
 import math
 
-from eval.metrics import mrr_at_k, ndcg_at_k, percentile, recall_at_k, rescue_damage
+from production_rag.core.eval.metrics import (
+    mrr_at_k,
+    ndcg_at_k,
+    percentile,
+    recall_at_k,
+    rescue_damage,
+)
 
 
 def test_recall_at_k():
@@ -40,3 +46,7 @@ def test_percentile():
     values = [float(v) for v in range(1, 101)]
     assert percentile(values, 50) == 50.5
     assert percentile(values, 95) == 95.05
+
+
+def test_percentile_single_value():
+    assert percentile([5.0], 50) == percentile([5.0], 95) == 5.0

@@ -12,16 +12,5 @@ services:
       timeout: 3s
       retries: 10
 
-  retriever:
-    build: .
-    env_file: .env
-    environment:
-      QDRANT_URL: http://qdrant:6333
-    ports:
-      - "8000:8000"
-    depends_on:
-      qdrant:
-        condition: service_healthy
-
 volumes:
   qdrant_data:

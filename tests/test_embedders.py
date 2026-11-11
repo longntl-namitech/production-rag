@@ -4,10 +4,10 @@ import httpx
 import pytest
 from fakes import FakeEmbedder
 
-from retrieval_playbook.config import Settings
-from retrieval_playbook.embedders import make_embedder
-from retrieval_playbook.embedders.base import EmbedderUnavailable
-from retrieval_playbook.embedders.openai_compat import OpenAICompatEmbedder
+from production_rag.core.config import Settings
+from production_rag.core.embedders import make_embedder
+from production_rag.core.embedders.base import EmbedderUnavailable
+from production_rag.core.embedders.openai_compat import OpenAICompatEmbedder
 
 
 def _client(handler) -> httpx.AsyncClient:
@@ -52,7 +52,7 @@ async def test_fake_embedder_is_deterministic():
 
 @pytest.mark.integration
 async def test_jina_local_query_and_document_dims():
-    from retrieval_playbook.embedders.jina_local import JinaLocalEmbedder
+    from production_rag.core.embedders.jina_local import JinaLocalEmbedder
 
     embedder = JinaLocalEmbedder(Settings().dense_model)
     [q] = await embedder.embed_queries(["thủ tục đăng ký kết hôn"])

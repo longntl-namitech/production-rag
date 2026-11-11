@@ -1,6 +1,6 @@
 import pytest
 
-from retrieval_playbook.sparse.bm25 import Bm25Encoder, load_vietnamese_stopwords, strip_stopwords
+from production_rag.core.sparse.bm25 import Bm25Encoder, load_vietnamese_stopwords, strip_stopwords
 
 
 def test_strip_multi_syllable_stopword():
