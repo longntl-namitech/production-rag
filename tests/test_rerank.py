@@ -198,3 +198,12 @@ async def test_rerank_requested_without_reranker_keeps_k(deps, monkeypatch):
     )
     res = (await run_search(req, get_variant("hybrid_rrf"), deps, Deadline(4000))).results["s"]
     assert limits == [10] and res.rerank == "off"
+
+
+async def test_rerank_import_error_propagates():
+    class Missing:
+        async def score(self, query, texts):
+            raise ImportError("needs the local-models extra")
+
+    with pytest.raises(ImportError):
+        await apply_rerank(Missing(), "q", rows("a", "b"), Deadline(4000), 300)

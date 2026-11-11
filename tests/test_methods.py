@@ -126,3 +126,8 @@ async def test_deadline_fanout_isolates_failed_spec(deps, monkeypatch):
     bad, good = response.results["bad"], response.results["good"]
     assert (bad.status, bad.error, bad.rows) == ("failed", "RuntimeError", [])
     assert good.status == "ok" and good.rows
+
+
+async def test_multi_query_rerank_query_needs_rerank_base(deps):
+    with pytest.raises(ValueError, match="hybrid_rrf_rerank"):
+        await multi_query.search(["a", "b"], "c", deps, rerank_query="a")

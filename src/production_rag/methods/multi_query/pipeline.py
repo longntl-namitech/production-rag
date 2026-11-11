@@ -22,11 +22,14 @@ async def search(
     k: int = 10,
     deadline_ms: int = 4000,
 ) -> SpecResult:
+    variant = get_variant(base)
+    if rerank_query is not None and not variant.rerank:
+        raise ValueError("rerank_query needs a base that reranks, e.g. base='hybrid_rrf_rerank'")
     req = SearchRequest(
         query=queries,
         rerank_query=rerank_query,
         collection=collection,
         specs=[SearchSpec(name="default", k=k)],
     )
-    response = await run_search(req, get_variant(base), deps, Deadline(deadline_ms))
+    response = await run_search(req, variant, deps, Deadline(deadline_ms))
     return response.results["default"]

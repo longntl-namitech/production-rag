@@ -1,9 +1,11 @@
+import importlib.util
 import subprocess
 import sys
 
 import pytest
 
-from production_rag.core.deps import warm_up
+from production_rag.core.config import Settings
+from production_rag.core.deps import build_deps, warm_up
 
 
 def test_core_imports_without_torch():
@@ -44,3 +46,32 @@ async def test_warm_up_touches_every_model(deps):
     await warm_up(deps)
     counts = (deps.embedder.calls, deps.bm25.calls, deps.bm25_vi.calls, deps.reranker.calls)
     assert counts == (1, 1, 1, 1)
+
+
+def _hide_sentence_transformers(monkeypatch):
+    real = importlib.util.find_spec
+
+    def fake(name, *args):
+        return None if name == "sentence_transformers" else real(name, *args)
+
+    monkeypatch.setattr(importlib.util, "find_spec", fake)
+
+
+def test_build_deps_light_install_has_no_local_reranker(monkeypatch):
+    _hide_sentence_transformers(monkeypatch)
+    assert build_deps(Settings()).reranker is None
+
+
+@pytest.mark.filterwarnings("ignore:Failed to obtain server version")
+def test_build_deps_keeps_remote_reranker_without_extra(monkeypatch):
+    _hide_sentence_transformers(monkeypatch)
+    s = Settings(rerank_base_url="http://x", rerank_api_key="k")
+    assert type(build_deps(s).reranker).__name__ == "CohereHttpReranker"
+
+
+async def test_warm_up_light_install_imports_no_torch(deps):
+    assert deps.reranker is None
+    before = {m for m in ("torch", "sentence_transformers") if m in sys.modules}
+    await warm_up(deps)
+    after = {m for m in ("torch", "sentence_transformers") if m in sys.modules}
+    assert after == before
