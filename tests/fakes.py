@@ -2,8 +2,11 @@
 
 import hashlib
 import math
+from collections.abc import Callable
 
 from qdrant_client import models
+
+from production_rag.core.llm import Completion, Usage
 
 
 def _bucket(token: str, size: int) -> int:
@@ -50,3 +53,28 @@ class FakeSparseEncoder:
     def encode_documents(self, texts: list[str]) -> list[models.SparseVector]:
         self.calls += 1
         return [self._vec(t) for t in texts]
+
+
+class FakeLLM:
+    model = "fake"
+
+    def __init__(
+        self,
+        reply: Callable[[list[dict[str, str]]], str],
+        usage: Usage | None = None,
+        finish_reason: str = "stop",
+    ):
+        self.reply = reply
+        self.usage = usage if usage is not None else Usage(10, 5)
+        self.finish_reason = finish_reason
+        self.calls: list[list[dict]] = []
+
+    async def complete(
+        self,
+        messages: list[dict[str, str]],
+        *,
+        max_tokens: int,
+        json_schema: dict | None = None,
+    ) -> Completion:
+        self.calls.append(messages)
+        return Completion(self.reply(messages), self.usage, self.finish_reason, "fake")
