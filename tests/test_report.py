@@ -56,3 +56,62 @@ def test_header_without_chunks_unchanged(tmp_path):
     path = _run_json(tmp_path, None)
     report.main(str(path))
     assert "chunks" not in path.with_suffix(".md").read_text()
+
+
+ANSWER_SUMMARY = {
+    "naive_rag": {
+        "correctness": 0.5,
+        "faithfulness": 0.9,
+        "abstained": 0.1,
+        "retrieval_p50_ms": 20,
+        "generation_p50_ms": 800,
+        "rag_tokens": 700,
+        "passage_tokens": 600,
+        "failed": 0,
+        "judge_failed": 1,
+    },
+    "multi_query": {
+        "correctness": None,
+        "faithfulness": None,
+        "abstained": 0.0,
+        "retrieval_p50_ms": 30,
+        "rewrite_p50_ms": 400,
+        "generation_p50_ms": 900,
+        "rag_tokens": 900,
+        "passage_tokens": 650,
+        "failed": 2,
+        "judge_failed": 0,
+    },
+}
+
+
+def test_answer_table_row():
+    lines = report.answer_table(ANSWER_SUMMARY).splitlines()
+    assert lines[0].startswith("| Method | Correctness | Faithfulness | Abstained |")
+    assert lines[1].count("|---") == 11
+    assert lines[2] == "| `naive_rag` | 0.500 | 90.0% | 10.0% | 20 |  | 800 | 700 | 600 | 0 | 1 |"
+    assert lines[3] == "| `multi_query` |  |  | 0.0% | 30 | 400 | 900 | 900 | 650 | 2 | 0 |"
+
+
+def test_answer_report_header(tmp_path):
+    meta = {
+        "kind": "answer",
+        "dataset": "mini_wiki",
+        "date": "2026-11-11",
+        "questions": 20,
+        "documents": 3200,
+        "chunks": {"answer-mini_wiki-c800": 3613},
+        "model": "gpt-5.4-nano",
+        "k": 5,
+        "complete": False,
+    }
+    path = tmp_path / "answer.json"
+    path.write_text(json.dumps({"meta": meta, "summary": ANSWER_SUMMARY, "per_item": []}))
+    report.main(str(path))
+    text = path.with_suffix(".md").read_text()
+    assert (
+        "20 sampled questions, 3200 documents in 3613 chunks of up to 800 characters, "
+        "run 2026-11-11. Generator and judge `gpt-5.4-nano`, top 5 passages. "
+        "Judged by the same model that answers."
+    ) in text
+    assert "| `naive_rag` | 0.500 |" in text and "incomplete" in text.lower()
