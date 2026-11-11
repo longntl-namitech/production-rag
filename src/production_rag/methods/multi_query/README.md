@@ -17,7 +17,25 @@ uv run --extra local-models python -m production_rag.methods.multi_query.example
 ```
 
 ## Results
-No public numbers yet. The public datasets have one query per question; producing subqueries needs an LLM rewriter, which is on the roadmap. Behaviour is covered by tests (`test_multi_query_merged`).
+There is no retrieval row. The retrieval datasets have one query per question and the subqueries come from an LLM rewrite, so the method is only measured through the answer eval. `Rewrite p50 ms` is the rewrite call; `RAG tokens / question` includes the rewrite and generation calls. Behaviour is also covered by tests (`test_multi_query_merged`).
+
+Run 2026-11-12, `gpt-5.4-nano`, top 5 passages. Full tables: [mini_wiki](../../../../results/answer_mini_wiki.md), [vi_legal](../../../../results/answer_vi_legal.md).
+
+mini_wiki (150 questions, English):
+
+| Method | Correctness | Faithfulness | Abstained | Retrieval p50 ms | Rewrite p50 ms | Generation p50 ms | RAG tokens / question | Passage tokens (est.) | Failed | Judge failed |
+|---|---|---|---|---|---|---|---|---|---|---|
+| `hybrid_fusion` | 0.833 | 69.3% | 8.7% | 32 |  | 844 | 657 | 797 | 0 | 0 |
+| `multi_query` | 0.797 | 64.0% | 10.0% | 40 | 1208 | 870 | 831 | 795 | 0 | 0 |
+
+vi_legal (100 questions, Vietnamese legal):
+
+| Method | Correctness | Faithfulness | Abstained | Retrieval p50 ms | Rewrite p50 ms | Generation p50 ms | RAG tokens / question | Passage tokens (est.) | Failed | Judge failed |
+|---|---|---|---|---|---|---|---|---|---|---|
+| `hybrid_fusion` | 0.620 | 90.0% | 16.0% | 35 |  | 1232 | 1214 | 1170 | 0 | 0 |
+| `multi_query` | 0.645 | 88.0% | 16.0% | 64 | 1452 | 1196 | 1442 | 1172 | 0 | 0 |
+
+Answer quality is judged by the same model that writes the answers (`gpt-5.4-nano`), which can flatter its own answers. All methods share the generator and the judge, so the rows can be compared with each other. Abstentions count as incorrect and faithful, so a method that abstains more can score higher on faithfulness. Correctness and faithfulness are averaged over the questions the judge scored, so the denominators can differ when a judge call fails (the `Judge failed` column). `Passage tokens (est.)` is estimated as characters / 3. The `vi_RAG` gold answers were aligned with LLMs per the dataset card (Mixtral 8x22B, GPT-4).
 
 ## Lessons from production
 - Measured on internal data, data not published. Overlapping retrieval with the query rewrite (speculative search) saved about 1 s per turn. That method needs an LLM and is on the roadmap.

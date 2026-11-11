@@ -46,6 +46,26 @@ TVPL (Vietnamese legal):
 - Plain RRF treats the two legs as equals; when the sparse leg is clearly weaker (TVPL) it costs 0.03 nDCG@10 against dense alone.
 - The weights were set once (dense 1.0, sparse 0.5) and not tuned on these test sets.
 
+### Answer quality
+
+Run 2026-11-12, `gpt-5.4-nano`, top 5 passages. Full tables: [mini_wiki](../../../../results/answer_mini_wiki.md), [vi_legal](../../../../results/answer_vi_legal.md).
+
+mini_wiki (150 questions, English):
+
+| Method | Correctness | Faithfulness | Abstained | Retrieval p50 ms | Rewrite p50 ms | Generation p50 ms | RAG tokens / question | Passage tokens (est.) | Failed | Judge failed |
+|---|---|---|---|---|---|---|---|---|---|---|
+| `naive_rag` | 0.803 | 69.3% | 8.7% | 30 |  | 942 | 632 | 757 | 0 | 0 |
+| `hybrid_fusion` | 0.833 | 69.3% | 8.7% | 32 |  | 844 | 657 | 797 | 0 | 0 |
+
+vi_legal (100 questions, Vietnamese legal):
+
+| Method | Correctness | Faithfulness | Abstained | Retrieval p50 ms | Rewrite p50 ms | Generation p50 ms | RAG tokens / question | Passage tokens (est.) | Failed | Judge failed |
+|---|---|---|---|---|---|---|---|---|---|---|
+| `naive_rag` | 0.605 | 89.0% | 19.0% | 34 |  | 1270 | 1197 | 1153 | 0 | 0 |
+| `hybrid_fusion` | 0.620 | 90.0% | 16.0% | 35 |  | 1232 | 1214 | 1170 | 0 | 0 |
+
+Answer quality is judged by the same model that writes the answers (`gpt-5.4-nano`), which can flatter its own answers. All methods share the generator and the judge, so the rows can be compared with each other. Abstentions count as incorrect and faithful, so a method that abstains more can score higher on faithfulness. Correctness and faithfulness are averaged over the questions the judge scored, so the denominators can differ when a judge call fails (the `Judge failed` column). `Passage tokens (est.)` is estimated as characters / 3. The `vi_RAG` gold answers were aligned with LLMs per the dataset card (Mixtral 8x22B, GPT-4).
+
 ## Lessons from production
 - Measured on internal data, data not published. The same audit found that scores from three sources sat on incompatible scales, and that chunks of one document collapsed into the worst-ranked one.
 - Measured on internal data, data not published. Hybrid beat dense alone by a little: recall@10 0.416 vs 0.403, keyword alone 0.301.
