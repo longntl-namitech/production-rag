@@ -44,23 +44,25 @@ Retrieval is scored against labelled documents; this section scores the generate
 
 | Method | Correctness | Faithfulness | Abstained | Retrieval p50 ms | Rewrite p50 ms | Generation p50 ms | RAG tokens / question | Passage tokens (est.) | Failed | Judge failed |
 |---|---|---|---|---|---|---|---|---|---|---|
-| `naive_rag` | 0.803 | 69.3% | 8.7% | 30 |  | 942 | 632 | 757 | 0 | 0 |
-| `hybrid_fusion` | 0.833 | 69.3% | 8.7% | 32 |  | 844 | 657 | 797 | 0 | 0 |
-| `rerank` | 0.837 | 63.3% | 6.7% | 131 |  | 846 | 617 | 736 | 0 | 0 |
-| `multi_query` | 0.797 | 64.0% | 10.0% | 40 | 1208 | 870 | 831 | 795 | 0 | 0 |
-| `context_expansion` | 0.863 | 68.7% | 6.7% | 36 |  | 850 | 744 | 931 | 0 | 0 |
+| `naive_rag` | 0.797 | 97.3% | 8.7% | 30 |  | 900 | 633 | 757 | 0 | 0 |
+| `hybrid_fusion` | 0.813 | 96.7% | 8.7% | 31 |  | 837 | 655 | 793 | 0 | 0 |
+| `rerank` | 0.823 | 96.7% | 8.7% | 137 |  | 821 | 617 | 735 | 0 | 0 |
+| `multi_query` | 0.817 | 96.0% | 8.0% | 41 | 1128 | 804 | 834 | 801 | 0 | 0 |
+| `context_expansion` | 0.830 | 96.0% | 8.7% | 35 |  | 804 | 744 | 932 | 0 | 0 |
 
 **vi_RAG LegalRAG** (Vietnamese legal, 100 sampled questions, 2125 documents)
 
 | Method | Correctness | Faithfulness | Abstained | Retrieval p50 ms | Rewrite p50 ms | Generation p50 ms | RAG tokens / question | Passage tokens (est.) | Failed | Judge failed |
 |---|---|---|---|---|---|---|---|---|---|---|
-| `naive_rag` | 0.605 | 89.0% | 19.0% | 34 |  | 1270 | 1197 | 1153 | 0 | 0 |
-| `hybrid_fusion` | 0.620 | 90.0% | 16.0% | 35 |  | 1232 | 1214 | 1170 | 0 | 0 |
-| `rerank` | 0.620 | 96.0% | 14.0% | 142 |  | 1231 | 1193 | 1135 | 0 | 0 |
-| `multi_query` | 0.645 | 88.0% | 16.0% | 64 | 1452 | 1196 | 1442 | 1172 | 0 | 0 |
-| `context_expansion` | 0.615 | 88.0% | 19.0% | 39 |  | 1358 | 2452 | 2575 | 0 | 0 |
+| `naive_rag` | 0.620 | 98.0% | 18.0% | 34 |  | 1224 | 1200 | 1153 | 0 | 0 |
+| `hybrid_fusion` | 0.580 | 95.0% | 23.0% | 38 |  | 1260 | 1213 | 1169 | 0 | 0 |
+| `rerank` | 0.630 | 96.0% | 15.0% | 156 |  | 1154 | 1193 | 1136 | 0 | 0 |
+| `multi_query` | 0.610 | 97.0% | 18.0% | 66 | 1372 | 1190 | 1436 | 1171 | 0 | 0 |
+| `context_expansion` | 0.685 | 92.0% | 15.0% | 37 |  | 1209 | 2455 | 2570 | 0 | 0 |
 
 Abstentions count as incorrect and faithful, so faithfulness is higher for a method that abstains more. Correctness and faithfulness are averaged over judged questions, so the denominators can differ when a judge call fails (no judge failures in these runs). Passage tokens are estimated as characters / 3. The `vi_RAG` gold answers were aligned with LLMs per the dataset card, so the Vietnamese scores are not a human-labelled measure. The rag-mini-wikipedia data is `cc-by-3.0` per its dataset card.
+
+The answer eval was run twice on 2026-11-12; the first run had a faithfulness-judge bug, since fixed, and the tables here are from the second run. Correctness moved by up to 0.07 between the two runs with no change to the correctness judge, so differences smaller than that are within run-to-run variance and should not be read as one method beating another.
 
 What stands out:
 - IDF matters: BM25 without it loses 0.03 to 0.08 nDCG@10 ([BM25](src/production_rag/methods/bm25/README.md)).
@@ -68,8 +70,8 @@ What stands out:
 - Weighted RRF (dense 1.0, sparse 0.5) is the best hybrid on both sets; on TVPL dense alone is still slightly better ([hybrid fusion](src/production_rag/methods/hybrid_fusion/README.md)).
 - The multilingual cross-encoder helps on Vietnamese legal questions and hurts on English scientific claims, at about 1 s per query on CPU ([rerank](src/production_rag/methods/rerank/README.md)).
 - Chunked `naive_rag` retrieval is close to `dense` on whole documents: nDCG@10 0.751 vs 0.762 on SciFact and 0.815 vs 0.818 on TVPL ([naive RAG](src/production_rag/methods/naive_rag/README.md)).
-- On answers, correctness spans 0.07 across the methods on mini_wiki (0.797 to 0.863) and 0.04 on vi_legal (0.605 to 0.645). These are single runs on small samples, so small gaps are not shown to be real.
-- On vi_legal, `context_expansion` sends about twice the passage tokens of the others (2575 vs about 1150) with no clear gain in correctness over `naive_rag` (0.615 vs 0.605) ([context expansion](src/production_rag/methods/context_expansion/README.md)).
+- On answers, correctness spans 0.03 across the methods on mini_wiki (0.797 to 0.830), inside the 0.07 run-to-run variance, so no method is shown to be better there. On vi_legal it spans 0.105 (0.580 to 0.685), and the one gap larger than 0.07 is `context_expansion` against `hybrid_fusion`. Faithfulness is 96.0% to 97.3% on mini_wiki and 92.0% to 98.0% on vi_legal; abstentions are 8.0% to 8.7% on mini_wiki and 15.0% to 23.0% on vi_legal. These are single runs on small samples.
+- On vi_legal, `context_expansion` sends about twice the passage tokens of the others (2570 vs 1136 to 1171) and has the highest correctness (0.685) and the lowest faithfulness (92.0%). Its correctness gap to `naive_rag` (0.685 vs 0.620) is 0.065, within the run-to-run variance ([context expansion](src/production_rag/methods/context_expansion/README.md)).
 - `multi_query` adds about 1.2 to 1.5 s of rewrite time per question ([multi query](src/production_rag/methods/multi_query/README.md)).
 - Fan-out under a 150 ms deadline skips the rerank spec on every query and answers in 22 ms p50, against 366 ms at 2000 ms ([deadline fan-out](src/production_rag/methods/deadline_fanout/README.md)).
 

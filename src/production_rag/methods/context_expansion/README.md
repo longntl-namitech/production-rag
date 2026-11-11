@@ -24,14 +24,16 @@ mini_wiki (150 questions, English):
 
 | Method | Correctness | Faithfulness | Abstained | Retrieval p50 ms | Rewrite p50 ms | Generation p50 ms | RAG tokens / question | Passage tokens (est.) | Failed | Judge failed |
 |---|---|---|---|---|---|---|---|---|---|---|
-| `hybrid_fusion` | 0.833 | 69.3% | 8.7% | 32 |  | 844 | 657 | 797 | 0 | 0 |
-| `context_expansion` | 0.863 | 68.7% | 6.7% | 36 |  | 850 | 744 | 931 | 0 | 0 |
+| `hybrid_fusion` | 0.813 | 96.7% | 8.7% | 31 |  | 837 | 655 | 793 | 0 | 0 |
+| `context_expansion` | 0.830 | 96.0% | 8.7% | 35 |  | 804 | 744 | 932 | 0 | 0 |
 
 vi_legal (100 questions, Vietnamese legal):
 
 | Method | Correctness | Faithfulness | Abstained | Retrieval p50 ms | Rewrite p50 ms | Generation p50 ms | RAG tokens / question | Passage tokens (est.) | Failed | Judge failed |
 |---|---|---|---|---|---|---|---|---|---|---|
-| `hybrid_fusion` | 0.620 | 90.0% | 16.0% | 35 |  | 1232 | 1214 | 1170 | 0 | 0 |
-| `context_expansion` | 0.615 | 88.0% | 19.0% | 39 |  | 1358 | 2452 | 2575 | 0 | 0 |
+| `hybrid_fusion` | 0.580 | 95.0% | 23.0% | 38 |  | 1260 | 1213 | 1169 | 0 | 0 |
+| `context_expansion` | 0.685 | 92.0% | 15.0% | 37 |  | 1209 | 2455 | 2570 | 0 | 0 |
 
-Answer quality is judged by the same model that writes the answers (`gpt-5.4-nano`), which can flatter its own answers. All methods share the generator and the judge, so the rows can be compared with each other. Abstentions count as incorrect and faithful, so a method that abstains more can score higher on faithfulness. Correctness and faithfulness are averaged over the questions the judge scored, so the denominators can differ when a judge call fails (the `Judge failed` column). `Passage tokens (est.)` is estimated as characters / 3. The `vi_RAG` gold answers were aligned with LLMs per the dataset card (Mixtral 8x22B, GPT-4). The rag-mini-wikipedia data is `cc-by-3.0` per its dataset card.
+Answer quality is judged by the same model that writes the answers (`gpt-5.4-nano`), which can flatter its own answers. All methods share the generator and the judge. Abstentions count as incorrect and faithful, so a method that abstains more can score higher on faithfulness. Correctness and faithfulness are averaged over the questions the judge scored, so the denominators can differ when a judge call fails (the `Judge failed` column). `Passage tokens (est.)` is estimated as characters / 3. The `vi_RAG` gold answers were aligned with LLMs per the dataset card (Mixtral 8x22B, GPT-4). The rag-mini-wikipedia data is `cc-by-3.0` per its dataset card.
+
+The answer eval was run twice on 2026-11-12; the first run had a faithfulness-judge bug, since fixed, and the tables here are from the second run. Correctness moved by up to 0.07 between the two runs with no change to the correctness judge, so differences smaller than that are within run-to-run variance and should not be read as one method beating another.
