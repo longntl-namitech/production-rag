@@ -4,12 +4,13 @@
 
 ## Results
 
-nDCG@10 and the other metrics are averaged over the test queries; latency is in-process on CPU (Apple silicon, one query at a time). Full tables: [SciFact](results/scifact.md), [TVPL](results/tvpl.md).
+nDCG@10 and the other metrics are averaged over the test queries; latency is in-process on CPU (Apple silicon, one query at a time). Full tables: [SciFact](results/scifact.md), [TVPL](results/tvpl.md), and for `naive_rag` [SciFact](results/scifact_naive_rag.md), [TVPL](results/tvpl_naive_rag.md).
 
 **SciFact** (English scientific claims, 300 queries, 5,183 documents)
 
 | Method | recall@10 | recall@100 | mrr@10 | ndcg@10 | p50 ms | p95 ms | Rescue | Damage |
 |---|---|---|---|---|---|---|---|---|
+| `naive_rag` | 0.875 | 0.962 | 0.715 | 0.751 | 22 | 26 |  |  |
 | `dense` | 0.876 | 0.970 | 0.730 | 0.762 | 21 | 26 |  |  |
 | `bm25_no_idf` | 0.714 | 0.859 | 0.572 | 0.601 | 6 | 8 |  |  |
 | `bm25` | 0.809 | 0.921 | 0.647 | 0.683 | 7 | 8 |  |  |
@@ -23,6 +24,7 @@ nDCG@10 and the other metrics are averaged over the test queries; latency is in-
 
 | Method | recall@10 | recall@100 | mrr@10 | ndcg@10 | p50 ms | p95 ms | Rescue | Damage |
 |---|---|---|---|---|---|---|---|---|
+| `naive_rag` | 0.917 | 0.977 | 0.793 | 0.815 | 23 | 28 |  |  |
 | `dense` | 0.921 | 0.985 | 0.797 | 0.818 | 22 | 30 |  |  |
 | `bm25_no_idf` | 0.751 | 0.873 | 0.613 | 0.636 | 8 | 9 |  |  |
 | `bm25` | 0.800 | 0.915 | 0.641 | 0.669 | 7 | 9 |  |  |
@@ -32,23 +34,59 @@ nDCG@10 and the other metrics are averaged over the test queries; latency is in-
 | `hybrid_weighted_rrf` | 0.919 | 0.978 | 0.784 | 0.808 | 26 | 31 |  |  |
 | `hybrid_rrf_rerank` | 0.906 | 0.974 | 0.792 | 0.810 | 812 | 1013 | 11.0% | 4.9% |
 
+`naive_rag` searches 800-character chunks (a document counts once, at its best chunk) and was run on 2026-11-11; the other rows are from the first release and were not rerun.
+
+### Answer quality
+
+Retrieval is scored against labelled documents; this section scores the generated answer. Each method retrieves the top 5 passages (k = 5), the same generator (`gpt-5.4-nano`) answers from them, and an LLM judge scores correctness against the gold answer and faithfulness to the passages. Judged by the same model that answers, which can flatter its own answers; all methods share the generator and judge. Run 2026-11-12. The rag-mini-wikipedia data is `cc-by-3.0` per its dataset card. Full tables: [mini_wiki](results/answer_mini_wiki.md), [vi_legal](results/answer_vi_legal.md).
+
+**rag-mini-wikipedia** (English, 150 sampled questions, 3200 documents)
+
+| Method | Correctness | Faithfulness | Abstained | Retrieval p50 ms | Rewrite p50 ms | Generation p50 ms | RAG tokens / question | Passage tokens (est.) | Failed | Judge failed |
+|---|---|---|---|---|---|---|---|---|---|---|
+| `naive_rag` | 0.797 | 97.3% | 8.7% | 30 |  | 900 | 633 | 757 | 0 | 0 |
+| `hybrid_fusion` | 0.813 | 96.7% | 8.7% | 31 |  | 837 | 655 | 793 | 0 | 0 |
+| `rerank` | 0.823 | 96.7% | 8.7% | 137 |  | 821 | 617 | 735 | 0 | 0 |
+| `multi_query` | 0.817 | 96.0% | 8.0% | 41 | 1128 | 804 | 834 | 801 | 0 | 0 |
+| `context_expansion` | 0.830 | 96.0% | 8.7% | 35 |  | 804 | 744 | 932 | 0 | 0 |
+
+**vi_RAG LegalRAG** (Vietnamese legal, 100 sampled questions, 2125 documents)
+
+| Method | Correctness | Faithfulness | Abstained | Retrieval p50 ms | Rewrite p50 ms | Generation p50 ms | RAG tokens / question | Passage tokens (est.) | Failed | Judge failed |
+|---|---|---|---|---|---|---|---|---|---|---|
+| `naive_rag` | 0.620 | 98.0% | 18.0% | 34 |  | 1224 | 1200 | 1153 | 0 | 0 |
+| `hybrid_fusion` | 0.580 | 95.0% | 23.0% | 38 |  | 1260 | 1213 | 1169 | 0 | 0 |
+| `rerank` | 0.630 | 96.0% | 15.0% | 156 |  | 1154 | 1193 | 1136 | 0 | 0 |
+| `multi_query` | 0.610 | 97.0% | 18.0% | 66 | 1372 | 1190 | 1436 | 1171 | 0 | 0 |
+| `context_expansion` | 0.685 | 92.0% | 15.0% | 37 |  | 1209 | 2455 | 2570 | 0 | 0 |
+
+Abstentions count as incorrect and faithful, so faithfulness is higher for a method that abstains more. Correctness and faithfulness are averaged over judged questions, so the denominators can differ when a judge call fails (no judge failures in these runs). Passage tokens are estimated as characters / 3. The `vi_RAG` gold answers were aligned with LLMs per the dataset card, so the Vietnamese scores are not a human-labelled measure. The rag-mini-wikipedia data is `cc-by-3.0` per its dataset card.
+
+The answer eval was run twice on 2026-11-12; the first run had a faithfulness-judge bug, since fixed, and the tables here are from the second run. Correctness moved by up to 0.07 between the two runs with no change to the correctness judge, so differences smaller than that are within run-to-run variance and should not be read as one method beating another.
+
 What stands out:
 - IDF matters: BM25 without it loses 0.03 to 0.08 nDCG@10 ([BM25](src/production_rag/methods/bm25/README.md)).
 - A general Vietnamese stopword list made BM25 worse on legal questions, because it removes words that carry meaning there ([BM25](src/production_rag/methods/bm25/README.md)).
 - Weighted RRF (dense 1.0, sparse 0.5) is the best hybrid on both sets; on TVPL dense alone is still slightly better ([hybrid fusion](src/production_rag/methods/hybrid_fusion/README.md)).
 - The multilingual cross-encoder helps on Vietnamese legal questions and hurts on English scientific claims, at about 1 s per query on CPU ([rerank](src/production_rag/methods/rerank/README.md)).
+- Chunked `naive_rag` retrieval is close to `dense` on whole documents: nDCG@10 0.751 vs 0.762 on SciFact and 0.815 vs 0.818 on TVPL ([naive RAG](src/production_rag/methods/naive_rag/README.md)).
+- On answers, correctness spans 0.03 across the methods on mini_wiki (0.797 to 0.830), inside the 0.07 run-to-run variance, so no method is shown to be better there. On vi_legal it spans 0.105 (0.580 to 0.685), and the one gap larger than 0.07 is `context_expansion` against `hybrid_fusion`. Faithfulness is 96.0% to 97.3% on mini_wiki and 92.0% to 98.0% on vi_legal; abstentions are 8.0% to 8.7% on mini_wiki and 15.0% to 23.0% on vi_legal. These are single runs on small samples.
+- On vi_legal, `context_expansion` sends about twice the passage tokens of the others (2570 vs 1136 to 1171) and has the highest correctness (0.685) and the lowest faithfulness (92.0%). Its correctness gap to `naive_rag` (0.685 vs 0.620) is 0.065, within the run-to-run variance ([context expansion](src/production_rag/methods/context_expansion/README.md)).
+- `multi_query` adds about 1.2 to 1.5 s of rewrite time per question ([multi query](src/production_rag/methods/multi_query/README.md)).
+- Fan-out under a 150 ms deadline skips the rerank spec on every query and answers in 22 ms p50, against 366 ms at 2000 ms ([deadline fan-out](src/production_rag/methods/deadline_fanout/README.md)).
 
 ## Methods
 
 | Folder | Variants (eval names) | Extra | What it does |
 |---|---|---|---|
+| [`naive_rag`](src/production_rag/methods/naive_rag/README.md) | `naive_rag` | `local-models` + `OPENAI_API_KEY` | Fixed 800-char chunks, dense top 5, one prompt, generate |
 | [`dense`](src/production_rag/methods/dense/README.md) | `dense` | `local-models` | Jina v5 nano embeddings |
 | [`bm25`](src/production_rag/methods/bm25/README.md) | `bm25_no_idf`, `bm25`, `bm25_vi_stopwords` | none for search | BM25 without IDF, with IDF, and with Vietnamese stopwords removed first |
 | [`hybrid_fusion`](src/production_rag/methods/hybrid_fusion/README.md) | `hybrid_rrf`, `hybrid_dbsf`, `hybrid_weighted_rrf` | `local-models` | Dense + BM25 fused in Qdrant: reciprocal rank fusion, distribution-based score fusion, RRF with dense weighted 2:1 |
 | [`rerank`](src/production_rag/methods/rerank/README.md) | `hybrid_rrf_rerank` | `local-models` | Hybrid RRF, then a cross-encoder over the top candidates |
-| [`deadline_fanout`](src/production_rag/methods/deadline_fanout/README.md) | none | `local-models` | Deadline budget and spec fan-out; no public numbers yet |
-| [`multi_query`](src/production_rag/methods/multi_query/README.md) | none | `local-models` | Multi-query merge; no public numbers yet |
-| [`context_expansion`](src/production_rag/methods/context_expansion/README.md) | none | `local-models` | Neighbour chunks or the full document around each hit; no public numbers yet |
+| [`deadline_fanout`](src/production_rag/methods/deadline_fanout/README.md) | none | `local-models` | Deadline budget and spec fan-out; latency bench in its README |
+| [`multi_query`](src/production_rag/methods/multi_query/README.md) | none | `local-models` | Multi-query merge; answer numbers in its README |
+| [`context_expansion`](src/production_rag/methods/context_expansion/README.md) | none | `local-models` | Neighbour chunks or the full document around each hit; answer numbers in its README |
 
 ## Quickstart
 
@@ -61,12 +99,40 @@ uv run python -m production_rag.core.eval.run --dataset scifact --methods bm25 h
 
 # run one method's example
 uv run python -m production_rag.methods.hybrid_fusion.example
+
+# answer eval (calls an LLM): estimate first, then run with a token cap
+export OPENAI_API_KEY=...
+uv run python -m production_rag.core.eval.answer --dataset mini_wiki --sample 20 --estimate-only
+uv run python -m production_rag.core.eval.answer --dataset mini_wiki --sample 20 --max-tokens 400000
 ```
+
+Estimate the tokens before every LLM run and give every LLM run a cap.
 
 As a library:
 
 ```python
-from production_rag.methods.hybrid_fusion.pipeline import search
+import asyncio
+
+from production_rag.core.config import Settings
+from production_rag.core.deps import build_deps, warm_up
+from production_rag.core.llm import OpenAIChat, TokenBudget
+from production_rag.methods.hybrid_fusion import pipeline as hybrid_fusion
+from production_rag.methods.naive_rag import pipeline as naive_rag
+
+
+async def main() -> None:
+    deps = build_deps(Settings.from_env())
+    await warm_up(deps)
+    await naive_rag.index(deps, "docs", {"d1": (None, "...")})
+    llm = OpenAIChat.from_env(budget=TokenBudget(5_000))
+    out = await naive_rag.answer("...", "docs", deps, llm)
+    print(out.text)
+    # retrieval only
+    hits = await hybrid_fusion.search("...", "docs", deps)
+    print(hits.rows)
+
+
+asyncio.run(main())
 ```
 
 ## Adding a method
@@ -85,13 +151,15 @@ uv run --extra local-models pytest -m integration
 
 ## Roadmap
 
-Next: `naive_rag`, `parse_and_chunk`, `fact_check`. After that: query rewrite and speculative search, LLM rerank, cache, semantic chunking, embedding comparison, `cpu_embedding_batching`, testset generation. Known gaps: [`BACKLOG.md`](BACKLOG.md).
+Next: `parse_and_chunk`, `fact_check`. After that: query rewrite and speculative search, LLM rerank, cache, semantic chunking, embedding comparison, `cpu_embedding_batching`, testset generation. Known gaps: [`BACKLOG.md`](BACKLOG.md).
 
 ## Models, data and licenses
 
 - Dense: [`jinaai/jina-embeddings-v5-text-nano-retrieval`](https://huggingface.co/jinaai/jina-embeddings-v5-text-nano-retrieval), CC-BY-NC-4.0 (non-commercial). Swap it through the [`Embedder`](src/production_rag/core/embedders/base.py) protocol or point `EMBEDDING_BASE_URL` at an OpenAI-compatible `/embeddings` endpoint.
 - Sparse: fastembed `Qdrant/bm25`. Rerank: [`cross-encoder/mmarco-mMiniLMv2-L12-H384-v1`](https://huggingface.co/cross-encoder/mmarco-mMiniLMv2-L12-H384-v1).
 - Vietnamese stopwords: [stopwords/vietnamese-stopwords](https://github.com/stopwords/vietnamese-stopwords), MIT.
+- LLM for generation and judging: OpenAI, default `gpt-5.4-nano`, set with `OPENAI_MODEL`.
+- Answer eval data: [rag-datasets/rag-mini-wikipedia](https://huggingface.co/datasets/rag-datasets/rag-mini-wikipedia) (`cc-by-3.0` per its card, Wikipedia text) and the `LegalRAG` config of [DuyTa/vi_RAG](https://huggingface.co/datasets/DuyTa/vi_RAG) (`apache-2.0` per its card; the id now redirects to sailor2/Vietnamese_RAG; its answers were aligned with LLMs per the card). VLQA is not used because it is not released yet.
 - Datasets are downloaded at runtime and not stored here: [BeIR/scifact](https://huggingface.co/datasets/BeIR/scifact) and [GreenNode/TVPL-Retrieval-VN](https://huggingface.co/datasets/GreenNode/TVPL-Retrieval-VN), both CC-BY-SA-4.0.
 
 Code: MIT.

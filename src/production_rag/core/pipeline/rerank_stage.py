@@ -39,6 +39,8 @@ async def apply_rerank(
             reranker.score(query, [_rerank_text(r) for r in rows]), (remaining - SAFETY_MS) / 1000
         )
         rescored = [r.model_copy(update={"score": s}) for r, s in zip(rows, scores, strict=True)]
+    except ImportError:  # a missing extra is a setup error, not a slow reranker
+        raise
     except Exception:  # fall back to retrieval order, also on a wrong score count
         return rows, "failed", round((time.perf_counter() - start) * 1000)
     rescored.sort(key=lambda r: r.score, reverse=True)

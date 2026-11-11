@@ -5,6 +5,7 @@ import importlib
 from production_rag.core.registry import MethodConfig
 
 METHOD_NAMES: tuple[str, ...] = (
+    "naive_rag",
     "dense",
     "bm25",
     "hybrid_fusion",

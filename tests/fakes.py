@@ -2,8 +2,12 @@
 
 import hashlib
 import math
+from collections.abc import Callable
 
 from qdrant_client import models
+
+from production_rag.core.llm import Completion, Usage
+from production_rag.core.models import Row
 
 
 def _bucket(token: str, size: int) -> int:
@@ -50,3 +54,46 @@ class FakeSparseEncoder:
     def encode_documents(self, texts: list[str]) -> list[models.SparseVector]:
         self.calls += 1
         return [self._vec(t) for t in texts]
+
+
+class FakeLLM:
+    model = "fake"
+
+    def __init__(
+        self,
+        reply: Callable[[list[dict[str, str]]], str],
+        usage: Usage | None = None,
+        finish_reason: str = "stop",
+    ):
+        self.reply = reply
+        self.usage = usage if usage is not None else Usage(10, 5)
+        self.finish_reason = finish_reason
+        self.calls: list[list[dict]] = []
+
+    async def complete(
+        self,
+        messages: list[dict[str, str]],
+        *,
+        max_tokens: int,
+        json_schema: dict | None = None,
+    ) -> Completion:
+        self.calls.append(messages)
+        return Completion(self.reply(messages), self.usage, self.finish_reason, "fake")
+
+
+def text_row(
+    text: str,
+    *,
+    title: str | None = None,
+    doc_id: str = "d",
+    chunk_index: int = 0,
+    score: float = 1.0,
+) -> Row:
+    return Row(
+        id=f"{doc_id}:{chunk_index}",
+        doc_id=doc_id,
+        chunk_index=chunk_index,
+        text=text,
+        score=score,
+        title=title,
+    )

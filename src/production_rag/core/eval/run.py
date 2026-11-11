@@ -16,6 +16,7 @@ from datetime import date
 from pathlib import Path
 from typing import Any
 
+from production_rag.core.chunking import chunk_documents
 from production_rag.core.config import Settings
 from production_rag.core.deps import build_deps, warm_up
 from production_rag.core.eval.datasets import load_dataset
@@ -27,14 +28,26 @@ from production_rag.core.eval.metrics import (
     rescue_damage,
 )
 from production_rag.core.indexing import Chunk, index_chunks
-from production_rag.core.models import SearchRequest, SearchSpec
+from production_rag.core.models import Row, SearchRequest, SearchSpec
 from production_rag.core.pipeline.deadline import Deadline
 from production_rag.core.pipeline.search import run_search
+from production_rag.core.registry import MethodConfig
 from production_rag.methods import all_variants, get_variant, resolve
 
 RESULTS = Path("results")
 K = 100
 RERANK_BASELINE = {"hybrid_rrf_rerank": "hybrid_rrf"}
+
+
+def collection_for(dataset: str, method: MethodConfig) -> str:
+    if method.chunk_chars is None:
+        return f"eval-{dataset}"
+    return f"eval-{dataset}-c{method.chunk_chars}"
+
+
+def doc_ranking(rows: list[Row]) -> list[str]:
+    """Doc ids in rank order, each once, at its best chunk."""
+    return list(dict.fromkeys(r.doc_id for r in rows))
 
 
 def summarize(rows: list[dict[str, Any]], methods: list[str]) -> dict[str, Any]:
@@ -94,12 +107,21 @@ async def main() -> None:
     settings = Settings.from_env()
     deps = build_deps(settings)
     ds = load_dataset(args.dataset, args.query_limit)
-    collection = f"eval-{ds.name}"
-    started = time.perf_counter()
-    chunks = [Chunk(doc_id, 0, text, title) for doc_id, (title, text) in ds.corpus.items()]
-    count = await index_chunks(deps, collection, chunks)
-    took = time.perf_counter() - started
-    print(f"{collection}: {count} docs ({took:.0f}s), {len(ds.queries)} queries")
+    methods = {name: get_variant(name) for name in args.methods}
+    collections = {name: collection_for(ds.name, m) for name, m in methods.items()}
+    chunk_counts: dict[str, int] = {}
+    for coll, size in {collections[n]: m.chunk_chars for n, m in methods.items()}.items():
+        started = time.perf_counter()
+        if size is None:
+            chunks = [Chunk(doc_id, 0, text, title) for doc_id, (title, text) in ds.corpus.items()]
+        else:
+            chunks = chunk_documents(ds.corpus, size)
+        count = await index_chunks(deps, coll, chunks)
+        took = time.perf_counter() - started
+        if size is not None:
+            chunk_counts[coll] = count
+        print(f"{coll}: {count} {'docs' if size is None else 'chunks'} ({took:.0f}s)")
+    print(f"{len(ds.corpus)} documents, {len(ds.queries)} queries")
 
     await warm_up(deps)
     semaphore = asyncio.Semaphore(args.concurrency)
@@ -108,16 +130,14 @@ async def main() -> None:
     async def one(method: str, qid: str, text: str) -> None:
         req = SearchRequest(
             query=text[:2000],
-            collection=collection,
+            collection=collections[method],
             specs=[SearchSpec(name="s", k=K)],
         )
         async with semaphore:
             t0 = time.perf_counter()
-            result = (await run_search(req, get_variant(method), deps, Deadline(30000))).results[
-                "s"
-            ]
+            result = (await run_search(req, methods[method], deps, Deadline(30000))).results["s"]
             ms = (time.perf_counter() - t0) * 1000
-        ranked = [r.doc_id for r in result.rows]
+        ranked = doc_ranking(result.rows)
         rel = ds.qrels[qid]
         rows.append(
             {
@@ -145,12 +165,14 @@ async def main() -> None:
         "dataset": ds.name,
         "date": date.today().isoformat(),
         "queries": len(ds.queries),
-        "documents": count,
+        "documents": len(ds.corpus),
         "dense_model": settings.dense_model,
         "cross_encoder": settings.cross_encoder_model,
         "sparse_model": "Qdrant/bm25",
         "k": K,
     }
+    if chunk_counts:
+        meta["chunks"] = chunk_counts
     for row in rows:
         row.pop("rel")
     RESULTS.mkdir(exist_ok=True)

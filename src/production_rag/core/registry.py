@@ -20,6 +20,7 @@ class MethodConfig:
     weights: tuple[float, ...] | None = None
     rerank: bool = False
     doc: str = ""
+    chunk_chars: int | None = None
 
 
 def legs_for(method: MethodConfig, search_type: str) -> tuple[Leg, ...]:

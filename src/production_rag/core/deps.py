@@ -1,3 +1,4 @@
+import importlib.util
 from dataclasses import dataclass
 from typing import Any
 
@@ -36,11 +37,13 @@ def build_deps(settings: Settings) -> Deps:
     client = AsyncQdrantClient(
         url=settings.qdrant_url, grpc_port=settings.qdrant_grpc_port, prefer_grpc=True
     )
+    remote = bool(settings.rerank_base_url and settings.rerank_api_key)
+    light = importlib.util.find_spec("sentence_transformers") is None
     return Deps(
         settings=settings,
         store=Store(client),
         embedder=make_embedder(settings),
         bm25=Bm25Encoder(),
         bm25_vi=Bm25Encoder(stopwords=load_vietnamese_stopwords(), disable_stemmer=True),
-        reranker=make_reranker(settings),
+        reranker=None if light and not remote else make_reranker(settings),
     )
