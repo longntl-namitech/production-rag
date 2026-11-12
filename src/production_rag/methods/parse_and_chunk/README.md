@@ -18,7 +18,7 @@ Extra: `parse` for PDF, Office and HTML (Markdown needs none); `local-models` fo
   - `fixed`: whitespace-split words packed up to the size.
   - `recursive`: split on paragraphs, lines, sentences, then words, and pack the pieces.
   - `markdown`: split on headings and prefix each chunk with its heading path.
-- Both `recursive` and `markdown` accept an overlap: the next chunk starts with the tail of the previous one.
+- `recursive` and `markdown` accept an overlap: the next chunk starts with the tail of the previous one. `fixed` does not (it raises an error).
 - [`pipeline.py`](pipeline.py) `index_files` parses the files, chunks them and calls `index_chunks`, which stores a dense vector and BM25 vectors for every chunk.
 - The eval variants are `chunk_recursive_800`, `chunk_recursive_800_o200` and `chunk_recursive_400`. Each searches its own collection, built with its own chunker, size and overlap.
 
