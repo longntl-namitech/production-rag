@@ -116,5 +116,5 @@ Retrieval only, run on 2026-11-12. Each variant searches its own collection with
 - On both sets fixed 800 (`naive_rag`) is best or tied on nDCG@10: 0.751 against 0.750, 0.750 and 0.743 on SciFact, and 0.815 against 0.810, 0.802 and 0.794 on TVPL.
 - A 200-character overlap does not help: `chunk_recursive_800_o200` against `chunk_recursive_800` is 0.750 against 0.750 on SciFact and 0.802 against 0.810 on TVPL.
 - `chunk_recursive_400` has the lowest nDCG@10 on both sets.
-- The `markdown` (heading-aware) strategy has no number here because neither set has Markdown headings. In the `parse_and_chunk` example its chunks carry the heading path and the document title.
+- The `markdown` (heading-aware) strategy has no number here because neither set has Markdown headings. In the example, `index_files` uses the first heading as the title, so an indexed chunk carries it both as its title and in its heading path.
 - Chunking is compared on retrieval only. Answer metrics are not run, because the answer corpora are short passages; that is a roadmap item.

@@ -57,7 +57,7 @@ Two full runs gave accuracy 0.703 and 0.740, with the same label on 89.3% of the
 
 ### Notes
 
-- Refuted recall is the weakest (0.375 in run 1): the model often says `unverified` for claims the abstract contradicts.
+- Refuted recall is the weakest (0.375 in run 1): 25 of the 64 refuted claims got `unverified`.
 - SciFact's NOT ENOUGH INFO label is scored as `unverified`.
 - Evidence comes from open retrieval over 5,183 abstracts, so a claim can miss its gold abstract. The gold abstract is in the top 5 for 95.7% of claims; accuracy is 0.639 when it is found and 0.250 when not.
 - `not_relevant` cannot occur on single claims, so it is not scored.

@@ -137,7 +137,7 @@ What stands out:
 - Fan-out under a 150 ms deadline skips the rerank spec on every query and answers in 22 ms p50, against 366 ms at 2000 ms ([deadline fan-out](src/production_rag/methods/deadline_fanout/README.md)).
 - Chunking: fixed 800 is best or tied on nDCG@10 on both sets, a 200-character overlap does not help, and recursive 400 is lowest ([parse and chunk](src/production_rag/methods/parse_and_chunk/README.md)).
 - Parsing: PDF token recall is 0.982 and precision 0.920; the xlsx (0.629) and pptx (0.848) recall gaps come from docling's reference output, not from missing cells ([parse and chunk](src/production_rag/methods/parse_and_chunk/README.md)).
-- Fact check: accuracy is 0.703 and 0.740 over two runs, and refuted recall is the weakest (0.375 in run 1) because the model often says `unverified` for claims the abstract contradicts ([fact check](src/production_rag/methods/fact_check/README.md)).
+- Fact check: accuracy is 0.703 and 0.740 over two runs, and refuted recall is the weakest (0.375 in run 1): 25 of 64 refuted claims got `unverified` ([fact check](src/production_rag/methods/fact_check/README.md)).
 
 ## Methods
 
