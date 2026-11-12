@@ -8,7 +8,7 @@
 | refuted | 64 | 39 | 24 | 0.615 | 0.375 |
 | unverified | 112 | 143 | 94 | 0.657 | 0.839 |
 
-Accuracy 0.703 on 300 claims, 0 failed, unverified 47.7%, gold evidence in top 5: 95.7% (accuracy 0.639 when found, 0.250 when not).
+Accuracy 0.703 on 300 claims, 0 failed, unverified 47.7%. On the 188 supported or refuted claims, the gold abstract is in the top 5 for 180 (95.7%); accuracy 0.639 when found (115/180), 0.250 when not (2/8).
 
 | Gold \ predicted | supported | refuted | unverified | failed |
 |---|---|---|---|---|

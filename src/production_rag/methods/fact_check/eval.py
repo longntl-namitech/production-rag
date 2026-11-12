@@ -164,6 +164,8 @@ def summarize_verdicts(items: list[dict[str, Any]]) -> dict[str, Any]:
     def accuracy(rows: list[dict[str, Any]]) -> float | None:
         return _ratio(sum(i["gold"] == i["predicted"] for i in rows), len(rows))
 
+    hit_ok = [i for i in ok_checkable if i["evidence_hit"]]
+    miss_ok = [i for i in ok_checkable if not i["evidence_hit"]]
     return {
         "claims": len(items),
         "failed": len(items) - len(ok),
@@ -173,7 +175,13 @@ def summarize_verdicts(items: list[dict[str, Any]]) -> dict[str, Any]:
         "confusion": confusion,
         "evidence_hit_rate": _ratio(sum(i["evidence_hit"] for i in checkable), len(checkable)),
         "accuracy_hit": accuracy([i for i in ok_checkable if i["evidence_hit"]]),
-        "accuracy_miss": accuracy([i for i in ok_checkable if not i["evidence_hit"]]),
+        "accuracy_miss": accuracy(miss_ok),
+        "checkable": len(checkable),
+        "evidence_found": sum(i["evidence_hit"] for i in checkable),
+        "hit_answered": len(hit_ok),
+        "hit_correct": sum(i["gold"] == i["predicted"] for i in hit_ok),
+        "miss_answered": len(miss_ok),
+        "miss_correct": sum(i["gold"] == i["predicted"] for i in miss_ok),
     }
 
 
@@ -222,10 +230,13 @@ def report_md(run: dict[str, Any]) -> str:
     lines += [
         "",
         f"Accuracy {_fmt(s['accuracy'], '.3f')} on {s['claims'] - s['failed']} claims, "
-        f"{s['failed']} failed, unverified {_fmt(s['unverified_share'], '.1%')}, "
-        f"gold evidence in top {meta['k']}: {_fmt(s['evidence_hit_rate'], '.1%')} "
-        f"(accuracy {_fmt(s['accuracy_hit'], '.3f')} when found, "
-        f"{_fmt(s['accuracy_miss'], '.3f')} when not).",
+        f"{s['failed']} failed, unverified {_fmt(s['unverified_share'], '.1%')}. "
+        f"On the {s['checkable']} supported or refuted claims, the gold abstract is in the top "
+        f"{meta['k']} for {s['evidence_found']} ({_fmt(s['evidence_hit_rate'], '.1%')}); "
+        f"accuracy {_fmt(s['accuracy_hit'], '.3f')} when found "
+        f"({s['hit_correct']}/{s['hit_answered']}), "
+        f"{_fmt(s['accuracy_miss'], '.3f')} when not "
+        f"({s['miss_correct']}/{s['miss_answered']}).",
         "",
         "| Gold \\ predicted | supported | refuted | unverified | failed |",
         "|---|---|---|---|---|",

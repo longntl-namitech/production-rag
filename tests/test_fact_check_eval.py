@@ -120,6 +120,9 @@ def test_summarize_verdicts():
     assert s["evidence_hit_rate"] == pytest.approx(3 / 4)
     assert (s["accuracy_hit"], s["accuracy_miss"]) == (pytest.approx(2 / 3), 0.0)
     assert s["unverified_share"] == pytest.approx(2 / 5)
+    assert (s["checkable"], s["evidence_found"]) == (4, 3)
+    assert (s["hit_answered"], s["hit_correct"]) == (3, 2)
+    assert (s["miss_answered"], s["miss_correct"]) == (1, 0)
 
 
 def test_labels_are_three_gold_and_four_predicted():
@@ -282,7 +285,10 @@ def test_report_md_tables():
     assert "| Gold \\ predicted | supported | refuted | unverified | failed |" in md
     assert "| unverified | 0 | 0 | 1 | 1 |" in md
     assert "Accuracy 0.600 on 5 claims, 1 failed, unverified 40.0%" in md
-    assert "gold evidence in top 5: 75.0% (accuracy 0.667 when found, 0.000 when not)." in md
+    assert (
+        "On the 4 supported or refuted claims, the gold abstract is in the top 5 for 3 (75.0%); "
+        "accuracy 0.667 when found (2/3), 0.000 when not (0/1)."
+    ) in md
     assert "5,183 abstracts" in md and "one run" in md and "excluded from accuracy" in md
     assert "Incomplete" not in md
     partial = report_md(
