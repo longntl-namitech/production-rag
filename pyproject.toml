@@ -23,6 +23,14 @@ local-models = [
     "peft>=0.15.2",
 ]
 eval = ["datasets>=3"]
+parse = [
+    "pdfplumber>=0.11",
+    "python-docx>=1.1",
+    "python-pptx>=1.0",
+    "openpyxl>=3.1",
+    "markdownify>=1.1",
+    "beautifulsoup4>=4.12",
+]
 
 [build-system]
 requires = ["uv_build>=0.11.19,<0.12.0"]

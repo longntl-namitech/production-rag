@@ -21,6 +21,8 @@ class MethodConfig:
     rerank: bool = False
     doc: str = ""
     chunk_chars: int | None = None
+    chunker: str = "fixed"
+    chunk_overlap: int = 0
 
 
 def legs_for(method: MethodConfig, search_type: str) -> tuple[Leg, ...]:

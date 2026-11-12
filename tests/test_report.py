@@ -41,7 +41,9 @@ def _run_json(tmp_path, chunks):
 def test_header_mentions_chunks(tmp_path):
     path = _run_json(tmp_path, {"eval-scifact-c800": 9000})
     report.main(str(path))
-    assert "9000 chunks of up to 800 characters" in path.with_suffix(".md").read_text()
+    text = path.with_suffix(".md").read_text()
+    assert "9000 chunks of up to 800 characters" in text
+    assert "| Collection |" not in text
 
 
 def test_header_lists_several_chunk_collections(tmp_path):
@@ -50,6 +52,27 @@ def test_header_lists_several_chunk_collections(tmp_path):
     assert "a-c800: 10, b-c800: 20 chunks of up to 800 characters" in (
         path.with_suffix(".md").read_text()
     )
+
+
+def test_chunk_table_when_chunk_stats(tmp_path):
+    path = _run_json(tmp_path, {"eval-tvpl-r400": 30000})
+    run = json.loads(path.read_text())
+    run["meta"]["chunk_stats"] = {
+        "eval-tvpl-r400": {
+            "chunker": "recursive",
+            "size": 400,
+            "overlap": 0,
+            "chunks": 30000,
+            "mean_chars": 310,
+        }
+    }
+    path.write_text(json.dumps(run))
+    report.main(str(path))
+    text = path.with_suffix(".md").read_text()
+    assert "| Collection | Chunker | Size | Overlap | Chunks | Mean chars |" in text
+    assert "| `eval-tvpl-r400` | recursive | 400 | 0 | 30000 | 310 |" in text
+    assert "Chunked variants search their own collections" in text
+    assert "`naive_rag` searches" not in text
 
 
 def test_header_without_chunks_unchanged(tmp_path):
