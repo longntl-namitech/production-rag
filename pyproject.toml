@@ -1,6 +1,6 @@
 [project]
 name = "production-rag"
-version = "0.1.0"
+version = "0.2.0"
 description = "RAG methods used in production, from naive to advanced, runnable and measured on public data"
 readme = "README.md"
 authors = [
