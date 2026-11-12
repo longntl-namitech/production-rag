@@ -10,8 +10,8 @@ LLM: `OPENAI_API_KEY` (model `OPENAI_MODEL`, default `gpt-5.4-nano`)
 ## How it works
 - `extract_claims` asks the model for up to 5 self-contained claims, each with a short search query. Opinions, questions, greetings and promises are skipped. Blank entries and duplicates are dropped.
 - `check_claim` retrieves evidence for each claim with any variant (`base`, default `hybrid_weighted_rrf`) and `judge_claim` labels it `supported`, `refuted` or `unverified` from the retrieved passages only. No evidence means `unverified` with no LLM call.
-- A verdict the model cannot give cleanly (invalid JSON, a label outside the three, a reply cut at the token cap, a failed call) has no label and an error. It is never scored as `unverified`. A 401 or 403 raises `AuthFailed`, and `BudgetExceeded` propagates.
-- `aggregate` gives the statement label: any `refuted` claim makes it `refuted`, else any `unverified` claim makes it `unverified`, else `supported`. A statement with no checkable claim is `not_relevant`. A claim with no label counts as `unverified` here and keeps its error on its `ClaimResult`.
+- A verdict the model cannot give cleanly (invalid JSON, a label outside the three, a reply cut at the token cap, a failed call) has no label and an error. In the eval such a verdict is `failed` and is never scored as `unverified`. A 401 or 403 raises `AuthFailed`, and `BudgetExceeded` propagates.
+- `aggregate` gives the statement label: any `refuted` claim makes it `refuted`, else any `unverified` claim makes it `unverified`, else `supported`. A statement with no checkable claim is `not_relevant`. In this statement label only, a failed claim counts as `unverified`, and it keeps its error on its `ClaimResult`.
 
 ## Production lessons
 - Claims are extracted first, so a statement that mixes facts gets one verdict per claim.
@@ -38,7 +38,7 @@ The dev split has 124 supported, 64 refuted and 112 no-evidence claims. Failed i
 | refuted | 64 | 39 | 24 | 0.615 | 0.375 |
 | unverified | 112 | 143 | 94 | 0.657 | 0.839 |
 
-Accuracy 0.703 on 300 claims, 0 failed, unverified 47.7%, gold evidence in top 5: 95.7% (accuracy 0.639 when found, 0.250 when not).
+Accuracy 0.703 on 300 claims, 0 failed, unverified 47.7%. On the 188 supported or refuted claims, the gold abstract is in the top 5 for 180 (95.7%); accuracy 0.639 when found (115/180), 0.250 when not (2/8).
 
 | Gold \ predicted | supported | refuted | unverified | failed |
 |---|---|---|---|---|
@@ -59,6 +59,6 @@ Two full runs gave accuracy 0.703 and 0.740, with the same label on 89.3% of the
 
 - Refuted recall is the weakest (0.375 in run 1): 25 of the 64 refuted claims got `unverified`.
 - SciFact's NOT ENOUGH INFO label is scored as `unverified`.
-- Evidence comes from open retrieval over 5,183 abstracts, so a claim can miss its gold abstract. The gold abstract is in the top 5 for 95.7% of claims; accuracy is 0.639 when it is found and 0.250 when not.
+- Evidence comes from open retrieval over 5,183 abstracts, so a claim can miss its gold abstract. On the 188 supported or refuted claims (not the 112 unverified ones), the gold abstract is in the top 5 for 180 (95.7%); accuracy is 0.639 when it is found (115/180) and 0.250 when not (2/8).
 - `not_relevant` cannot occur on single claims, so it is not scored.
 - SciFact claims are CC BY-NC 2.0 (non-commercial) per the `allenai/scifact` card. They are downloaded at runtime from allenai's release tarball and not stored in the repo.

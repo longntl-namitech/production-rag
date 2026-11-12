@@ -54,6 +54,8 @@ The metric is token recall and token precision: text is NFKC-normalised and case
 | html | 2 | 0 | 1.000 | 0.982 | 28 |
 | all | 15 | 0 | 0.954 | 0.959 | 235 |
 
+The `all` row is a mean over files, so the 7 PDFs weigh more than the other formats.
+
 | Document | Format | Licence | Token recall | Token precision | Parse ms |
 |---|---|---|---|---|---|
 | `arxiv-1601.03642v1` | pdf | CC BY 4.0 | 0.992 | 0.981 | 235 |
@@ -79,7 +81,7 @@ The metric is token recall and token precision: text is NFKC-normalised and case
 
 ### Chunking
 
-Retrieval only, run on 2026-11-12. Each variant searches its own collection with dense retrieval only (`jinaai/jina-embeddings-v5-text-nano-retrieval`), so chunking is the only difference. A document counts once, at its best chunk. The `naive_rag` row is fixed 800-character chunks with no overlap. Full tables: [SciFact](../../../../results/scifact_chunking.md), [TVPL](../../../../results/tvpl_chunking.md). The other rows in the root README are untouched.
+Retrieval only, run on 2026-11-12. Each variant searches its own collection with dense retrieval only (`jinaai/jina-embeddings-v5-text-nano-retrieval`), so chunking is the only difference. A document counts once, at its best chunk, so recall@100 counts the distinct documents in the top 100 chunks and smaller chunks are penalised by construction. The `naive_rag` row is fixed 800-character chunks with no overlap. Full tables: [SciFact](../../../../results/scifact_chunking.md), [TVPL](../../../../results/tvpl_chunking.md). The other rows in the root README are untouched.
 
 **SciFact** (300 queries, 5,183 documents)
 
@@ -117,4 +119,5 @@ Retrieval only, run on 2026-11-12. Each variant searches its own collection with
 - A 200-character overlap does not help: `chunk_recursive_800_o200` against `chunk_recursive_800` is 0.750 against 0.750 on SciFact and 0.802 against 0.810 on TVPL.
 - `chunk_recursive_400` has the lowest nDCG@10 on both sets.
 - The `markdown` (heading-aware) strategy has no number here because neither set has Markdown headings. In the example, `index_files` uses the first heading as the title, so an indexed chunk carries it both as its title and in its heading path.
+- Eval collections are reused when the stored point count matches, so delete the collection after changing chunking code.
 - Chunking is compared on retrieval only. Answer metrics are not run, because the answer corpora are short passages; that is a roadmap item.

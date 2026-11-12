@@ -66,7 +66,7 @@ The answer eval was run twice on 2026-11-12; the first run had a faithfulness-ju
 
 ### Chunking
 
-Retrieval only, dense only, run on 2026-11-12, so chunking is the only difference. The `naive_rag` row is fixed 800-character chunks; the other rows in the tables above are untouched. Full tables: [SciFact](results/scifact_chunking.md), [TVPL](results/tvpl_chunking.md). Details: [parse and chunk](src/production_rag/methods/parse_and_chunk/README.md).
+Retrieval only, dense only, run on 2026-11-12, so chunking is the only difference. The `naive_rag` row is fixed 800-character chunks; the other rows in the tables above are untouched. A document counts once, at its best chunk, so recall@100 counts the distinct documents in the top 100 chunks and smaller chunks are penalised by construction. A default `eval.run` (no `--methods`) also builds the three chunk-variant collections. Full tables: [SciFact](results/scifact_chunking.md), [TVPL](results/tvpl_chunking.md). Details: [parse and chunk](src/production_rag/methods/parse_and_chunk/README.md).
 
 **SciFact**
 
@@ -113,6 +113,8 @@ Token recall and precision on 15 public documents, run 2026-11-12 ([full table](
 | html | 2 | 0 | 1.000 | 0.982 | 28 |
 | all | 15 | 0 | 0.954 | 0.959 | 235 |
 
+The `all` row is a mean over files, so the 7 PDFs weigh more than the other formats.
+
 ### Fact check
 
 300 SciFact dev claims against 5,183 abstracts, `gpt-5.4-nano`, base `hybrid_weighted_rrf`, k = 5, run 2026-11-12. Verdicts only, scored against the gold labels (no LLM judge). Two full runs gave accuracy 0.703 and 0.740, with the same label on 89.3% of claims; the table is from run 1 and differences inside that spread are not evidence. Details: [fact check](src/production_rag/methods/fact_check/README.md), [results](results/fact_check_scifact.md), [runs](results/fact_check_scifact_runs.md).
@@ -123,7 +125,7 @@ Token recall and precision on 15 public documents, run 2026-11-12 ([full table](
 | refuted | 64 | 39 | 24 | 0.615 | 0.375 |
 | unverified | 112 | 143 | 94 | 0.657 | 0.839 |
 
-Accuracy 0.703 on 300 claims, 0 failed, unverified 47.7%, gold evidence in top 5: 95.7% (accuracy 0.639 when found, 0.250 when not).
+Accuracy 0.703 on 300 claims, 0 failed, unverified 47.7%. On the 188 supported or refuted claims, the gold abstract is in the top 5 for 180 (95.7%); accuracy 0.639 when found (115/180), 0.250 when not (2/8).
 
 What stands out:
 - IDF matters: BM25 without it loses 0.03 to 0.08 nDCG@10 ([BM25](src/production_rag/methods/bm25/README.md)).
@@ -175,7 +177,8 @@ uv run python -m production_rag.core.eval.answer --dataset mini_wiki --sample 20
 uv run --extra parse python -m production_rag.methods.parse_and_chunk.parse_eval
 
 # chunking comparison (retrieval only, downloads the dataset)
-uv run python -m production_rag.core.eval.run --dataset scifact --methods parse_and_chunk --name scifact_chunking
+uv run python -m production_rag.core.eval.run --dataset scifact --methods naive_rag parse_and_chunk --name scifact_chunking
+# the same for the TVPL table: add --dataset tvpl and --name tvpl_chunking
 
 # fact check (calls an LLM): estimate first, then a small capped run
 uv run --extra eval --extra local-models python -m production_rag.methods.fact_check.eval --sample 30 --estimate-only
