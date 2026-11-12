@@ -18,7 +18,7 @@ from production_rag.core.eval.answer import (
     summarize_answers,
 )
 from production_rag.core.eval.datasets import AnswerDataset
-from production_rag.core.llm import OpenAIChat, TokenBudget
+from production_rag.core.llm import AuthFailed, LLMError, OpenAIChat, TokenBudget
 
 
 class FakeReranker:
@@ -88,6 +88,26 @@ async def test_abstention_skips_judges(deps):
         True,
     )
     assert item["status"] == "ok" and item["tokens"]["judge"] == 0
+
+
+async def test_judge_auth_error_stops_the_run(deps):
+    class JudgeRefused(FakeLLM):
+        async def complete(self, messages, **kwargs):
+            if "label" in str(kwargs.get("json_schema")):
+                raise LLMError("openai 401 invalid_api_key")
+            return await super().complete(messages, **kwargs)
+
+    llm = JudgeRefused(lambda m: "an answer")
+    with pytest.raises(AuthFailed):
+        await run_items(
+            deps=deps,
+            collection="c",
+            methods=["naive_rag"],
+            questions={"q1": "solar panels"},
+            gold={"q1": "g"},
+            llm=llm,
+        )
+    assert len(llm.calls) == 1
 
 
 async def test_answered_item_is_judged_and_keeps_no_text(deps):

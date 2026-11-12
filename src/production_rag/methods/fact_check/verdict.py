@@ -1,9 +1,10 @@
 """Judge one claim against retrieved passages: supported, refuted or unverified."""
 
-from production_rag.core.eval.judge import MAX_TOKENS, Verdict, format_passages, judge_labels
+from production_rag.core.eval.judge import Verdict, format_passages, judge_labels
 from production_rag.core.llm import Usage
 from production_rag.core.models import Row
 
+MAX_TOKENS = 256
 LABELS = ("supported", "refuted", "unverified")
 
 PROMPT = """You decide whether numbered passages settle a claim. Use the passages only, not what

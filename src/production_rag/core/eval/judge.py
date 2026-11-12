@@ -8,6 +8,7 @@ raises `AuthFailed`, since every further call would fail the same way.
 
 import json
 from dataclasses import dataclass
+from typing import Any
 
 from production_rag.core.llm import AuthFailed, BudgetExceeded, Usage, is_auth_error
 from production_rag.core.models import Row
@@ -85,6 +86,30 @@ def faithfulness_messages(question: str, answer: str, rows: list[Row]) -> list[d
     ]
 
 
+async def complete_json(
+    llm, messages: list[dict[str, str]], max_tokens: int, schema: dict
+) -> tuple[Any, Usage, str | None]:
+    """One JSON-schema call: `(data, usage, error)`, with `data` None when `error` is set.
+
+    `BudgetExceeded` propagates and a 401 or 403 raises `AuthFailed`. Any other failed call is
+    `llm_error`; a reply cut at the token cap or not valid JSON is `bad_output`.
+    """
+    try:
+        out = await llm.complete(messages, max_tokens=max_tokens, json_schema=schema)
+    except BudgetExceeded:
+        raise
+    except Exception as exc:
+        if is_auth_error(exc):
+            raise AuthFailed(str(exc)) from None
+        return None, Usage(), "llm_error"
+    if out.finish_reason == "length":
+        return None, out.usage, "bad_output"
+    try:
+        return json.loads(out.text), out.usage, None
+    except ValueError:
+        return None, out.usage, "bad_output"
+
+
 async def judge_labels(
     llm,
     messages: list[dict[str, str]],
@@ -93,26 +118,13 @@ async def judge_labels(
     max_tokens: int = MAX_TOKENS,
 ) -> Verdict:
     """One label + reason call. Shared by the answer judges and the fact-check verdict."""
-    try:
-        out = await llm.complete(messages, max_tokens=max_tokens, json_schema=_schema(name, labels))
-    except BudgetExceeded:
-        raise
-    except Exception as exc:
-        if is_auth_error(exc):
-            raise AuthFailed(str(exc)) from None
-        # any failed call (HTTP error, malformed body) is a judge failure
-        return Verdict(None, "", Usage(), "llm_error")
-    bad = Verdict(None, "", out.usage, "bad_output")
-    if out.finish_reason == "length":
-        return bad
-    try:
-        data = json.loads(out.text)
-    except ValueError:
-        return bad
+    data, usage, error = await complete_json(llm, messages, max_tokens, _schema(name, labels))
+    if error:
+        return Verdict(None, "", usage, error)
     if not isinstance(data, dict) or data.get("label") not in labels:
-        return bad
+        return Verdict(None, "", usage, "bad_output")
     reason = data.get("reason")
-    return Verdict(data["label"], reason if isinstance(reason, str) else "", out.usage)
+    return Verdict(data["label"], reason if isinstance(reason, str) else "", usage)
 
 
 async def judge_correctness(llm, question: str, gold: str, answer: str) -> Verdict:

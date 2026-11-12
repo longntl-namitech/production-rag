@@ -1,9 +1,9 @@
 """Split a statement into self-contained checkable claims, each with a search query."""
 
-import json
 from dataclasses import dataclass
 
-from production_rag.core.llm import AuthFailed, BudgetExceeded, Usage, is_auth_error
+from production_rag.core.eval.judge import complete_json
+from production_rag.core.llm import Usage
 
 MAX_TOKENS = 512
 MAX_CLAIMS = 5
@@ -61,21 +61,10 @@ def claim_messages(statement: str, max_claims: int = MAX_CLAIMS) -> list[dict[st
 async def extract_claims(llm, statement: str, max_claims: int = MAX_CLAIMS) -> Extraction:
     """`BudgetExceeded` propagates, a 401 or 403 raises `AuthFailed`, other failures set `error`."""
     messages = claim_messages(statement, max_claims)
-    try:
-        out = await llm.complete(messages, max_tokens=MAX_TOKENS, json_schema=SCHEMA)
-    except BudgetExceeded:
-        raise
-    except Exception as exc:
-        if is_auth_error(exc):
-            raise AuthFailed(str(exc)) from None
-        return Extraction([], Usage(), "llm_error")
-    bad = Extraction([], out.usage, "bad_output")
-    if out.finish_reason == "length":
-        return bad
-    try:
-        data = json.loads(out.text)
-    except ValueError:
-        return bad
+    data, usage, error = await complete_json(llm, messages, MAX_TOKENS, SCHEMA)
+    if error:
+        return Extraction([], usage, error)
+    bad = Extraction([], usage, "bad_output")
     items = data.get("claims") if isinstance(data, dict) else None
     if not isinstance(items, list):
         return bad
@@ -92,4 +81,4 @@ async def extract_claims(llm, statement: str, max_claims: int = MAX_CLAIMS) -> E
         claims.append(
             Claim(text, query.strip() if isinstance(query, str) and query.strip() else text)
         )
-    return Extraction(claims[:max_claims], out.usage)
+    return Extraction(claims[:max_claims], usage)

@@ -69,6 +69,7 @@ class FakeLLM:
         self.usage = usage if usage is not None else Usage(10, 5)
         self.finish_reason = finish_reason
         self.calls: list[list[dict]] = []
+        self.schemas: list[dict | None] = []
 
     async def complete(
         self,
@@ -78,6 +79,7 @@ class FakeLLM:
         json_schema: dict | None = None,
     ) -> Completion:
         self.calls.append(messages)
+        self.schemas.append(json_schema)
         return Completion(self.reply(messages), self.usage, self.finish_reason, "fake")
 
 

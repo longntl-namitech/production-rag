@@ -3,12 +3,10 @@ import pytest
 from fakes import FakeLLM, text_row
 
 from production_rag.core.llm import AuthFailed, BudgetExceeded, OpenAIChat, Usage
+from production_rag.core.models import SpecResult
+from production_rag.methods.fact_check import pipeline
 from production_rag.methods.fact_check.claims import Claim, claim_messages, extract_claims
-from production_rag.methods.fact_check.pipeline import (
-    aggregate,
-    check_claim,
-    fact_check,
-)
+from production_rag.methods.fact_check.pipeline import aggregate, check_claim, fact_check
 from production_rag.methods.fact_check.verdict import LABELS, judge_claim, verdict_messages
 
 
@@ -53,6 +51,18 @@ async def test_check_claim_sends_retrieved_rows_to_the_verdict(deps):
     sent = llm.calls[0][-1]["content"]
     assert out.label == "supported" and len(out.rows) == 2
     assert "solar panels on roofs" in sent and all(r.text in sent for r in out.rows)
+    label = llm.schemas[0]["schema"]["properties"]["label"]
+    assert tuple(label["enum"]) == LABELS
+
+
+async def test_retrieval_failure_skips_the_llm(deps, monkeypatch):
+    async def failed(*args, **kwargs):
+        return SpecResult(status="failed", elapsed_ms=0, error="boom")
+
+    monkeypatch.setattr(pipeline, "search", failed)
+    llm = FakeLLM(lambda m: "x")
+    out = await check_claim("solar panels on roofs", "c", deps, llm)
+    assert out.label is None and out.error == "retrieval_failed" and llm.calls == []
 
 
 async def test_check_claim_searches_with_the_query(deps):
