@@ -1,0 +1,241 @@
+{
+  "meta": {
+    "date": "2026-11-12",
+    "pypdf_benchmarks_commit": "18ee8c4e38a5627e9f2e56995e4bd57d0f2e4779",
+    "docling_commit": "a7760abf0ca53321a3fb5ae9b1a65b584bb743b9",
+    "libraries": {
+      "pdfplumber": "0.11.10",
+      "python-docx": "1.2.0",
+      "python-pptx": "1.0.2",
+      "openpyxl": "3.1.5",
+      "markdownify": "1.2.3",
+      "beautifulsoup4": "4.15.0"
+    }
+  },
+  "summary": {
+    "pdf": {
+      "files": 7,
+      "failed": 0,
+      "recall": 0.9815082862993957,
+      "precision": 0.9196322215060946,
+      "p50_ms": 502
+    },
+    "docx": {
+      "files": 4,
+      "failed": 0,
+      "recall": 0.9888888888888889,
+      "precision": 1.0,
+      "p50_ms": 4
+    },
+    "pptx": {
+      "files": 1,
+      "failed": 0,
+      "recall": 0.8476190476190476,
+      "precision": 0.9888888888888889,
+      "p50_ms": 134
+    },
+    "xlsx": {
+      "files": 1,
+      "failed": 0,
+      "recall": 0.6291079812206573,
+      "precision": 0.9925925925925926,
+      "p50_ms": 159
+    },
+    "html": {
+      "files": 2,
+      "failed": 0,
+      "recall": 1.0,
+      "precision": 0.9821428571428572,
+      "p50_ms": 28
+    },
+    "all": {
+      "files": 15,
+      "failed": 0,
+      "recall": 0.953522705899402,
+      "precision": 0.9588795164206572,
+      "p50_ms": 235
+    }
+  },
+  "rows": [
+    {
+      "name": "arxiv-1601.03642v1",
+      "format": "pdf",
+      "licence": "CC BY 4.0",
+      "source_url": "https://arxiv.org/pdf/1601.03642v1",
+      "reference_url": "https://raw.githubusercontent.com/py-pdf/benchmarks/18ee8c4e38a5627e9f2e56995e4bd57d0f2e4779/read/extraction-ground-truth/1601.03642.txt",
+      "recall": 0.9922779922779923,
+      "precision": 0.9813322019516334,
+      "ms": 235,
+      "warnings": [],
+      "error": null
+    },
+    {
+      "name": "arxiv-2201.00021v3",
+      "format": "pdf",
+      "licence": "CC BY 4.0",
+      "source_url": "https://arxiv.org/pdf/2201.00021v3",
+      "reference_url": "https://raw.githubusercontent.com/py-pdf/benchmarks/18ee8c4e38a5627e9f2e56995e4bd57d0f2e4779/read/extraction-ground-truth/2201.00021.txt",
+      "recall": 0.9676671816376076,
+      "precision": 0.9028106661175744,
+      "ms": 548,
+      "warnings": [],
+      "error": null
+    },
+    {
+      "name": "arxiv-2201.00022v2",
+      "format": "pdf",
+      "licence": "CC BY 4.0",
+      "source_url": "https://arxiv.org/pdf/2201.00022v2",
+      "reference_url": "https://raw.githubusercontent.com/py-pdf/benchmarks/18ee8c4e38a5627e9f2e56995e4bd57d0f2e4779/read/extraction-ground-truth/2201.00022.txt",
+      "recall": 0.9779090675571539,
+      "precision": 0.7087405752583077,
+      "ms": 502,
+      "warnings": [],
+      "error": null
+    },
+    {
+      "name": "arxiv-2201.00029v1",
+      "format": "pdf",
+      "licence": "CC BY 4.0",
+      "source_url": "https://arxiv.org/pdf/2201.00029v1",
+      "reference_url": "https://raw.githubusercontent.com/py-pdf/benchmarks/18ee8c4e38a5627e9f2e56995e4bd57d0f2e4779/read/extraction-ground-truth/2201.00029.txt",
+      "recall": 0.9904323175053154,
+      "precision": 0.9893805309734514,
+      "ms": 265,
+      "warnings": [],
+      "error": null
+    },
+    {
+      "name": "arxiv-2201.00069v1",
+      "format": "pdf",
+      "licence": "CC BY 4.0",
+      "source_url": "https://arxiv.org/pdf/2201.00069v1",
+      "reference_url": "https://raw.githubusercontent.com/py-pdf/benchmarks/18ee8c4e38a5627e9f2e56995e4bd57d0f2e4779/read/extraction-ground-truth/2201.00069.txt",
+      "recall": 0.975,
+      "precision": 0.927916120576671,
+      "ms": 446,
+      "warnings": [],
+      "error": null
+    },
+    {
+      "name": "arxiv-2201.00214v1",
+      "format": "pdf",
+      "licence": "CC BY 4.0",
+      "source_url": "https://arxiv.org/pdf/2201.00214v1",
+      "reference_url": "https://raw.githubusercontent.com/py-pdf/benchmarks/18ee8c4e38a5627e9f2e56995e4bd57d0f2e4779/read/extraction-ground-truth/2201.00214.txt",
+      "recall": 0.9880055195839083,
+      "precision": 0.9765002098195552,
+      "ms": 11765,
+      "warnings": [],
+      "error": null
+    },
+    {
+      "name": "arxiv-1602.06541v2",
+      "format": "pdf",
+      "licence": "CC BY-SA 4.0",
+      "source_url": "https://arxiv.org/pdf/1602.06541v2",
+      "reference_url": "https://raw.githubusercontent.com/py-pdf/benchmarks/18ee8c4e38a5627e9f2e56995e4bd57d0f2e4779/read/extraction-ground-truth/1602.06541.txt",
+      "recall": 0.9792659255337921,
+      "precision": 0.9507452458454686,
+      "ms": 574,
+      "warnings": [],
+      "error": null
+    },
+    {
+      "name": "word_sample.docx",
+      "format": "docx",
+      "licence": "MIT (docling test fixture)",
+      "source_url": "https://raw.githubusercontent.com/docling-project/docling/a7760abf0ca53321a3fb5ae9b1a65b584bb743b9/tests/data/docx/sources/word_sample.docx",
+      "reference_url": "https://raw.githubusercontent.com/docling-project/docling/a7760abf0ca53321a3fb5ae9b1a65b584bb743b9/tests/data/docx/groundtruth/word_sample.docx.md",
+      "recall": 0.9555555555555556,
+      "precision": 1.0,
+      "ms": 520,
+      "warnings": [],
+      "error": null
+    },
+    {
+      "name": "lorem_ipsum.docx",
+      "format": "docx",
+      "licence": "MIT (docling test fixture)",
+      "source_url": "https://raw.githubusercontent.com/docling-project/docling/a7760abf0ca53321a3fb5ae9b1a65b584bb743b9/tests/data/docx/sources/lorem_ipsum.docx",
+      "reference_url": "https://raw.githubusercontent.com/docling-project/docling/a7760abf0ca53321a3fb5ae9b1a65b584bb743b9/tests/data/docx/groundtruth/lorem_ipsum.docx.md",
+      "recall": 1.0,
+      "precision": 1.0,
+      "ms": 1,
+      "warnings": [],
+      "error": null
+    },
+    {
+      "name": "unit_test_headers.docx",
+      "format": "docx",
+      "licence": "MIT (docling test fixture)",
+      "source_url": "https://raw.githubusercontent.com/docling-project/docling/a7760abf0ca53321a3fb5ae9b1a65b584bb743b9/tests/data/docx/sources/unit_test_headers.docx",
+      "reference_url": "https://raw.githubusercontent.com/docling-project/docling/a7760abf0ca53321a3fb5ae9b1a65b584bb743b9/tests/data/docx/groundtruth/unit_test_headers.docx.md",
+      "recall": 1.0,
+      "precision": 1.0,
+      "ms": 3,
+      "warnings": [],
+      "error": null
+    },
+    {
+      "name": "word_tables.docx",
+      "format": "docx",
+      "licence": "MIT (docling test fixture)",
+      "source_url": "https://raw.githubusercontent.com/docling-project/docling/a7760abf0ca53321a3fb5ae9b1a65b584bb743b9/tests/data/docx/sources/word_tables.docx",
+      "reference_url": "https://raw.githubusercontent.com/docling-project/docling/a7760abf0ca53321a3fb5ae9b1a65b584bb743b9/tests/data/docx/groundtruth/word_tables.docx.md",
+      "recall": 1.0,
+      "precision": 1.0,
+      "ms": 4,
+      "warnings": [],
+      "error": null
+    },
+    {
+      "name": "powerpoint_sample.pptx",
+      "format": "pptx",
+      "licence": "MIT (docling test fixture)",
+      "source_url": "https://raw.githubusercontent.com/docling-project/docling/a7760abf0ca53321a3fb5ae9b1a65b584bb743b9/tests/data/pptx/sources/powerpoint_sample.pptx",
+      "reference_url": "https://raw.githubusercontent.com/docling-project/docling/a7760abf0ca53321a3fb5ae9b1a65b584bb743b9/tests/data/pptx/groundtruth/powerpoint_sample.pptx.md",
+      "recall": 0.8476190476190476,
+      "precision": 0.9888888888888889,
+      "ms": 134,
+      "warnings": [],
+      "error": null
+    },
+    {
+      "name": "xlsx_01.xlsx",
+      "format": "xlsx",
+      "licence": "MIT (docling test fixture)",
+      "source_url": "https://raw.githubusercontent.com/docling-project/docling/a7760abf0ca53321a3fb5ae9b1a65b584bb743b9/tests/data/xlsx/sources/xlsx_01.xlsx",
+      "reference_url": "https://raw.githubusercontent.com/docling-project/docling/a7760abf0ca53321a3fb5ae9b1a65b584bb743b9/tests/data/xlsx/groundtruth/xlsx_01.xlsx.md",
+      "recall": 0.6291079812206573,
+      "precision": 0.9925925925925926,
+      "ms": 159,
+      "warnings": [],
+      "error": null
+    },
+    {
+      "name": "example_01.html",
+      "format": "html",
+      "licence": "MIT (docling test fixture)",
+      "source_url": "https://raw.githubusercontent.com/docling-project/docling/a7760abf0ca53321a3fb5ae9b1a65b584bb743b9/tests/data/html/sources/example_01.html",
+      "reference_url": "https://raw.githubusercontent.com/docling-project/docling/a7760abf0ca53321a3fb5ae9b1a65b584bb743b9/tests/data/html/groundtruth/example_01.html.md",
+      "recall": 1.0,
+      "precision": 0.9642857142857143,
+      "ms": 55,
+      "warnings": [],
+      "error": null
+    },
+    {
+      "name": "table_01.html",
+      "format": "html",
+      "licence": "MIT (docling test fixture)",
+      "source_url": "https://raw.githubusercontent.com/docling-project/docling/a7760abf0ca53321a3fb5ae9b1a65b584bb743b9/tests/data/html/sources/table_01.html",
+      "reference_url": "https://raw.githubusercontent.com/docling-project/docling/a7760abf0ca53321a3fb5ae9b1a65b584bb743b9/tests/data/html/groundtruth/table_01.html.md",
+      "recall": 1.0,
+      "precision": 1.0,
+      "ms": 2,
+      "warnings": [],
+      "error": null
+    }
+  ]
+}
