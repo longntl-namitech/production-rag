@@ -7,7 +7,7 @@ The repo is renamed from `retrieval-playbook` to `production-rag` and restructur
 ### Changed
 
 - Package `retrieval_playbook` is now `production_rag` (no compatibility shim), and the distribution is `production-rag`.
-- New layout: `core/` plus `methods/<name>/` (README, pipeline, example). The `docs/<method>.md` pages became the method READMEs.
+- New layout: `core/` plus `methods/<name>/` (README, pipeline, example). The `docs/<method>.md` pages were replaced by the method READMEs.
 - The default install is light: `torch` and `sentence-transformers` moved to the `local-models` extra. A new `parse` extra holds the document parsers.
 - `docker-compose.yml` runs Qdrant only.
 
