@@ -39,13 +39,18 @@ K = 100
 RERANK_BASELINE = {"hybrid_rrf_rerank": "hybrid_rrf"}
 
 
+CHUNKER_PREFIX = {"recursive": "r", "markdown": "m"}
+
+
 def collection_for(dataset: str, method: MethodConfig) -> str:
     if method.chunk_chars is None:
         return f"eval-{dataset}"
     if method.chunker == "fixed":
         return f"eval-{dataset}-c{method.chunk_chars}"
+    if method.chunker not in CHUNKER_PREFIX:
+        raise ValueError(f"no collection name for chunker {method.chunker!r}")
     overlap = f"o{method.chunk_overlap}" if method.chunk_overlap else ""
-    return f"eval-{dataset}-{method.chunker[0]}{method.chunk_chars}{overlap}"
+    return f"eval-{dataset}-{CHUNKER_PREFIX[method.chunker]}{method.chunk_chars}{overlap}"
 
 
 def chunks_for(corpus: dict[str, tuple[str | None, str]], method: MethodConfig) -> list[Chunk]:

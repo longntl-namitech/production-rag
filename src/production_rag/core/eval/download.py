@@ -24,6 +24,8 @@ def fetch(
     basename = Path(urlparse(url).path).name or "download"
     path = cache / f"{hashlib.sha1(url.encode()).hexdigest()[:16]}-{basename}"
     if path.exists():
+        if sha256 and hashlib.sha256(path.read_bytes()).hexdigest() != sha256:
+            raise ValueError(f"checksum mismatch for cached file of {url}")
         return path
     own = client is None
     client = client or httpx.Client(follow_redirects=True, timeout=120)

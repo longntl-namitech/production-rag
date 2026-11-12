@@ -1,3 +1,5 @@
+from dataclasses import replace
+
 import pytest
 from fakes import text_row
 from test_methods import CHUNKING, V010
@@ -69,6 +71,13 @@ def test_collection_for_chunkers():
     assert collection_for("tvpl", get_variant("chunk_recursive_800")) == "eval-tvpl-r800"
     assert collection_for("tvpl", get_variant("chunk_recursive_800_o200")) == "eval-tvpl-r800o200"
     assert collection_for("tvpl", get_variant("chunk_recursive_400")) == "eval-tvpl-r400"
+
+
+def test_collection_for_markdown_and_unknown_chunker():
+    base = get_variant("chunk_recursive_800")
+    assert collection_for("tvpl", replace(base, chunker="markdown")) == "eval-tvpl-m800"
+    with pytest.raises(ValueError, match="chunker"):
+        collection_for("tvpl", replace(base, chunker="semantic"))
 
 
 CORPUS = {"a": ("T", "alpha beta gamma delta " * 30), "b": (None, "short text")}

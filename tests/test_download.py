@@ -41,3 +41,14 @@ def test_fetch_http_error(tmp_path):
     with pytest.raises(RuntimeError, match="download failed 404 https://x/c.txt"):
         fetch("https://x/c.txt", cache=tmp_path, client=_client([], 404, b""))
     assert list(tmp_path.iterdir()) == []
+
+
+def test_fetch_rechecks_sha_of_cached_file(tmp_path):
+    body = b"hello"
+    good = hashlib.sha256(body).hexdigest()
+    client = _client([], 200, body)
+    path = fetch("https://x/d.txt", sha256=good, cache=tmp_path, client=client)
+    assert fetch("https://x/d.txt", sha256=good, cache=tmp_path, client=client) == path
+    path.write_bytes(b"corrupt")
+    with pytest.raises(ValueError, match="checksum mismatch"):
+        fetch("https://x/d.txt", sha256=good, cache=tmp_path, client=client)
