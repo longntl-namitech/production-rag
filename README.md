@@ -227,7 +227,7 @@ uv run --extra local-models pytest -m integration
 
 ## Roadmap
 
-Next: query rewrite and speculative search, LLM rerank, cache, semantic chunking, embedding comparison, `cpu_embedding_batching`, testset generation. Known gaps: [`BACKLOG.md`](BACKLOG.md).
+Next: query rewrite and speculative search, LLM rerank, cache, semantic chunking, embedding comparison, `cpu_embedding_batching`, testset generation, chunking compared on answer quality. Known gaps: [`BACKLOG.md`](BACKLOG.md).
 
 ## Models, data and licenses
 
