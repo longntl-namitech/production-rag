@@ -23,6 +23,14 @@ class BudgetExceeded(RuntimeError):
     pass
 
 
+class AuthFailed(RuntimeError):
+    """OpenAI refused the key: every further call would fail the same way."""
+
+
+def is_auth_error(exc: Exception) -> bool:
+    return isinstance(exc, LLMError) and str(exc).startswith(("openai 401", "openai 403"))
+
+
 @dataclass(frozen=True)
 class Usage:
     input_tokens: int = 0

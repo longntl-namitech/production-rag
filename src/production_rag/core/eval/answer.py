@@ -55,12 +55,13 @@ from production_rag.core.eval.report import answer_table
 from production_rag.core.eval.run import doc_ranking
 from production_rag.core.generation import build_messages, generate
 from production_rag.core.llm import (
+    AuthFailed,
     BudgetExceeded,
-    LLMError,
     MissingAPIKey,
     OpenAIChat,
     TokenBudget,
     Usage,
+    is_auth_error,
 )
 from production_rag.core.models import ContextOption, Row, SpecResult
 from production_rag.methods.context_expansion import pipeline as context_expansion
@@ -81,14 +82,6 @@ NO_RERANKER = (
     "the rerank front end needs a reranker: install the local-models extra "
     "or set RERANK_BASE_URL and RERANK_API_KEY"
 )
-
-
-class AuthFailed(RuntimeError):
-    """OpenAI refused the key: every further call would fail the same way."""
-
-
-def _is_auth_error(exc: Exception) -> bool:
-    return isinstance(exc, LLMError) and str(exc).startswith(("openai 401", "openai 403"))
 
 
 @dataclass
@@ -259,7 +252,7 @@ async def run_one(
     except BudgetExceeded:
         raise
     except Exception as exc:
-        if _is_auth_error(exc):
+        if is_auth_error(exc):
             raise AuthFailed(str(exc)) from None
         return {**item, "status": "failed", "error": f"generation {type(exc).__name__}"}
     rag += gen.usage

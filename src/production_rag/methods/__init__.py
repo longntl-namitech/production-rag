@@ -14,6 +14,7 @@ METHOD_NAMES: tuple[str, ...] = (
     "context_expansion",
     "deadline_fanout",
     "parse_and_chunk",
+    "fact_check",
 )
 
 
