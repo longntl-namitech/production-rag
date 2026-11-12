@@ -61,6 +61,7 @@ ITEMS = [
 META = {
     "kind": "fact_check",
     "date": "2026-01-01",
+    "requested": 6,
     "claims": 6,
     "documents": 5183,
     "base": "dense",
@@ -171,6 +172,25 @@ async def test_failed_retrieval_is_failed_not_unverified(deps):
     )
     assert complete and llm.calls == []
     assert (items[0]["status"], items[0]["predicted"]) == ("failed", "failed")
+    assert items[0]["error"] == "retrieval_failed"
+
+
+async def test_no_rows_is_failed_not_unverified(deps):
+    await deps.store.ensure_collection("empty", deps.embedder.dim)
+    llm = FakeLLM(lambda m: '{"label": "supported", "reason": "r"}')
+    items, complete = await run_claims(
+        deps=deps,
+        collection="empty",
+        claims={"a": "solar"},
+        labels={"a": "unverified"},
+        gold_docs={"a": []},
+        llm=llm,
+        base="dense",
+    )
+    assert complete and llm.calls == []
+    item = items[0]
+    assert (item["status"], item["predicted"], item["error"]) == ("failed", "failed", "no_evidence")
+    assert summarize_verdicts(items)["accuracy"] is None
 
 
 async def test_budget_stop_marks_incomplete(deps):
@@ -189,7 +209,8 @@ async def test_budget_stop_marks_incomplete(deps):
     assert items[0]["tokens"] == 100
 
 
-async def test_auth_error_raises_and_keeps_no_items(deps):
+@pytest.mark.parametrize("status", [401, 403])
+async def test_auth_error_raises_and_keeps_no_items(deps, status):
     with pytest.raises(AuthFailed):
         await run_claims(
             deps=deps,
@@ -197,7 +218,7 @@ async def test_auth_error_raises_and_keeps_no_items(deps):
             claims={"a": "solar", "b": "wind"},
             labels={"a": "supported", "b": "supported"},
             gold_docs={"a": ["d1"], "b": ["d2"]},
-            llm=mock_chat(status=401),
+            llm=mock_chat(status=status),
             base="dense",
             concurrency=1,
         )
@@ -264,9 +285,10 @@ def test_report_md_tables():
     assert "gold evidence in top 5: 75.0% (accuracy 0.667 when found, 0.000 when not)." in md
     assert "5,183 abstracts" in md and "one run" in md and "excluded from accuracy" in md
     assert "Incomplete" not in md
-    assert "Incomplete" in report_md(
-        {"meta": {**META, "complete": False}, "summary": summarize_verdicts(ITEMS)}
+    partial = report_md(
+        {"meta": {**META, "complete": False, "claims": 4}, "summary": summarize_verdicts(ITEMS)}
     )
+    assert "4 of 6 requested claims kept" in partial
 
 
 def test_compare_writes_runs_file_without_key_or_cap(tmp_path, monkeypatch):
@@ -309,3 +331,13 @@ def test_auth_failure_writes_no_file(tmp_path, monkeypatch, deps):
         asyncio.run(main(["--max-tokens", "1000", "--base", "dense"]))
     assert "OPENAI_API_KEY" in str(exc.value) and "sk-secret-test" not in str(exc.value)
     assert not (tmp_path / "results").exists()
+
+
+def test_missing_eval_extra_exits_clearly(monkeypatch):
+    def boom(sample):
+        raise ModuleNotFoundError("No module named 'datasets'", name="datasets")
+
+    monkeypatch.setattr(fc_eval, "load_claims", boom)
+    monkeypatch.setattr(fc_eval, "build_deps", lambda settings: None)
+    with pytest.raises(SystemExit, match="uv sync --extra eval"):
+        asyncio.run(main(["--estimate-only"]))

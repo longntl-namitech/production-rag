@@ -116,7 +116,10 @@ async def run_claims(
             ms = round((time.perf_counter() - start) * 1000)
         doc_ids = doc_ranking(got.rows)
         hit = any(doc in doc_ids for doc in gold_docs[cid])
-        item = _item(cid, labels[cid], got.label or "failed", got.error, doc_ids, hit)
+        label, error = got.label, got.error
+        if not got.rows and not error:  # judge_claim's "unverified" without a call is no verdict
+            label, error = None, "no_evidence"
+        item = _item(cid, labels[cid], label or "failed", error, doc_ids, hit)
         return {
             **item,
             "ms": ms,
@@ -201,7 +204,11 @@ def report_md(run: dict[str, Any]) -> str:
         "",
     ]
     if not meta["complete"]:
-        lines += ["Incomplete run: the token budget stopped it, so some claims are missing.", ""]
+        lines += [
+            f"Incomplete run: the token budget stopped it, {meta['claims']} of "
+            f"{meta['requested']} requested claims kept.",
+            "",
+        ]
     lines += [
         "| Label | Gold | Predicted | Correct | Precision | Recall |",
         "|---|---|---|---|---|---|",
@@ -292,20 +299,20 @@ def compare(path_a: str, path_b: str) -> int:
 
 async def estimate(
     deps: Deps, collection: str, ds, base: str, k: int
-) -> tuple[int, int, float | None]:
+) -> tuple[int, int, float | None, int]:
     """LLM calls, upper-bound tokens and evidence hit rate, from real retrieval only."""
-    calls = tokens = 0
+    calls = tokens = failed = 0
     hits: list[bool] = []
     for cid, claim in ds.claims.items():
         found = await search(claim, collection, deps, base=base, k=k)
-        if found.status != "ok":
-            continue
-        calls += bool(found.rows)  # no rows -> unverified without a call
-        tokens += estimate_claim(claim, found.rows) if found.rows else 0
-        if ds.labels[cid] != "unverified":
-            ranked = doc_ranking(found.rows)
+        rows = found.rows if found.status == "ok" else []
+        failed += found.status != "ok"
+        calls += bool(rows)  # no rows -> no call (the run marks it failed)
+        tokens += estimate_claim(claim, rows) if rows else 0
+        if ds.labels[cid] != "unverified":  # a failed retrieval is a miss, as in the run
+            ranked = doc_ranking(rows)
             hits.append(any(doc in ranked for doc in ds.gold_docs[cid]))
-    return calls, tokens, _ratio(sum(hits), len(hits))
+    return calls, tokens, _ratio(sum(hits), len(hits)), failed
 
 
 async def main(argv: list[str] | None = None) -> int:
@@ -315,8 +322,13 @@ async def main(argv: list[str] | None = None) -> int:
     llm = preflight(args)
     deps = build_deps(Settings.from_env())
 
-    ds = load_claims(args.sample)
-    corpus = load_dataset("scifact", query_limit=1).corpus
+    try:
+        ds = load_claims(args.sample)
+        corpus = load_dataset("scifact", query_limit=1).corpus
+    except ModuleNotFoundError as exc:
+        raise SystemExit(
+            f"missing {exc.name}: install the eval extra: uv sync --extra eval"
+        ) from None
     method = get_variant(args.base)
     collection = collection_for("scifact", method)
     started = time.perf_counter()
@@ -327,10 +339,11 @@ async def main(argv: list[str] | None = None) -> int:
     await warm_up(deps)
 
     if args.estimate_only:
-        calls, tokens, rate = await estimate(deps, collection, ds, args.base, args.k)
+        calls, tokens, rate, failed = await estimate(deps, collection, ds, args.base, args.k)
         print(
             f"estimate: claims={len(ds.claims)} llm_calls={calls} "
-            f"upper_bound_tokens={tokens} evidence_hit_rate={_fmt(rate, '.3f')}"
+            f"upper_bound_tokens={tokens} evidence_hit_rate={_fmt(rate, '.3f')} "
+            f"retrieval_failed={failed}"
         )
         return 0
 
@@ -354,6 +367,7 @@ async def main(argv: list[str] | None = None) -> int:
     meta = {
         "kind": "fact_check",
         "date": date.today().isoformat(),
+        "requested": len(ds.claims),
         "claims": len(items),
         "documents": len(corpus),
         "base": args.base,
