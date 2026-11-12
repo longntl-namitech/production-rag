@@ -72,6 +72,25 @@ def _blocks(parts: list[str]) -> str:
     return "\n\n".join(p for p in parts if p)
 
 
+# pdfplumber's default (3) merges words in tightly set PDFs ("etal", "ofthe")
+PDF_X_TOLERANCE = 1
+
+
+def _pdf_page_markdown(page) -> str:
+    tables = page.find_tables()
+    boxes = [t.bbox for t in tables]
+
+    def outside(obj):
+        if "x0" not in obj or "top" not in obj:
+            return True
+        cx, cy = (obj["x0"] + obj["x1"]) / 2, (obj["top"] + obj["bottom"]) / 2
+        return not any(x0 <= cx <= x1 and top <= cy <= bottom for x0, top, x1, bottom in boxes)
+
+    text = (page.filter(outside).extract_text(x_tolerance=PDF_X_TOLERANCE) or "").strip()
+    cells = (t.extract(x_tolerance=PDF_X_TOLERANCE) for t in tables)
+    return _blocks([text, *(table_to_markdown(c) for c in cells)])
+
+
 def parse_pdf(path: Path) -> Parsed:
     try:
         import pdfplumber
@@ -81,21 +100,7 @@ def parse_pdf(path: Path) -> Parsed:
         pages = len(pdf.pages)
         if not any(page.chars for page in pdf.pages):
             return Parsed("", "pdf", pages, ("no_text",))
-        out = []
-        for page in pdf.pages:
-            tables = page.find_tables()
-            boxes = [t.bbox for t in tables]
-
-            def outside(obj, boxes=boxes):
-                if "x0" not in obj or "top" not in obj:
-                    return True
-                cx, cy = (obj["x0"] + obj["x1"]) / 2, (obj["top"] + obj["bottom"]) / 2
-                return not any(
-                    x0 <= cx <= x1 and top <= cy <= bottom for x0, top, x1, bottom in boxes
-                )
-
-            text = (page.filter(outside).extract_text() or "").strip()
-            out.append(_blocks([text, *(table_to_markdown(t.extract()) for t in tables)]))
+        out = [_pdf_page_markdown(page) for page in pdf.pages]
     return Parsed(_blocks(out), "pdf", pages)
 
 

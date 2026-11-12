@@ -170,3 +170,31 @@ def test_pdf_text_and_no_text_layer(tmp_path):
     q.write_bytes(_minimal_pdf(None))
     blank = parse_file(q)
     assert blank == Parsed("", "pdf", 1, ("no_text",))
+
+
+def test_pdf_page_passes_x_tolerance():
+    from production_rag.methods.parse_and_chunk.parsers import PDF_X_TOLERANCE, _pdf_page_markdown
+
+    calls = {}
+
+    class Table:
+        bbox = (0, 0, 1, 1)
+
+        def extract(self, **kw):
+            calls["table"] = kw
+            return [["a", "b"]]
+
+    class Page:
+        def find_tables(self):
+            return [Table()]
+
+        def filter(self, fn):
+            return self
+
+        def extract_text(self, **kw):
+            calls["text"] = kw
+            return "body"
+
+    md = _pdf_page_markdown(Page())
+    assert calls == {"text": {"x_tolerance": PDF_X_TOLERANCE}, "table": {"x_tolerance": 1}}
+    assert md.startswith("body\n\n| a | b |")

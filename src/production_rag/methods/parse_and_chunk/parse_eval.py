@@ -159,7 +159,7 @@ def summarize(rows: list[dict]) -> dict[str, dict]:
     return out
 
 
-def _pct(value: float | None) -> str:
+def _frac(value: float | None) -> str:
     return "" if value is None else f"{value:.3f}"
 
 
@@ -172,7 +172,7 @@ def parse_table(rows: list[dict]) -> str:
         if r.get("error"):
             cells = ["failed: " + r["error"], "", str(r["ms"])]
         else:
-            cells = [_pct(r["recall"]), _pct(r["precision"]), str(r["ms"])]
+            cells = [_frac(r["recall"]), _frac(r["precision"]), str(r["ms"])]
         lines.append(
             f"| `{r['name']}` | {r['format']} | {r['licence']} | " + " | ".join(cells) + " |"
         )
@@ -186,8 +186,8 @@ def summary_table(summary: dict[str, dict]) -> str:
     ]
     for name, s in summary.items():
         lines.append(
-            f"| {name} | {s['files']} | {s['failed']} | {_pct(s['recall'])} "
-            f"| {_pct(s['precision'])} | {s['p50_ms']} |"
+            f"| {name} | {s['files']} | {s['failed']} | {_frac(s['recall'])} "
+            f"| {_frac(s['precision'])} | {s['p50_ms']} |"
         )
     return "\n".join(lines)
 
