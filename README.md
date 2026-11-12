@@ -64,6 +64,67 @@ Abstentions count as incorrect and faithful, so faithfulness is higher for a met
 
 The answer eval was run twice on 2026-11-12; the first run had a faithfulness-judge bug, since fixed, and the tables here are from the second run. Correctness moved by up to 0.07 between the two runs with no change to the correctness judge, so differences smaller than that are within run-to-run variance and should not be read as one method beating another.
 
+### Chunking
+
+Retrieval only, dense only, run on 2026-11-12, so chunking is the only difference. The `naive_rag` row is fixed 800-character chunks; the other rows in the tables above are untouched. Full tables: [SciFact](results/scifact_chunking.md), [TVPL](results/tvpl_chunking.md). Details: [parse and chunk](src/production_rag/methods/parse_and_chunk/README.md).
+
+**SciFact**
+
+| Collection | Chunker | Size | Overlap | Chunks | Mean chars |
+|---|---|---|---|---|---|
+| `eval-scifact-c800` | fixed | 800 | 0 | 11805 | 615 |
+| `eval-scifact-r800` | recursive | 800 | 0 | 12315 | 589 |
+| `eval-scifact-r800o200` | recursive | 800 | 200 | 16143 | 583 |
+| `eval-scifact-r400` | recursive | 400 | 0 | 24724 | 293 |
+
+| Method | recall@10 | recall@100 | mrr@10 | ndcg@10 | p50 ms | p95 ms | Rescue | Damage |
+|---|---|---|---|---|---|---|---|---|
+| `naive_rag` | 0.875 | 0.962 | 0.715 | 0.751 | 20 | 27 |  |  |
+| `chunk_recursive_800` | 0.878 | 0.958 | 0.715 | 0.750 | 22 | 27 |  |  |
+| `chunk_recursive_800_o200` | 0.870 | 0.948 | 0.717 | 0.750 | 22 | 28 |  |  |
+| `chunk_recursive_400` | 0.871 | 0.947 | 0.706 | 0.743 | 21 | 27 |  |  |
+
+**TVPL**
+
+| Collection | Chunker | Size | Overlap | Chunks | Mean chars |
+|---|---|---|---|---|---|
+| `eval-tvpl-c800` | fixed | 800 | 0 | 17726 | 559 |
+| `eval-tvpl-r800` | recursive | 800 | 0 | 18556 | 534 |
+| `eval-tvpl-r800o200` | recursive | 800 | 200 | 23813 | 525 |
+| `eval-tvpl-r400` | recursive | 400 | 0 | 35277 | 281 |
+
+| Method | recall@10 | recall@100 | mrr@10 | ndcg@10 | p50 ms | p95 ms | Rescue | Damage |
+|---|---|---|---|---|---|---|---|---|
+| `naive_rag` | 0.917 | 0.977 | 0.793 | 0.815 | 20 | 28 |  |  |
+| `chunk_recursive_800` | 0.914 | 0.976 | 0.787 | 0.810 | 22 | 28 |  |  |
+| `chunk_recursive_800_o200` | 0.909 | 0.970 | 0.781 | 0.802 | 22 | 26 |  |  |
+| `chunk_recursive_400` | 0.905 | 0.969 | 0.770 | 0.794 | 22 | 26 |  |  |
+
+### Parsing quality
+
+Token recall and precision on 15 public documents, run 2026-11-12 ([full table](results/parse_quality.md)). PDF is scored against py-pdf/benchmarks ground truth; the docx, pptx, xlsx and html references are docling's own output, so those scores are agreement with another converter. Order and layout are not scored.
+
+| Format | Files | Failed | Token recall | Token precision | p50 ms |
+|---|---|---|---|---|---|
+| pdf | 7 | 0 | 0.982 | 0.920 | 502 |
+| docx | 4 | 0 | 0.989 | 1.000 | 4 |
+| pptx | 1 | 0 | 0.848 | 0.989 | 134 |
+| xlsx | 1 | 0 | 0.629 | 0.993 | 159 |
+| html | 2 | 0 | 1.000 | 0.982 | 28 |
+| all | 15 | 0 | 0.954 | 0.959 | 235 |
+
+### Fact check
+
+300 SciFact dev claims against 5,183 abstracts, `gpt-5.4-nano`, base `hybrid_weighted_rrf`, k = 5, run 2026-11-12. Verdicts only, scored against the gold labels (no LLM judge). Two full runs gave accuracy 0.703 and 0.740, with the same label on 89.3% of claims; the table is from run 1 and differences inside that spread are not evidence. Details: [fact check](src/production_rag/methods/fact_check/README.md), [results](results/fact_check_scifact.md), [runs](results/fact_check_scifact_runs.md).
+
+| Label | Gold | Predicted | Correct | Precision | Recall |
+|---|---|---|---|---|---|
+| supported | 124 | 118 | 93 | 0.788 | 0.750 |
+| refuted | 64 | 39 | 24 | 0.615 | 0.375 |
+| unverified | 112 | 143 | 94 | 0.657 | 0.839 |
+
+Accuracy 0.703 on 300 claims, 0 failed, unverified 47.7%, gold evidence in top 5: 95.7% (accuracy 0.639 when found, 0.250 when not).
+
 What stands out:
 - IDF matters: BM25 without it loses 0.03 to 0.08 nDCG@10 ([BM25](src/production_rag/methods/bm25/README.md)).
 - A general Vietnamese stopword list made BM25 worse on legal questions, because it removes words that carry meaning there ([BM25](src/production_rag/methods/bm25/README.md)).
@@ -74,6 +135,9 @@ What stands out:
 - On vi_legal, `context_expansion` sends about twice the passage tokens of the others (2570 vs 1136 to 1171) and has the highest correctness (0.685) and the lowest faithfulness (92.0%). Its correctness gap to `naive_rag` (0.685 vs 0.620) is 0.065, within the run-to-run variance ([context expansion](src/production_rag/methods/context_expansion/README.md)).
 - `multi_query` adds about 1.2 to 1.5 s of rewrite time per question ([multi query](src/production_rag/methods/multi_query/README.md)).
 - Fan-out under a 150 ms deadline skips the rerank spec on every query and answers in 22 ms p50, against 366 ms at 2000 ms ([deadline fan-out](src/production_rag/methods/deadline_fanout/README.md)).
+- Chunking: fixed 800 is best or tied on nDCG@10 on both sets, a 200-character overlap does not help, and recursive 400 is lowest ([parse and chunk](src/production_rag/methods/parse_and_chunk/README.md)).
+- Parsing: PDF token recall is 0.982 and precision 0.920; the xlsx (0.629) and pptx (0.848) recall gaps come from docling's reference output, not from missing cells ([parse and chunk](src/production_rag/methods/parse_and_chunk/README.md)).
+- Fact check: accuracy is 0.703 and 0.740 over two runs, and refuted recall is the weakest (0.375 in run 1) because the model often says `unverified` for claims the abstract contradicts ([fact check](src/production_rag/methods/fact_check/README.md)).
 
 ## Methods
 
@@ -87,6 +151,8 @@ What stands out:
 | [`deadline_fanout`](src/production_rag/methods/deadline_fanout/README.md) | none | `local-models` | Deadline budget and spec fan-out; latency bench in its README |
 | [`multi_query`](src/production_rag/methods/multi_query/README.md) | none | `local-models` | Multi-query merge; answer numbers in its README |
 | [`context_expansion`](src/production_rag/methods/context_expansion/README.md) | none | `local-models` | Neighbour chunks or the full document around each hit; answer numbers in its README |
+| [`parse_and_chunk`](src/production_rag/methods/parse_and_chunk/README.md) | `chunk_recursive_800`, `chunk_recursive_800_o200`, `chunk_recursive_400` | `parse` + `local-models` | PDF, DOCX, PPTX, XLSX, HTML, Markdown to Markdown with pip-only parsers; fixed, recursive and heading-aware chunking |
+| [`fact_check`](src/production_rag/methods/fact_check/README.md) | none | `local-models` + `OPENAI_API_KEY` | claims from a statement, evidence per claim, verdict: supported, refuted, unverified; `not_relevant` when nothing is checkable |
 
 ## Quickstart
 
@@ -104,6 +170,16 @@ uv run python -m production_rag.methods.hybrid_fusion.example
 export OPENAI_API_KEY=...
 uv run python -m production_rag.core.eval.answer --dataset mini_wiki --sample 20 --estimate-only
 uv run python -m production_rag.core.eval.answer --dataset mini_wiki --sample 20 --max-tokens 400000
+
+# parsing quality on public PDF and Office files (no LLM)
+uv run --extra parse python -m production_rag.methods.parse_and_chunk.parse_eval
+
+# chunking comparison (retrieval only, downloads the dataset)
+uv run python -m production_rag.core.eval.run --dataset scifact --methods parse_and_chunk --name scifact_chunking
+
+# fact check (calls an LLM): estimate first, then a small capped run
+uv run --extra eval --extra local-models python -m production_rag.methods.fact_check.eval --sample 30 --estimate-only
+uv run --extra eval --extra local-models python -m production_rag.methods.fact_check.eval --sample 30 --max-tokens 100000
 ```
 
 Estimate the tokens before every LLM run and give every LLM run a cap.
@@ -151,7 +227,7 @@ uv run --extra local-models pytest -m integration
 
 ## Roadmap
 
-Next: `parse_and_chunk`, `fact_check`. After that: query rewrite and speculative search, LLM rerank, cache, semantic chunking, embedding comparison, `cpu_embedding_batching`, testset generation. Known gaps: [`BACKLOG.md`](BACKLOG.md).
+Next: query rewrite and speculative search, LLM rerank, cache, semantic chunking, embedding comparison, `cpu_embedding_batching`, testset generation. Known gaps: [`BACKLOG.md`](BACKLOG.md).
 
 ## Models, data and licenses
 
@@ -161,5 +237,8 @@ Next: `parse_and_chunk`, `fact_check`. After that: query rewrite and speculative
 - LLM for generation and judging: OpenAI, default `gpt-5.4-nano`, set with `OPENAI_MODEL`.
 - Answer eval data: [rag-datasets/rag-mini-wikipedia](https://huggingface.co/datasets/rag-datasets/rag-mini-wikipedia) (`cc-by-3.0` per its card, Wikipedia text) and the `LegalRAG` config of [DuyTa/vi_RAG](https://huggingface.co/datasets/DuyTa/vi_RAG) (`apache-2.0` per its card; the id now redirects to sailor2/Vietnamese_RAG; its answers were aligned with LLMs per the card). VLQA is not used because it is not released yet.
 - Datasets are downloaded at runtime and not stored here: [BeIR/scifact](https://huggingface.co/datasets/BeIR/scifact) and [GreenNode/TVPL-Retrieval-VN](https://huggingface.co/datasets/GreenNode/TVPL-Retrieval-VN), both CC-BY-SA-4.0.
+- Parse extra: `pdfplumber`, `python-docx`, `python-pptx`, `openpyxl`, `markdownify` and `beautifulsoup4`, all MIT.
+- Parsing eval data: 7 arXiv papers (CC BY 4.0, except `arxiv-1602.06541v2`, CC BY-SA 4.0) with the [py-pdf/benchmarks](https://github.com/py-pdf/benchmarks) ground truth (BSD-3-Clause, pinned commit `18ee8c4`), and the [docling](https://github.com/docling-project/docling) test fixtures (MIT, pinned commit `a7760ab`). Downloaded at runtime, not stored here.
+- Fact-check data: [SciFact](https://huggingface.co/datasets/allenai/scifact) claims, CC BY-NC 2.0 (non-commercial) per the card, downloaded at runtime from allenai's release tarball and not stored here.
 
 Code: MIT.

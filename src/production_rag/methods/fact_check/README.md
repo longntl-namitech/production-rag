@@ -27,4 +27,38 @@ uv run --extra local-models python -m production_rag.methods.fact_check.example
 Without `OPENAI_API_KEY` the example prints the evidence for two claims and stops.
 
 ## Results
-Pending: the fact-check eval has not been run yet.
+
+300 SciFact dev claims against 5,183 abstracts, `gpt-5.4-nano`, base `hybrid_weighted_rrf`, k = 5, run on 2026-11-12. The eval gives verdicts only: each claim is judged as given, with no claim extraction. No model acts as a judge, because the labels are gold. Full tables: [`results/fact_check_scifact.md`](../../../../results/fact_check_scifact.md). The tables below are from run 1.
+
+The dev split has 124 supported, 64 refuted and 112 no-evidence claims. Failed items are excluded from accuracy, precision and recall.
+
+| Label | Gold | Predicted | Correct | Precision | Recall |
+|---|---|---|---|---|---|
+| supported | 124 | 118 | 93 | 0.788 | 0.750 |
+| refuted | 64 | 39 | 24 | 0.615 | 0.375 |
+| unverified | 112 | 143 | 94 | 0.657 | 0.839 |
+
+Accuracy 0.703 on 300 claims, 0 failed, unverified 47.7%, gold evidence in top 5: 95.7% (accuracy 0.639 when found, 0.250 when not).
+
+| Gold \ predicted | supported | refuted | unverified | failed |
+|---|---|---|---|---|
+| supported | 93 | 7 | 24 | 0 |
+| refuted | 15 | 24 | 25 | 0 |
+| unverified | 10 | 8 | 94 | 0 |
+
+### Run-to-run
+
+Two full runs gave accuracy 0.703 and 0.740, with the same label on 89.3% of the 300 claims ([`results/fact_check_scifact_runs.md`](../../../../results/fact_check_scifact_runs.md)). Differences inside that spread are not evidence.
+
+| Run | Date | Model | Base | k | Claims | Accuracy |
+|---|---|---|---|---|---|---|
+| A | 2026-11-12 | gpt-5.4-nano | hybrid_weighted_rrf | 5 | 300 | 0.703 |
+| B | 2026-11-12 | gpt-5.4-nano | hybrid_weighted_rrf | 5 | 300 | 0.740 |
+
+### Notes
+
+- Refuted recall is the weakest (0.375 in run 1): the model often says `unverified` for claims the abstract contradicts.
+- SciFact's NOT ENOUGH INFO label is scored as `unverified`.
+- Evidence comes from open retrieval over 5,183 abstracts, so a claim can miss its gold abstract. The gold abstract is in the top 5 for 95.7% of claims; accuracy is 0.639 when it is found and 0.250 when not.
+- `not_relevant` cannot occur on single claims, so it is not scored.
+- SciFact claims are CC BY-NC 2.0 (non-commercial) per the `allenai/scifact` card. They are downloaded at runtime from allenai's release tarball and not stored in the repo.
