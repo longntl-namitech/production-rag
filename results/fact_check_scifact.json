@@ -1,0 +1,5473 @@
+{
+ "meta": {
+  "kind": "fact_check",
+  "date": "2026-11-12",
+  "requested": 300,
+  "claims": 300,
+  "documents": 5183,
+  "base": "hybrid_weighted_rrf",
+  "k": 5,
+  "model": "gpt-5.4-nano",
+  "complete": true,
+  "tokens": {
+   "total": 572255,
+   "kept": 572255,
+   "dropped": 0,
+   "reasoning": 0
+  }
+ },
+ "summary": {
+  "claims": 300,
+  "failed": 0,
+  "accuracy": 0.7033333333333334,
+  "unverified_share": 0.4766666666666667,
+  "per_label": {
+   "supported": {
+    "gold": 124,
+    "predicted": 118,
+    "correct": 93,
+    "precision": 0.788135593220339,
+    "recall": 0.75
+   },
+   "refuted": {
+    "gold": 64,
+    "predicted": 39,
+    "correct": 24,
+    "precision": 0.6153846153846154,
+    "recall": 0.375
+   },
+   "unverified": {
+    "gold": 112,
+    "predicted": 143,
+    "correct": 94,
+    "precision": 0.6573426573426573,
+    "recall": 0.8392857142857143
+   }
+  },
+  "confusion": {
+   "supported": {
+    "supported": 93,
+    "refuted": 7,
+    "unverified": 24,
+    "failed": 0
+   },
+   "refuted": {
+    "supported": 15,
+    "refuted": 24,
+    "unverified": 25,
+    "failed": 0
+   },
+   "unverified": {
+    "supported": 10,
+    "refuted": 8,
+    "unverified": 94,
+    "failed": 0
+   }
+  },
+  "evidence_hit_rate": 0.9574468085106383,
+  "accuracy_hit": 0.6388888888888888,
+  "accuracy_miss": 0.25
+ },
+ "per_item": [
+  {
+   "claim_id": "275",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "4961038",
+    "4920376",
+    "85665741",
+    "28651643",
+    "1285713"
+   ],
+   "evidence_hit": true,
+   "ms": 2143,
+   "tokens": 2058,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "36",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "16252863",
+    "42441846",
+    "33409100",
+    "3215494",
+    "11705328"
+   ],
+   "evidence_hit": true,
+   "ms": 1872,
+   "tokens": 2545,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1379",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "5487448",
+    "27123743",
+    "17450673",
+    "37480103",
+    "16322674"
+   ],
+   "evidence_hit": true,
+   "ms": 2145,
+   "tokens": 2412,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "219",
+   "gold": "refuted",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "21366394",
+    "20311968",
+    "1800734",
+    "7281161",
+    "40365566"
+   ],
+   "evidence_hit": true,
+   "ms": 2140,
+   "tokens": 1771,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "130",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "27768226",
+    "4688277",
+    "16979690",
+    "6477536",
+    "37578311"
+   ],
+   "evidence_hit": true,
+   "ms": 1683,
+   "tokens": 3221,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "216",
+   "gold": "refuted",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "21366394",
+    "21363424",
+    "40608679",
+    "10029891",
+    "13398997"
+   ],
+   "evidence_hit": true,
+   "ms": 1606,
+   "tokens": 1572,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "985",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "6828370",
+    "13964633",
+    "16364639",
+    "16346504",
+    "34071621"
+   ],
+   "evidence_hit": true,
+   "ms": 1768,
+   "tokens": 1751,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "128",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "2056197",
+    "23513718",
+    "5254741",
+    "12549585",
+    "1122279"
+   ],
+   "evidence_hit": false,
+   "ms": 1631,
+   "tokens": 1933,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1187",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "52873726",
+    "12737132",
+    "4465762",
+    "778436",
+    "40667066"
+   ],
+   "evidence_hit": true,
+   "ms": 1751,
+   "tokens": 1463,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "852",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "8190282",
+    "13843341",
+    "474325",
+    "14361849",
+    "40867854"
+   ],
+   "evidence_hit": true,
+   "ms": 1543,
+   "tokens": 2377,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "183",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "12827098",
+    "22406695",
+    "8137081",
+    "188911",
+    "7521113"
+   ],
+   "evidence_hit": true,
+   "ms": 1513,
+   "tokens": 1567,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "380",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "19005293",
+    "26068103",
+    "2248870",
+    "883747",
+    "3835423"
+   ],
+   "evidence_hit": true,
+   "ms": 1573,
+   "tokens": 1698,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1099",
+   "gold": "unverified",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "21557614",
+    "22420524",
+    "43629704",
+    "30981192",
+    "7662206"
+   ],
+   "evidence_hit": true,
+   "ms": 1925,
+   "tokens": 1995,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "644",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "13619127",
+    "6157837",
+    "23377475",
+    "1759213",
+    "120626"
+   ],
+   "evidence_hit": true,
+   "ms": 1571,
+   "tokens": 2280,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1278",
+   "gold": "unverified",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "11335781",
+    "1454773",
+    "4468861",
+    "49432306",
+    "7975937"
+   ],
+   "evidence_hit": true,
+   "ms": 1881,
+   "tokens": 1686,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1024",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "14530534",
+    "5373138",
+    "26672703",
+    "24995939",
+    "6910577"
+   ],
+   "evidence_hit": true,
+   "ms": 1380,
+   "tokens": 1281,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "314",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "544971",
+    "2638387",
+    "4347374",
+    "22703082",
+    "7029990"
+   ],
+   "evidence_hit": true,
+   "ms": 1769,
+   "tokens": 1497,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "975",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "2844490",
+    "29509926",
+    "22852120",
+    "343052",
+    "10359591"
+   ],
+   "evidence_hit": false,
+   "ms": 1624,
+   "tokens": 1722,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1202",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "3475317",
+    "34615397",
+    "24707550",
+    "4389252",
+    "24612804"
+   ],
+   "evidence_hit": true,
+   "ms": 2294,
+   "tokens": 1569,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "294",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "10874408",
+    "17240457",
+    "21170174",
+    "10086360",
+    "10766688"
+   ],
+   "evidence_hit": true,
+   "ms": 1575,
+   "tokens": 1616,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "70",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "4414547",
+    "5956380",
+    "27949347",
+    "23985464",
+    "43880096"
+   ],
+   "evidence_hit": true,
+   "ms": 1716,
+   "tokens": 1741,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "660",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "1215116",
+    "9110810",
+    "18025240",
+    "3848469",
+    "1805641"
+   ],
+   "evidence_hit": true,
+   "ms": 1275,
+   "tokens": 2417,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1290",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "4687948",
+    "22420524",
+    "16812091",
+    "26000593",
+    "5698494"
+   ],
+   "evidence_hit": true,
+   "ms": 1596,
+   "tokens": 2681,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "274",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "11614737",
+    "5114940",
+    "34369306",
+    "5551138",
+    "8570690"
+   ],
+   "evidence_hit": true,
+   "ms": 1593,
+   "tokens": 3516,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "516",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "29564505",
+    "21287352",
+    "18988265",
+    "20109325",
+    "2032877"
+   ],
+   "evidence_hit": true,
+   "ms": 1515,
+   "tokens": 2619,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "230",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "3067015",
+    "20526907",
+    "71625969",
+    "5939172",
+    "11457219"
+   ],
+   "evidence_hit": true,
+   "ms": 1594,
+   "tokens": 1899,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "770",
+   "gold": "supported",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "15476777",
+    "2492146",
+    "7165938",
+    "10958594",
+    "195680777"
+   ],
+   "evidence_hit": true,
+   "ms": 1912,
+   "tokens": 3013,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "641",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "5912283",
+    "24346598",
+    "24865781",
+    "17973630",
+    "31554917"
+   ],
+   "evidence_hit": true,
+   "ms": 1555,
+   "tokens": 2196,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "527",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "3863543",
+    "1617327",
+    "16728949",
+    "4380004",
+    "24713020"
+   ],
+   "evidence_hit": true,
+   "ms": 1613,
+   "tokens": 1527,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "921",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "1642727",
+    "50670403",
+    "17691617",
+    "2028532",
+    "37156349"
+   ],
+   "evidence_hit": true,
+   "ms": 1558,
+   "tokens": 2049,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "421",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "1065627",
+    "17388232",
+    "4346436",
+    "927561",
+    "23698769"
+   ],
+   "evidence_hit": false,
+   "ms": 1572,
+   "tokens": 1254,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1271",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "13768432",
+    "38040186",
+    "23124332",
+    "21323758",
+    "5597586"
+   ],
+   "evidence_hit": true,
+   "ms": 1577,
+   "tokens": 2127,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "507",
+   "gold": "unverified",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "7433668",
+    "30774694",
+    "23801039",
+    "7386360",
+    "1386103"
+   ],
+   "evidence_hit": true,
+   "ms": 1750,
+   "tokens": 1873,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "903",
+   "gold": "refuted",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "10648422",
+    "5752492",
+    "8639034",
+    "9334631",
+    "34469966"
+   ],
+   "evidence_hit": true,
+   "ms": 1758,
+   "tokens": 1850,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "693",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "24088502",
+    "9310407",
+    "3698758",
+    "36288526",
+    "43587663"
+   ],
+   "evidence_hit": true,
+   "ms": 1574,
+   "tokens": 2375,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1282",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "23649163",
+    "27944135",
+    "3690068",
+    "3692112",
+    "21009874"
+   ],
+   "evidence_hit": true,
+   "ms": 1463,
+   "tokens": 2261,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "684",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "12881593",
+    "4942718",
+    "34386619",
+    "12824568",
+    "35085326"
+   ],
+   "evidence_hit": true,
+   "ms": 2600,
+   "tokens": 2016,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "691",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "10991183",
+    "28195565",
+    "33076846",
+    "29073751",
+    "23700330"
+   ],
+   "evidence_hit": true,
+   "ms": 1707,
+   "tokens": 1621,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1362",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "23513718",
+    "2056197",
+    "12549585",
+    "5254741",
+    "29148743"
+   ],
+   "evidence_hit": false,
+   "ms": 1573,
+   "tokens": 1915,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "936",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "5483793",
+    "23100962",
+    "20457190",
+    "13823200",
+    "24069089"
+   ],
+   "evidence_hit": true,
+   "ms": 1529,
+   "tokens": 1903,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "146",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "10582939",
+    "40164383",
+    "4416964",
+    "24101431",
+    "51728753"
+   ],
+   "evidence_hit": true,
+   "ms": 1599,
+   "tokens": 2684,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1363",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "3896759",
+    "8290953",
+    "2056197",
+    "79447",
+    "1122279"
+   ],
+   "evidence_hit": true,
+   "ms": 1579,
+   "tokens": 1704,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "873",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "29025270",
+    "4345757",
+    "27686445",
+    "41310252",
+    "12658073"
+   ],
+   "evidence_hit": true,
+   "ms": 1516,
+   "tokens": 1754,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "268",
+   "gold": "unverified",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "29381091",
+    "4319174",
+    "970012",
+    "36838958",
+    "13000926"
+   ],
+   "evidence_hit": true,
+   "ms": 1792,
+   "tokens": 1729,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "533",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "12991445",
+    "1387104",
+    "21372171",
+    "79231308",
+    "36288526"
+   ],
+   "evidence_hit": true,
+   "ms": 1744,
+   "tokens": 2496,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "218",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "21366394",
+    "20311968",
+    "1800734",
+    "7281161",
+    "40365566"
+   ],
+   "evidence_hit": true,
+   "ms": 1452,
+   "tokens": 1760,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1280",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "29214508",
+    "37768883",
+    "36233757",
+    "38805486",
+    "25657127"
+   ],
+   "evidence_hit": false,
+   "ms": 1776,
+   "tokens": 2451,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "399",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "791050",
+    "471921",
+    "32357890",
+    "42387637",
+    "21003930"
+   ],
+   "evidence_hit": true,
+   "ms": 1609,
+   "tokens": 2558,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "880",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "8426046",
+    "20725212",
+    "8327914",
+    "2566674",
+    "14682243"
+   ],
+   "evidence_hit": true,
+   "ms": 2017,
+   "tokens": 2007,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "142",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "10582939",
+    "40164383",
+    "43587663",
+    "30398773",
+    "4416964"
+   ],
+   "evidence_hit": true,
+   "ms": 1585,
+   "tokens": 2743,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "821",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "4465762",
+    "8712839",
+    "35448676",
+    "18467982",
+    "36606083"
+   ],
+   "evidence_hit": false,
+   "ms": 1288,
+   "tokens": 1417,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "118",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "6372244",
+    "4465735",
+    "32454714",
+    "4492358",
+    "41165286"
+   ],
+   "evidence_hit": true,
+   "ms": 1367,
+   "tokens": 1653,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "354",
+   "gold": "unverified",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "8774475",
+    "34103335",
+    "1241113",
+    "18953920",
+    "20333864"
+   ],
+   "evidence_hit": true,
+   "ms": 1560,
+   "tokens": 1393,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "239",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "3230557",
+    "9559146",
+    "16233471",
+    "516867",
+    "615047"
+   ],
+   "evidence_hit": false,
+   "ms": 1333,
+   "tokens": 1329,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "312",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "14464451",
+    "32770503",
+    "14185503",
+    "13123189",
+    "7324039"
+   ],
+   "evidence_hit": false,
+   "ms": 1571,
+   "tokens": 1593,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "837",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "15928989",
+    "1780819",
+    "30369606",
+    "9239963",
+    "6121668"
+   ],
+   "evidence_hit": true,
+   "ms": 1680,
+   "tokens": 2099,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "338",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "23349986",
+    "24211561",
+    "36288526",
+    "15948830",
+    "8814634"
+   ],
+   "evidence_hit": true,
+   "ms": 1574,
+   "tokens": 2455,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "744",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "4138659",
+    "8460275",
+    "6454371",
+    "23895668",
+    "3105781"
+   ],
+   "evidence_hit": true,
+   "ms": 1440,
+   "tokens": 1379,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "690",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "18750453",
+    "18174210",
+    "19487477",
+    "25069745",
+    "13959707"
+   ],
+   "evidence_hit": true,
+   "ms": 1604,
+   "tokens": 2002,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1225",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "9650982",
+    "43334921",
+    "14729253",
+    "14315749",
+    "16806763"
+   ],
+   "evidence_hit": true,
+   "ms": 1376,
+   "tokens": 2390,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "51",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "45638119",
+    "32001951",
+    "29366489",
+    "24341590",
+    "8963413"
+   ],
+   "evidence_hit": true,
+   "ms": 1572,
+   "tokens": 1994,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "137",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "26016929",
+    "21914176",
+    "457630",
+    "31208367",
+    "4530659"
+   ],
+   "evidence_hit": true,
+   "ms": 1710,
+   "tokens": 2052,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "768",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "1373287",
+    "19497526",
+    "30543439",
+    "12622860",
+    "2890952"
+   ],
+   "evidence_hit": false,
+   "ms": 1598,
+   "tokens": 2374,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1107",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "29381091",
+    "20532591",
+    "14865329",
+    "32955023",
+    "970012"
+   ],
+   "evidence_hit": true,
+   "ms": 1586,
+   "tokens": 1432,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "185",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "18340282",
+    "23557241",
+    "3285322",
+    "27123743",
+    "17450673"
+   ],
+   "evidence_hit": true,
+   "ms": 1107,
+   "tokens": 2241,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "443",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "10165258",
+    "9911547",
+    "16728949",
+    "40234452",
+    "5415832"
+   ],
+   "evidence_hit": true,
+   "ms": 1616,
+   "tokens": 1411,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "431",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "19922508",
+    "29429111",
+    "14496749",
+    "23887844",
+    "2543135"
+   ],
+   "evidence_hit": false,
+   "ms": 1549,
+   "tokens": 1435,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "982",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "2988714",
+    "6422576",
+    "24737389",
+    "38477436",
+    "14637235"
+   ],
+   "evidence_hit": true,
+   "ms": 1537,
+   "tokens": 1542,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1395",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "1976183",
+    "5492542",
+    "17717391",
+    "36399107",
+    "19343151"
+   ],
+   "evidence_hit": true,
+   "ms": 1710,
+   "tokens": 1956,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "4346436",
+    "17388232",
+    "34386619",
+    "21456232",
+    "19855358"
+   ],
+   "evidence_hit": false,
+   "ms": 1526,
+   "tokens": 1550,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "521",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "34873974",
+    "3056682",
+    "29526125",
+    "25028913",
+    "34054472"
+   ],
+   "evidence_hit": true,
+   "ms": 1675,
+   "tokens": 2718,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "180",
+   "gold": "refuted",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "16966326",
+    "9217800",
+    "13380011",
+    "4889228",
+    "14460402"
+   ],
+   "evidence_hit": true,
+   "ms": 1761,
+   "tokens": 1695,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "659",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "1215116",
+    "9110810",
+    "18025240",
+    "46926352",
+    "15237660"
+   ],
+   "evidence_hit": true,
+   "ms": 1476,
+   "tokens": 1921,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1062",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "20381484",
+    "32985041",
+    "25748308",
+    "43156471",
+    "32638085"
+   ],
+   "evidence_hit": true,
+   "ms": 1733,
+   "tokens": 1453,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1266",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "37480103",
+    "17450673",
+    "13831842",
+    "27123743",
+    "13765757"
+   ],
+   "evidence_hit": true,
+   "ms": 1551,
+   "tokens": 2191,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "957",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "123859",
+    "13492264",
+    "6308416",
+    "16355392",
+    "7370282"
+   ],
+   "evidence_hit": true,
+   "ms": 1584,
+   "tokens": 1663,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "249",
+   "gold": "refuted",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "1568684",
+    "23369842",
+    "25050364",
+    "13774178",
+    "5775033"
+   ],
+   "evidence_hit": true,
+   "ms": 1144,
+   "tokens": 2124,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "577",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "8133050",
+    "21392703",
+    "5289038",
+    "40900567",
+    "35321950"
+   ],
+   "evidence_hit": true,
+   "ms": 1536,
+   "tokens": 1418,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "508",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "25516011",
+    "18374364",
+    "14550841",
+    "4381486",
+    "104143831"
+   ],
+   "evidence_hit": false,
+   "ms": 1757,
+   "tokens": 1421,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "619",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "1171121",
+    "6673421",
+    "5254741",
+    "25589047",
+    "25175997"
+   ],
+   "evidence_hit": false,
+   "ms": 1577,
+   "tokens": 1959,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "212",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "9291668",
+    "7808055",
+    "1754001",
+    "4679264",
+    "11935250"
+   ],
+   "evidence_hit": false,
+   "ms": 1702,
+   "tokens": 1933,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "437",
+   "gold": "unverified",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "2359152",
+    "39851630",
+    "3391547",
+    "5765455",
+    "5836"
+   ],
+   "evidence_hit": false,
+   "ms": 1255,
+   "tokens": 1843,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "914",
+   "gold": "unverified",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "8458567",
+    "712078",
+    "23286603",
+    "23938319",
+    "11238784"
+   ],
+   "evidence_hit": false,
+   "ms": 1845,
+   "tokens": 1992,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1197",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "33135135",
+    "154243324",
+    "6129301",
+    "25649714",
+    "31019903"
+   ],
+   "evidence_hit": true,
+   "ms": 1505,
+   "tokens": 1183,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "528",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "5476778",
+    "22937651",
+    "24512064",
+    "23326722",
+    "35149431"
+   ],
+   "evidence_hit": true,
+   "ms": 1706,
+   "tokens": 1820,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "163",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "18872233",
+    "43220289",
+    "19071857",
+    "29022271",
+    "40949706"
+   ],
+   "evidence_hit": true,
+   "ms": 1626,
+   "tokens": 1952,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "53",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "45638119",
+    "32001951",
+    "29366489",
+    "24249915",
+    "7821634"
+   ],
+   "evidence_hit": true,
+   "ms": 1573,
+   "tokens": 1674,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "636",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "24294572",
+    "42708716",
+    "22025252",
+    "19752008",
+    "6492658"
+   ],
+   "evidence_hit": true,
+   "ms": 1826,
+   "tokens": 2469,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "54",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "49556906",
+    "3973445",
+    "3419709",
+    "24721866",
+    "1590744"
+   ],
+   "evidence_hit": true,
+   "ms": 1652,
+   "tokens": 1699,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "575",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "10300888",
+    "4421746",
+    "9704467",
+    "8747771",
+    "1631583"
+   ],
+   "evidence_hit": true,
+   "ms": 1517,
+   "tokens": 1415,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1359",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "11614737",
+    "5114940",
+    "5551138",
+    "24019260",
+    "34369306"
+   ],
+   "evidence_hit": true,
+   "ms": 1809,
+   "tokens": 3434,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1232",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "13905670",
+    "1265945",
+    "4427060",
+    "5922085",
+    "24783597"
+   ],
+   "evidence_hit": true,
+   "ms": 1547,
+   "tokens": 1752,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "513",
+   "gold": "refuted",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "12770738",
+    "13230773",
+    "40867854",
+    "2032877",
+    "6993046"
+   ],
+   "evidence_hit": true,
+   "ms": 1571,
+   "tokens": 2471,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "715",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "13290521",
+    "15635366",
+    "19358586",
+    "17544977",
+    "2000038"
+   ],
+   "evidence_hit": false,
+   "ms": 1573,
+   "tokens": 1491,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "967",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "2119889",
+    "8997410",
+    "86694016",
+    "12640810",
+    "7223604"
+   ],
+   "evidence_hit": true,
+   "ms": 2075,
+   "tokens": 1680,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "279",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "14376683",
+    "37677954",
+    "83667891",
+    "87986426",
+    "87337034"
+   ],
+   "evidence_hit": true,
+   "ms": 1389,
+   "tokens": 1758,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "517",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "15663829",
+    "19658917",
+    "27449472",
+    "17324544",
+    "32850528"
+   ],
+   "evidence_hit": true,
+   "ms": 1376,
+   "tokens": 2513,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "475",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "195689757",
+    "8477699",
+    "20672596",
+    "23576165",
+    "4423401"
+   ],
+   "evidence_hit": false,
+   "ms": 1573,
+   "tokens": 1670,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1185",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "16737210",
+    "21859699",
+    "41774099",
+    "21203899",
+    "7034001"
+   ],
+   "evidence_hit": true,
+   "ms": 1464,
+   "tokens": 1767,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "578",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "8764879",
+    "3559136",
+    "33796570",
+    "18882947",
+    "22358449"
+   ],
+   "evidence_hit": true,
+   "ms": 1573,
+   "tokens": 1707,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "388",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "21602220",
+    "1148122",
+    "418246",
+    "34386619",
+    "24019260"
+   ],
+   "evidence_hit": true,
+   "ms": 1582,
+   "tokens": 1741,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "742",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "32159283",
+    "10576136",
+    "3984231",
+    "20526907",
+    "24338780"
+   ],
+   "evidence_hit": true,
+   "ms": 1574,
+   "tokens": 2027,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "525",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "13639330",
+    "2151983",
+    "2754534",
+    "8548635",
+    "40667066"
+   ],
+   "evidence_hit": true,
+   "ms": 1749,
+   "tokens": 1623,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "882",
+   "gold": "refuted",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "14803797",
+    "6793674",
+    "33684572",
+    "12207167",
+    "34603465"
+   ],
+   "evidence_hit": true,
+   "ms": 1470,
+   "tokens": 2585,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1245",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "7662395",
+    "27841037",
+    "4791384",
+    "8529693",
+    "36124058"
+   ],
+   "evidence_hit": true,
+   "ms": 1368,
+   "tokens": 2417,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "415",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "51386222",
+    "20937018",
+    "12443371",
+    "6309659",
+    "4709641"
+   ],
+   "evidence_hit": true,
+   "ms": 1571,
+   "tokens": 2360,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1049",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "24737389",
+    "8925851",
+    "7487927",
+    "12486491",
+    "26112624"
+   ],
+   "evidence_hit": true,
+   "ms": 1534,
+   "tokens": 1490,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "99",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "18810195",
+    "10247314",
+    "36855703",
+    "43711341",
+    "12225214"
+   ],
+   "evidence_hit": true,
+   "ms": 1454,
+   "tokens": 1650,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "727",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "36444198",
+    "22406695",
+    "14492339",
+    "7521113",
+    "12370881"
+   ],
+   "evidence_hit": true,
+   "ms": 1570,
+   "tokens": 1473,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "384",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "51972698",
+    "25451374",
+    "581832",
+    "40666943",
+    "13770184"
+   ],
+   "evidence_hit": true,
+   "ms": 1478,
+   "tokens": 3298,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1041",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "15778034",
+    "18038955",
+    "9451052",
+    "18694784",
+    "2817000"
+   ],
+   "evidence_hit": false,
+   "ms": 1589,
+   "tokens": 1616,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "808",
+   "gold": "supported",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "36606083",
+    "12207340",
+    "22003328",
+    "25462689",
+    "25787749"
+   ],
+   "evidence_hit": true,
+   "ms": 1621,
+   "tokens": 1676,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "362",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "38587347",
+    "15488881",
+    "15058155",
+    "10354110",
+    "5003144"
+   ],
+   "evidence_hit": true,
+   "ms": 1645,
+   "tokens": 1475,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "847",
+   "gold": "refuted",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "16787954",
+    "4424888",
+    "341324",
+    "25062868",
+    "34615397"
+   ],
+   "evidence_hit": true,
+   "ms": 1468,
+   "tokens": 1785,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "343",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "7873737",
+    "5884524",
+    "23783727",
+    "19308127",
+    "6158879"
+   ],
+   "evidence_hit": true,
+   "ms": 1524,
+   "tokens": 2839,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1344",
+   "gold": "unverified",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "6896063",
+    "9559146",
+    "15521377",
+    "31293581",
+    "9483851"
+   ],
+   "evidence_hit": true,
+   "ms": 1877,
+   "tokens": 2488,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1213",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "36444198",
+    "17934603",
+    "34469966",
+    "23901235",
+    "14492339"
+   ],
+   "evidence_hit": false,
+   "ms": 1373,
+   "tokens": 1723,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "907",
+   "gold": "unverified",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "6923961",
+    "21181273",
+    "25238950",
+    "11915280",
+    "5824955"
+   ],
+   "evidence_hit": true,
+   "ms": 1657,
+   "tokens": 1446,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "728",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "36444198",
+    "22406695",
+    "14492339",
+    "7521113",
+    "17934603"
+   ],
+   "evidence_hit": true,
+   "ms": 1825,
+   "tokens": 1555,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1200",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "3441524",
+    "15472716",
+    "19708993",
+    "21114100",
+    "28724565"
+   ],
+   "evidence_hit": true,
+   "ms": 1702,
+   "tokens": 1773,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "501",
+   "gold": "supported",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "17930286",
+    "24865781",
+    "42095718",
+    "44830890",
+    "24510595"
+   ],
+   "evidence_hit": true,
+   "ms": 1479,
+   "tokens": 1821,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "324",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "10165258",
+    "19510470",
+    "24612804",
+    "22174015",
+    "2014909"
+   ],
+   "evidence_hit": true,
+   "ms": 1885,
+   "tokens": 1477,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "115",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "33872649",
+    "15879544",
+    "1234098",
+    "109795294",
+    "695938"
+   ],
+   "evidence_hit": true,
+   "ms": 1573,
+   "tokens": 1473,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "823",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "15319019",
+    "2319305",
+    "25014337",
+    "6426919",
+    "39443128"
+   ],
+   "evidence_hit": true,
+   "ms": 1666,
+   "tokens": 2333,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "554",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "9878167",
+    "29399239",
+    "28015516",
+    "2236768",
+    "52925737"
+   ],
+   "evidence_hit": false,
+   "ms": 1226,
+   "tokens": 1531,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1104",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "3898784",
+    "4910408",
+    "44384384",
+    "32328114",
+    "7873737"
+   ],
+   "evidence_hit": true,
+   "ms": 1639,
+   "tokens": 3040,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "94",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "1215116",
+    "18025240",
+    "13966946",
+    "46926352",
+    "9110810"
+   ],
+   "evidence_hit": true,
+   "ms": 1503,
+   "tokens": 1860,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "439",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "4423559",
+    "18575183",
+    "4932668",
+    "22682497",
+    "35008773"
+   ],
+   "evidence_hit": true,
+   "ms": 1246,
+   "tokens": 1709,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "385",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "1032372",
+    "9767444",
+    "9955779",
+    "32742683",
+    "7975937"
+   ],
+   "evidence_hit": true,
+   "ms": 1749,
+   "tokens": 1482,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "649",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "24159217",
+    "12789595",
+    "22467585",
+    "20375264",
+    "13906581"
+   ],
+   "evidence_hit": true,
+   "ms": 1558,
+   "tokens": 2479,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "303",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "4085204",
+    "4392608",
+    "4547102",
+    "6948886",
+    "3849194"
+   ],
+   "evidence_hit": false,
+   "ms": 1572,
+   "tokens": 1684,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "532",
+   "gold": "refuted",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "12991445",
+    "17897801",
+    "21372171",
+    "79231308",
+    "36288526"
+   ],
+   "evidence_hit": true,
+   "ms": 1576,
+   "tokens": 2297,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "208",
+   "gold": "supported",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "13519661",
+    "22975806",
+    "16734530",
+    "20280410",
+    "32534305"
+   ],
+   "evidence_hit": true,
+   "ms": 1724,
+   "tokens": 1865,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "831",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "4324278",
+    "12737132",
+    "7548577",
+    "52873726",
+    "25623469"
+   ],
+   "evidence_hit": false,
+   "ms": 1582,
+   "tokens": 1810,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "440",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "4423559",
+    "18575183",
+    "4932668",
+    "17049436",
+    "5395426"
+   ],
+   "evidence_hit": true,
+   "ms": 1572,
+   "tokens": 1806,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1132",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "15972906",
+    "2714623",
+    "41982985",
+    "6936141",
+    "18758057"
+   ],
+   "evidence_hit": false,
+   "ms": 1254,
+   "tokens": 1647,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "832",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "30303335",
+    "10562341",
+    "12948892",
+    "19561411",
+    "29362104"
+   ],
+   "evidence_hit": true,
+   "ms": 1610,
+   "tokens": 1821,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "887",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "4942718",
+    "680949",
+    "16630060",
+    "16712164",
+    "16728949"
+   ],
+   "evidence_hit": false,
+   "ms": 1318,
+   "tokens": 1380,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1179",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "2566674",
+    "10627801",
+    "16058322",
+    "7225911",
+    "12240507"
+   ],
+   "evidence_hit": false,
+   "ms": 1451,
+   "tokens": 1852,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "132",
+   "gold": "unverified",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "3866315",
+    "27615329",
+    "9159125",
+    "6407356",
+    "2443495"
+   ],
+   "evidence_hit": false,
+   "ms": 1132,
+   "tokens": 2113,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1175",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "16058322",
+    "15419873",
+    "14474178",
+    "11568270",
+    "24550453"
+   ],
+   "evidence_hit": false,
+   "ms": 1118,
+   "tokens": 2011,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "148",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "1084345",
+    "10012166",
+    "56528795",
+    "15728433",
+    "3230557"
+   ],
+   "evidence_hit": true,
+   "ms": 1585,
+   "tokens": 1377,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1316",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "37311371",
+    "24879055",
+    "27243019",
+    "43587663",
+    "13398997"
+   ],
+   "evidence_hit": false,
+   "ms": 1540,
+   "tokens": 1520,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1281",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "29214508",
+    "36233757",
+    "37768883",
+    "38805486",
+    "25657127"
+   ],
+   "evidence_hit": false,
+   "ms": 1563,
+   "tokens": 2408,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "743",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "32159283",
+    "10576136",
+    "3984231",
+    "43629704",
+    "21239672"
+   ],
+   "evidence_hit": true,
+   "ms": 1725,
+   "tokens": 2484,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "49",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "5953485",
+    "5702790",
+    "7029990",
+    "23913146",
+    "1333643"
+   ],
+   "evidence_hit": true,
+   "ms": 1554,
+   "tokens": 1676,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1110",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "8529693",
+    "24273592",
+    "756887",
+    "19460822",
+    "70704988"
+   ],
+   "evidence_hit": false,
+   "ms": 1524,
+   "tokens": 2073,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "232",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "7655029",
+    "10536636",
+    "29090823",
+    "457630",
+    "34760396"
+   ],
+   "evidence_hit": true,
+   "ms": 1373,
+   "tokens": 2307,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "57",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "4709641",
+    "9194077",
+    "4459491",
+    "11659421",
+    "22185730"
+   ],
+   "evidence_hit": true,
+   "ms": 1207,
+   "tokens": 1803,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "723",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "5531479",
+    "20608982",
+    "1871230",
+    "12058271",
+    "28712203"
+   ],
+   "evidence_hit": true,
+   "ms": 1545,
+   "tokens": 1408,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "560",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "11233339",
+    "13798951",
+    "2844490",
+    "4380287",
+    "22852120"
+   ],
+   "evidence_hit": false,
+   "ms": 1268,
+   "tokens": 1536,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "100",
+   "gold": "supported",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "4381486",
+    "14550841",
+    "13980338",
+    "7583161",
+    "1944452"
+   ],
+   "evidence_hit": true,
+   "ms": 1379,
+   "tokens": 1541,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "133",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "16280642",
+    "19752008",
+    "86694016",
+    "12640810",
+    "45764440"
+   ],
+   "evidence_hit": true,
+   "ms": 1739,
+   "tokens": 2011,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1337",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "20231138",
+    "1635872",
+    "7820043",
+    "12225214",
+    "31962403"
+   ],
+   "evidence_hit": true,
+   "ms": 1708,
+   "tokens": 1547,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1196",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "33135135",
+    "6129301",
+    "154243324",
+    "25649714",
+    "31019903"
+   ],
+   "evidence_hit": true,
+   "ms": 1570,
+   "tokens": 1175,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "544",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "24221369",
+    "2566674",
+    "1970884",
+    "6820680",
+    "11784947"
+   ],
+   "evidence_hit": true,
+   "ms": 1571,
+   "tokens": 1830,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "327",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "17997584",
+    "23912923",
+    "15405204",
+    "40349336",
+    "13905670"
+   ],
+   "evidence_hit": true,
+   "ms": 1552,
+   "tokens": 1451,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "298",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "39381118",
+    "23403754",
+    "23887844",
+    "15836115",
+    "6259170"
+   ],
+   "evidence_hit": true,
+   "ms": 1128,
+   "tokens": 1410,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "993",
+   "gold": "refuted",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "16472469",
+    "26118532",
+    "25842866",
+    "26607366",
+    "4429668"
+   ],
+   "evidence_hit": true,
+   "ms": 1572,
+   "tokens": 1922,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "233",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "4388470",
+    "28390999",
+    "41380943",
+    "12232678",
+    "36708463"
+   ],
+   "evidence_hit": true,
+   "ms": 1548,
+   "tokens": 1894,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "502",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "1338283",
+    "24318630",
+    "13906581",
+    "21377587",
+    "70516463"
+   ],
+   "evidence_hit": false,
+   "ms": 1772,
+   "tokens": 2104,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1241",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "4427392",
+    "4932668",
+    "6148876",
+    "106301",
+    "12411274"
+   ],
+   "evidence_hit": true,
+   "ms": 1693,
+   "tokens": 1754,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "805",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "22180793",
+    "3727986",
+    "7986878",
+    "17188921",
+    "1454773"
+   ],
+   "evidence_hit": true,
+   "ms": 1244,
+   "tokens": 1774,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1029",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "11899391",
+    "13923140",
+    "34025053",
+    "2388819",
+    "13940200"
+   ],
+   "evidence_hit": true,
+   "ms": 1572,
+   "tokens": 1927,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1382",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "3831884",
+    "17755060",
+    "1344498",
+    "4138659",
+    "5256564"
+   ],
+   "evidence_hit": true,
+   "ms": 1574,
+   "tokens": 1582,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "261",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "25822299",
+    "35271381",
+    "46743299",
+    "32322418",
+    "1122279"
+   ],
+   "evidence_hit": true,
+   "ms": 1731,
+   "tokens": 2200,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "628",
+   "gold": "unverified",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "29134911",
+    "21274496",
+    "24512064",
+    "5735492",
+    "28738741"
+   ],
+   "evidence_hit": true,
+   "ms": 1638,
+   "tokens": 1987,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1191",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "30655442",
+    "36355784",
+    "15617300",
+    "86704258",
+    "4283694"
+   ],
+   "evidence_hit": true,
+   "ms": 1481,
+   "tokens": 1203,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "960",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "8780599",
+    "12709184",
+    "12102963",
+    "5698494",
+    "75636923"
+   ],
+   "evidence_hit": true,
+   "ms": 1231,
+   "tokens": 2117,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "692",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "24088502",
+    "43587663",
+    "36288526",
+    "25420421",
+    "23203102"
+   ],
+   "evidence_hit": true,
+   "ms": 1502,
+   "tokens": 2212,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1259",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "13069283",
+    "24341590",
+    "20454006",
+    "12438901",
+    "195680777"
+   ],
+   "evidence_hit": true,
+   "ms": 1738,
+   "tokens": 3528,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "879",
+   "gold": "refuted",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "8426046",
+    "21330280",
+    "22896970",
+    "26112624",
+    "4740447"
+   ],
+   "evidence_hit": true,
+   "ms": 1374,
+   "tokens": 1334,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "269",
+   "gold": "unverified",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "29381091",
+    "970012",
+    "13000926",
+    "36838958",
+    "4319174"
+   ],
+   "evidence_hit": true,
+   "ms": 1492,
+   "tokens": 1719,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "3",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "2739854",
+    "14717500",
+    "4378885",
+    "23389795",
+    "4414547"
+   ],
+   "evidence_hit": true,
+   "ms": 1266,
+   "tokens": 1543,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1163",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "15305881",
+    "799586",
+    "1914588",
+    "8065561",
+    "29851836"
+   ],
+   "evidence_hit": true,
+   "ms": 1598,
+   "tokens": 1406,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1207",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "18909530",
+    "735130",
+    "344240",
+    "13936152",
+    "38380061"
+   ],
+   "evidence_hit": true,
+   "ms": 1613,
+   "tokens": 1915,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1389",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "23895668",
+    "1344498",
+    "8460275",
+    "36180468",
+    "4658268"
+   ],
+   "evidence_hit": true,
+   "ms": 1635,
+   "tokens": 1621,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "42",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "18174210",
+    "40913091",
+    "4449524",
+    "45218443",
+    "27889071"
+   ],
+   "evidence_hit": true,
+   "ms": 1538,
+   "tokens": 2325,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "248",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "1568684",
+    "23369842",
+    "5775033",
+    "25050364",
+    "14865329"
+   ],
+   "evidence_hit": true,
+   "ms": 1510,
+   "tokens": 1758,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "674",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "2095573",
+    "30981192",
+    "7662206",
+    "9814332",
+    "5612738"
+   ],
+   "evidence_hit": true,
+   "ms": 1535,
+   "tokens": 1889,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "540",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "17150648",
+    "11886686",
+    "2225918",
+    "45154987",
+    "306311"
+   ],
+   "evidence_hit": true,
+   "ms": 1274,
+   "tokens": 1357,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1144",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "10071552",
+    "9822397",
+    "3770750",
+    "12224536",
+    "6207111"
+   ],
+   "evidence_hit": true,
+   "ms": 1782,
+   "tokens": 2562,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1332",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "12705056",
+    "39264456",
+    "16488405",
+    "20722510",
+    "36386637"
+   ],
+   "evidence_hit": false,
+   "ms": 1417,
+   "tokens": 1799,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1204",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "31141365",
+    "3849194",
+    "16630060",
+    "15907458",
+    "6455142"
+   ],
+   "evidence_hit": true,
+   "ms": 1766,
+   "tokens": 1460,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "870",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "43220289",
+    "4345757",
+    "10463997",
+    "11630388",
+    "20606520"
+   ],
+   "evidence_hit": false,
+   "ms": 1600,
+   "tokens": 1966,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1019",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "1225513",
+    "11603066",
+    "196664003",
+    "4701662",
+    "7421677"
+   ],
+   "evidence_hit": true,
+   "ms": 1343,
+   "tokens": 1843,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "793",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "23403754",
+    "8551160",
+    "39381118",
+    "28249680",
+    "15836115"
+   ],
+   "evidence_hit": true,
+   "ms": 1281,
+   "tokens": 1270,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1226",
+   "gold": "unverified",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "11951999",
+    "2405259",
+    "11369420",
+    "24731248",
+    "33677323"
+   ],
+   "evidence_hit": false,
+   "ms": 1635,
+   "tokens": 1871,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "127",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "11048759",
+    "35231675",
+    "21598000",
+    "11181416",
+    "293661"
+   ],
+   "evidence_hit": true,
+   "ms": 1220,
+   "tokens": 1601,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "729",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "18038250",
+    "26851674",
+    "10279084",
+    "8133180",
+    "52873726"
+   ],
+   "evidence_hit": true,
+   "ms": 1475,
+   "tokens": 1726,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "48",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "13734012",
+    "18617259",
+    "27063470",
+    "11349166",
+    "24512064"
+   ],
+   "evidence_hit": true,
+   "ms": 1610,
+   "tokens": 1930,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1385",
+   "gold": "supported",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "306006",
+    "9283422",
+    "2825380",
+    "994800",
+    "11195653"
+   ],
+   "evidence_hit": true,
+   "ms": 1513,
+   "tokens": 1432,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1020",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "9433958",
+    "10559501",
+    "38376189",
+    "12885341",
+    "26731863"
+   ],
+   "evidence_hit": true,
+   "ms": 1510,
+   "tokens": 1543,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1303",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "12631697",
+    "14893425",
+    "40631095",
+    "43566999",
+    "8771704"
+   ],
+   "evidence_hit": true,
+   "ms": 1374,
+   "tokens": 2010,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "436",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "14637235",
+    "12588500",
+    "15659108",
+    "12086599",
+    "18038955"
+   ],
+   "evidence_hit": true,
+   "ms": 1997,
+   "tokens": 1534,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1335",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "27910499",
+    "27243019",
+    "20220731",
+    "33535222",
+    "43587663"
+   ],
+   "evidence_hit": true,
+   "ms": 1688,
+   "tokens": 1664,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "700",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "4350400",
+    "16557565",
+    "38675228",
+    "1669173",
+    "10504681"
+   ],
+   "evidence_hit": true,
+   "ms": 1693,
+   "tokens": 1394,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "549",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "9433958",
+    "44366096",
+    "30437264",
+    "15419873",
+    "24221369"
+   ],
+   "evidence_hit": true,
+   "ms": 1292,
+   "tokens": 1481,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1137",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "33370",
+    "5123516",
+    "12685434",
+    "18600579",
+    "22901758"
+   ],
+   "evidence_hit": true,
+   "ms": 1635,
+   "tokens": 1770,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "478",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "14767844",
+    "34854444",
+    "10562341",
+    "1605392",
+    "13283919"
+   ],
+   "evidence_hit": true,
+   "ms": 1541,
+   "tokens": 1518,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1272",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "7036529",
+    "23746332",
+    "24760136",
+    "13780287",
+    "19521501"
+   ],
+   "evidence_hit": false,
+   "ms": 1577,
+   "tokens": 1588,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "129",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "27768226",
+    "6477536",
+    "16979690",
+    "4688277",
+    "37578311"
+   ],
+   "evidence_hit": true,
+   "ms": 1658,
+   "tokens": 3213,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "514",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "16256507",
+    "9555784",
+    "4462079",
+    "22023404",
+    "3034412"
+   ],
+   "evidence_hit": true,
+   "ms": 1579,
+   "tokens": 2563,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "535",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "43417006",
+    "27428509",
+    "2138843",
+    "9288638",
+    "39368721"
+   ],
+   "evidence_hit": true,
+   "ms": 1158,
+   "tokens": 2927,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "913",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "23286603",
+    "25677651",
+    "56486733",
+    "25328476",
+    "23938319"
+   ],
+   "evidence_hit": false,
+   "ms": 1302,
+   "tokens": 2433,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "911",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "11254556",
+    "10666475",
+    "12130690",
+    "19843244",
+    "6625693"
+   ],
+   "evidence_hit": true,
+   "ms": 1391,
+   "tokens": 2327,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "784",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "2356950",
+    "6285534",
+    "23727313",
+    "23535770",
+    "16999023"
+   ],
+   "evidence_hit": true,
+   "ms": 1448,
+   "tokens": 1729,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "800",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "9291668",
+    "22543403",
+    "22264117",
+    "4679264",
+    "7988832"
+   ],
+   "evidence_hit": true,
+   "ms": 1323,
+   "tokens": 1613,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "50",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "12580014",
+    "25738896",
+    "39559521",
+    "18488986",
+    "13989491"
+   ],
+   "evidence_hit": true,
+   "ms": 1075,
+   "tokens": 1423,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "72",
+   "gold": "unverified",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "14419116",
+    "1031534",
+    "6076903",
+    "2139357",
+    "39291138"
+   ],
+   "evidence_hit": true,
+   "ms": 1548,
+   "tokens": 2640,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1021",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "9433958",
+    "10559501",
+    "26731863",
+    "12885341",
+    "38376189"
+   ],
+   "evidence_hit": true,
+   "ms": 1698,
+   "tokens": 1554,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1089",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "17628888",
+    "7915836",
+    "21948782",
+    "7645565",
+    "23577014"
+   ],
+   "evidence_hit": true,
+   "ms": 1308,
+   "tokens": 1524,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1216",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "24142891",
+    "17695748",
+    "20943272",
+    "7583725",
+    "16389141"
+   ],
+   "evidence_hit": true,
+   "ms": 1266,
+   "tokens": 1382,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1121",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "4456756",
+    "10790846",
+    "15590539",
+    "19571273",
+    "10009203"
+   ],
+   "evidence_hit": true,
+   "ms": 1672,
+   "tokens": 2070,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1146",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "13906581",
+    "12789595",
+    "21323587",
+    "2276126",
+    "16390264"
+   ],
+   "evidence_hit": true,
+   "ms": 1324,
+   "tokens": 2052,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "143",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "10582939",
+    "40164383",
+    "24101431",
+    "23915841",
+    "4416964"
+   ],
+   "evidence_hit": true,
+   "ms": 1570,
+   "tokens": 2767,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1194",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "11419230",
+    "24706198",
+    "5473074",
+    "22561064",
+    "15548965"
+   ],
+   "evidence_hit": true,
+   "ms": 1474,
+   "tokens": 1679,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "411",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "14924526",
+    "1410197",
+    "15889329",
+    "116792",
+    "23670644"
+   ],
+   "evidence_hit": true,
+   "ms": 1277,
+   "tokens": 2051,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "783",
+   "gold": "unverified",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "8246922",
+    "24338780",
+    "39084565",
+    "1386103",
+    "26731863"
+   ],
+   "evidence_hit": false,
+   "ms": 1719,
+   "tokens": 1652,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1370",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "2425364",
+    "21553394",
+    "23267371",
+    "17450673",
+    "3150030"
+   ],
+   "evidence_hit": true,
+   "ms": 1360,
+   "tokens": 2310,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "213",
+   "gold": "unverified",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "27054878",
+    "20887554",
+    "9846940",
+    "750781",
+    "21048969"
+   ],
+   "evidence_hit": false,
+   "ms": 1859,
+   "tokens": 2567,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "217",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "21366394",
+    "40608679",
+    "21363424",
+    "13636631",
+    "14311986"
+   ],
+   "evidence_hit": true,
+   "ms": 1769,
+   "tokens": 1427,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1100",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "21557614",
+    "7662206",
+    "24005548",
+    "22420524",
+    "30981192"
+   ],
+   "evidence_hit": true,
+   "ms": 1620,
+   "tokens": 1684,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1086",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "39281140",
+    "3981244",
+    "6112053",
+    "12039953",
+    "5691302"
+   ],
+   "evidence_hit": true,
+   "ms": 1618,
+   "tokens": 2663,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "569",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "23460562",
+    "3155731",
+    "37311371",
+    "5508750",
+    "21320417"
+   ],
+   "evidence_hit": true,
+   "ms": 1508,
+   "tokens": 1110,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1273",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "11041152",
+    "1889358",
+    "24555417",
+    "22405338",
+    "1684489"
+   ],
+   "evidence_hit": true,
+   "ms": 1631,
+   "tokens": 1807,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1262",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "44172171",
+    "42520882",
+    "28904104",
+    "25813706",
+    "8577229"
+   ],
+   "evidence_hit": true,
+   "ms": 1589,
+   "tokens": 1320,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1368",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "13312471",
+    "2425364",
+    "23267371",
+    "8856690",
+    "275294"
+   ],
+   "evidence_hit": true,
+   "ms": 1524,
+   "tokens": 2303,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "179",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "16322674",
+    "27123743",
+    "37480103",
+    "17450673",
+    "5487448"
+   ],
+   "evidence_hit": true,
+   "ms": 1574,
+   "tokens": 2405,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1319",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "16284655",
+    "14192687",
+    "2437807",
+    "12742164",
+    "18600579"
+   ],
+   "evidence_hit": true,
+   "ms": 1376,
+   "tokens": 1520,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "410",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "14924526",
+    "15889329",
+    "1410197",
+    "116792",
+    "29723642"
+   ],
+   "evidence_hit": true,
+   "ms": 1524,
+   "tokens": 1615,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1320",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "16284655",
+    "14192687",
+    "2437807",
+    "36637129",
+    "12742164"
+   ],
+   "evidence_hit": true,
+   "ms": 1657,
+   "tokens": 1831,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "785",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "54440",
+    "12471115",
+    "39285547",
+    "24979644",
+    "33904789"
+   ],
+   "evidence_hit": true,
+   "ms": 1250,
+   "tokens": 1948,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "589",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "10984005",
+    "1831916",
+    "25451374",
+    "4647303",
+    "5698494"
+   ],
+   "evidence_hit": true,
+   "ms": 1776,
+   "tokens": 2802,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1199",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "7454794",
+    "21557614",
+    "1287809",
+    "30981192",
+    "5698494"
+   ],
+   "evidence_hit": false,
+   "ms": 1998,
+   "tokens": 2053,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "113",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "6157837",
+    "1759213",
+    "25816994",
+    "14584755",
+    "27665523"
+   ],
+   "evidence_hit": true,
+   "ms": 1663,
+   "tokens": 2097,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "814",
+   "gold": "unverified",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "33387953",
+    "6363093",
+    "4396105",
+    "1836154",
+    "22036571"
+   ],
+   "evidence_hit": true,
+   "ms": 1583,
+   "tokens": 1955,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "141",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "14437255",
+    "6955746",
+    "10624000",
+    "38794814",
+    "23331269"
+   ],
+   "evidence_hit": true,
+   "ms": 1169,
+   "tokens": 1691,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "845",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "17741440",
+    "29399239",
+    "9878167",
+    "43054703",
+    "2236768"
+   ],
+   "evidence_hit": true,
+   "ms": 1333,
+   "tokens": 1326,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "13",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "1263446",
+    "7662395",
+    "4791384",
+    "17450673",
+    "26611834"
+   ],
+   "evidence_hit": false,
+   "ms": 1759,
+   "tokens": 2684,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "922",
+   "gold": "refuted",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "17077004",
+    "57121667",
+    "22227889",
+    "24596228",
+    "46353045"
+   ],
+   "evidence_hit": true,
+   "ms": 1671,
+   "tokens": 1806,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "198",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "2177022",
+    "13778710",
+    "5132358",
+    "7370282",
+    "40590358"
+   ],
+   "evidence_hit": true,
+   "ms": 1190,
+   "tokens": 2009,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1292",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "56893404",
+    "17656445",
+    "15663829",
+    "25599283",
+    "4886637"
+   ],
+   "evidence_hit": true,
+   "ms": 1748,
+   "tokens": 1985,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "904",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "7370282",
+    "2177022",
+    "8596357",
+    "18042803",
+    "2603304"
+   ],
+   "evidence_hit": true,
+   "ms": 1572,
+   "tokens": 1569,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "623",
+   "gold": "unverified",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "22843838",
+    "25599283",
+    "23267371",
+    "4462079",
+    "17000834"
+   ],
+   "evidence_hit": true,
+   "ms": 1152,
+   "tokens": 1705,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "781",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "24338780",
+    "8246922",
+    "40632104",
+    "39084565",
+    "6270720"
+   ],
+   "evidence_hit": true,
+   "ms": 1135,
+   "tokens": 1806,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "756",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "27134527",
+    "17919731",
+    "2831620",
+    "8646760",
+    "3230361"
+   ],
+   "evidence_hit": true,
+   "ms": 1577,
+   "tokens": 1551,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "491",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "56893404",
+    "834336",
+    "24521894",
+    "13450938",
+    "8524891"
+   ],
+   "evidence_hit": true,
+   "ms": 1596,
+   "tokens": 1779,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "839",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "1469751",
+    "6219790",
+    "17327939",
+    "8182950",
+    "13923069"
+   ],
+   "evidence_hit": true,
+   "ms": 1398,
+   "tokens": 1511,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1130",
+   "gold": "refuted",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "17997584",
+    "14644164",
+    "38830961",
+    "4391121",
+    "2462673"
+   ],
+   "evidence_hit": true,
+   "ms": 1573,
+   "tokens": 1825,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1274",
+   "gold": "supported",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "7481159",
+    "27731651",
+    "4406819",
+    "22632303",
+    "7145763"
+   ],
+   "evidence_hit": true,
+   "ms": 1611,
+   "tokens": 1724,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1088",
+   "gold": "refuted",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "37549932",
+    "41548287",
+    "4323425",
+    "11900630",
+    "14863011"
+   ],
+   "evidence_hit": true,
+   "ms": 1484,
+   "tokens": 1759,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1014",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "6277638",
+    "1227277",
+    "1910120",
+    "15615957",
+    "17195001"
+   ],
+   "evidence_hit": true,
+   "ms": 1641,
+   "tokens": 1489,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "238",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "2000038",
+    "4463811",
+    "12014458",
+    "23017040",
+    "2251426"
+   ],
+   "evidence_hit": true,
+   "ms": 1574,
+   "tokens": 1269,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1270",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "13900610",
+    "14843502",
+    "34227917",
+    "20491205",
+    "1102268"
+   ],
+   "evidence_hit": true,
+   "ms": 1572,
+   "tokens": 2132,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "295",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "29423324",
+    "20310709",
+    "24044977",
+    "1022115",
+    "22791348"
+   ],
+   "evidence_hit": true,
+   "ms": 1414,
+   "tokens": 1569,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "75",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "4387784",
+    "13965483",
+    "37768883",
+    "25657127",
+    "2837758"
+   ],
+   "evidence_hit": true,
+   "ms": 1707,
+   "tokens": 1991,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "721",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "1834762",
+    "12670680",
+    "32454714",
+    "6723450",
+    "35149431"
+   ],
+   "evidence_hit": true,
+   "ms": 1410,
+   "tokens": 1877,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "834",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "23100962",
+    "23122306",
+    "8536018",
+    "32985041",
+    "13823200"
+   ],
+   "evidence_hit": false,
+   "ms": 1741,
+   "tokens": 1539,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "171",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "12670680",
+    "14938990",
+    "28149602",
+    "28015516",
+    "5448119"
+   ],
+   "evidence_hit": true,
+   "ms": 1172,
+   "tokens": 1803,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "552",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "1471041",
+    "27772649",
+    "14340571",
+    "21060008",
+    "11415809"
+   ],
+   "evidence_hit": true,
+   "ms": 1586,
+   "tokens": 2013,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1140",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "12009265",
+    "4500832",
+    "25513319",
+    "12074066",
+    "7005276"
+   ],
+   "evidence_hit": true,
+   "ms": 1456,
+   "tokens": 2350,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "716",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "13290521",
+    "6828370",
+    "17544977",
+    "9159495",
+    "19358586"
+   ],
+   "evidence_hit": false,
+   "ms": 1449,
+   "tokens": 1490,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "56",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "4709641",
+    "22185730",
+    "6492658",
+    "4459491",
+    "11659421"
+   ],
+   "evidence_hit": true,
+   "ms": 1723,
+   "tokens": 1765,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "830",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "6717533",
+    "52873726",
+    "1897324",
+    "4324278",
+    "8417211"
+   ],
+   "evidence_hit": true,
+   "ms": 1720,
+   "tokens": 1580,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "593",
+   "gold": "supported",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "19675911",
+    "31889025",
+    "13481731",
+    "33533307",
+    "20945963"
+   ],
+   "evidence_hit": true,
+   "ms": 1504,
+   "tokens": 2138,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "5",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "13734012",
+    "18617259",
+    "21550246",
+    "5850219",
+    "27063470"
+   ],
+   "evidence_hit": true,
+   "ms": 1376,
+   "tokens": 2424,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "124",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "4883040",
+    "7111021",
+    "31363207",
+    "21479231",
+    "13899137"
+   ],
+   "evidence_hit": true,
+   "ms": 1758,
+   "tokens": 2951,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "597",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "36355784",
+    "12779444",
+    "25742130",
+    "46695481",
+    "76415938"
+   ],
+   "evidence_hit": true,
+   "ms": 1571,
+   "tokens": 2471,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "551",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "8903143",
+    "5914739",
+    "34905328",
+    "2825380",
+    "9283422"
+   ],
+   "evidence_hit": false,
+   "ms": 1627,
+   "tokens": 1574,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "587",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "16999023",
+    "7142113",
+    "40558887",
+    "42855554",
+    "39048693"
+   ],
+   "evidence_hit": true,
+   "ms": 1410,
+   "tokens": 1595,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "613",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "9638032",
+    "16056410",
+    "33911859",
+    "1964163",
+    "21598000"
+   ],
+   "evidence_hit": true,
+   "ms": 1588,
+   "tokens": 1597,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "300",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "16120395",
+    "3553087",
+    "15551129",
+    "4421742",
+    "6828370"
+   ],
+   "evidence_hit": true,
+   "ms": 1654,
+   "tokens": 1599,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "237",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "12881593",
+    "4942718",
+    "34386619",
+    "12824568",
+    "24706198"
+   ],
+   "evidence_hit": true,
+   "ms": 1274,
+   "tokens": 1891,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1012",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "9745001",
+    "26026009",
+    "6751418",
+    "43122426",
+    "37912677"
+   ],
+   "evidence_hit": true,
+   "ms": 1538,
+   "tokens": 2301,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "718",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "17587795",
+    "175735",
+    "4392608",
+    "3174305",
+    "18670"
+   ],
+   "evidence_hit": true,
+   "ms": 1503,
+   "tokens": 1649,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "536",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "16056514",
+    "11886686",
+    "41911192",
+    "22545779",
+    "36637129"
+   ],
+   "evidence_hit": true,
+   "ms": 1703,
+   "tokens": 1700,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "811",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "19799455",
+    "23868856",
+    "13277039",
+    "36357627",
+    "41133176"
+   ],
+   "evidence_hit": true,
+   "ms": 1690,
+   "tokens": 2078,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "971",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "27873158",
+    "27446873",
+    "28617573",
+    "46695481",
+    "9764256"
+   ],
+   "evidence_hit": true,
+   "ms": 1649,
+   "tokens": 4116,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "452",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "9154703",
+    "4378885",
+    "11411060",
+    "12804937",
+    "1669173"
+   ],
+   "evidence_hit": true,
+   "ms": 1431,
+   "tokens": 1482,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1336",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "27910499",
+    "27243019",
+    "20220731",
+    "33535222",
+    "43587663"
+   ],
+   "evidence_hit": true,
+   "ms": 1112,
+   "tokens": 1664,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "759",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "1805641",
+    "3929361",
+    "12409683",
+    "18074797",
+    "10617916"
+   ],
+   "evidence_hit": true,
+   "ms": 1467,
+   "tokens": 2612,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "702",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "16557565",
+    "4350400",
+    "38675228",
+    "10504681",
+    "19950357"
+   ],
+   "evidence_hit": true,
+   "ms": 1414,
+   "tokens": 1430,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "236",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "4388470",
+    "41380943",
+    "12232678",
+    "28390999",
+    "5597586"
+   ],
+   "evidence_hit": true,
+   "ms": 1244,
+   "tokens": 1933,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "539",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "13282296",
+    "21472388",
+    "24921368",
+    "11953232",
+    "14682243"
+   ],
+   "evidence_hit": true,
+   "ms": 1364,
+   "tokens": 2593,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "956",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "6061927",
+    "31107919",
+    "3127341",
+    "12956194",
+    "20829129"
+   ],
+   "evidence_hit": true,
+   "ms": 1512,
+   "tokens": 1827,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1298",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "11718220",
+    "34338075",
+    "20554003",
+    "79231308",
+    "7873737"
+   ],
+   "evidence_hit": true,
+   "ms": 1590,
+   "tokens": 2193,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "637",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "25649714",
+    "6129301",
+    "24318630",
+    "73473433",
+    "31019903"
+   ],
+   "evidence_hit": true,
+   "ms": 1836,
+   "tokens": 1454,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "820",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "4465762",
+    "35448676",
+    "8712839",
+    "18467982",
+    "5116145"
+   ],
+   "evidence_hit": false,
+   "ms": 1707,
+   "tokens": 1434,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "350",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "16927286",
+    "23342686",
+    "30261663",
+    "13552682",
+    "12149169"
+   ],
+   "evidence_hit": true,
+   "ms": 1224,
+   "tokens": 1435,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1150",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "11369420",
+    "10795340",
+    "9478135",
+    "6374918",
+    "8427306"
+   ],
+   "evidence_hit": true,
+   "ms": 1508,
+   "tokens": 1723,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1339",
+   "gold": "refuted",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "15482274",
+    "52874170",
+    "16495649",
+    "997143",
+    "45276789"
+   ],
+   "evidence_hit": true,
+   "ms": 1337,
+   "tokens": 2069,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "859",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "1982286",
+    "22049489",
+    "12315072",
+    "15832146",
+    "24624992"
+   ],
+   "evidence_hit": true,
+   "ms": 1097,
+   "tokens": 1660,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1279",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "11335781",
+    "1454773",
+    "4468861",
+    "49432306",
+    "21009874"
+   ],
+   "evidence_hit": true,
+   "ms": 1443,
+   "tokens": 1955,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "775",
+   "gold": "unverified",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "11569583",
+    "27635177",
+    "31293581",
+    "12552297",
+    "43014661"
+   ],
+   "evidence_hit": false,
+   "ms": 1416,
+   "tokens": 1591,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "386",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "16495649",
+    "21260231",
+    "42404093",
+    "38799797",
+    "39300105"
+   ],
+   "evidence_hit": true,
+   "ms": 1085,
+   "tokens": 1865,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1221",
+   "gold": "refuted",
+   "predicted": "unverified",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "19736671",
+    "1836154",
+    "470625",
+    "4489217",
+    "8208212"
+   ],
+   "evidence_hit": true,
+   "ms": 1284,
+   "tokens": 1785,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1180",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "2566674",
+    "44366096",
+    "16058322",
+    "31272411",
+    "14474178"
+   ],
+   "evidence_hit": true,
+   "ms": 1543,
+   "tokens": 1980,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "598",
+   "gold": "refuted",
+   "predicted": "refuted",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "36355784",
+    "25742130",
+    "27446873",
+    "46695481",
+    "28617573"
+   ],
+   "evidence_hit": true,
+   "ms": 1373,
+   "tokens": 2695,
+   "reasoning": 0
+  },
+  {
+   "claim_id": "1352",
+   "gold": "supported",
+   "predicted": "supported",
+   "status": "ok",
+   "error": null,
+   "doc_ids": [
+    "12885341",
+    "10559501",
+    "38376189",
+    "34287602",
+    "11016410"
+   ],
+   "evidence_hit": true,
+   "ms": 1175,
+   "tokens": 1821,
+   "reasoning": 0
+  }
+ ]
+}

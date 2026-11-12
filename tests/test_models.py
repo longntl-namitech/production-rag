@@ -1,7 +1,7 @@
 import pytest
 from pydantic import ValidationError
 
-from retrieval_playbook.models import SearchRequest
+from production_rag.core.models import SearchRequest
 
 
 def test_request_defaults_to_one_default_spec():

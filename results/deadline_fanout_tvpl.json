@@ -1,0 +1,8884 @@
+{
+ "meta": {
+  "dataset": "tvpl",
+  "date": "2026-11-11",
+  "queries": 200,
+  "base": "hybrid_rrf",
+  "specs": [
+   {
+    "name": "dense",
+    "k": 10,
+    "search_type": "dense",
+    "filter": {}
+   },
+   {
+    "name": "sparse",
+    "k": 10,
+    "search_type": "sparse",
+    "filter": {}
+   },
+   {
+    "name": "hybrid_rerank",
+    "k": 10,
+    "search_type": "hybrid",
+    "filter": {},
+    "rerank": true
+   }
+  ],
+  "deadlines_ms": [
+   2000,
+   500,
+   150
+  ],
+  "cpu": "arm, 10 cores",
+  "one_query_at_a_time": true
+ },
+ "summary": {
+  "2000": {
+   "queries": 200,
+   "p50_ms": 366,
+   "p95_ms": 382,
+   "all_ok": 1.0,
+   "partial": 0.0,
+   "expired": 0.0,
+   "rerank_ok": 1.0,
+   "rerank_skipped": 0.0,
+   "rerank_failed": 0.0
+  },
+  "500": {
+   "queries": 200,
+   "p50_ms": 364,
+   "p95_ms": 377,
+   "all_ok": 1.0,
+   "partial": 0.0,
+   "expired": 0.0,
+   "rerank_ok": 1.0,
+   "rerank_skipped": 0.0,
+   "rerank_failed": 0.0
+  },
+  "150": {
+   "queries": 200,
+   "p50_ms": 22,
+   "p95_ms": 26,
+   "all_ok": 1.0,
+   "partial": 0.0,
+   "expired": 0.0,
+   "rerank_ok": 0.0,
+   "rerank_skipped": 1.0,
+   "rerank_failed": 0.0
+  },
+  "sequential": {
+   "queries": 200,
+   "p50_ms": 377,
+   "p95_ms": 390,
+   "all_ok": 1.0,
+   "partial": 0.0,
+   "expired": 0.0,
+   "rerank_ok": 1.0,
+   "rerank_skipped": 0.0,
+   "rerank_failed": 0.0
+  }
+ },
+ "per_query": [
+  {
+   "deadline": 2000,
+   "ms": 453.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 367.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 386.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 384.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 362.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 19.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 378.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 394.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 365.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 375.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 399.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 379.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 24.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 385.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 382.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 366.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 378.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 376.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 388.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 20.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 376.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 370.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 358.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 20.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 364.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 392.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 387.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 390.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 372.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 356.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 370.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 373.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 357.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 373.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 370.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 361.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 374.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 387.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 369.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 24.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 382.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 382.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 365.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 380.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 366.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 356.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 369.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 357.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 350.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 19.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 364.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 364.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 361.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 19.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 376.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 377.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 362.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 19.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 376.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 368.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 360.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 25.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 376.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 363.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 357.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 372.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 363.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 357.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 370.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 372.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 362.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 24.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 381.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 368.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 360.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 383.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 363.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 354.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 20.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 369.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 360.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 358.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 20.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 371.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 365.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 360.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 375.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 359.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 357.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 20.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 372.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 367.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 361.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 27.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 376.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 374.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 370.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 24.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 384.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 375.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 371.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 385.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 356.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 351.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 20.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 362.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 363.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 362.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 372.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 367.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 363.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 381.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 366.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 357.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 20.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 378.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 356.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 361.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 24.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 375.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 362.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 356.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 371.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 366.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 364.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 376.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 382.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 374.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 24.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 386.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 298.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 295.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 20.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 306.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 361.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 358.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 24.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 371.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 375.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 375.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 382.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 373.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 376.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 20.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 387.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 354.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 353.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 18.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 365.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 369.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 367.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 20.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 381.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 371.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 366.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 378.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 372.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 366.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 380.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 366.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 379.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 378.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 357.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 357.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 20.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 361.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 365.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 366.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 33.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 389.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 364.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 359.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 371.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 365.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 360.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 376.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 365.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 365.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 380.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 374.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 370.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 26.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 384.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 350.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 360.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 25.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 376.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 364.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 363.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 26.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 378.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 360.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 353.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 367.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 359.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 357.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 369.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 362.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 358.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 368.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 378.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 374.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 385.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 367.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 364.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 25.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 388.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 359.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 370.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 385.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 370.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 366.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 375.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 368.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 365.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 380.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 360.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 354.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 27.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 371.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 388.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 382.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 395.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 361.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 361.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 376.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 364.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 363.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 374.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 367.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 363.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 376.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 367.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 361.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 373.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 380.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 374.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 387.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 371.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 366.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 25.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 381.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 373.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 368.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 24.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 382.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 371.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 371.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 388.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 365.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 365.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 380.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 372.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 366.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 385.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 374.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 367.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 25.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 382.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 366.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 367.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 381.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 365.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 361.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 373.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 365.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 356.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 375.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 361.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 352.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 20.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 371.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 374.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 367.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 386.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 368.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 365.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 375.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 361.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 363.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 376.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 369.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 370.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 380.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 366.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 369.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 382.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 358.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 355.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 20.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 368.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 367.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 365.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 377.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 356.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 351.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 366.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 371.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 367.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 382.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 373.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 373.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 20.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 385.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 370.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 365.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 377.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 362.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 357.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 368.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 357.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 357.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 371.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 376.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 379.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 383.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 362.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 357.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 380.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 375.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 374.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 20.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 388.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 369.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 376.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 382.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 358.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 362.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 372.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 376.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 379.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 388.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 356.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 356.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 20.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 369.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 362.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 361.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 24.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 379.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 375.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 372.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 389.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 364.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 362.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 373.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 376.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 376.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 386.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 357.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 356.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 20.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 371.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 350.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 350.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 363.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 362.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 364.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 372.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 361.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 362.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 25.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 379.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 379.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 372.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 388.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 368.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 367.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 24.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 378.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 375.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 368.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 378.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 354.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 347.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 19.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 364.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 366.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 372.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 26.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 385.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 361.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 368.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 408.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 374.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 374.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 25.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 386.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 377.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 368.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 382.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 370.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 365.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 384.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 364.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 366.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 373.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 362.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 362.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 375.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 363.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 365.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 375.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 372.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 367.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 381.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 371.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 365.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 381.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 363.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 363.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 20.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 371.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 369.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 368.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 381.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 363.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 364.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 374.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 367.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 361.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 372.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 363.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 361.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 15.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 368.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 380.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 374.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 395.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 360.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 357.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 19.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 361.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 369.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 366.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 24.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 383.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 367.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 366.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 379.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 382.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 372.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 24.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 391.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 361.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 357.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 373.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 362.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 358.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 379.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 356.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 355.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 20.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 372.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 376.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 369.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 384.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 368.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 369.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 380.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 358.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 362.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 19.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 374.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 371.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 370.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 24.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 382.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 371.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 363.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 377.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 369.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 365.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 25.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 380.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 381.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 379.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 24.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 399.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 364.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 364.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 379.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 365.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 365.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 380.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 365.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 368.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 380.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 365.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 364.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 379.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 372.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 365.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 378.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 365.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 364.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 20.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 379.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 367.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 363.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 377.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 379.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 377.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 391.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 367.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 364.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 384.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 361.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 360.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 19.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 370.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 353.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 349.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 363.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 369.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 367.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 383.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 359.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 365.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 376.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 368.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 374.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 377.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 366.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 361.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 373.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 366.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 364.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 19.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 382.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 356.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 356.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 370.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 359.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 360.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 371.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 365.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 365.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 383.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 361.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 360.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 373.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 360.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 359.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 376.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 375.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 363.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 375.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 287.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 285.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 300.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 391.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 377.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 41.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 425.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 365.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 366.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 398.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 438.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 371.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 380.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 376.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 361.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 20.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 373.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 353.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 347.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 20.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 358.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 366.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 368.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 380.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 363.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 360.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 28.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 373.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 371.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 370.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 27.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 388.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 362.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 359.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 372.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 364.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 366.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 375.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 363.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 364.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 18.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 372.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 370.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 365.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 371.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 365.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 371.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 24.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 375.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 372.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 366.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 24.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 376.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 372.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 371.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 24.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 393.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 335.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 328.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 346.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 363.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 359.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 370.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 360.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 363.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 379.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 367.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 362.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 376.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 363.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 360.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 17.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 371.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 359.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 355.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 19.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 366.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 361.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 355.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 368.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 365.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 364.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 24.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 372.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 373.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 364.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 381.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 361.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 359.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 369.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 372.9,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 367.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 387.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 369.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 367.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 380.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 373.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 375.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 24.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 377.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 368.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 367.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 26.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 375.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 368.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 364.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 376.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 363.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 363.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 22.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 381.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 361.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 363.1,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 373.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 365.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 366.6,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 23.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 381.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 370.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 375.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 24.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 380.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 364.8,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 364.5,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 25.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 375.2,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 2000,
+   "ms": 362.3,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 500,
+   "ms": 359.0,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  },
+  {
+   "deadline": 150,
+   "ms": 21.7,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "skipped_budget"
+  },
+  {
+   "deadline": "sequential",
+   "ms": 372.4,
+   "expired": false,
+   "status": {
+    "dense": "ok",
+    "sparse": "ok",
+    "hybrid_rerank": "ok"
+   },
+   "rerank": "ok"
+  }
+ ]
+}
