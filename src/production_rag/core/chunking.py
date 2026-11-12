@@ -108,6 +108,8 @@ def markdown_section_chunks(markdown: str, size: int, overlap: int = 0) -> list[
     """Chunk each ATX-heading section, prefixing every chunk with its heading path."""
     if size <= 0:
         raise ValueError("size must be positive")
+    if not 0 <= overlap < size:
+        raise ValueError("overlap must satisfy 0 <= overlap < size")
     sections: list[tuple[list[str], list[str]]] = [([], [])]
     stack: list[tuple[int, str]] = []
     fenced = False
@@ -154,8 +156,10 @@ def chunk_documents(
         args: tuple[int, ...] = (size,)
     elif strategy == "recursive":
         split, args = recursive_chunks, (size, overlap)
-    else:
+    elif strategy == "markdown":
         split, args = markdown_section_chunks, (size, overlap)
+    else:
+        raise ValueError(f"unknown chunking strategy: {strategy!r}")
     return [
         Chunk(doc_id, i, piece, title)
         for doc_id, (title, text) in docs.items()

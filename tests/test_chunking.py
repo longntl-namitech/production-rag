@@ -92,3 +92,24 @@ def test_chunk_documents_strategies():
     assert {c.title for c in rec} == {"T"}
     with pytest.raises(ValueError):
         chunk_documents(docs, 100, overlap=20)
+
+
+def test_unknown_strategy_raises():
+    with pytest.raises(ValueError):
+        chunk_documents({"d": (None, "a b")}, 100, strategy="nope")
+
+
+def test_markdown_validates_arguments_even_without_body():
+    with pytest.raises(ValueError):
+        markdown_section_chunks("# only a heading", 0)
+    with pytest.raises(ValueError):
+        markdown_section_chunks("# only a heading", 100, overlap=100)
+
+
+def test_markdown_heading_path_falls_back_to_last_heading():
+    long_a = "A" * 60
+    md = f"# {long_a}\n\n## B\n\nbody text\n"
+    out = markdown_section_chunks(md, 150)
+    assert out == ["B\nbody text"]
+    with pytest.raises(ValueError):
+        markdown_section_chunks(md, 100)
