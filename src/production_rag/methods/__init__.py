@@ -13,6 +13,7 @@ METHOD_NAMES: tuple[str, ...] = (
     "multi_query",
     "context_expansion",
     "deadline_fanout",
+    "parse_and_chunk",
 )
 
 

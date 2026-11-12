@@ -20,6 +20,19 @@ def table(summary: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def chunk_table(stats: dict[str, Any]) -> str:
+    lines = [
+        "| Collection | Chunker | Size | Overlap | Chunks | Mean chars |",
+        "|---|---|---|---|---|---|",
+    ]
+    for name, s in stats.items():
+        lines.append(
+            f"| `{name}` | {s['chunker']} | {s['size']} | {s['overlap']} "
+            f"| {s['chunks']} | {s['mean_chars']} |"
+        )
+    return "\n".join(lines)
+
+
 ANSWER_COLUMNS = [
     "Correctness",
     "Faithfulness",
@@ -101,7 +114,14 @@ def main(path: str) -> None:
         f"rerank `{meta['cross_encoder']}` over the top {meta['k']}. "
         "Latency is in-process on CPU, one query at a time.\n\n"
     )
-    if meta.get("chunks"):
+    if meta.get("chunk_stats"):
+        header += (
+            "Chunked variants search their own collections; a document counts once, at its "
+            "best chunk, so recall@100 counts the documents in the top 100 chunks.\n\n"
+            + chunk_table(meta["chunk_stats"])
+            + "\n\n"
+        )
+    elif meta.get("chunks"):
         header += (
             f"`naive_rag` searches {_chunk_count(meta['chunks'])} chunks of up to 800 characters; "
             "a document counts once, at its best chunk, so recall@100 counts the documents "

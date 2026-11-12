@@ -15,6 +15,8 @@ from production_rag.methods.dense import pipeline as dense
 from production_rag.methods.hybrid_fusion import pipeline as hybrid_fusion
 from production_rag.methods.multi_query import pipeline as multi_query
 from production_rag.methods.naive_rag import pipeline as naive_rag
+from production_rag.methods.parse_and_chunk import pipeline as parse_and_chunk
+from production_rag.methods.parse_and_chunk.parsers import MissingExtra, Parsed
 
 V010 = [
     "dense",
@@ -26,11 +28,26 @@ V010 = [
     "hybrid_weighted_rrf",
     "hybrid_rrf_rerank",
 ]
+CHUNKING = ["chunk_recursive_800", "chunk_recursive_800_o200", "chunk_recursive_400"]
 
 
 def test_variant_names_match_v010_in_order():
     names = list(all_variants())
-    assert names[0] == "naive_rag" and names[1:] == V010
+    assert names[0] == "naive_rag" and names[1:9] == V010 and names[9:] == CHUNKING
+
+
+def test_chunking_variants_config():
+    got = [
+        (v.chunker, v.chunk_chars, v.chunk_overlap, v.legs, v.fusion)
+        for v in parse_and_chunk.VARIANTS.values()
+    ]
+    dense = (("dense",), "none")
+    assert got == [
+        ("recursive", 800, 0, *dense),
+        ("recursive", 800, 200, *dense),
+        ("recursive", 400, 0, *dense),
+    ]
+    assert parse_and_chunk.DEFAULT == "chunk_recursive_800"
 
 
 def test_weighted_rrf_has_two_weights():
@@ -141,3 +158,43 @@ async def test_naive_rag_answer_uses_top_k_passages(deps):
     out = await naive_rag.answer("solar panels", "c", deps, llm, k=2)
     assert out.text == "solar panels" and len(out.rows) == 2 and len(llm.calls) == 1
     assert "solar panels on roofs" in llm.calls[0][-1]["content"]
+
+
+async def test_index_files_skips_and_reports(deps, tmp_path):
+    (tmp_path / "a.md").write_text("# Leave\n\nAnnual leave is twelve days.")
+    (tmp_path / "b.doc").write_bytes(b"x")
+    (tmp_path / "c.md").write_text("")
+    rep = await parse_and_chunk.index_files(deps, "files", sorted(tmp_path.iterdir()))
+    assert rep.files == 2 and rep.chunks == 1
+    assert "LibreOffice" in rep.skipped[str(tmp_path / "b.doc")]
+    hit = (await parse_and_chunk.search("annual leave", "files", deps, k=1)).rows[0]
+    assert hit.title == "Leave" and hit.text.startswith("Leave\n")
+
+
+async def test_index_files_title_falls_back_to_file_name(deps, tmp_path):
+    (tmp_path / "plain.md").write_text("Annual leave is twelve days.")
+    await parse_and_chunk.index_files(deps, "files", [tmp_path / "plain.md"])
+    hit = (await parse_and_chunk.search("annual leave", "files", deps, k=1)).rows[0]
+    assert hit.title == "plain.md" and hit.doc_id == str(tmp_path / "plain.md")
+
+
+async def test_index_files_reports_parse_errors_and_no_text(deps, tmp_path, monkeypatch):
+    def fake_parse(path):
+        if path.name == "bad.md":
+            raise RuntimeError("boom")
+        return Parsed("", "pdf", 1, ("no_text",))
+
+    monkeypatch.setattr(parse_and_chunk, "parse_file", fake_parse)
+    paths = [tmp_path / "bad.md", tmp_path / "scan.md"]
+    rep = await parse_and_chunk.index_files(deps, "files", paths)
+    assert rep.files == 0 and rep.chunks == 0
+    assert rep.failed == {str(paths[0]): "RuntimeError", str(paths[1]): "no_text"}
+
+
+async def test_index_files_missing_extra_propagates(deps, tmp_path, monkeypatch):
+    def fake_parse(path):
+        raise MissingExtra("html needs the parse extra: uv sync --extra parse")
+
+    monkeypatch.setattr(parse_and_chunk, "parse_file", fake_parse)
+    with pytest.raises(MissingExtra, match="parse extra"):
+        await parse_and_chunk.index_files(deps, "files", [tmp_path / "x.html"])

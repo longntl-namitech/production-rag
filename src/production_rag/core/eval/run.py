@@ -42,7 +42,32 @@ RERANK_BASELINE = {"hybrid_rrf_rerank": "hybrid_rrf"}
 def collection_for(dataset: str, method: MethodConfig) -> str:
     if method.chunk_chars is None:
         return f"eval-{dataset}"
-    return f"eval-{dataset}-c{method.chunk_chars}"
+    if method.chunker == "fixed":
+        return f"eval-{dataset}-c{method.chunk_chars}"
+    overlap = f"o{method.chunk_overlap}" if method.chunk_overlap else ""
+    return f"eval-{dataset}-{method.chunker[0]}{method.chunk_chars}{overlap}"
+
+
+def chunks_for(corpus: dict[str, tuple[str | None, str]], method: MethodConfig) -> list[Chunk]:
+    """The chunks of a method's collection: whole documents when it has no chunk size."""
+    if method.chunk_chars is None:
+        return [Chunk(doc_id, 0, text, title) for doc_id, (title, text) in corpus.items()]
+    return chunk_documents(
+        corpus,
+        method.chunk_chars,
+        strategy=method.chunker,
+        overlap=method.chunk_overlap,
+    )
+
+
+def chunk_stat(method: MethodConfig, chunks: list[Chunk]) -> dict[str, Any]:
+    return {
+        "chunker": method.chunker,
+        "size": method.chunk_chars,
+        "overlap": method.chunk_overlap,
+        "chunks": len(chunks),
+        "mean_chars": round(sum(len(c.text) for c in chunks) / len(chunks)) if chunks else 0,
+    }
 
 
 def doc_ranking(rows: list[Row]) -> list[str]:
@@ -110,17 +135,21 @@ async def main() -> None:
     methods = {name: get_variant(name) for name in args.methods}
     collections = {name: collection_for(ds.name, m) for name, m in methods.items()}
     chunk_counts: dict[str, int] = {}
-    for coll, size in {collections[n]: m.chunk_chars for n, m in methods.items()}.items():
+    chunk_stats: dict[str, dict[str, Any]] = {}
+    done: set[str] = set()
+    for name, method in methods.items():
+        coll = collections[name]
+        if coll in done:
+            continue
+        done.add(coll)
         started = time.perf_counter()
-        if size is None:
-            chunks = [Chunk(doc_id, 0, text, title) for doc_id, (title, text) in ds.corpus.items()]
-        else:
-            chunks = chunk_documents(ds.corpus, size)
+        chunks = chunks_for(ds.corpus, method)
         count = await index_chunks(deps, coll, chunks)
         took = time.perf_counter() - started
-        if size is not None:
+        if method.chunk_chars is not None:
             chunk_counts[coll] = count
-        print(f"{coll}: {count} {'docs' if size is None else 'chunks'} ({took:.0f}s)")
+            chunk_stats[coll] = chunk_stat(method, chunks)
+        print(f"{coll}: {count} {'docs' if method.chunk_chars is None else 'chunks'} ({took:.0f}s)")
     print(f"{len(ds.corpus)} documents, {len(ds.queries)} queries")
 
     await warm_up(deps)
@@ -173,6 +202,7 @@ async def main() -> None:
     }
     if chunk_counts:
         meta["chunks"] = chunk_counts
+        meta["chunk_stats"] = chunk_stats
     for row in rows:
         row.pop("rel")
     RESULTS.mkdir(exist_ok=True)
