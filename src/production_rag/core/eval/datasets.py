@@ -17,18 +17,36 @@ Answer datasets (question, gold answer, corpus):
   `ngữ cảnh <n>:`; the corpus is every unique passage across all rows.
   Checked 2026-11-11: no Vietnamese legal VLQA release exists (the only Hugging Face hit is
   the unrelated `yyyyifan/VLQA`), so vi_RAG stays the Vietnamese answer dataset.
+
+Claim labels (fact-check eval):
+
+- SciFact claims come from the release tarball that `allenai/scifact`'s loading script
+  downloads (`data/claims_dev.jsonl`). It is used directly because `datasets` 5.x does not
+  run loading scripts. Licence: CC BY-NC 2.0 per the `allenai/scifact` card. Downloaded at
+  runtime, never committed.
+- Labels map SUPPORT -> supported, CONTRADICT -> refuted, no evidence -> unverified. The dev
+  split has 124 supported, 64 refuted and 112 unverified claims (300 in all).
+- The dev claim ids are the BEIR SciFact test queries.
 """
 
 import hashlib
+import json
 import random
 import re
+import tarfile
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Literal
+
+from production_rag.core.eval.download import fetch
 
 DEFAULT_QUERY_LIMIT = {"scifact": None, "tvpl": 1000}
 ANSWER_DATASETS = ("mini_wiki", "vi_legal")
 DEFAULT_SAMPLE = {"mini_wiki": 150, "vi_legal": 100}
 _CONTEXT_PREFIX = re.compile(r"^\s*ngữ cảnh\s*\d+\s*:\s*")
+SCIFACT_URL = "https://scifact.s3-us-west-2.amazonaws.com/release/latest/data.tar.gz"
+SCIFACT_SHA256 = "11c621288d41ac144d29b13b0f8503b3820b7d6e8b1f6ff24dff335c196d76be"
+LABEL_MAP = {"SUPPORT": "supported", "CONTRADICT": "refuted"}
 
 
 @dataclass
@@ -146,3 +164,50 @@ def load_answer_dataset(
         questions = {qid: questions[qid] for qid in keep}
         gold = {qid: gold[qid] for qid in keep}
     return AnswerDataset(name, corpus, questions, gold)
+
+
+@dataclass
+class ClaimDataset:
+    claims: dict[str, str]
+    labels: dict[str, str]
+    gold_docs: dict[str, list[str]]
+
+
+def claim_label(evidence: dict) -> str:
+    labels = {item["label"] for rationales in evidence.values() for item in rationales}
+    if not labels:
+        return "unverified"
+    if len(labels) > 1:
+        raise ValueError(f"mixed evidence labels: {sorted(labels)}")
+    return LABEL_MAP[labels.pop()]
+
+
+def read_claims(tar_path: Path, split: str = "dev") -> ClaimDataset:
+    name = f"data/claims_{split}.jsonl"
+    with tarfile.open(tar_path) as tar:
+        member = tar.extractfile(name)
+        if member is None:
+            raise ValueError(f"{name} not found in {tar_path}")
+        rows = [json.loads(line) for line in member.read().decode().splitlines() if line.strip()]
+    claims: dict[str, str] = {}
+    labels: dict[str, str] = {}
+    gold_docs: dict[str, list[str]] = {}
+    for row in rows:
+        cid = str(row["id"])
+        claims[cid] = row["claim"]
+        labels[cid] = claim_label(row["evidence"])
+        docs = list(row["evidence"]) or row["cited_doc_ids"]
+        gold_docs[cid] = [str(d) for d in docs]
+    return ClaimDataset(claims, labels, gold_docs)
+
+
+def load_claims(sample: int | None = None, seed: int = 13) -> ClaimDataset:
+    ds = read_claims(fetch(SCIFACT_URL, sha256=SCIFACT_SHA256), "dev")
+    if sample is None:
+        return ds
+    keep = sample_ids(list(ds.claims), sample, seed)
+    return ClaimDataset(
+        {c: ds.claims[c] for c in keep},
+        {c: ds.labels[c] for c in keep},
+        {c: ds.gold_docs[c] for c in keep},
+    )
