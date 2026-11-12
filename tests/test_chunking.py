@@ -36,8 +36,10 @@ def test_chunk_documents_indexes_per_doc():
     assert [c.doc_id for c in out][-1] == "b"
 
 
-LEGAL = ("Điều 1. Phạm vi\n1. Luật này quy định.\n2. Áp dụng cho mọi người.\n\n"
-         "Điều 2. Giải thích\na) Người lao động là người làm việc.")
+LEGAL = (
+    "Điều 1. Phạm vi\n1. Luật này quy định.\n2. Áp dụng cho mọi người.\n\n"
+    "Điều 2. Giải thích\na) Người lao động là người làm việc."
+)
 
 
 def _norm(s):
