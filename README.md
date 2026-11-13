@@ -4,44 +4,11 @@
 
 ## How it fits together
 
-```mermaid
-flowchart LR
-    subgraph ingest["Ingest"]
-        F["PDF, DOCX, PPTX,<br/>XLSX, HTML, MD"] --> P["parse to Markdown"]
-        P --> C["chunk<br/>fixed, recursive, heading"]
-        C --> E["embed<br/>dense + BM25 sparse"]
-    end
-    E --> Q[("Qdrant")]
-    subgraph query["Query"]
-        U["question"] --> R["retrieve<br/>dense, BM25, hybrid fusion"]
-        R --> RR["rerank<br/>cross-encoder"]
-        RR --> X["context expansion"]
-        X --> G["generate answer<br/>or fact-check verdict"]
-    end
-    Q --> R
-```
+<p align="center"><img src="docs/diagrams/pipeline.svg" alt="Pipeline: files are parsed, chunked, optionally given an LLM context sentence, embedded and stored in Qdrant; a question is optionally rewritten, retrieved, reranked, given context and answered; core/eval measures every step." width="100%"></p>
 
 Each box is a method folder under [`src/production_rag/methods/`](src/production_rag/methods/), built on shared parts in `core/`. Every method has a `README.md` that explains it, a `pipeline.py` and an `example.py`.
 
-```mermaid
-flowchart TB
-    subgraph core["core/"]
-        direction LR
-        emb["embedders"] --- sp["sparse"] --- rk["rerankers"] --- st["store (Qdrant)"]
-        pl["pipeline<br/>search, merge, deadline"] --- llm["llm + token budget"] --- ch["chunking"]
-    end
-    subgraph methods["methods/"]
-        direction LR
-        m1["naive_rag"] --- m2["dense"] --- m3["bm25"] --- m4["hybrid_fusion"] --- m5["rerank"]
-        m6["deadline_fanout"] --- m7["multi_query"] --- m8["context_expansion"] --- m9["parse_and_chunk"] --- m10["fact_check"]
-    end
-    subgraph eval["core/eval/"]
-        direction LR
-        ds["public datasets<br/>downloaded at runtime"] --> run["run / answer"] --> rep["results/*.md"]
-    end
-    methods --> core
-    eval --> methods
-```
+<p align="center"><img src="docs/diagrams/layout.svg" alt="Repository layout: methods/ folders use the core/ building blocks, and core/eval/ runs the methods on public datasets and writes results/." width="100%"></p>
 
 ## Results
 
@@ -174,12 +141,7 @@ asyncio.run(main())
 
 ## Adding a method
 
-```mermaid
-flowchart LR
-    A["new folder in methods/<br/>README, pipeline, example"] --> B["add to METHOD_NAMES"]
-    B --> C["eval on SciFact and TVPL"]
-    C --> D["eval.report<br/>updates results/"]
-```
+<p align="center"><img src="docs/diagrams/add_method.svg" alt="Adding a method: create the folder, register it in METHOD_NAMES, measure it on SciFact and TVPL, and report the table." width="100%"></p>
 
 1. Add a folder under `src/production_rag/methods/` with `README.md`, `pipeline.py` and `example.py`. `pipeline.py` exports `VARIANTS`, `DEFAULT` and `search`.
 2. Add the name to `METHOD_NAMES` in `src/production_rag/methods/__init__.py`.
@@ -208,6 +170,7 @@ Next: speculative search, LLM rerank, cache, embedding comparison, `cpu_embeddin
 - Parse extra: `pdfplumber`, `python-docx`, `python-pptx`, `openpyxl`, `markdownify` and `beautifulsoup4`, all MIT.
 - Parsing eval data: 7 arXiv papers (CC BY 4.0, except `arxiv-1602.06541v2`, CC BY-SA 4.0) with the [py-pdf/benchmarks](https://github.com/py-pdf/benchmarks) ground truth (BSD-3-Clause, pinned commit `18ee8c4`), and the [docling](https://github.com/docling-project/docling) test fixtures (MIT, pinned commit `a7760ab`). Downloaded at runtime, not stored here.
 - Fact-check data: [SciFact](https://huggingface.co/datasets/allenai/scifact) claims, CC BY-NC 2.0 (non-commercial) per the card, downloaded at runtime from allenai's release tarball and not stored here.
+- Diagram font: [Patrick Hand](https://fonts.google.com/specimen/Patrick+Hand) by Patrick Wagesreiter, SIL OFL 1.1 ([`docs/diagrams/OFL.txt`](docs/diagrams/OFL.txt)), cut to Latin characters and embedded in the SVGs. The diagrams are drawn by [`docs/diagrams/make_diagrams.py`](docs/diagrams/make_diagrams.py).
 - Technique catalog: [nirdiamant/RAG_Techniques](https://github.com/nirdiamant/RAG_Techniques) was used to find which techniques this repo did not have yet. No code or prompts are taken from it (its license is not a standard one); each method README cites the paper or source it is based on.
 
 Code: MIT.
