@@ -11,10 +11,12 @@ class Chunk:
     chunk_index: int
     text: str
     title: str | None = None
+    context: str | None = None  # text embedded with the chunk; the stored text stays `text`
 
 
-def _document(title: str | None, text: str) -> str:
-    return f"{title}\n{text}" if title else text
+def _document(title: str | None, text: str, context: str | None = None) -> str:
+    head = "\n".join(part for part in (title, context) if part)
+    return f"{head}\n{text}" if head else text
 
 
 async def index_chunks(
@@ -26,7 +28,7 @@ async def index_chunks(
         return len(chunks)
     for n, start in enumerate(range(0, len(chunks), batch_size), start=1):
         batch = chunks[start : start + batch_size]
-        texts = [_document(c.title, c.text) for c in batch]
+        texts = [_document(c.title, c.text, c.context) for c in batch]
         dense = await deps.embedder.embed_documents(texts)
         sparse = await asyncio.to_thread(deps.bm25.encode_documents, texts)
         sparse_vi = await asyncio.to_thread(deps.bm25_vi.encode_documents, texts)

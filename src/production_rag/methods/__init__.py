@@ -18,6 +18,7 @@ METHOD_NAMES: tuple[str, ...] = (
     "hyde",
     "step_back",
     "query_decomposition",
+    "contextual_headers",
 )
 
 

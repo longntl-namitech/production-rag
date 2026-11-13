@@ -19,6 +19,8 @@ from datetime import date
 from pathlib import Path
 from typing import Any
 
+from production_rag.core.cache import DiskCache
+from production_rag.core.chunking import chunk_documents
 from production_rag.core.config import Settings
 from production_rag.core.deps import Deps, build_deps, warm_up
 from production_rag.core.eval.answer import estimate_tokens
@@ -36,6 +38,9 @@ from production_rag.core.models import SearchRequest, SearchSpec, SpecResult
 from production_rag.core.pipeline.deadline import Deadline
 from production_rag.core.pipeline.search import run_search
 from production_rag.methods import get_variant
+from production_rag.methods.contextual_headers import pipeline as contextual_headers
+from production_rag.methods.contextual_headers.context import MAX_TOKENS as CONTEXT_MAX_TOKENS
+from production_rag.methods.contextual_headers.context import context_messages
 from production_rag.methods.hyde import pipeline as hyde
 from production_rag.methods.hyde.generate import MAX_TOKENS as HYDE_MAX_TOKENS
 from production_rag.methods.hyde.generate import hyde_messages
@@ -57,6 +62,10 @@ DEADLINE_MS = 30000
 SearchFn = Callable[[str, str, Deps, Any, int], Awaitable[tuple[SpecResult, Usage]]]
 
 
+# deps, llm, dataset, collection: build the collection of an arm that has its own index
+IndexFn = Callable[[Deps, Any, Dataset, str], Awaitable[Usage]]
+
+
 @dataclass(frozen=True)
 class Arm:
     """One row of the table: a way to search the collection of `variant`."""
@@ -65,6 +74,9 @@ class Arm:
     variant: str
     search: SearchFn
     estimate: Callable[[str], int]  # upper bound of LLM tokens per query, 0 without an LLM
+    suffix: str = ""  # added to the collection name when the arm has its own index
+    index: IndexFn | None = None
+    estimate_index: Callable[[Dataset], tuple[int, int]] | None = None  # LLM calls, tokens
 
 
 def prompt_tokens(messages: list[dict[str, str]], max_tokens: int) -> int:
@@ -134,6 +146,20 @@ async def _query_decomposition(
     return result, usage
 
 
+async def _index_headers(deps: Deps, llm: Any, ds: Dataset, collection: str) -> Usage:
+    _, usage = await contextual_headers.index(deps, llm, DiskCache(), collection, ds.corpus)
+    return usage
+
+
+def _estimate_headers(ds: Dataset) -> tuple[int, int]:
+    chunks = chunk_documents(ds.corpus, 800, strategy="recursive")
+    tokens = sum(
+        prompt_tokens(context_messages(ds.corpus[c.doc_id][1], c.text), CONTEXT_MAX_TOKENS)
+        for c in chunks
+    )
+    return len(chunks), tokens
+
+
 def _baseline(variant: str) -> Arm:
     return Arm(variant, variant, _plain(variant), lambda question: 0)
 
@@ -163,6 +189,15 @@ ARMS: dict[str, Arm] = {
             "hybrid_weighted_rrf",
             _query_decomposition,
             lambda question: prompt_tokens(decompose_messages(question), DECOMPOSE_MAX_TOKENS),
+        ),
+        Arm(
+            "contextual_headers",
+            "chunk_recursive_800",
+            _plain("chunk_recursive_800"),
+            lambda question: 0,
+            suffix="-ctx",
+            index=_index_headers,
+            estimate_index=_estimate_headers,
         ),
     ]
 }
@@ -224,6 +259,10 @@ def estimate(arms: list[Arm], ds: Dataset) -> tuple[int, int]:
     """LLM calls and upper-bound tokens for the run."""
     calls = tokens = 0
     for arm in arms:
+        if arm.estimate_index is not None:
+            index_calls, index_tokens = arm.estimate_index(ds)
+            calls += index_calls
+            tokens += index_tokens
         for question in ds.queries.values():
             used = arm.estimate(question)
             tokens += used
@@ -276,22 +315,29 @@ async def main(argv: list[str] | None = None) -> int:
     settings = Settings.from_env()
     deps = build_deps(settings)
     collections = {
-        arm.name: collection_name(ds.name, arm.variant, args.sample_docs) for arm in arms
+        arm.name: collection_name(ds.name, arm.variant, args.sample_docs) + arm.suffix
+        for arm in arms
     }
-    done: set[str] = set()
-    for arm in arms:
-        coll = collections[arm.name]
-        if coll in done:
-            continue
-        done.add(coll)
-        started = time.perf_counter()
-        count = await index_chunks(deps, coll, chunks_for(ds.corpus, get_variant(arm.variant)))
-        print(f"{coll}: {count} indexed ({time.perf_counter() - started:.0f}s)")
     await warm_up(deps)
 
     rows: list[dict[str, Any]] = []
     usage = Usage()
+    done: set[str] = set()
     try:
+        for arm in arms:
+            coll = collections[arm.name]
+            if coll in done:
+                continue
+            done.add(coll)
+            started = time.perf_counter()
+            if arm.index is not None:
+                used = await arm.index(deps, llm, ds, coll)
+                usage += used
+                print(f"{coll}: indexed with context, {used.total} tokens")
+            else:
+                chunks = chunks_for(ds.corpus, get_variant(arm.variant))
+                print(f"{coll}: {await index_chunks(deps, coll, chunks)} indexed")
+            print(f"  ({time.perf_counter() - started:.0f}s)")
         for arm in arms:
             t0 = time.perf_counter()
             got, used = await run_arm(arm, ds, collections[arm.name], deps, llm, args.concurrency)

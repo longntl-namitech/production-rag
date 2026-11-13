@@ -1,7 +1,13 @@
 import pytest
 
 from production_rag.core.eval.datasets import Dataset
-from production_rag.core.eval.run_llm import ARMS, collection_name, parse_args, sample_dataset
+from production_rag.core.eval.run_llm import (
+    ARMS,
+    collection_name,
+    estimate,
+    parse_args,
+    sample_dataset,
+)
 
 
 def _dataset() -> Dataset:
@@ -54,3 +60,14 @@ def test_step_back_arm_registered():
 def test_query_decomposition_arm_registered():
     arm = ARMS["query_decomposition"]
     assert arm.variant == "hybrid_weighted_rrf" and arm.estimate("who wrote it and when") > 0
+
+
+def test_contextual_headers_arm_has_own_collection():
+    arm = ARMS["contextual_headers"]
+    assert arm.suffix == "-ctx" and arm.variant == "chunk_recursive_800"
+    assert ARMS["chunk_recursive_800"].suffix == ""
+
+
+def test_estimate_includes_index_cost():
+    calls, tokens = estimate([ARMS["contextual_headers"]], _dataset())
+    assert calls >= 50 and tokens > 0  # one call per chunk; every document is one chunk here
