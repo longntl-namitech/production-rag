@@ -18,9 +18,10 @@ Extra: `parse` for PDF, Office and HTML (Markdown needs none); `local-models` fo
   - `fixed`: whitespace-split words packed up to the size.
   - `recursive`: split on paragraphs, lines, sentences, then words, and pack the pieces.
   - `markdown`: split on headings and prefix each chunk with its heading path.
+- [`semantic_chunking.py`](../../core/semantic_chunking.py) adds a fourth, `semantic`: split into sentences, embed them, and start a new chunk where neighbouring sentences are far apart (the top 5% of the distances in that document). Chunks are never cut below 100 characters (a short tail joins the chunk before it) and never grow past 800. It needs the embedder, so it is its own async function and not a `chunk_documents` strategy; `index_files(strategy="semantic")` and the `chunk_semantic` eval variant use it. No LLM, and `overlap` does not apply.
 - `recursive` and `markdown` accept an overlap: the next chunk starts with the tail of the previous one. `fixed` does not (it raises an error).
 - [`pipeline.py`](pipeline.py) `index_files` parses the files, chunks them and calls `index_chunks`, which stores a dense vector and BM25 vectors for every chunk.
-- The eval variants are `chunk_recursive_800`, `chunk_recursive_800_o200` and `chunk_recursive_400`. Each searches its own collection, built with its own chunker, size and overlap.
+- The eval variants are `chunk_recursive_800`, `chunk_recursive_800_o200`, `chunk_recursive_400` and `chunk_semantic`. Each searches its own collection, built with its own chunker, size and overlap.
 
 ## Formats left out
 - `.doc`, `.ppt`, `.xls`: legacy Office binary formats, convert them with LibreOffice or similar first.
@@ -121,3 +122,9 @@ Retrieval only, run on 2026-11-12. Each variant searches its own collection with
 - The `markdown` (heading-aware) strategy has no number here because neither set has Markdown headings. In the example, `index_files` uses the first heading as the title, so an indexed chunk carries it both as its title and in its heading path.
 - Eval collections are reused when the stored point count matches, so delete the collection after changing chunking code.
 - Chunking is compared on retrieval only. Answer metrics are not run, because the answer corpora are short passages; that is a roadmap item.
+
+### Semantic chunking
+
+Source: the sentence-embedding breakpoint method described by Greg Kamradt in "5 Levels of Text Splitting" (2023). Own implementation, no code copied. Settings, fixed before the run and not tuned on the eval queries: breakpoint at the 95th percentile of a document's sentence distances, 100 characters minimum, 800 maximum. The minimum was added after a check of chunk sizes on 25 documents per dataset showed many tiny chunks (14 of 61 on TVPL were under 100 characters, the smallest 2). The baseline is `chunk_recursive_800`, dense retrieval on both.
+
+Not measured yet.

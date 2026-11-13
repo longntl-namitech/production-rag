@@ -32,6 +32,7 @@ from production_rag.core.models import Row, SearchRequest, SearchSpec, SpecResul
 from production_rag.core.pipeline.deadline import Deadline
 from production_rag.core.pipeline.search import run_search
 from production_rag.core.registry import MethodConfig
+from production_rag.core.semantic_chunking import semantic_chunk_documents
 from production_rag.methods import all_variants, get_variant, resolve
 
 RESULTS = Path("results")
@@ -39,7 +40,7 @@ K = 100
 RERANK_BASELINE = {"hybrid_rrf_rerank": "hybrid_rrf"}
 
 
-CHUNKER_PREFIX = {"recursive": "r", "markdown": "m"}
+CHUNKER_PREFIX = {"recursive": "r", "markdown": "m", "semantic": "s"}
 
 
 def collection_for(dataset: str, method: MethodConfig) -> str:
@@ -63,6 +64,15 @@ def chunks_for(corpus: dict[str, tuple[str | None, str]], method: MethodConfig) 
         strategy=method.chunker,
         overlap=method.chunk_overlap,
     )
+
+
+async def achunks_for(
+    corpus: dict[str, tuple[str | None, str]], method: MethodConfig, embedder
+) -> list[Chunk]:
+    """`chunks_for`, plus the semantic chunker, which embeds sentences."""
+    if method.chunker == "semantic":
+        return await semantic_chunk_documents(corpus, embedder, max_chars=method.chunk_chars)
+    return chunks_for(corpus, method)
 
 
 def chunk_stat(method: MethodConfig, chunks: list[Chunk]) -> dict[str, Any]:
@@ -167,7 +177,7 @@ async def main() -> None:
             continue
         done.add(coll)
         started = time.perf_counter()
-        chunks = chunks_for(ds.corpus, method)
+        chunks = await achunks_for(ds.corpus, method, deps.embedder)
         count = await index_chunks(deps, coll, chunks)
         took = time.perf_counter() - started
         if method.chunk_chars is not None:

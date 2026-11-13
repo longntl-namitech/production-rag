@@ -1,11 +1,12 @@
 from dataclasses import replace
 
 import pytest
-from fakes import text_row
+from fakes import FakeEmbedder, text_row
 from test_methods import CHUNKING, V010
 
 from production_rag.core.chunking import chunk_documents
 from production_rag.core.eval.run import (
+    achunks_for,
     chunk_stat,
     chunks_for,
     collection_for,
@@ -79,7 +80,23 @@ def test_collection_for_markdown_and_unknown_chunker():
     base = get_variant("chunk_recursive_800")
     assert collection_for("tvpl", replace(base, chunker="markdown")) == "eval-tvpl-m800"
     with pytest.raises(ValueError, match="chunker"):
-        collection_for("tvpl", replace(base, chunker="semantic"))
+        collection_for("tvpl", replace(base, chunker="bogus"))
+
+
+def test_collection_for_semantic():
+    assert collection_for("scifact", get_variant("chunk_semantic")) == "eval-scifact-s800"
+
+
+async def test_achunks_for_semantic_uses_embedder():
+    embedder = FakeEmbedder()
+    chunks = await achunks_for(CORPUS, get_variant("chunk_semantic"), embedder)
+    assert embedder.calls > 0 and {c.doc_id for c in chunks} == {"a", "b"}
+    assert all(len(c.text) <= 800 for c in chunks)
+
+
+async def test_achunks_for_recursive_matches_chunks_for():
+    method = get_variant("chunk_recursive_400")
+    assert await achunks_for(CORPUS, method, FakeEmbedder()) == chunks_for(CORPUS, method)
 
 
 CORPUS = {"a": ("T", "alpha beta gamma delta " * 30), "b": (None, "short text")}
