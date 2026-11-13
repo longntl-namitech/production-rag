@@ -110,6 +110,7 @@ Correctness moved by up to 0.07 between two runs, so smaller gaps are noise. The
 | [`fact_check`](src/production_rag/methods/fact_check/README.md) | none | `local-models` + `OPENAI_API_KEY` | claims from a statement, evidence per claim, verdict: supported, refuted, unverified; `not_relevant` when nothing is checkable |
 | [`hyde`](src/production_rag/methods/hyde/README.md) | none | `local-models` + `OPENAI_API_KEY` | An LLM-written hypothetical answer passage replaces the question for dense search; table in its README |
 | [`step_back`](src/production_rag/methods/step_back/README.md) | none | `local-models` + `OPENAI_API_KEY` | The question plus one LLM-written more general question, merged by best score; table in its README |
+| [`query_decomposition`](src/production_rag/methods/query_decomposition/README.md) | none | `local-models` + `OPENAI_API_KEY` | A multi-part question split by an LLM into up to 3 sub-questions, one search each, merged by best score; table in its README |
 
 ## Quickstart
 

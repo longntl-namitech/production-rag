@@ -17,6 +17,7 @@ METHOD_NAMES: tuple[str, ...] = (
     "fact_check",
     "hyde",
     "step_back",
+    "query_decomposition",
 )
 
 

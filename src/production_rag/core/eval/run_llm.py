@@ -43,6 +43,9 @@ from production_rag.methods.hyde.generate import queries_for as hyde_queries
 from production_rag.methods.multi_query import pipeline as multi_query
 from production_rag.methods.multi_query.rewrite import MAX_TOKENS as REWRITE_MAX_TOKENS
 from production_rag.methods.multi_query.rewrite import rewrite, rewrite_messages
+from production_rag.methods.query_decomposition.generate import MAX_TOKENS as DECOMPOSE_MAX_TOKENS
+from production_rag.methods.query_decomposition.generate import decompose_messages
+from production_rag.methods.query_decomposition.generate import queries_for as decompose_queries
 from production_rag.methods.step_back.generate import MAX_TOKENS as STEP_BACK_MAX_TOKENS
 from production_rag.methods.step_back.generate import queries_for as step_back_queries
 from production_rag.methods.step_back.generate import step_back_messages
@@ -121,6 +124,16 @@ async def _step_back(
     return result, usage
 
 
+async def _query_decomposition(
+    question: str, collection: str, deps: Deps, llm: Any, k: int
+) -> tuple[SpecResult, Usage]:
+    queries, usage = await decompose_queries(llm, question[:2000])
+    result = await multi_query.search(
+        queries, collection, deps, base="hybrid_weighted_rrf", k=k, deadline_ms=DEADLINE_MS
+    )
+    return result, usage
+
+
 def _baseline(variant: str) -> Arm:
     return Arm(variant, variant, _plain(variant), lambda question: 0)
 
@@ -144,6 +157,12 @@ ARMS: dict[str, Arm] = {
             "hybrid_weighted_rrf",
             _step_back,
             lambda question: prompt_tokens(step_back_messages(question), STEP_BACK_MAX_TOKENS),
+        ),
+        Arm(
+            "query_decomposition",
+            "hybrid_weighted_rrf",
+            _query_decomposition,
+            lambda question: prompt_tokens(decompose_messages(question), DECOMPOSE_MAX_TOKENS),
         ),
     ]
 }

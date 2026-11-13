@@ -49,3 +49,8 @@ def test_hyde_arms_registered(name):
 def test_step_back_arm_registered():
     arm = ARMS["step_back"]
     assert arm.variant == "hybrid_weighted_rrf" and arm.estimate("why did the crash happen") > 0
+
+
+def test_query_decomposition_arm_registered():
+    arm = ARMS["query_decomposition"]
+    assert arm.variant == "hybrid_weighted_rrf" and arm.estimate("who wrote it and when") > 0
