@@ -19,6 +19,7 @@ METHOD_NAMES: tuple[str, ...] = (
     "step_back",
     "query_decomposition",
     "contextual_headers",
+    "contextual_compression",
 )
 
 

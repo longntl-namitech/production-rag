@@ -112,6 +112,7 @@ Correctness moved by up to 0.07 between two runs, so smaller gaps are noise. The
 | [`step_back`](src/production_rag/methods/step_back/README.md) | none | `local-models` + `OPENAI_API_KEY` | The question plus one LLM-written more general question, merged by best score; table in its README |
 | [`query_decomposition`](src/production_rag/methods/query_decomposition/README.md) | none | `local-models` + `OPENAI_API_KEY` | A multi-part question split by an LLM into up to 3 sub-questions, one search each, merged by best score; table in its README |
 | [`contextual_headers`](src/production_rag/methods/contextual_headers/README.md) | none | `local-models` + `OPENAI_API_KEY` | An LLM-written sentence per chunk that places it in its document, embedded with the chunk at index time; cached on disk; table in its README |
+| [`contextual_compression`](src/production_rag/methods/contextual_compression/README.md) | none | `local-models` + `OPENAI_API_KEY` | After retrieval an LLM keeps only the sentences that help answer the question, so the prompt carries fewer tokens; answer-eval numbers in its README |
 
 ## Quickstart
 
