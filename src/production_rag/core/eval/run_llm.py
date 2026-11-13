@@ -147,8 +147,8 @@ async def _query_decomposition(
 
 
 async def _index_headers(deps: Deps, llm: Any, ds: Dataset, collection: str) -> Usage:
-    _, usage = await contextual_headers.index(deps, llm, DiskCache(), collection, ds.corpus)
-    return usage
+    done = await contextual_headers.index(deps, llm, DiskCache(), collection, ds.corpus)
+    return done.usage
 
 
 def _estimate_headers(ds: Dataset) -> tuple[int, int]:
@@ -203,9 +203,12 @@ ARMS: dict[str, Arm] = {
 }
 
 
-def collection_name(dataset: str, variant: str, sample_docs: int | None) -> str:
+def collection_name(
+    dataset: str, variant: str, sample_docs: int | None, sample_queries: int | None
+) -> str:
+    """The sample size is in the name: a different sample holds different documents."""
     base = collection_for(dataset, get_variant(variant))
-    return f"{base}-s{sample_docs}" if sample_docs else base
+    return f"{base}-s{sample_docs}q{sample_queries}" if sample_docs else base
 
 
 def sample_dataset(ds: Dataset, queries: int, docs: int, seed: int = 13) -> Dataset:
@@ -270,14 +273,28 @@ def estimate(arms: list[Arm], ds: Dataset) -> tuple[int, int]:
     return calls, tokens
 
 
+def fail_if_all_fell_back(name: str, fallbacks: int, total: int) -> None:
+    """Stop when an arm that needs an LLM never got one: its row would be the baseline."""
+    if total and fallbacks == total:
+        raise SystemExit(
+            f"every LLM call failed for {name} (wrong key, model or an outage): "
+            "its rows would be the plain search; no results written"
+        )
+
+
 async def run_arm(
     arm: Arm, ds: Dataset, collection: str, deps: Deps, llm: Any, concurrency: int
-) -> tuple[list[dict[str, Any]], Usage]:
+) -> tuple[list[dict[str, Any]], Usage, int]:
+    """The rows, the LLM tokens, and how many queries of an LLM arm used no token at all.
+
+    Those queries fell back to the plain search because the LLM call failed.
+    """
     semaphore = asyncio.Semaphore(concurrency)
     usage = Usage()
+    fallbacks = 0
 
     async def one(qid: str, question: str) -> dict[str, Any]:
-        nonlocal usage
+        nonlocal usage, fallbacks
         async with semaphore:
             t0 = time.perf_counter()
             try:
@@ -289,10 +306,11 @@ async def run_arm(
                 used = Usage()
             ms = (time.perf_counter() - t0) * 1000
         usage += used
+        fallbacks += arm.estimate(question) > 0 and used.total == 0
         return result_row(arm.name, qid, result, ms, ds.qrels[qid])
 
     rows = await asyncio.gather(*(one(qid, q) for qid, q in ds.queries.items()))
-    return list(rows), usage
+    return list(rows), usage, fallbacks
 
 
 async def main(argv: list[str] | None = None) -> int:
@@ -315,13 +333,15 @@ async def main(argv: list[str] | None = None) -> int:
     settings = Settings.from_env()
     deps = build_deps(settings)
     collections = {
-        arm.name: collection_name(ds.name, arm.variant, args.sample_docs) + arm.suffix
+        arm.name: collection_name(ds.name, arm.variant, args.sample_docs, args.sample_queries)
+        + arm.suffix
         for arm in arms
     }
     await warm_up(deps)
 
     rows: list[dict[str, Any]] = []
     usage = Usage()
+    llm_fallbacks: dict[str, int] = {}
     done: set[str] = set()
     try:
         for arm in arms:
@@ -340,7 +360,12 @@ async def main(argv: list[str] | None = None) -> int:
             print(f"  ({time.perf_counter() - started:.0f}s)")
         for arm in arms:
             t0 = time.perf_counter()
-            got, used = await run_arm(arm, ds, collections[arm.name], deps, llm, args.concurrency)
+            got, used, fallbacks = await run_arm(
+                arm, ds, collections[arm.name], deps, llm, args.concurrency
+            )
+            fail_if_all_fell_back(arm.name, fallbacks, len(ds.queries))
+            if fallbacks:
+                llm_fallbacks[arm.name] = fallbacks
             rows += got
             usage += used
             print(f"{arm.name:24} done in {time.perf_counter() - t0:.0f}s", flush=True)
@@ -362,6 +387,8 @@ async def main(argv: list[str] | None = None) -> int:
         "tokens": {"total": llm.budget.used if llm.budget else usage.total, "queries": usage.total},
         "collections": collections,
     }
+    if llm_fallbacks:
+        meta["llm_fallbacks"] = llm_fallbacks  # queries that searched the plain question
     if args.sample_docs is not None:
         meta["sample"] = {"queries": args.sample_queries, "documents": args.sample_docs}
     for row in rows:

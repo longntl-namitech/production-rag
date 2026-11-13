@@ -3,11 +3,16 @@ import pytest
 from production_rag.core.eval.datasets import Dataset
 from production_rag.core.eval.run_llm import (
     ARMS,
+    Arm,
     collection_name,
     estimate,
+    fail_if_all_fell_back,
     parse_args,
+    run_arm,
     sample_dataset,
 )
+from production_rag.core.llm import Usage
+from production_rag.core.models import SpecResult
 
 
 def _dataset() -> Dataset:
@@ -18,9 +23,12 @@ def _dataset() -> Dataset:
 
 
 def test_collection_name_adds_sample_suffix():
-    assert collection_name("scifact", "dense", None) == "eval-scifact"
-    assert collection_name("scifact", "dense", 300) == "eval-scifact-s300"
-    assert collection_name("scifact", "chunk_recursive_800", None) == "eval-scifact-r800"
+    assert collection_name("scifact", "dense", None, None) == "eval-scifact"
+    assert collection_name("scifact", "dense", 300, 50) == "eval-scifact-s300q50"
+    assert collection_name("scifact", "dense", 300, 100) != collection_name(
+        "scifact", "dense", 300, 50
+    )
+    assert collection_name("scifact", "chunk_recursive_800", None, None) == "eval-scifact-r800"
 
 
 def test_sample_dataset_keeps_gold_docs():
@@ -71,3 +79,28 @@ def test_contextual_headers_arm_has_own_collection():
 def test_estimate_includes_index_cost():
     calls, tokens = estimate([ARMS["contextual_headers"]], _dataset())
     assert calls >= 50 and tokens > 0  # one call per chunk; every document is one chunk here
+
+
+def _arm(tokens_per_call: int, estimate_tokens: int) -> Arm:
+    async def search(question, collection, deps, llm, k):
+        return SpecResult(status="ok", rows=[], elapsed_ms=1), Usage(tokens_per_call, 0)
+
+    return Arm("x", "dense", search, lambda question: estimate_tokens)
+
+
+async def test_run_arm_counts_llm_arms_that_used_no_tokens():
+    rows, usage, fallbacks = await run_arm(_arm(0, 100), _dataset(), "c", None, None, 1)
+    assert len(rows) == 10 and fallbacks == 10 and usage.total == 0
+
+
+async def test_run_arm_no_fallback_when_tokens_were_used_or_arm_has_no_llm():
+    _, _, used = await run_arm(_arm(10, 100), _dataset(), "c", None, None, 1)
+    _, _, baseline = await run_arm(_arm(0, 0), _dataset(), "c", None, None, 1)
+    assert used == 0 and baseline == 0
+
+
+def test_fail_if_all_fell_back():
+    with pytest.raises(SystemExit, match="x"):
+        fail_if_all_fell_back("x", 10, 10)
+    fail_if_all_fell_back("x", 3, 10)  # some fallbacks are recorded in the results, not fatal
+    fail_if_all_fell_back("x", 0, 0)

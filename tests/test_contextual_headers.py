@@ -1,3 +1,4 @@
+import pytest
 from fakes import FakeLLM
 from test_indexing import RecordingEmbedder
 
@@ -11,6 +12,7 @@ from production_rag.methods.contextual_headers.context import (
     add_context,
     context_messages,
 )
+from production_rag.methods.contextual_headers.pipeline import ContextIncomplete
 
 DOCS = {"d1": ("Leave", "Annual leave policy. Staff get twelve days. Sick leave is paid.")}
 CHUNKS = [
@@ -97,14 +99,37 @@ def test_document_is_cut_in_prompt():
 async def test_index_stores_raw_text_and_embeds_context(deps, tmp_path):
     deps.embedder = RecordingEmbedder()
     llm = FakeLLM(lambda m: "From the leave policy.")
-    count, usage = await contextual_headers.index(
-        deps, llm, DiskCache(tmp_path), "ctx", DOCS, size=800
-    )
+    result = await contextual_headers.index(deps, llm, DiskCache(tmp_path), "ctx", DOCS, size=800)
     body = DOCS["d1"][1]
-    assert count == 1 and usage == Usage(10, 5)
+    assert result.count == 1 and result.usage == Usage(10, 5) and result.without_context == 0
     assert deps.embedder.texts == [f"Leave\nFrom the leave policy.\n{body}"]
     [row] = await deps.store.fetch_chunks("ctx", "d1", None, None)
     assert row.text == body
+
+
+async def test_index_refuses_a_collection_with_chunks_missing_context(deps, tmp_path):
+    with pytest.raises(ContextIncomplete, match="1 of 1"):
+        await contextual_headers.index(deps, Boom(), DiskCache(tmp_path), "ctx", DOCS)
+    assert await deps.store.count("ctx") == 0
+
+
+async def test_index_rerun_repairs_after_a_failed_run(deps, tmp_path):
+    deps.embedder = RecordingEmbedder()
+    cache = DiskCache(tmp_path)
+    with pytest.raises(ContextIncomplete):
+        await contextual_headers.index(deps, Boom(), cache, "ctx", DOCS)
+    llm = FakeLLM(lambda m: "From the leave policy.")
+    result = await contextual_headers.index(deps, llm, cache, "ctx", DOCS)
+    assert result.count == 1 and result.without_context == 0
+    assert "From the leave policy." in deps.embedder.texts[-1]
+
+
+async def test_index_reuses_a_complete_collection_without_llm_calls(deps, tmp_path):
+    llm = FakeLLM(lambda m: "From the leave policy.")
+    await contextual_headers.index(deps, llm, DiskCache(tmp_path / "a"), "ctx", DOCS)
+    again = FakeLLM(lambda m: "x")
+    result = await contextual_headers.index(deps, again, DiskCache(tmp_path / "b"), "ctx", DOCS)
+    assert again.calls == [] and result.count == 1 and result.usage == Usage()
 
 
 async def test_search_finds_the_chunk(deps, tmp_path):

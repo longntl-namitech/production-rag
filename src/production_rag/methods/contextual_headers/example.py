@@ -26,8 +26,8 @@ async def main() -> None:
     deps = build_deps(Settings.from_env())
     await warm_up(deps)
     llm = OpenAIChat.from_env(budget=TokenBudget(10_000))
-    count, usage = await index(deps, llm, DiskCache(), "example-contextual", DOCS, size=80)
-    print(f"indexed {count} chunks, tokens: {usage.total} (a rerun is served from .cache/llm)")
+    done = await index(deps, llm, DiskCache(), "example-contextual", DOCS, size=80)
+    print(f"indexed {done.count} chunks, tokens: {done.usage.total} (a rerun uses .cache/llm)")
     print_rows("contextual_headers", (await search(QUERY, "example-contextual", deps, k=3)).rows)
 
 
