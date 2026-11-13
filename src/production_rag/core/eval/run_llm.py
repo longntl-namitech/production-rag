@@ -43,6 +43,9 @@ from production_rag.methods.hyde.generate import queries_for as hyde_queries
 from production_rag.methods.multi_query import pipeline as multi_query
 from production_rag.methods.multi_query.rewrite import MAX_TOKENS as REWRITE_MAX_TOKENS
 from production_rag.methods.multi_query.rewrite import rewrite, rewrite_messages
+from production_rag.methods.step_back.generate import MAX_TOKENS as STEP_BACK_MAX_TOKENS
+from production_rag.methods.step_back.generate import queries_for as step_back_queries
+from production_rag.methods.step_back.generate import step_back_messages
 
 RESULTS = Path("results")
 DEADLINE_MS = 30000
@@ -108,6 +111,16 @@ def _hyde_estimate(question: str) -> int:
     return prompt_tokens(hyde_messages(question), HYDE_MAX_TOKENS)
 
 
+async def _step_back(
+    question: str, collection: str, deps: Deps, llm: Any, k: int
+) -> tuple[SpecResult, Usage]:
+    queries, usage = await step_back_queries(llm, question[:2000])
+    result = await multi_query.search(
+        queries, collection, deps, base="hybrid_weighted_rrf", k=k, deadline_ms=DEADLINE_MS
+    )
+    return result, usage
+
+
 def _baseline(variant: str) -> Arm:
     return Arm(variant, variant, _plain(variant), lambda question: 0)
 
@@ -126,6 +139,12 @@ ARMS: dict[str, Arm] = {
         ),
         Arm("hyde_passage", "hybrid_weighted_rrf", _hyde(False), _hyde_estimate),
         Arm("hyde_passage_query", "hybrid_weighted_rrf", _hyde(True), _hyde_estimate),
+        Arm(
+            "step_back",
+            "hybrid_weighted_rrf",
+            _step_back,
+            lambda question: prompt_tokens(step_back_messages(question), STEP_BACK_MAX_TOKENS),
+        ),
     ]
 }
 

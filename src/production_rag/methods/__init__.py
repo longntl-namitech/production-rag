@@ -16,6 +16,7 @@ METHOD_NAMES: tuple[str, ...] = (
     "parse_and_chunk",
     "fact_check",
     "hyde",
+    "step_back",
 )
 
 

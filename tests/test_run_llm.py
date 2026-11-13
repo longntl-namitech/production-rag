@@ -44,3 +44,8 @@ def test_parse_args_rejects_unknown_arm(capsys):
 def test_hyde_arms_registered(name):
     arm = ARMS[name]
     assert arm.variant == "hybrid_weighted_rrf" and arm.estimate("how do solar cells work") > 0
+
+
+def test_step_back_arm_registered():
+    arm = ARMS["step_back"]
+    assert arm.variant == "hybrid_weighted_rrf" and arm.estimate("why did the crash happen") > 0
