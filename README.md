@@ -195,7 +195,7 @@ uv run --extra local-models pytest -m integration
 
 ## Roadmap
 
-Next: query rewrite and speculative search, LLM rerank, cache, semantic chunking, embedding comparison, `cpu_embedding_batching`, testset generation, chunking compared on answer quality. Known gaps: [`BACKLOG.md`](BACKLOG.md).
+Next: speculative search, LLM rerank, cache, embedding comparison, `cpu_embedding_batching`, testset generation, chunking compared on answer quality. Known gaps: [`BACKLOG.md`](BACKLOG.md).
 
 ## Models, data and licenses
 
@@ -208,5 +208,6 @@ Next: query rewrite and speculative search, LLM rerank, cache, semantic chunking
 - Parse extra: `pdfplumber`, `python-docx`, `python-pptx`, `openpyxl`, `markdownify` and `beautifulsoup4`, all MIT.
 - Parsing eval data: 7 arXiv papers (CC BY 4.0, except `arxiv-1602.06541v2`, CC BY-SA 4.0) with the [py-pdf/benchmarks](https://github.com/py-pdf/benchmarks) ground truth (BSD-3-Clause, pinned commit `18ee8c4`), and the [docling](https://github.com/docling-project/docling) test fixtures (MIT, pinned commit `a7760ab`). Downloaded at runtime, not stored here.
 - Fact-check data: [SciFact](https://huggingface.co/datasets/allenai/scifact) claims, CC BY-NC 2.0 (non-commercial) per the card, downloaded at runtime from allenai's release tarball and not stored here.
+- Technique catalog: [nirdiamant/RAG_Techniques](https://github.com/nirdiamant/RAG_Techniques) was used to find which techniques this repo did not have yet. No code or prompts are taken from it (its license is not a standard one); each method README cites the paper or source it is based on.
 
 Code: MIT.
