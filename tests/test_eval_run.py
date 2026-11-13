@@ -11,8 +11,10 @@ from production_rag.core.eval.run import (
     collection_for,
     doc_ranking,
     parse_args,
+    result_row,
     summarize,
 )
+from production_rag.core.models import SpecResult
 from production_rag.methods import get_variant
 
 
@@ -111,3 +113,18 @@ def test_chunk_stat():
 def test_doc_ranking_keeps_first_chunk_per_doc():
     rows = [text_row("x", doc_id=d) for d in ["a", "a", "b", "a", "c"]]
     assert doc_ranking(rows) == ["a", "b", "c"]
+
+
+def test_result_row_matches_closure_shape():
+    result = SpecResult(
+        status="ok",
+        rows=[text_row("a", doc_id="d1"), text_row("b", doc_id="d2")],
+        elapsed_ms=5,
+    )
+    row = result_row("dense", "q1", result, 12.34, {"d2": 1})
+    assert row["recall@10"] == 1.0
+    assert row["mrr@10"] == 0.5
+    assert row["top"] == ["d1"]
+    assert row["status"] == "ok" and row["rerank"] == "off"
+    assert row["method"] == "dense" and row["qid"] == "q1" and row["ms"] == 12.3
+    assert row["rel"] == {"d2": 1}

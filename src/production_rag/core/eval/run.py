@@ -28,7 +28,7 @@ from production_rag.core.eval.metrics import (
     rescue_damage,
 )
 from production_rag.core.indexing import Chunk, index_chunks
-from production_rag.core.models import Row, SearchRequest, SearchSpec
+from production_rag.core.models import Row, SearchRequest, SearchSpec, SpecResult
 from production_rag.core.pipeline.deadline import Deadline
 from production_rag.core.pipeline.search import run_search
 from production_rag.core.registry import MethodConfig
@@ -78,6 +78,25 @@ def chunk_stat(method: MethodConfig, chunks: list[Chunk]) -> dict[str, Any]:
 def doc_ranking(rows: list[Row]) -> list[str]:
     """Doc ids in rank order, each once, at its best chunk."""
     return list(dict.fromkeys(r.doc_id for r in rows))
+
+
+def result_row(
+    method: str, qid: str, result: SpecResult, ms: float, rel: dict[str, int]
+) -> dict[str, Any]:
+    ranked = doc_ranking(result.rows)
+    return {
+        "method": method,
+        "qid": qid,
+        "status": result.status,
+        "rerank": result.rerank,
+        "ms": round(ms, 1),
+        "recall@10": recall_at_k(ranked, rel, 10),
+        "recall@100": recall_at_k(ranked, rel, 100),
+        "mrr@10": mrr_at_k(ranked, rel, 10),
+        "ndcg@10": ndcg_at_k(ranked, rel, 10),
+        "top": ranked[:1],
+        "rel": rel,
+    }
 
 
 def summarize(rows: list[dict[str, Any]], methods: list[str]) -> dict[str, Any]:
@@ -171,23 +190,7 @@ async def main() -> None:
             t0 = time.perf_counter()
             result = (await run_search(req, methods[method], deps, Deadline(30000))).results["s"]
             ms = (time.perf_counter() - t0) * 1000
-        ranked = doc_ranking(result.rows)
-        rel = ds.qrels[qid]
-        rows.append(
-            {
-                "method": method,
-                "qid": qid,
-                "status": result.status,
-                "rerank": result.rerank,
-                "ms": round(ms, 1),
-                "recall@10": recall_at_k(ranked, rel, 10),
-                "recall@100": recall_at_k(ranked, rel, 100),
-                "mrr@10": mrr_at_k(ranked, rel, 10),
-                "ndcg@10": ndcg_at_k(ranked, rel, 10),
-                "top": ranked[:1],
-                "rel": rel,
-            }
-        )
+        rows.append(result_row(method, qid, result, ms, ds.qrels[qid]))
 
     for method in args.methods:
         t0 = time.perf_counter()

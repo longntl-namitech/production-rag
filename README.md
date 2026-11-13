@@ -108,6 +108,7 @@ Correctness moved by up to 0.07 between two runs, so smaller gaps are noise. The
 | [`context_expansion`](src/production_rag/methods/context_expansion/README.md) | none | `local-models` | Neighbour chunks or the full document around each hit; answer numbers in its README |
 | [`parse_and_chunk`](src/production_rag/methods/parse_and_chunk/README.md) | `chunk_recursive_800`, `chunk_recursive_800_o200`, `chunk_recursive_400` | `parse` + `local-models` | PDF, DOCX, PPTX, XLSX, HTML, Markdown to Markdown with pip-only parsers; fixed, recursive and heading-aware chunking |
 | [`fact_check`](src/production_rag/methods/fact_check/README.md) | none | `local-models` + `OPENAI_API_KEY` | claims from a statement, evidence per claim, verdict: supported, refuted, unverified; `not_relevant` when nothing is checkable |
+| [`hyde`](src/production_rag/methods/hyde/README.md) | none | `local-models` + `OPENAI_API_KEY` | An LLM-written hypothetical answer passage replaces the question for dense search; table in its README |
 
 ## Quickstart
 
