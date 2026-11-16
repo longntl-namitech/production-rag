@@ -572,24 +572,42 @@ def results_chart() -> Sketch:
 
 LEGEND = (
     "lilac: input  |  yellow: needs OPENAI_API_KEY  |  green: plain code  |  "
-    "blue: Qdrant or shared part"
+    "blue: Qdrant or shared part  |  e.g.: made-up example"
 )
 
 # One flow per method folder: (subtitle, columns). A column is a list of boxes
-# (fill, title, bullets, icon); boxes in one column run side by side as parallel steps.
+# (fill, title, bullets, icon, example lines); boxes in one column run side by side as
+# parallel steps. The example lines are made-up inputs and outputs that show the step.
 FLOWS = {
     "naive_rag": (
         "Fixed chunks, dense top 5, one prompt.",
         [
-            [("lilac", "Documents", ["raw text"], "doc")],
-            [("green", "Chunk", ["fixed size", "up to 800 characters"], "scissors")],
-            [("blue", "Dense search", ["query embedded", "top 5 chunks back"], "search")],
+            [("lilac", "Documents", ["raw text"], "doc", ["handbook.txt, 2,000 chars"])],
+            [
+                (
+                    "green",
+                    "Chunk",
+                    ["fixed size", "up to 800 characters"],
+                    "scissors",
+                    ["2,000 chars -> 3 chunks", "of at most 800 chars"],
+                )
+            ],
+            [
+                (
+                    "blue",
+                    "Dense search",
+                    ["query embedded", "top 5 chunks back"],
+                    "search",
+                    ["'how many days of leave?'", "-> chunks 2, 7, 1, 9, 4"],
+                )
+            ],
             [
                 (
                     "yellow",
                     "Generate",
                     ["passages stuffed in prompt", "NO_ANSWER if missing"],
                     "bubble",
+                    ["'12 days, see chunk 2'", "or NO_ANSWER"],
                 )
             ],
         ],
@@ -597,29 +615,63 @@ FLOWS = {
     "parse_and_chunk": (
         "Files to Markdown, Markdown to chunks, chunks to vectors.",
         [
-            [("lilac", "Files", ["PDF, DOCX, PPTX", "XLSX, HTML, Markdown"], "folder")],
-            [("green", "Parse", ["one library per format", "output is Markdown"], "doc")],
+            [
+                (
+                    "lilac",
+                    "Files",
+                    ["PDF, DOCX, PPTX", "XLSX, HTML, Markdown"],
+                    "folder",
+                    ["report.pdf", "slides.pptx"],
+                )
+            ],
+            [
+                (
+                    "green",
+                    "Parse",
+                    ["one library per format", "output is Markdown"],
+                    "doc",
+                    ["slides.pptx -> one '##'", "section per slide"],
+                )
+            ],
             [
                 (
                     "green",
                     "Chunk",
                     ["fixed, recursive, markdown", "semantic (embeds sentences)"],
                     "scissors",
+                    ["recursive: paragraphs, then", "lines, sentences, words"],
                 )
             ],
-            [("blue", "Index", ["dense vector per chunk", "BM25 vectors per chunk"], "layers")],
+            [
+                (
+                    "blue",
+                    "Index",
+                    ["dense vector per chunk", "BM25 vectors per chunk"],
+                    "layers",
+                    ["chunk 12 -> 1 dense vector", "+ its BM25 vectors"],
+                )
+            ],
         ],
     ),
     "contextual_headers": (
         "One LLM-written sentence places each chunk in its document.",
         [
-            [("lilac", "Documents", ["chunked at index time"], "doc")],
+            [
+                (
+                    "lilac",
+                    "Documents",
+                    ["chunked at index time"],
+                    "doc",
+                    ["page 'Leave policy'", "chunk: 'Staff get twelve days.'"],
+                )
+            ],
             [
                 (
                     "yellow",
                     "Context sentence",
                     ["LLM reads document + chunk", "200 token cap, cached on disk"],
                     "sparkle",
+                    ["'This chunk is from the annual", "leave section of the HR handbook.'"],
                 )
             ],
             [
@@ -632,6 +684,7 @@ FLOWS = {
                         "stored text stays the chunk",
                     ],
                     "layers",
+                    ["embedded: title + sentence + chunk", "stored: 'Staff get twelve days.'"],
                 )
             ],
         ],
@@ -639,24 +692,81 @@ FLOWS = {
     "multi_query": (
         "Each subquery retrieves on its own, each chunk keeps its best score.",
         [
-            [("lilac", "Subqueries", ["up to 8", "embedded in one call"], "bubble")],
-            [("green", "Search each", ["same spec for every", "subquery"], "search")],
-            [("green", "merge_max", ["each chunk once", "with its best score"], "layers")],
-            [("blue", "Rerank (optional)", ["scored against", "rerank_query"], "trophy")],
+            [
+                (
+                    "lilac",
+                    "Subqueries",
+                    ["up to 8", "embedded in one call"],
+                    "bubble",
+                    ["'annual leave days'", "'holiday entitlement'"],
+                )
+            ],
+            [
+                (
+                    "green",
+                    "Search each",
+                    ["same spec for every", "subquery"],
+                    "search",
+                    ["each subquery returns", "its own ranked chunks"],
+                )
+            ],
+            [
+                (
+                    "green",
+                    "merge_max",
+                    ["each chunk once", "with its best score"],
+                    "layers",
+                    ["chunk 7: score 0.81 and 0.74", "-> kept once, at 0.81"],
+                )
+            ],
+            [
+                (
+                    "blue",
+                    "Rerank (optional)",
+                    ["scored against", "rerank_query"],
+                    "trophy",
+                    ["merged pool scored against", "the original question"],
+                )
+            ],
         ],
     ),
     "hyde": (
         "An LLM-written passage replaces the question for dense search.",
         [
-            [("lilac", "Question", ["short, or phrased unlike", "the documents"], "bubble")],
-            [("yellow", "Passage", ["LLM writes an answer", "256 token cap"], "pencil")],
-            [("blue", "Dense search", ["passage embedded", "sparse leg skipped"], "search")],
+            [
+                (
+                    "lilac",
+                    "Question",
+                    ["short, or phrased unlike", "the documents"],
+                    "bubble",
+                    ["'can leave be carried over?'"],
+                )
+            ],
+            [
+                (
+                    "yellow",
+                    "Passage",
+                    ["LLM writes an answer", "256 token cap"],
+                    "pencil",
+                    ["'Unused leave may be carried", "over for a limited period.'"],
+                )
+            ],
+            [
+                (
+                    "blue",
+                    "Dense search",
+                    ["passage embedded", "sparse leg skipped"],
+                    "search",
+                    ["the passage is embedded,", "not the question"],
+                )
+            ],
             [
                 (
                     "green",
                     "Merge",
                     ["hyde_passage: passage alone", "hyde_passage_query:", "question + passage"],
                     "layers",
+                    ["a chunk in both lists", "keeps its best score"],
                 )
             ],
         ],
@@ -664,83 +774,171 @@ FLOWS = {
     "step_back": (
         "The question and one more general question retrieve together.",
         [
-            [("lilac", "Question", ["specific"], "bubble")],
+            [
+                (
+                    "lilac",
+                    "Question",
+                    ["specific"],
+                    "bubble",
+                    ["'why did the 1929 crash", "hit German banks'"],
+                )
+            ],
             [
                 (
                     "yellow",
                     "Step-back",
                     ["LLM writes one more", "general question", "128 token cap"],
                     "pencil",
+                    ["'what caused the", "Great Depression?'"],
                 )
             ],
             [
-                ("green", "Search question", [], "search"),
-                ("green", "Search step-back", [], "search"),
+                (
+                    "green",
+                    "Search question",
+                    [],
+                    "search",
+                    ["finds chunks on the", "1929 crash and banks"],
+                ),
+                (
+                    "green",
+                    "Search step-back",
+                    [],
+                    "search",
+                    ["finds chunks on the", "causes of the Depression"],
+                ),
             ],
-            [("green", "Merge", ["each chunk once", "with its best score"], "layers")],
+            [
+                (
+                    "green",
+                    "Merge",
+                    ["each chunk once", "with its best score"],
+                    "layers",
+                    ["a chunk found by both", "keeps its higher score"],
+                )
+            ],
         ],
     ),
     "query_decomposition": (
         "One search per part of the question.",
         [
-            [("lilac", "Question", ["asks several things"], "bubble")],
+            [
+                (
+                    "lilac",
+                    "Question",
+                    ["asks several things"],
+                    "bubble",
+                    ["'who wrote it and when", "was it built'"],
+                )
+            ],
             [
                 (
                     "yellow",
                     "Split",
                     ["LLM writes up to 3", "sub-questions", "256 token cap"],
                     "scissors",
+                    ["1. 'who wrote it'", "2. 'when was it built'"],
                 )
             ],
             [
-                ("green", "Search part 1", [], "search"),
-                ("green", "Search part 2", [], "search"),
-                ("green", "Search part 3", [], "search"),
+                ("green", "Search part 1", [], "search", ["'who wrote it'"]),
+                ("green", "Search part 2", [], "search", ["'when was it built'"]),
+                ("green", "Search part 3", [], "search", ["only if the LLM wrote a 3rd"]),
             ],
-            [("green", "Merge", ["each chunk once", "with its best score"], "layers")],
+            [
+                (
+                    "green",
+                    "Merge",
+                    ["each chunk once", "with its best score"],
+                    "layers",
+                    ["one ranked list for", "the whole question"],
+                )
+            ],
         ],
     ),
     "dense": (
         "One embedding call per request, cosine search in Qdrant.",
         [
-            [("lilac", "Query", ["text"], "bubble")],
+            [("lilac", "Query", ["text"], "bubble", ["'can I carry over leave?'"])],
             [
                 (
                     "green",
                     "Embed",
                     ["jina v5 nano, 768 dims", "or any OpenAI-compatible", "/embeddings endpoint"],
                     "sparkle",
+                    ["text -> 768 numbers,", "normalised"],
                 )
             ],
-            [("blue", "Qdrant", ["cosine similarity", "top k chunks"], "box")],
+            [
+                (
+                    "blue",
+                    "Qdrant",
+                    ["cosine similarity", "top k chunks"],
+                    "box",
+                    ["nearest chunks first:", "chunk 4, chunk 9, chunk 1"],
+                )
+            ],
         ],
     ),
     "bm25": (
         "Term weights in a sparse vector, with or without IDF.",
         [
-            [("lilac", "Query", ["text"], "bubble")],
+            [("lilac", "Query", ["text"], "bubble", ["'termination notice period'"])],
             [
                 (
                     "green",
                     "Strip stopwords",
                     ["whole-syllable phrases", "bm25_vi_stopwords only"],
                     "scissors",
+                    ["a multi-syllable stopword", "phrase is removed whole"],
                 )
             ],
-            [("green", "Encode", ["fastembed Qdrant/bm25", "term-frequency weights"], "pencil")],
             [
-                ("blue", "sparse", ["IDF applied by Qdrant", "bm25"], "box"),
-                ("blue", "sparse_noidf", ["no modifier", "bm25_no_idf"], "box"),
+                (
+                    "green",
+                    "Encode",
+                    ["fastembed Qdrant/bm25", "term-frequency weights"],
+                    "pencil",
+                    ["termination, notice, period", "-> one weight each"],
+                )
+            ],
+            [
+                (
+                    "blue",
+                    "sparse",
+                    ["IDF applied by Qdrant", "bm25"],
+                    "box",
+                    ["a rare term counts more"],
+                ),
+                (
+                    "blue",
+                    "sparse_noidf",
+                    ["no modifier", "bm25_no_idf"],
+                    "box",
+                    ["every term, no rarity weight"],
+                ),
             ],
         ],
     ),
     "hybrid_fusion": (
         "Two legs fused inside Qdrant, one round trip.",
         [
-            [("lilac", "Query", ["text"], "bubble")],
+            [("lilac", "Query", ["text"], "bubble", ["'Article 12 leave'"])],
             [
-                ("blue", "Dense leg", ["prefetch, limit k * 4"], "search"),
-                ("blue", "Sparse leg", ["prefetch, limit k * 4"], "search"),
+                (
+                    "blue",
+                    "Dense leg",
+                    ["prefetch, limit k * 4"],
+                    "search",
+                    ["finds paraphrases of", "the question"],
+                ),
+                (
+                    "blue",
+                    "Sparse leg",
+                    ["prefetch, limit k * 4"],
+                    "search",
+                    ["finds the exact words", "'Article 12'"],
+                ),
             ],
             [
                 (
@@ -752,6 +950,7 @@ FLOWS = {
                         "hybrid_weighted_rrf: dense 1.0, sparse 0.5",
                     ],
                     "layers",
+                    ["a chunk both legs rank well", "rises to the top"],
                 )
             ],
         ],
@@ -759,14 +958,23 @@ FLOWS = {
     "rerank": (
         "Retrieve a wider pool, rescore it with a cross-encoder, cut to k.",
         [
-            [("lilac", "Query", ["text"], "bubble")],
-            [("blue", "Retrieve", ["hybrid_rrf", "pool min(k * 4, 100)"], "search")],
+            [("lilac", "Query", ["text"], "bubble", ["'can I carry over leave?'", "k = 5"])],
+            [
+                (
+                    "blue",
+                    "Retrieve",
+                    ["hybrid_rrf", "pool min(k * 4, 100)"],
+                    "search",
+                    ["k = 5 -> pool of 20 chunks"],
+                )
+            ],
             [
                 (
                     "green",
                     "Cross-encoder",
                     ["mmarco-mMiniLMv2, local", "or a Cohere-compatible", "/rerank endpoint"],
                     "trophy",
+                    ["reads question + chunk", "together, one score each"],
                 )
             ],
             [
@@ -779,6 +987,7 @@ FLOWS = {
                         "retrieval order is kept",
                     ],
                     "layers",
+                    ["20 scored -> best 5 kept"],
                 )
             ],
         ],
@@ -786,8 +995,16 @@ FLOWS = {
     "context_expansion": (
         "Neighbour chunks or the whole document, added after ranking.",
         [
-            [("lilac", "Query", ["text"], "bubble")],
-            [("blue", "Search and rank", ["scores never change"], "search")],
+            [("lilac", "Query", ["text"], "bubble", ["'can I carry over leave?'"])],
+            [
+                (
+                    "blue",
+                    "Search and rank",
+                    ["scores never change"],
+                    "search",
+                    ["hit: chunk 4 of doc 'faq-9'"],
+                )
+            ],
             [
                 (
                     "green",
@@ -798,6 +1015,7 @@ FLOWS = {
                         "one filtered scroll per hit",
                     ],
                     "layers",
+                    ["prev=1, next=1 ->", "chunks 3, 4, 5 sent on"],
                 )
             ],
         ],
@@ -805,14 +1023,23 @@ FLOWS = {
     "contextual_compression": (
         "An LLM keeps only the sentences that help. It never writes new words.",
         [
-            [("lilac", "Question", ["text"], "bubble")],
-            [("blue", "Retrieve", ["naive_rag", "800-char chunks, dense top 5"], "search")],
+            [("lilac", "Question", ["text"], "bubble", ["'what year was it built?'"])],
+            [
+                (
+                    "blue",
+                    "Retrieve",
+                    ["naive_rag", "800-char chunks, dense top 5"],
+                    "search",
+                    ["top 5 passages"],
+                )
+            ],
             [
                 (
                     "yellow",
                     "Pick sentences",
                     ["passages as numbered sentences", "LLM replies with ids to keep"],
                     "sparkle",
+                    ["[1.1] [1.2] [2.1] [2.2] ...", "keep: [1.2], [2.1]"],
                 )
             ],
             [
@@ -821,6 +1048,7 @@ FLOWS = {
                     "Kept text",
                     ["original sentences, in order", "no kept sentence: passage dropped"],
                     "scissors",
+                    ["passage 3 has no kept id", "-> passage 3 dropped"],
                 )
             ],
         ],
@@ -828,29 +1056,92 @@ FLOWS = {
     "deadline_fanout": (
         "One time budget for the whole call, one task per spec.",
         [
-            [("lilac", "Request", ["several specs", "deadline_ms, default 4000"], "bolt")],
-            [("blue", "Embed once", ["DeadlineExpired if the", "budget is gone first"], "sparkle")],
             [
-                ("green", "Spec 1", [], "search"),
-                ("green", "Spec 2", [], "search"),
-                ("green", "Spec 3", [], "search"),
+                (
+                    "lilac",
+                    "Request",
+                    ["several specs", "deadline_ms, default 4000"],
+                    "bolt",
+                    ["3 specs, deadline_ms=150"],
+                )
             ],
-            [("green", "Result", ["failed spec: status failed", "the others still return"], "doc")],
+            [
+                (
+                    "blue",
+                    "Embed once",
+                    ["DeadlineExpired if the", "budget is gone first"],
+                    "sparkle",
+                    ["one embedding, shared", "by all three specs"],
+                )
+            ],
+            [
+                ("green", "Spec 1", [], "search", ["dense: ok"]),
+                ("green", "Spec 2", [], "search", ["sparse: ok"]),
+                (
+                    "green",
+                    "Spec 3",
+                    [],
+                    "search",
+                    ["hybrid_rerank: rerank", "skipped, budget short"],
+                ),
+            ],
+            [
+                (
+                    "green",
+                    "Result",
+                    ["failed spec: status failed", "the others still return"],
+                    "doc",
+                    ["a spec that raises is", "marked failed, not fatal"],
+                )
+            ],
         ],
     ),
     "fact_check": (
         "A statement becomes claims, each claim gets evidence and a verdict.",
         [
-            [("lilac", "Statement", ["answer, message,", "paragraph"], "bubble")],
-            [("yellow", "Claims", ["LLM, up to 5", "each with a query"], "pencil")],
-            [("blue", "Evidence", ["any retrieval variant", "none: unverified"], "search")],
-            [("yellow", "Judge", ["supported, refuted,", "unverified"], "trophy")],
+            [
+                (
+                    "lilac",
+                    "Statement",
+                    ["answer, message,", "paragraph"],
+                    "bubble",
+                    ["'The store opens at 9", "and has 12 staff.'"],
+                )
+            ],
+            [
+                (
+                    "yellow",
+                    "Claims",
+                    ["LLM, up to 5", "each with a query"],
+                    "pencil",
+                    ["1. store opens at 9", "2. store has 12 staff"],
+                )
+            ],
+            [
+                (
+                    "blue",
+                    "Evidence",
+                    ["any retrieval variant", "none: unverified"],
+                    "search",
+                    ["claim 1: passage found", "claim 2: none -> unverified"],
+                )
+            ],
+            [
+                (
+                    "yellow",
+                    "Judge",
+                    ["supported, refuted,", "unverified"],
+                    "trophy",
+                    ["claim 1: supported", "claim 2: no LLM call"],
+                )
+            ],
             [
                 (
                     "green",
                     "Aggregate",
                     ["any refuted: refuted", "else any unverified", "else supported"],
                     "layers",
+                    ["claim 2 unverified ->", "statement unverified"],
                 )
             ],
         ],
@@ -864,7 +1155,8 @@ def flow(subtitle: str, cols: list, seed: int, title: str) -> Sketch:
 
     def box_h(box) -> float:
         lines = 1 if isinstance(box[1], str) else len(box[1])
-        return 50 + 36 * lines + 8 + 33 * len(box[2]) + 24
+        example = 26 + 28 * len(box[4]) if box[4] else 0
+        return 50 + 36 * lines + 8 + 33 * len(box[2]) + example + 24
 
     n = len(cols)
     w = (2000 - 2 * margin - gap * (n - 1)) / n
@@ -880,8 +1172,13 @@ def flow(subtitle: str, cols: list, seed: int, title: str) -> Sketch:
         x = margin + i * (w + gap)
         ys = [mid - total / 2 + j * (h + 30) for j in range(len(col))]
         centres.append([y + h / 2 for y in ys])
-        for y, (fill, name, bullets, icon) in zip(ys, col, strict=True):
+        for y, (fill, name, bullets, icon, example) in zip(ys, col, strict=True):
             s.box(x, y, w, h, fill, name, bullets, icon)
+            if example:
+                first = y + h - 20 - 28 * (len(example) - 1)
+                s._stroke(f"M {x + 22} {first - 28} L {x + w - 22} {first - 28}", 1.6, 0.5, "8 8")
+                for k, line in enumerate(example):
+                    s.text(x + 24, first + 28 * k, ("e.g. " if k == 0 else "       ") + line, 21)
     for i in range(n - 1):
         x1, x2 = margin + i * (w + gap) + w + 8, margin + (i + 1) * (w + gap) - 10
         for a in centres[i]:
