@@ -17,7 +17,9 @@ uv run --extra local-models python -m production_rag.methods.multi_query.example
 ```
 
 ## Results
-There is no retrieval row. The retrieval datasets have one query per question and the subqueries come from an LLM rewrite, so the method is only measured through the answer eval. `Rewrite p50 ms` is the rewrite call; `RAG tokens / question` includes the rewrite and generation calls. Behaviour is also covered by tests (`test_multi_query_merged`).
+Retrieval, from the LLM retrieval eval run 2026-11-13 (`core/eval/run_llm.py`), nDCG@10: 0.775 on SciFact and 0.809 on TVPL, against 0.770 and 0.808 for `hybrid_weighted_rrf` in the same run, about 1.4 s p50 for the rewrite. Full tables: [SciFact](../../../../results/query_side_scifact.md), [TVPL](../../../../results/query_side_tvpl.md).
+
+Answer eval: `Rewrite p50 ms` is the rewrite call; `RAG tokens / question` includes the rewrite and generation calls. Behaviour is also covered by tests (`test_multi_query_merged`).
 
 Run 2026-11-12, `gpt-5.4-nano`, top 5 passages. Full tables: [mini_wiki](../../../../results/answer_mini_wiki.md), [vi_legal](../../../../results/answer_vi_legal.md).
 

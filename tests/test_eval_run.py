@@ -1,18 +1,21 @@
 from dataclasses import replace
 
 import pytest
-from fakes import text_row
+from fakes import FakeEmbedder, text_row
 from test_methods import CHUNKING, V010
 
 from production_rag.core.chunking import chunk_documents
 from production_rag.core.eval.run import (
+    achunks_for,
     chunk_stat,
     chunks_for,
     collection_for,
     doc_ranking,
     parse_args,
+    result_row,
     summarize,
 )
+from production_rag.core.models import SpecResult
 from production_rag.methods import get_variant
 
 
@@ -77,7 +80,23 @@ def test_collection_for_markdown_and_unknown_chunker():
     base = get_variant("chunk_recursive_800")
     assert collection_for("tvpl", replace(base, chunker="markdown")) == "eval-tvpl-m800"
     with pytest.raises(ValueError, match="chunker"):
-        collection_for("tvpl", replace(base, chunker="semantic"))
+        collection_for("tvpl", replace(base, chunker="bogus"))
+
+
+def test_collection_for_semantic():
+    assert collection_for("scifact", get_variant("chunk_semantic")) == "eval-scifact-s800"
+
+
+async def test_achunks_for_semantic_uses_embedder():
+    embedder = FakeEmbedder()
+    chunks = await achunks_for(CORPUS, get_variant("chunk_semantic"), embedder)
+    assert embedder.calls > 0 and {c.doc_id for c in chunks} == {"a", "b"}
+    assert all(len(c.text) <= 800 for c in chunks)
+
+
+async def test_achunks_for_recursive_matches_chunks_for():
+    method = get_variant("chunk_recursive_400")
+    assert await achunks_for(CORPUS, method, FakeEmbedder()) == chunks_for(CORPUS, method)
 
 
 CORPUS = {"a": ("T", "alpha beta gamma delta " * 30), "b": (None, "short text")}
@@ -111,3 +130,18 @@ def test_chunk_stat():
 def test_doc_ranking_keeps_first_chunk_per_doc():
     rows = [text_row("x", doc_id=d) for d in ["a", "a", "b", "a", "c"]]
     assert doc_ranking(rows) == ["a", "b", "c"]
+
+
+def test_result_row_matches_closure_shape():
+    result = SpecResult(
+        status="ok",
+        rows=[text_row("a", doc_id="d1"), text_row("b", doc_id="d2")],
+        elapsed_ms=5,
+    )
+    row = result_row("dense", "q1", result, 12.34, {"d2": 1})
+    assert row["recall@10"] == 1.0
+    assert row["mrr@10"] == 0.5
+    assert row["top"] == ["d1"]
+    assert row["status"] == "ok" and row["rerank"] == "off"
+    assert row["method"] == "dense" and row["qid"] == "q1" and row["ms"] == 12.3
+    assert row["rel"] == {"d2": 1}

@@ -4,44 +4,11 @@
 
 ## How it fits together
 
-```mermaid
-flowchart LR
-    subgraph ingest["Ingest"]
-        F["PDF, DOCX, PPTX,<br/>XLSX, HTML, MD"] --> P["parse to Markdown"]
-        P --> C["chunk<br/>fixed, recursive, heading"]
-        C --> E["embed<br/>dense + BM25 sparse"]
-    end
-    E --> Q[("Qdrant")]
-    subgraph query["Query"]
-        U["question"] --> R["retrieve<br/>dense, BM25, hybrid fusion"]
-        R --> RR["rerank<br/>cross-encoder"]
-        RR --> X["context expansion"]
-        X --> G["generate answer<br/>or fact-check verdict"]
-    end
-    Q --> R
-```
+<p align="center"><img src="docs/diagrams/pipeline.svg" alt="Pipeline: files are parsed, chunked, optionally given an LLM context sentence, embedded and stored in Qdrant; a question is optionally rewritten, retrieved, reranked, given context and answered; core/eval measures every step." width="100%"></p>
 
 Each box is a method folder under [`src/production_rag/methods/`](src/production_rag/methods/), built on shared parts in `core/`. Every method has a `README.md` that explains it, a `pipeline.py` and an `example.py`.
 
-```mermaid
-flowchart TB
-    subgraph core["core/"]
-        direction LR
-        emb["embedders"] --- sp["sparse"] --- rk["rerankers"] --- st["store (Qdrant)"]
-        pl["pipeline<br/>search, merge, deadline"] --- llm["llm + token budget"] --- ch["chunking"]
-    end
-    subgraph methods["methods/"]
-        direction LR
-        m1["naive_rag"] --- m2["dense"] --- m3["bm25"] --- m4["hybrid_fusion"] --- m5["rerank"]
-        m6["deadline_fanout"] --- m7["multi_query"] --- m8["context_expansion"] --- m9["parse_and_chunk"] --- m10["fact_check"]
-    end
-    subgraph eval["core/eval/"]
-        direction LR
-        ds["public datasets<br/>downloaded at runtime"] --> run["run / answer"] --> rep["results/*.md"]
-    end
-    methods --> core
-    eval --> methods
-```
+<p align="center"><img src="docs/diagrams/layout.svg" alt="Repository layout: methods/ folders use the core/ building blocks, and core/eval/ runs the methods on public datasets and writes results/." width="100%"></p>
 
 ## Results
 
@@ -76,11 +43,15 @@ Each method retrieves the top 5 passages and `gpt-5.4-nano` answers from them. T
 
 Correctness moved by up to 0.07 between two runs, so smaller gaps are noise. The judge is the same model that answers. The `vi_RAG` gold answers were aligned with LLMs. Full tables, with faithfulness, abstention, latency and tokens: [mini_wiki](results/answer_mini_wiki.md), [vi_legal](results/answer_vi_legal.md).
 
-### Chunking, parsing and fact check
+### Chunking, parsing, query rewriting and fact check
 
 | Experiment | Result | Full results |
 |---|---|---|
 | Chunking (dense only, nDCG@10) | fixed 800: 0.751 / 0.815; recursive 800: 0.750 / 0.810; recursive 800 + 200 overlap: 0.750 / 0.802; recursive 400: 0.743 / 0.794 (SciFact / TVPL) | [SciFact](results/scifact_chunking.md), [TVPL](results/tvpl_chunking.md) |
+| Semantic chunking (dense only, nDCG@10) | semantic: 0.750 / 0.801; recursive 800 in the same run: 0.750 / 0.809 (SciFact / TVPL) | [SciFact](results/scifact_semantic.md), [TVPL](results/tvpl_semantic.md) |
+| LLM query rewriting (nDCG@10, SciFact / TVPL) | `hybrid_weighted_rrf` baseline: 0.770 / 0.808; HyDE passage + question: 0.762 / **0.826**; step-back: **0.778** / 0.803; decomposition: 0.770 / 0.786; multi-query: 0.775 / 0.809 | [SciFact](results/query_side_scifact.md), [TVPL](results/query_side_tvpl.md), [decomposition SciFact rerun](results/query_decomposition_scifact.md) |
+| Contextual chunk headers (sample: 100 queries, 350 / 500 docs) | 0.919 / 0.969 against 0.928 / 0.967 without; the sample is too easy to show a gain | [SciFact](results/contextual_headers_scifact.md), [TVPL](results/contextual_headers_tvpl.md) |
+| Contextual compression (answer correctness, 50 mini_wiki / 40 vi_legal questions) | 0.800 / 0.562 against `naive_rag` 0.810 / 0.575, with 88% / 72% fewer passage tokens | [mini_wiki](results/contextual_compression_mini_wiki.md), [vi_legal](results/contextual_compression_vi_legal.md) |
 | Parsing (token recall / precision, 15 public files) | all 0.954 / 0.959; pdf 0.982 / 0.920; xlsx recall 0.629 against docling's own output | [parse quality](results/parse_quality.md) |
 | Fact check (300 SciFact claims) | accuracy 0.703 and 0.740 over two runs; refuted recall 0.375 in run 1 | [run 1](results/fact_check_scifact.md), [runs compared](results/fact_check_scifact_runs.md) |
 
@@ -106,8 +77,13 @@ Correctness moved by up to 0.07 between two runs, so smaller gaps are noise. The
 | [`deadline_fanout`](src/production_rag/methods/deadline_fanout/README.md) | none | `local-models` | Deadline budget and spec fan-out; latency bench in its README |
 | [`multi_query`](src/production_rag/methods/multi_query/README.md) | none | `local-models` | Multi-query merge; answer numbers in its README |
 | [`context_expansion`](src/production_rag/methods/context_expansion/README.md) | none | `local-models` | Neighbour chunks or the full document around each hit; answer numbers in its README |
-| [`parse_and_chunk`](src/production_rag/methods/parse_and_chunk/README.md) | `chunk_recursive_800`, `chunk_recursive_800_o200`, `chunk_recursive_400` | `parse` + `local-models` | PDF, DOCX, PPTX, XLSX, HTML, Markdown to Markdown with pip-only parsers; fixed, recursive and heading-aware chunking |
+| [`parse_and_chunk`](src/production_rag/methods/parse_and_chunk/README.md) | `chunk_recursive_800`, `chunk_recursive_800_o200`, `chunk_recursive_400`, `chunk_semantic` | `parse` + `local-models` | PDF, DOCX, PPTX, XLSX, HTML, Markdown to Markdown with pip-only parsers; fixed, recursive, heading-aware and semantic chunking |
 | [`fact_check`](src/production_rag/methods/fact_check/README.md) | none | `local-models` + `OPENAI_API_KEY` | claims from a statement, evidence per claim, verdict: supported, refuted, unverified; `not_relevant` when nothing is checkable |
+| [`hyde`](src/production_rag/methods/hyde/README.md) | none | `local-models` + `OPENAI_API_KEY` | An LLM-written hypothetical answer passage replaces the question for dense search; table in its README |
+| [`step_back`](src/production_rag/methods/step_back/README.md) | none | `local-models` + `OPENAI_API_KEY` | The question plus one LLM-written more general question, merged by best score; table in its README |
+| [`query_decomposition`](src/production_rag/methods/query_decomposition/README.md) | none | `local-models` + `OPENAI_API_KEY` | A multi-part question split by an LLM into up to 3 sub-questions, one search each, merged by best score; table in its README |
+| [`contextual_headers`](src/production_rag/methods/contextual_headers/README.md) | none | `local-models` + `OPENAI_API_KEY` | An LLM-written sentence per chunk that places it in its document, embedded with the chunk at index time; cached on disk; table in its README |
+| [`contextual_compression`](src/production_rag/methods/contextual_compression/README.md) | none | `local-models` + `OPENAI_API_KEY` | After retrieval an LLM keeps only the sentences that help answer the question, so the prompt carries fewer tokens; answer-eval numbers in its README |
 
 ## Quickstart
 
@@ -169,12 +145,7 @@ asyncio.run(main())
 
 ## Adding a method
 
-```mermaid
-flowchart LR
-    A["new folder in methods/<br/>README, pipeline, example"] --> B["add to METHOD_NAMES"]
-    B --> C["eval on SciFact and TVPL"]
-    C --> D["eval.report<br/>updates results/"]
-```
+<p align="center"><img src="docs/diagrams/add_method.svg" alt="Adding a method: create the folder, register it in METHOD_NAMES, measure it on SciFact and TVPL, and report the table." width="100%"></p>
 
 1. Add a folder under `src/production_rag/methods/` with `README.md`, `pipeline.py` and `example.py`. `pipeline.py` exports `VARIANTS`, `DEFAULT` and `search`.
 2. Add the name to `METHOD_NAMES` in `src/production_rag/methods/__init__.py`.
@@ -190,7 +161,7 @@ uv run --extra local-models pytest -m integration
 
 ## Roadmap
 
-Next: query rewrite and speculative search, LLM rerank, cache, semantic chunking, embedding comparison, `cpu_embedding_batching`, testset generation, chunking compared on answer quality. Known gaps: [`BACKLOG.md`](BACKLOG.md).
+Next: speculative search, LLM rerank, cache, embedding comparison, `cpu_embedding_batching`, testset generation, chunking compared on answer quality. Known gaps: [`BACKLOG.md`](BACKLOG.md).
 
 ## Models, data and licenses
 
@@ -203,5 +174,7 @@ Next: query rewrite and speculative search, LLM rerank, cache, semantic chunking
 - Parse extra: `pdfplumber`, `python-docx`, `python-pptx`, `openpyxl`, `markdownify` and `beautifulsoup4`, all MIT.
 - Parsing eval data: 7 arXiv papers (CC BY 4.0, except `arxiv-1602.06541v2`, CC BY-SA 4.0) with the [py-pdf/benchmarks](https://github.com/py-pdf/benchmarks) ground truth (BSD-3-Clause, pinned commit `18ee8c4`), and the [docling](https://github.com/docling-project/docling) test fixtures (MIT, pinned commit `a7760ab`). Downloaded at runtime, not stored here.
 - Fact-check data: [SciFact](https://huggingface.co/datasets/allenai/scifact) claims, CC BY-NC 2.0 (non-commercial) per the card, downloaded at runtime from allenai's release tarball and not stored here.
+- Diagram font: [Patrick Hand](https://fonts.google.com/specimen/Patrick+Hand) by Patrick Wagesreiter, SIL OFL 1.1 ([`docs/diagrams/OFL.txt`](docs/diagrams/OFL.txt)), cut to Latin characters and embedded in the SVGs. The diagrams are drawn by [`docs/diagrams/make_diagrams.py`](docs/diagrams/make_diagrams.py).
+- Technique catalog: [nirdiamant/RAG_Techniques](https://github.com/nirdiamant/RAG_Techniques) was used to find which techniques this repo did not have yet. No code or prompts are taken from it (its license is not a standard one); each method README cites the paper or source it is based on.
 
 Code: MIT.

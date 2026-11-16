@@ -15,6 +15,11 @@ METHOD_NAMES: tuple[str, ...] = (
     "deadline_fanout",
     "parse_and_chunk",
     "fact_check",
+    "hyde",
+    "step_back",
+    "query_decomposition",
+    "contextual_headers",
+    "contextual_compression",
 )
 
 

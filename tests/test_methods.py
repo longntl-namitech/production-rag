@@ -28,7 +28,12 @@ V010 = [
     "hybrid_weighted_rrf",
     "hybrid_rrf_rerank",
 ]
-CHUNKING = ["chunk_recursive_800", "chunk_recursive_800_o200", "chunk_recursive_400"]
+CHUNKING = [
+    "chunk_recursive_800",
+    "chunk_recursive_800_o200",
+    "chunk_recursive_400",
+    "chunk_semantic",
+]
 
 
 def test_variant_names_match_v010_in_order():
@@ -46,6 +51,7 @@ def test_chunking_variants_config():
         ("recursive", 800, 0, *dense),
         ("recursive", 800, 200, *dense),
         ("recursive", 400, 0, *dense),
+        ("semantic", 800, 0, *dense),
     ]
     assert parse_and_chunk.DEFAULT == "chunk_recursive_800"
 
@@ -169,6 +175,14 @@ async def test_index_files_skips_and_reports(deps, tmp_path):
     assert "LibreOffice" in rep.skipped[str(tmp_path / "b.doc")]
     hit = (await parse_and_chunk.search("annual leave", "files", deps, k=1)).rows[0]
     assert hit.title == "Leave" and hit.text.startswith("Leave\n")
+
+
+async def test_index_files_semantic_strategy(deps, tmp_path):
+    (tmp_path / "a.md").write_text("# Leave\n\nAnnual leave is twelve days. Sick leave is paid.")
+    rep = await parse_and_chunk.index_files(
+        deps, "files-sem", [tmp_path / "a.md"], strategy="semantic"
+    )
+    assert rep.files == 1 and rep.chunks >= 1
 
 
 async def test_index_files_title_falls_back_to_file_name(deps, tmp_path):
