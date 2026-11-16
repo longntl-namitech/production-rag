@@ -1,8 +1,21 @@
-# Contextual compression: send only the sentences that help
+<div align="center">
 
-Extra: `local-models`. Needs an LLM at query time (`OPENAI_API_KEY`).
+# Contextual compression
 
-Differs from [`context_expansion`](../context_expansion/README.md): that one adds text around a hit, this one removes text from it.
+**Send only the sentences that help answer the question.**
+
+</div>
+
+<p align="center"><img src="../../../../docs/diagrams/methods/contextual_compression.svg" alt="After retrieval an LLM reads the passages as numbered sentences and replies with the ids to keep, and the kept original sentences are sent on in their original order." width="100%"></p>
+
+| | |
+|---|---|
+| **Stage** | Context |
+| **Extra** | `local-models` |
+| **LLM** | at query time (`OPENAI_API_KEY`) |
+| **Eval variants** | answer eval only (`contextual_compression` front end) |
+| **Compare with** | [`context_expansion`](../context_expansion/README.md): that one adds text around a hit, this one removes text from it |
+| **Headline** | 88% fewer passage tokens on mini_wiki and 72% on vi_legal, with correctness within noise of `naive_rag` (0.800 / 0.562 against 0.810 / 0.575) |
 
 ## When to use
 - Retrieved passages are long and mostly off-topic, so the prompt pays for tokens that do not help the answer.

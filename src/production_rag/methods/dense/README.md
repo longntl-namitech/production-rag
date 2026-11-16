@@ -1,6 +1,20 @@
+<div align="center">
+
 # Dense retrieval
 
-Extra: `local-models`
+**One embedding call per request, cosine search in Qdrant.**
+
+</div>
+
+<p align="center"><img src="../../../../docs/diagrams/methods/dense.svg" alt="The query is embedded once with the Jina model or an OpenAI-compatible endpoint, and Qdrant returns the top k chunks by cosine similarity." width="100%"></p>
+
+| | |
+|---|---|
+| **Stage** | Retrieve |
+| **Extra** | `local-models` |
+| **LLM** | none |
+| **Eval variants** | `dense` |
+| **Headline** | nDCG@10 0.762 on SciFact and 0.818 on TVPL (the best method here on TVPL), about 21 ms p50 |
 
 ## When to use
 - Queries are phrased differently from the documents (paraphrases, questions against statements).

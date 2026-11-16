@@ -1,8 +1,20 @@
+<div align="center">
+
 # Fact check
 
-Extra: `local-models` for the default hybrid evidence search (`base="bm25"` works without it)
+**Claims from a statement, evidence per claim, a verdict per claim.**
 
-LLM: `OPENAI_API_KEY` (model `OPENAI_MODEL`, default `gpt-5.4-nano`)
+</div>
+
+<p align="center"><img src="../../../../docs/diagrams/methods/fact_check.svg" alt="A statement is split into up to 5 claims by an LLM, evidence is retrieved for each claim, an LLM labels each claim supported, refuted or unverified, and the labels are aggregated into one statement label." width="100%"></p>
+
+| | |
+|---|---|
+| **Stage** | Verify |
+| **Extra** | `local-models` for the default hybrid evidence search (`base="bm25"` works without it) |
+| **LLM** | `OPENAI_API_KEY` (model `OPENAI_MODEL`, default `gpt-5.4-nano`) |
+| **Eval variants** | own eval, `production_rag.methods.fact_check.eval` |
+| **Headline** | Accuracy 0.703 and 0.740 over two runs on 300 SciFact claims; refuted recall 0.375 in run 1 |
 
 ## When to use
 - A statement (an answer, a message, a paragraph) must be checked against a document collection, and it may mix several facts.

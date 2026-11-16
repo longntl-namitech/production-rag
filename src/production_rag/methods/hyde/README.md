@@ -1,8 +1,21 @@
-# HyDE: search with a hypothetical answer
+<div align="center">
 
-Extra: `local-models`. Needs an LLM at query time (`OPENAI_API_KEY`).
+# HyDE
 
-Differs from [`multi_query`](../multi_query/README.md): one hypothetical answer passage replaces the question, instead of several rephrasings of it.
+**Search with a hypothetical answer instead of the question.**
+
+</div>
+
+<p align="center"><img src="../../../../docs/diagrams/methods/hyde.svg" alt="An LLM writes a short passage that would answer the question, the passage is embedded for dense search only, and the question and passage results can be merged by best score." width="100%"></p>
+
+| | |
+|---|---|
+| **Stage** | Query rewrite |
+| **Extra** | `local-models` |
+| **LLM** | at query time (`OPENAI_API_KEY`) |
+| **Eval variants** | `hyde_passage`, `hyde_passage_query` |
+| **Compare with** | [`multi_query`](../multi_query/README.md): one hypothetical answer passage replaces the question, instead of several rephrasings of it |
+| **Headline** | On TVPL, `hyde_passage_query` is +0.018 nDCG@10 over `hybrid_weighted_rrf`; on SciFact neither row beats it |
 
 ## When to use
 - Questions are short or phrased very differently from the documents, so the question's own vector sits far from the passages that answer it.

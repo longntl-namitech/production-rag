@@ -1,6 +1,20 @@
+<div align="center">
+
 # Parse and chunk
 
-Extra: `parse` for PDF, Office and HTML (Markdown needs none); `local-models` for dense indexing
+**Files to Markdown with pip-only parsers, then four ways to split the text.**
+
+</div>
+
+<p align="center"><img src="../../../../docs/diagrams/methods/parse_and_chunk.svg" alt="Files are parsed to Markdown with one library per format, chunked by a fixed, recursive, markdown or semantic strategy, and indexed with a dense and BM25 vector per chunk." width="100%"></p>
+
+| | |
+|---|---|
+| **Stage** | Ingest |
+| **Extra** | `parse` for PDF, Office and HTML (Markdown needs none); `local-models` for dense indexing |
+| **LLM** | none |
+| **Eval variants** | `chunk_recursive_800`, `chunk_recursive_800_o200`, `chunk_recursive_400`, `chunk_semantic` |
+| **Headline** | Parsing token recall 0.954 and precision 0.959 over 15 files; fixed 800-character chunks are best or tied on nDCG@10 on both sets |
 
 ## When to use
 - Your documents are files (PDF, Word, slides, spreadsheets, HTML, Markdown) and not plain text.

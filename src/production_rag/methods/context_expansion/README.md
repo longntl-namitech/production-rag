@@ -1,6 +1,20 @@
+<div align="center">
+
 # Context expansion
 
-Extra: `local-models`
+**Neighbour chunks or the whole document, added after ranking.**
+
+</div>
+
+<p align="center"><img src="../../../../docs/diagrams/methods/context_expansion.svg" alt="After the search ranks the hits, neighbour chunks or the full document are fetched around each hit with one filtered scroll, so the scores never change." width="100%"></p>
+
+| | |
+|---|---|
+| **Stage** | Context |
+| **Extra** | `local-models` |
+| **LLM** | none in the search itself; the answer eval uses one to answer |
+| **Eval variants** | answer eval only, no retrieval row |
+| **Headline** | vi_legal correctness 0.685 against 0.580 for `hybrid_fusion`, with about twice the passage tokens |
 
 ## When to use
 - Chunks are small and the answer spans the chunk boundary, or a short FAQ entry should come back whole.

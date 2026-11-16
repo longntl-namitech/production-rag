@@ -570,6 +570,329 @@ def results_chart() -> Sketch:
     return s
 
 
+LEGEND = (
+    "lilac: input  |  yellow: needs OPENAI_API_KEY  |  green: plain code  |  "
+    "blue: Qdrant or shared part"
+)
+
+# One flow per method folder: (subtitle, columns). A column is a list of boxes
+# (fill, title, bullets, icon); boxes in one column run side by side as parallel steps.
+FLOWS = {
+    "naive_rag": (
+        "Fixed chunks, dense top 5, one prompt.",
+        [
+            [("lilac", "Documents", ["raw text"], "doc")],
+            [("green", "Chunk", ["fixed size", "up to 800 characters"], "scissors")],
+            [("blue", "Dense search", ["query embedded", "top 5 chunks back"], "search")],
+            [
+                (
+                    "yellow",
+                    "Generate",
+                    ["passages stuffed in prompt", "NO_ANSWER if missing"],
+                    "bubble",
+                )
+            ],
+        ],
+    ),
+    "parse_and_chunk": (
+        "Files to Markdown, Markdown to chunks, chunks to vectors.",
+        [
+            [("lilac", "Files", ["PDF, DOCX, PPTX", "XLSX, HTML, Markdown"], "folder")],
+            [("green", "Parse", ["one library per format", "output is Markdown"], "doc")],
+            [
+                (
+                    "green",
+                    "Chunk",
+                    ["fixed, recursive, markdown", "semantic (embeds sentences)"],
+                    "scissors",
+                )
+            ],
+            [("blue", "Index", ["dense vector per chunk", "BM25 vectors per chunk"], "layers")],
+        ],
+    ),
+    "contextual_headers": (
+        "One LLM-written sentence places each chunk in its document.",
+        [
+            [("lilac", "Documents", ["chunked at index time"], "doc")],
+            [
+                (
+                    "yellow",
+                    "Context sentence",
+                    ["LLM reads document + chunk", "200 token cap, cached on disk"],
+                    "sparkle",
+                )
+            ],
+            [
+                (
+                    "blue",
+                    "Index",
+                    [
+                        "title + sentence + chunk",
+                        "embedded and BM25-encoded",
+                        "stored text stays the chunk",
+                    ],
+                    "layers",
+                )
+            ],
+        ],
+    ),
+    "multi_query": (
+        "Each subquery retrieves on its own, each chunk keeps its best score.",
+        [
+            [("lilac", "Subqueries", ["up to 8", "embedded in one call"], "bubble")],
+            [("green", "Search each", ["same spec for every", "subquery"], "search")],
+            [("green", "merge_max", ["each chunk once", "with its best score"], "layers")],
+            [("blue", "Rerank (optional)", ["scored against", "rerank_query"], "trophy")],
+        ],
+    ),
+    "hyde": (
+        "An LLM-written passage replaces the question for dense search.",
+        [
+            [("lilac", "Question", ["short, or phrased unlike", "the documents"], "bubble")],
+            [("yellow", "Passage", ["LLM writes an answer", "256 token cap"], "pencil")],
+            [("blue", "Dense search", ["passage embedded", "sparse leg skipped"], "search")],
+            [
+                (
+                    "green",
+                    "Merge",
+                    ["hyde_passage: passage alone", "hyde_passage_query:", "question + passage"],
+                    "layers",
+                )
+            ],
+        ],
+    ),
+    "step_back": (
+        "The question and one more general question retrieve together.",
+        [
+            [("lilac", "Question", ["specific"], "bubble")],
+            [
+                (
+                    "yellow",
+                    "Step-back",
+                    ["LLM writes one more", "general question", "128 token cap"],
+                    "pencil",
+                )
+            ],
+            [
+                ("green", "Search question", [], "search"),
+                ("green", "Search step-back", [], "search"),
+            ],
+            [("green", "Merge", ["each chunk once", "with its best score"], "layers")],
+        ],
+    ),
+    "query_decomposition": (
+        "One search per part of the question.",
+        [
+            [("lilac", "Question", ["asks several things"], "bubble")],
+            [
+                (
+                    "yellow",
+                    "Split",
+                    ["LLM writes up to 3", "sub-questions", "256 token cap"],
+                    "scissors",
+                )
+            ],
+            [
+                ("green", "Search part 1", [], "search"),
+                ("green", "Search part 2", [], "search"),
+                ("green", "Search part 3", [], "search"),
+            ],
+            [("green", "Merge", ["each chunk once", "with its best score"], "layers")],
+        ],
+    ),
+    "dense": (
+        "One embedding call per request, cosine search in Qdrant.",
+        [
+            [("lilac", "Query", ["text"], "bubble")],
+            [
+                (
+                    "green",
+                    "Embed",
+                    ["jina v5 nano, 768 dims", "or any OpenAI-compatible", "/embeddings endpoint"],
+                    "sparkle",
+                )
+            ],
+            [("blue", "Qdrant", ["cosine similarity", "top k chunks"], "box")],
+        ],
+    ),
+    "bm25": (
+        "Term weights in a sparse vector, with or without IDF.",
+        [
+            [("lilac", "Query", ["text"], "bubble")],
+            [
+                (
+                    "green",
+                    "Strip stopwords",
+                    ["whole-syllable phrases", "bm25_vi_stopwords only"],
+                    "scissors",
+                )
+            ],
+            [("green", "Encode", ["fastembed Qdrant/bm25", "term-frequency weights"], "pencil")],
+            [
+                ("blue", "sparse", ["IDF applied by Qdrant", "bm25"], "box"),
+                ("blue", "sparse_noidf", ["no modifier", "bm25_no_idf"], "box"),
+            ],
+        ],
+    ),
+    "hybrid_fusion": (
+        "Two legs fused inside Qdrant, one round trip.",
+        [
+            [("lilac", "Query", ["text"], "bubble")],
+            [
+                ("blue", "Dense leg", ["prefetch, limit k * 4"], "search"),
+                ("blue", "Sparse leg", ["prefetch, limit k * 4"], "search"),
+            ],
+            [
+                (
+                    "green",
+                    "Fuse",
+                    [
+                        "hybrid_rrf: ranks only",
+                        "hybrid_dbsf: normalised scores",
+                        "hybrid_weighted_rrf: dense 1.0, sparse 0.5",
+                    ],
+                    "layers",
+                )
+            ],
+        ],
+    ),
+    "rerank": (
+        "Retrieve a wider pool, rescore it with a cross-encoder, cut to k.",
+        [
+            [("lilac", "Query", ["text"], "bubble")],
+            [("blue", "Retrieve", ["hybrid_rrf", "pool min(k * 4, 100)"], "search")],
+            [
+                (
+                    "green",
+                    "Cross-encoder",
+                    ["mmarco-mMiniLMv2, local", "or a Cohere-compatible", "/rerank endpoint"],
+                    "trophy",
+                )
+            ],
+            [
+                (
+                    "green",
+                    "Top k",
+                    [
+                        "rerank skipped under 300 ms",
+                        "of budget left; on error",
+                        "retrieval order is kept",
+                    ],
+                    "layers",
+                )
+            ],
+        ],
+    ),
+    "context_expansion": (
+        "Neighbour chunks or the whole document, added after ranking.",
+        [
+            [("lilac", "Query", ["text"], "bubble")],
+            [("blue", "Search and rank", ["scores never change"], "search")],
+            [
+                (
+                    "green",
+                    "Expand",
+                    [
+                        "ContextOption(prev=n, next=m)",
+                        "or ContextOption(full=True)",
+                        "one filtered scroll per hit",
+                    ],
+                    "layers",
+                )
+            ],
+        ],
+    ),
+    "contextual_compression": (
+        "An LLM keeps only the sentences that help. It never writes new words.",
+        [
+            [("lilac", "Question", ["text"], "bubble")],
+            [("blue", "Retrieve", ["naive_rag", "800-char chunks, dense top 5"], "search")],
+            [
+                (
+                    "yellow",
+                    "Pick sentences",
+                    ["passages as numbered sentences", "LLM replies with ids to keep"],
+                    "sparkle",
+                )
+            ],
+            [
+                (
+                    "green",
+                    "Kept text",
+                    ["original sentences, in order", "no kept sentence: passage dropped"],
+                    "scissors",
+                )
+            ],
+        ],
+    ),
+    "deadline_fanout": (
+        "One time budget for the whole call, one task per spec.",
+        [
+            [("lilac", "Request", ["several specs", "deadline_ms, default 4000"], "bolt")],
+            [("blue", "Embed once", ["DeadlineExpired if the", "budget is gone first"], "sparkle")],
+            [
+                ("green", "Spec 1", [], "search"),
+                ("green", "Spec 2", [], "search"),
+                ("green", "Spec 3", [], "search"),
+            ],
+            [("green", "Result", ["failed spec: status failed", "the others still return"], "doc")],
+        ],
+    ),
+    "fact_check": (
+        "A statement becomes claims, each claim gets evidence and a verdict.",
+        [
+            [("lilac", "Statement", ["answer, message,", "paragraph"], "bubble")],
+            [("yellow", "Claims", ["LLM, up to 5", "each with a query"], "pencil")],
+            [("blue", "Evidence", ["any retrieval variant", "none: unverified"], "search")],
+            [("yellow", "Judge", ["supported, refuted,", "unverified"], "trophy")],
+            [
+                (
+                    "green",
+                    "Aggregate",
+                    ["any refuted: refuted", "else any unverified", "else supported"],
+                    "layers",
+                )
+            ],
+        ],
+    ),
+}
+
+
+def flow(subtitle: str, cols: list, seed: int, title: str) -> Sketch:
+    """A row of boxes joined by arrows; a column with several boxes is a parallel step."""
+    margin, gap, top = 75, 80, 160
+
+    def box_h(box) -> float:
+        lines = 1 if isinstance(box[1], str) else len(box[1])
+        return 50 + 36 * lines + 8 + 33 * len(box[2]) + 24
+
+    n = len(cols)
+    w = (2000 - 2 * margin - gap * (n - 1)) / n
+    heights = [max(box_h(b) for b in col) for col in cols]
+    single = max(h for col, h in zip(cols, heights, strict=True) if len(col) == 1)
+    heights = [single if len(col) == 1 else h for col, h in zip(cols, heights, strict=True)]
+    totals = [len(col) * h + (len(col) - 1) * 30 for col, h in zip(cols, heights, strict=True)]
+    mid = top + max(totals) / 2
+    s = Sketch(2000, int(top + max(totals) + 110), seed)
+    s.heading(title, subtitle)
+    centres: list[list[float]] = []
+    for i, (col, h, total) in enumerate(zip(cols, heights, totals, strict=True)):
+        x = margin + i * (w + gap)
+        ys = [mid - total / 2 + j * (h + 30) for j in range(len(col))]
+        centres.append([y + h / 2 for y in ys])
+        for y, (fill, name, bullets, icon) in zip(ys, col, strict=True):
+            s.box(x, y, w, h, fill, name, bullets, icon)
+    for i in range(n - 1):
+        x1, x2 = margin + i * (w + gap) + w + 8, margin + (i + 1) * (w + gap) - 10
+        for a in centres[i]:
+            for b in centres[i + 1]:
+                if len(centres[i]) > 1 and len(centres[i + 1]) > 1:
+                    continue
+                s.arrow((x1, a), (x2, b))
+    s.text(1960, s.height - 36, LEGEND, 22, anchor="end")
+    return s
+
+
 def main() -> None:
     for name, sketch in [
         ("pipeline", pipeline()),
@@ -579,6 +902,11 @@ def main() -> None:
     ]:
         (HERE / f"{name}.svg").write_text(sketch.svg(), encoding="utf-8")
         print(f"wrote docs/diagrams/{name}.svg")
+    (HERE / "methods").mkdir(exist_ok=True)
+    for seed, (name, (subtitle, cols)) in enumerate(FLOWS.items(), start=100):
+        sketch = flow(subtitle, cols, seed, name)
+        (HERE / "methods" / f"{name}.svg").write_text(sketch.svg(), encoding="utf-8")
+        print(f"wrote docs/diagrams/methods/{name}.svg")
 
 
 if __name__ == "__main__":
