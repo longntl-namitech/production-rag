@@ -13,7 +13,7 @@ from production_rag.core.indexing import Chunk
 from production_rag.core.llm import BudgetExceeded, Usage
 
 PROMPT_VERSION = "v1"
-MAX_TOKENS = 100
+MAX_TOKENS = 200  # 100 cut about 1 in 5 Vietnamese sentences
 MAX_DOC_CHARS = 12000  # a longer document is cut here before it goes into the prompt
 
 _SYSTEM = """You help a search engine find passages by placing each one in its document.
