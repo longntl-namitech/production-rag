@@ -1,6 +1,20 @@
+<div align="center">
+
 # Reranking with a cross-encoder
 
-Extra: `local-models`
+**Retrieve a wider pool, rescore it, cut back to k.**
+
+</div>
+
+<p align="center"><img src="../../../../docs/diagrams/methods/rerank.svg" alt="Hybrid RRF retrieves a pool of up to 100 candidates, a cross-encoder rescores them, and the list is cut back to k; the rerank is skipped when little budget is left and the retrieval order is kept on error." width="100%"></p>
+
+| | |
+|---|---|
+| **Stage** | Rerank |
+| **Extra** | `local-models` |
+| **LLM** | none |
+| **Eval variants** | `hybrid_rrf_rerank` (answer eval: `rerank`) |
+| **Headline** | nDCG@10 0.786 to 0.810 on TVPL, 0.755 to 0.660 on SciFact, at about 0.8 to 1 s p50 on CPU |
 
 ## When to use
 - Precision at the top matters (one answer shown, or few chunks sent to an LLM) and you can spend about a second per query, or have a GPU or a hosted reranker.

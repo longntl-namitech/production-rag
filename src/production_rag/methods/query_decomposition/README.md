@@ -1,8 +1,21 @@
-# Query decomposition: one search per part of the question
+<div align="center">
 
-Extra: `local-models`. Needs an LLM at query time (`OPENAI_API_KEY`).
+# Query decomposition
 
-Differs from [`multi_query`](../multi_query/README.md): the sub-questions cover different parts of the question, not the same question reworded.
+**One search per part of the question.**
+
+</div>
+
+<p align="center"><img src="../../../../docs/diagrams/methods/query_decomposition.svg" alt="An LLM splits the question into up to 3 sub-questions, each is searched on its own, and each chunk is kept once with its best score." width="100%"></p>
+
+| | |
+|---|---|
+| **Stage** | Query rewrite |
+| **Extra** | `local-models` |
+| **LLM** | at query time (`OPENAI_API_KEY`) |
+| **Eval variants** | `query_decomposition` |
+| **Compare with** | [`multi_query`](../multi_query/README.md): the sub-questions cover different parts of the question, not the same question reworded |
+| **Headline** | Ties `hybrid_weighted_rrf` on SciFact; 0.022 nDCG@10 below it on TVPL |
 
 ## When to use
 - A question asks for several things at once ("who wrote it and when was it built"), and no single passage answers all of them.

@@ -1,8 +1,20 @@
+<div align="center">
+
 # Naive RAG
 
-Extra: `local-models`
+**The baseline: fixed chunks, dense top 5, one prompt.**
 
-LLM: `OPENAI_API_KEY` (model `OPENAI_MODEL`, default `gpt-5.4-nano`)
+</div>
+
+<p align="center"><img src="../../../../docs/diagrams/methods/naive_rag.svg" alt="Documents are cut into fixed 800-character chunks, the query is embedded and the top 5 chunks go into one prompt that the LLM answers from." width="100%"></p>
+
+| | |
+|---|---|
+| **Stage** | Baseline |
+| **Extra** | `local-models` |
+| **LLM** | `OPENAI_API_KEY` (model `OPENAI_MODEL`, default `gpt-5.4-nano`) |
+| **Eval variants** | `naive_rag` |
+| **Headline** | nDCG@10 0.751 on SciFact and 0.815 on TVPL; answer correctness 0.797 on mini_wiki and 0.620 on vi_legal |
 
 ## When to use
 - It is the baseline every other method is compared against.
