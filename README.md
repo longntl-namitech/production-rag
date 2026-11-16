@@ -206,7 +206,7 @@ asyncio.run(main())
 3. A new vector kind or backend goes in `core/`.
 4. Run the eval on both datasets, then `python -m production_rag.core.eval.report`.
 
-The diagrams are drawn by [`docs/diagrams/make_diagrams.py`](docs/diagrams/make_diagrams.py) (`uv run python docs/diagrams/make_diagrams.py`); the results chart reads its numbers from `results/*.json`.
+The diagrams are drawn by [`docs/diagrams/make_diagrams.py`](docs/diagrams/make_diagrams.py) (`uv run python docs/diagrams/make_diagrams.py`); the results chart reads its numbers from `results/*.json`. The example in each method diagram is one real SciFact claim, captured by [`docs/diagrams/capture_example.py`](docs/diagrams/capture_example.py) into `docs/diagrams/example_query.json` (needs Qdrant with the eval collections and `OPENAI_API_KEY`).
 
 ## Tests
 
