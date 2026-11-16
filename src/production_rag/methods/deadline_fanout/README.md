@@ -1,6 +1,20 @@
+<div align="center">
+
 # Deadline budget and spec fan-out
 
-Extra: `local-models`
+**One time budget for the whole call, one task per spec.**
+
+</div>
+
+<p align="center"><img src="../../../../docs/diagrams/methods/deadline_fanout.svg" alt="A request carries one deadline budget, the query is embedded once, each spec runs as its own task under the remaining budget, and a failed spec comes back marked while the others still return." width="100%"></p>
+
+| | |
+|---|---|
+| **Stage** | Retrieve |
+| **Extra** | `local-models` |
+| **LLM** | none |
+| **Eval variants** | latency bench only, no retrieval row |
+| **Headline** | At a 150 ms deadline the rerank spec is skipped on every query and p50 is 22 ms, against 366 ms at 2000 ms |
 
 ## When to use
 - One request needs several searches with different filters or `k` (for example FAQ entries and documents), and a caller with a hard latency budget.

@@ -1,6 +1,20 @@
-# BM25: IDF and Vietnamese stopwords
+<div align="center">
 
-Extra: none for search; the eval and example index dense vectors too, so they need `local-models`
+# BM25
+
+**Sparse retrieval with IDF, and Vietnamese stopwords as an option.**
+
+</div>
+
+<p align="center"><img src="../../../../docs/diagrams/methods/bm25.svg" alt="The query is optionally stripped of Vietnamese stopwords, encoded to term-frequency weights by fastembed, and searched in a sparse vector with IDF or in a copy with no modifier." width="100%"></p>
+
+| | |
+|---|---|
+| **Stage** | Retrieve |
+| **Extra** | none for search; the eval and example index dense vectors too, so they need `local-models` |
+| **LLM** | none |
+| **Eval variants** | `bm25_no_idf`, `bm25`, `bm25_vi_stopwords` |
+| **Headline** | nDCG@10 0.683 on SciFact and 0.669 on TVPL; IDF is worth 0.08 and 0.03, and Vietnamese stopwords made TVPL worse |
 
 Three variants share one index: `bm25_no_idf`, `bm25` (IDF on) and `bm25_vi_stopwords` (Vietnamese stopwords removed before encoding).
 

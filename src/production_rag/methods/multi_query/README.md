@@ -1,6 +1,20 @@
+<div align="center">
+
 # Multi-query merge
 
-Extra: `local-models`
+**Each subquery retrieves on its own, and each chunk keeps its best score.**
+
+</div>
+
+<p align="center"><img src="../../../../docs/diagrams/methods/multi_query.svg" alt="A list of up to 8 subqueries is embedded in one call, each is searched with the same spec, the results are merged so each chunk appears once with its best score, and an optional rerank scores against the original question." width="100%"></p>
+
+| | |
+|---|---|
+| **Stage** | Query rewrite |
+| **Extra** | `local-models` |
+| **LLM** | none in the search itself; the answer eval uses one for the rewrite |
+| **Eval variants** | `multi_query` |
+| **Headline** | nDCG@10 0.775 on SciFact and 0.809 on TVPL, against 0.770 and 0.808 for `hybrid_weighted_rrf` |
 
 ## When to use
 - A question has several parts, or a rewriter produces several phrasings, and each should retrieve on its own.

@@ -1,6 +1,20 @@
-# Contextual headers: a context sentence for every chunk
+<div align="center">
 
-Extra: `local-models`. Needs an LLM at index time (`OPENAI_API_KEY`).
+# Contextual headers
+
+**A context sentence for every chunk, written by an LLM at index time.**
+
+</div>
+
+<p align="center"><img src="../../../../docs/diagrams/methods/contextual_headers.svg" alt="At index time an LLM reads each document and chunk and writes one sentence that places the chunk in the document; the sentence is embedded and BM25-encoded with the title and the chunk." width="100%"></p>
+
+| | |
+|---|---|
+| **Stage** | Ingest |
+| **Extra** | `local-models` |
+| **LLM** | at index time (`OPENAI_API_KEY`) |
+| **Eval variants** | `contextual_headers`, against `chunk_recursive_800` |
+| **Headline** | No clear difference on a 100-query sample: nDCG@10 0.919 / 0.969 against 0.928 / 0.967 (SciFact / TVPL) |
 
 The title prefix and the heading path already exist in the repo: `core/indexing.py` embeds every chunk as `title + "\n" + text`, and the `markdown` chunker prefixes each chunk with its heading path ([`chunking.py`](../../core/chunking.py)). This method adds only the part that is new: one LLM-written sentence per chunk. The baseline in the table is those existing title-only chunks.
 

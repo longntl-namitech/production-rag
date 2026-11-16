@@ -1,6 +1,20 @@
-# Hybrid fusion: RRF, DBSF, weighted RRF
+<div align="center">
 
-Extra: `local-models`
+# Hybrid fusion
+
+**Dense and BM25 legs fused inside Qdrant: RRF, DBSF, weighted RRF.**
+
+</div>
+
+<p align="center"><img src="../../../../docs/diagrams/methods/hybrid_fusion.svg" alt="A dense leg and a sparse leg run as Qdrant prefetches, and the outer query fuses them with reciprocal rank fusion, distribution-based score fusion or weighted RRF in one round trip." width="100%"></p>
+
+| | |
+|---|---|
+| **Stage** | Retrieve |
+| **Extra** | `local-models` |
+| **LLM** | none |
+| **Eval variants** | `hybrid_rrf`, `hybrid_dbsf`, `hybrid_weighted_rrf` |
+| **Headline** | `hybrid_weighted_rrf` is the best method on SciFact (nDCG@10 0.769); on TVPL dense alone is still slightly better (0.818 against 0.808) |
 
 ## When to use
 - You do not know in advance whether queries will be keyword-like or paraphrased, and want one method that is never the worst.

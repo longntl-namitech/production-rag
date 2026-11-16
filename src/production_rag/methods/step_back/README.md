@@ -1,8 +1,21 @@
-# Step-back: search the question and a more general one
+<div align="center">
 
-Extra: `local-models`. Needs an LLM at query time (`OPENAI_API_KEY`).
+# Step-back
 
-Differs from [`multi_query`](../multi_query/README.md): one deliberately more abstract question, not several rephrasings at the same level of detail.
+**Search the question and one more general question.**
+
+</div>
+
+<p align="center"><img src="../../../../docs/diagrams/methods/step_back.svg" alt="An LLM writes one more general question, the question and the step-back question each retrieve on their own, and each chunk is kept once with its best score." width="100%"></p>
+
+| | |
+|---|---|
+| **Stage** | Query rewrite |
+| **Extra** | `local-models` |
+| **LLM** | at query time (`OPENAI_API_KEY`) |
+| **Eval variants** | `step_back` |
+| **Compare with** | [`multi_query`](../multi_query/README.md): one deliberately more abstract question, not several rephrasings at the same level of detail |
+| **Headline** | On SciFact +0.008 nDCG@10 and +0.019 recall@10 over `hybrid_weighted_rrf`; on TVPL 0.005 below it |
 
 ## When to use
 - A specific question needs background that a more general passage holds, for example "why did the 1929 crash hit German banks" and a passage on the causes of the Great Depression.
