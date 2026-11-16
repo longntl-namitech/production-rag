@@ -127,4 +127,13 @@ Retrieval only, run on 2026-11-12. Each variant searches its own collection with
 
 Source: the sentence-embedding breakpoint method described by Greg Kamradt in "5 Levels of Text Splitting" (2023). Own implementation, no code copied. Settings, fixed before the run and not tuned on the eval queries: breakpoint at the 95th percentile of a document's sentence distances, 100 characters minimum, 800 maximum. The minimum was added after a check of chunk sizes on 25 documents per dataset showed many tiny chunks (14 of 61 on TVPL were under 100 characters, the smallest 2). The baseline is `chunk_recursive_800`, dense retrieval on both.
 
-Not measured yet.
+Run 2026-11-13, no LLM. Full tables: [SciFact](../../../../results/scifact_semantic.md), [TVPL](../../../../results/tvpl_semantic.md).
+
+| Method | Chunks | Mean chars | recall@10 | recall@100 | mrr@10 | ndcg@10 |
+|---|---|---|---|---|---|---|
+| SciFact `chunk_recursive_800` | 12315 | 589 | 0.878 | 0.958 | 0.715 | 0.750 |
+| SciFact `chunk_semantic` | 14618 | 496 | 0.869 | 0.958 | 0.717 | 0.750 |
+| TVPL `chunk_recursive_800` | 18556 | 534 | 0.914 | 0.976 | 0.786 | 0.809 |
+| TVPL `chunk_semantic` | 22027 | 450 | 0.908 | 0.972 | 0.778 | 0.801 |
+
+Semantic chunking ties recursive on SciFact and is 0.008 nDCG@10 below it on TVPL, with 19% more chunks to embed and store on both.

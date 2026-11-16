@@ -25,4 +25,12 @@ OPENAI_API_KEY=... uv run --extra local-models python -m production_rag.methods.
 Without a key the example searches the question and says so.
 
 ## Results
-Not measured yet.
+Run 2026-11-13, `gpt-5.4-nano`, one run per dataset with all the LLM query rows together (318,658 tokens on SciFact, 1,280,815 on TVPL). The same baseline moved by about 0.002 nDCG@10 between two runs with no code change, so smaller differences are noise. Full tables: [SciFact](../../../../results/query_side_scifact.md), [TVPL](../../../../results/query_side_tvpl.md).
+
+| Method | SciFact ndcg@10 | SciFact recall@10 | TVPL ndcg@10 | TVPL recall@10 | p50 ms (SciFact / TVPL) |
+|---|---|---|---|---|---|
+| `hybrid_weighted_rrf` | 0.770 | 0.888 | 0.808 | 0.919 | 148 / 68 |
+| `multi_query` | 0.775 | 0.879 | 0.809 | 0.918 | 1374 / 1394 |
+| `step_back` | 0.778 | 0.907 | 0.803 | 0.916 | 1217 / 1272 |
+
+On SciFact, `step_back` is +0.008 nDCG@10 and +0.019 recall@10 over `hybrid_weighted_rrf`. On TVPL it is 0.005 below it.

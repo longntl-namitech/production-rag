@@ -43,11 +43,15 @@ Each method retrieves the top 5 passages and `gpt-5.4-nano` answers from them. T
 
 Correctness moved by up to 0.07 between two runs, so smaller gaps are noise. The judge is the same model that answers. The `vi_RAG` gold answers were aligned with LLMs. Full tables, with faithfulness, abstention, latency and tokens: [mini_wiki](results/answer_mini_wiki.md), [vi_legal](results/answer_vi_legal.md).
 
-### Chunking, parsing and fact check
+### Chunking, parsing, query rewriting and fact check
 
 | Experiment | Result | Full results |
 |---|---|---|
 | Chunking (dense only, nDCG@10) | fixed 800: 0.751 / 0.815; recursive 800: 0.750 / 0.810; recursive 800 + 200 overlap: 0.750 / 0.802; recursive 400: 0.743 / 0.794 (SciFact / TVPL) | [SciFact](results/scifact_chunking.md), [TVPL](results/tvpl_chunking.md) |
+| Semantic chunking (dense only, nDCG@10) | semantic: 0.750 / 0.801; recursive 800 in the same run: 0.750 / 0.809 (SciFact / TVPL) | [SciFact](results/scifact_semantic.md), [TVPL](results/tvpl_semantic.md) |
+| LLM query rewriting (nDCG@10, SciFact / TVPL) | `hybrid_weighted_rrf` baseline: 0.770 / 0.808; HyDE passage + question: 0.762 / **0.826**; step-back: **0.778** / 0.803; decomposition: 0.770 / 0.786; multi-query: 0.775 / 0.809 | [SciFact](results/query_side_scifact.md), [TVPL](results/query_side_tvpl.md), [decomposition SciFact rerun](results/query_decomposition_scifact.md) |
+| Contextual chunk headers (sample: 100 queries, 350 / 500 docs) | 0.919 / 0.969 against 0.928 / 0.967 without; the sample is too easy to show a gain | [SciFact](results/contextual_headers_scifact.md), [TVPL](results/contextual_headers_tvpl.md) |
+| Contextual compression (answer correctness, 50 mini_wiki / 40 vi_legal questions) | 0.800 / 0.562 against `naive_rag` 0.810 / 0.575, with 88% / 72% fewer passage tokens | [mini_wiki](results/contextual_compression_mini_wiki.md), [vi_legal](results/contextual_compression_vi_legal.md) |
 | Parsing (token recall / precision, 15 public files) | all 0.954 / 0.959; pdf 0.982 / 0.920; xlsx recall 0.629 against docling's own output | [parse quality](results/parse_quality.md) |
 | Fact check (300 SciFact claims) | accuracy 0.703 and 0.740 over two runs; refuted recall 0.375 in run 1 | [run 1](results/fact_check_scifact.md), [runs compared](results/fact_check_scifact_runs.md) |
 

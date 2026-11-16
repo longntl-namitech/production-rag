@@ -27,4 +27,12 @@ OPENAI_API_KEY=... uv run --extra local-models python -m production_rag.methods.
 Without a key the example prints the passages before compression and says so.
 
 ## Results
-Not measured yet.
+Run 2026-11-16, `gpt-5.4-nano` answers and judges, top 5 passages, on a sample to fit this project's 5M token budget: 50 mini_wiki questions and 40 vi_legal questions (237,236 and 417,636 tokens). Correctness moved by up to 0.07 between two runs of the earlier answer eval, so smaller gaps are noise. `Retrieval p50 ms` includes the compression call, and `RAG tokens / question` includes its tokens. Full tables: [mini_wiki](../../../../results/contextual_compression_mini_wiki.md), [vi_legal](../../../../results/contextual_compression_vi_legal.md).
+
+| Method | mini_wiki correctness | mini_wiki passage tokens | vi_legal correctness | vi_legal passage tokens | RAG tokens / question (mini_wiki / vi_legal) |
+|---|---|---|---|---|---|
+| `naive_rag` | 0.810 | 769 | 0.575 | 1186 | 641 / 1228 |
+| `context_expansion` | 0.860 | 957 | 0.662 | 2651 | 764 / 2526 |
+| `contextual_compression` | 0.800 | 96 | 0.562 | 336 | 963 / 1811 |
+
+Compression cuts the passages sent to the generator by 88% on mini_wiki and 72% on vi_legal, with correctness within noise of `naive_rag`. The compression call itself reads every passage, so total tokens per question go up, not down, and it adds about 1 s at p50.

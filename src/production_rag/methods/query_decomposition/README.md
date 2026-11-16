@@ -25,4 +25,11 @@ OPENAI_API_KEY=... uv run --extra local-models python -m production_rag.methods.
 Without a key the example searches the question as is and says so.
 
 ## Results
-Not measured yet.
+Run 2026-11-13, `gpt-5.4-nano`. The same baseline moved by about 0.002 nDCG@10 between two runs with no code change, so smaller differences are noise. SciFact rows come from a separate rerun ([table](../../../../results/query_decomposition_scifact.md), 73,271 tokens), because 4 queries failed on an overloaded Qdrant in the combined run. TVPL rows come from the combined query-side run ([table](../../../../results/query_side_tvpl.md), 1,280,815 tokens for all LLM rows).
+
+| Method | SciFact ndcg@10 | SciFact recall@10 | TVPL ndcg@10 | TVPL recall@10 | p50 ms (SciFact / TVPL) |
+|---|---|---|---|---|---|
+| `hybrid_weighted_rrf` | 0.769 | 0.888 | 0.808 | 0.919 | 67 / 68 |
+| `query_decomposition` | 0.770 | 0.892 | 0.786 | 0.906 | 1396 / 1641 |
+
+On SciFact it ties `hybrid_weighted_rrf`. On TVPL it is 0.022 nDCG@10 below it.
