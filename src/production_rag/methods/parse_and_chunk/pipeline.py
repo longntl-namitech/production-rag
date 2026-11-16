@@ -3,12 +3,14 @@
 import re
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Literal
 
 from production_rag.core.chunking import Strategy, chunk_documents
 from production_rag.core.deps import Deps
 from production_rag.core.indexing import index_chunks
 from production_rag.core.models import SpecResult
 from production_rag.core.registry import MethodConfig
+from production_rag.core.semantic_chunking import semantic_chunk_documents
 from production_rag.methods._variant import run_variant
 from production_rag.methods.parse_and_chunk.parsers import (
     MissingExtra,
@@ -36,6 +38,14 @@ VARIANTS: dict[str, MethodConfig] = {
         _variant(800, 0, "recursive chunks of up to 800 characters, dense top-k"),
         _variant(800, 200, "recursive 800-character chunks with 200 characters of overlap"),
         _variant(400, 0, "recursive chunks of up to 400 characters, dense top-k"),
+        MethodConfig(
+            "chunk_semantic",
+            ("dense",),
+            "none",
+            doc="semantic chunks of up to 800 characters, cut where the topic changes, dense top-k",
+            chunk_chars=800,
+            chunker="semantic",
+        ),
     ]
 }
 
@@ -69,13 +79,14 @@ async def index_files(
     collection: str,
     paths: list[Path],
     *,
-    strategy: Strategy = "markdown",
+    strategy: Strategy | Literal["semantic"] = "markdown",
     size: int = 800,
     overlap: int = 0,
 ) -> IndexReport:
     """Parse the files and index their chunks. Unreadable files are reported, not raised.
 
-    A missing parser library (`MissingExtra`) is a setup error and propagates.
+    A missing parser library (`MissingExtra`) is a setup error and propagates. The "semantic"
+    strategy embeds sentences with the index's embedder and ignores `overlap`.
     """
     docs: dict[str, tuple[str | None, str]] = {}
     skipped: dict[str, str] = {}
@@ -97,6 +108,9 @@ async def index_files(
             continue
         heading = _HEADING.search(parsed.markdown)
         docs[key] = (heading.group(1).strip() if heading else path.name, parsed.markdown)
-    chunks = chunk_documents(docs, size, strategy=strategy, overlap=overlap)
+    if strategy == "semantic":
+        chunks = await semantic_chunk_documents(docs, deps.embedder, max_chars=size)
+    else:
+        chunks = chunk_documents(docs, size, strategy=strategy, overlap=overlap)
     count = await index_chunks(deps, collection, chunks)
     return IndexReport(len(docs), count, skipped, failed)

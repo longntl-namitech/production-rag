@@ -1,0 +1,4225 @@
+{
+ "meta": {
+  "kind": "answer",
+  "dataset": "mini_wiki",
+  "date": "2026-11-16",
+  "questions": 50,
+  "documents": 3200,
+  "chunks": {
+   "answer-mini_wiki-c800": 3613
+  },
+  "model": "gpt-5.4-nano",
+  "k": 5,
+  "complete": true,
+  "tokens": {
+   "total": 237236,
+   "rag": 118338,
+   "judge": 118898,
+   "dropped": 0,
+   "reasoning": 0
+  }
+ },
+ "summary": {
+  "naive_rag": {
+   "questions": 50,
+   "failed": 0,
+   "judge_failed": 0,
+   "correctness": 0.81,
+   "faithfulness": 0.98,
+   "abstained": 0.12,
+   "retrieval_p50_ms": 28,
+   "generation_p50_ms": 885,
+   "rag_tokens": 641,
+   "passage_tokens": 769,
+   "judge_tokens": 879
+  },
+  "context_expansion": {
+   "questions": 50,
+   "failed": 0,
+   "judge_failed": 0,
+   "correctness": 0.86,
+   "faithfulness": 1.0,
+   "abstained": 0.1,
+   "retrieval_p50_ms": 32,
+   "generation_p50_ms": 890,
+   "rag_tokens": 764,
+   "passage_tokens": 957,
+   "judge_tokens": 1021
+  },
+  "contextual_compression": {
+   "questions": 50,
+   "failed": 0,
+   "judge_failed": 0,
+   "correctness": 0.8,
+   "faithfulness": 0.98,
+   "abstained": 0.1,
+   "retrieval_p50_ms": 996,
+   "generation_p50_ms": 753,
+   "rag_tokens": 963,
+   "passage_tokens": 96,
+   "judge_tokens": 478
+  }
+ },
+ "per_item": [
+  {
+   "qid": "q1412",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "More than 2.78 million people use the bus network daily.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 69,
+   "rewrite_ms": null,
+   "gen_ms": 1246,
+   "passage_tokens": 589,
+   "doc_ids": [
+    "w2811",
+    "w2809",
+    "w1703",
+    "w3121",
+    "w1699"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 496,
+    "judge": 851,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1466",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Reservoirs are part of Singapore\u2019s water catchment system: rainfall is collected in reservoirs or water catchment areas to serve domestic water needs.",
+   "correctness": "partially_correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 58,
+   "rewrite_ms": null,
+   "gen_ms": 1181,
+   "passage_tokens": 876,
+   "doc_ids": [
+    "w2800",
+    "w2799",
+    "w2735",
+    "w2801",
+    "w2686"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 657,
+    "judge": 1088,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q611",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "1957.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 69,
+   "rewrite_ms": null,
+   "gen_ms": 1305,
+   "passage_tokens": 890,
+   "doc_ids": [
+    "w1347",
+    "w1336",
+    "w1335",
+    "w1349",
+    "w1346"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 705,
+    "judge": 1040,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q609",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": true,
+   "answer": "NO_ANSWER",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 68,
+   "rewrite_ms": null,
+   "gen_ms": 1186,
+   "passage_tokens": 813,
+   "doc_ids": [
+    "w1343",
+    "w1344",
+    "w1346",
+    "w1342",
+    "w1335"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 674,
+    "judge": 0,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q856",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "On December 2, 1823.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 30,
+   "rewrite_ms": null,
+   "gen_ms": 973,
+   "passage_tokens": 451,
+   "doc_ids": [
+    "w2506",
+    "w2516",
+    "w2517",
+    "w2533",
+    "w2515"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 428,
+    "judge": 780,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q923",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Massachusetts sent Adams to the first Continental Congress in 1774.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 59,
+   "rewrite_ms": null,
+   "gen_ms": 1173,
+   "passage_tokens": 1179,
+   "doc_ids": [
+    "w651",
+    "w649",
+    "w644",
+    "w646",
+    "w642"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 850,
+    "judge": 1205,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q989",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 19,
+   "rewrite_ms": null,
+   "gen_ms": 745,
+   "passage_tokens": 470,
+   "doc_ids": [
+    "w1722",
+    "w1734",
+    "w1737",
+    "w1730",
+    "w1733"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 508,
+    "judge": 891,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1309",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "A polar bear\u2019s thick undercoat insulates it against the cold.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 14,
+   "rewrite_ms": null,
+   "gen_ms": 821,
+   "passage_tokens": 695,
+   "doc_ids": [
+    "w2601",
+    "w2597",
+    "w963",
+    "w1916",
+    "w2599"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 576,
+    "judge": 943,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q532",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": true,
+   "answer": "NO_ANSWER",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 23,
+   "rewrite_ms": null,
+   "gen_ms": 717,
+   "passage_tokens": 803,
+   "doc_ids": [
+    "w1642",
+    "w1643",
+    "w1640",
+    "w1571",
+    "w1550"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 608,
+    "judge": 0,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1368",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 16,
+   "rewrite_ms": null,
+   "gen_ms": 1042,
+   "passage_tokens": 1122,
+   "doc_ids": [
+    "w3102",
+    "w3107",
+    "w3109",
+    "w3104"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 924,
+    "judge": 1272,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q583",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 50,
+   "rewrite_ms": null,
+   "gen_ms": 602,
+   "passage_tokens": 755,
+   "doc_ids": [
+    "w2001",
+    "w2000",
+    "w2020",
+    "w2002",
+    "w2011"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 630,
+    "judge": 963,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1245",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 13,
+   "rewrite_ms": null,
+   "gen_ms": 1051,
+   "passage_tokens": 420,
+   "doc_ids": [
+    "w993",
+    "w951",
+    "w957",
+    "w995",
+    "w958"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 409,
+    "judge": 746,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q957",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 17,
+   "rewrite_ms": null,
+   "gen_ms": 735,
+   "passage_tokens": 876,
+   "doc_ids": [
+    "w1741",
+    "w1745",
+    "w1743",
+    "w1722",
+    "w1756"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 694,
+    "judge": 1025,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1359",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": true,
+   "answer": "NO_ANSWER",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 26,
+   "rewrite_ms": null,
+   "gen_ms": 833,
+   "passage_tokens": 651,
+   "doc_ids": [
+    "w319",
+    "w502",
+    "w877",
+    "w677",
+    "w2080"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 529,
+    "judge": 0,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q512",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Finland is a Nordic country in Northern Europe. It has borders with Sweden to the west, Russia to the east, and Norway to the north, with Estonia to its south across the Gulf of Finland.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 34,
+   "rewrite_ms": null,
+   "gen_ms": 1061,
+   "passage_tokens": 413,
+   "doc_ids": [
+    "w1550",
+    "w1596",
+    "w1595",
+    "w1597",
+    "w1590"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 410,
+    "judge": 795,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q733",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 20,
+   "rewrite_ms": null,
+   "gen_ms": 718,
+   "passage_tokens": 833,
+   "doc_ids": [
+    "w507",
+    "w1782",
+    "w321",
+    "w290",
+    "w350"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 656,
+    "judge": 995,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q131",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 23,
+   "rewrite_ms": null,
+   "gen_ms": 774,
+   "passage_tokens": 554,
+   "doc_ids": [
+    "w729",
+    "w739",
+    "w742",
+    "w743",
+    "w87"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 502,
+    "judge": 866,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1218",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Sea otters eat shellfish and other invertebrates, especially clams, abalone, and sea urchins.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 21,
+   "rewrite_ms": null,
+   "gen_ms": 1080,
+   "passage_tokens": 580,
+   "doc_ids": [
+    "w1926",
+    "w1918",
+    "w1917",
+    "w1927",
+    "w1919"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 557,
+    "judge": 926,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1117",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 61,
+   "rewrite_ms": null,
+   "gen_ms": 786,
+   "passage_tokens": 719,
+   "doc_ids": [
+    "w184",
+    "w148",
+    "w183",
+    "w198",
+    "w157"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 607,
+    "judge": 963,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q326",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "1545",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 26,
+   "rewrite_ms": null,
+   "gen_ms": 851,
+   "passage_tokens": 1015,
+   "doc_ids": [
+    "w2276",
+    "w2279",
+    "w2277",
+    "w2280",
+    "w2289"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 770,
+    "judge": 1107,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q920",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "His birthplace, in Braintree, Massachusetts.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 29,
+   "rewrite_ms": null,
+   "gen_ms": 873,
+   "passage_tokens": 882,
+   "doc_ids": [
+    "w704",
+    "w636",
+    "w689",
+    "w638",
+    "w663"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 710,
+    "judge": 1063,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1346",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Qatar served as the headquarters and one of the main launching sites of the US invasion of Iraq in 2003.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 36,
+   "rewrite_ms": null,
+   "gen_ms": 1012,
+   "passage_tokens": 711,
+   "doc_ids": [
+    "w2549",
+    "w2095",
+    "w2589",
+    "w1791",
+    "w1796"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 652,
+    "judge": 1035,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q744",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "In 1890.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 59,
+   "rewrite_ms": null,
+   "gen_ms": 997,
+   "passage_tokens": 524,
+   "doc_ids": [
+    "w829",
+    "w2254",
+    "w185",
+    "w151",
+    "w85"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 516,
+    "judge": 856,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q147",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Anders Celsius",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 37,
+   "rewrite_ms": null,
+   "gen_ms": 916,
+   "passage_tokens": 499,
+   "doc_ids": [
+    "w145",
+    "w144",
+    "w139",
+    "w143",
+    "w141"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 457,
+    "judge": 810,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1050",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 37,
+   "rewrite_ms": null,
+   "gen_ms": 784,
+   "passage_tokens": 1132,
+   "doc_ids": [
+    "w2447",
+    "w2458",
+    "w2452",
+    "w2459",
+    "w2495"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 905,
+    "judge": 1235,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1679",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": true,
+   "answer": "NO_ANSWER",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 28,
+   "rewrite_ms": null,
+   "gen_ms": 1152,
+   "passage_tokens": 761,
+   "doc_ids": [
+    "w2129",
+    "w2145",
+    "w2153",
+    "w534",
+    "w2136"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 600,
+    "judge": 0,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1214",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 29,
+   "rewrite_ms": null,
+   "gen_ms": 610,
+   "passage_tokens": 548,
+   "doc_ids": [
+    "w1920",
+    "w1919",
+    "w1914",
+    "w1913",
+    "w1922"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 497,
+    "judge": 822,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q907",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "He served as Vice President from 1789 to 1797.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 28,
+   "rewrite_ms": null,
+   "gen_ms": 897,
+   "passage_tokens": 678,
+   "doc_ids": [
+    "w635",
+    "w670",
+    "w636",
+    "w674",
+    "w698"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 581,
+    "judge": 960,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q992",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 14,
+   "rewrite_ms": null,
+   "gen_ms": 815,
+   "passage_tokens": 753,
+   "doc_ids": [
+    "w2445",
+    "w2452",
+    "w2496",
+    "w2447",
+    "w2459"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 664,
+    "judge": 1001,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q454",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "African elephants rarely lie down unless they are sick or wounded.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 28,
+   "rewrite_ms": null,
+   "gen_ms": 1170,
+   "passage_tokens": 758,
+   "doc_ids": [
+    "w1229",
+    "w1268",
+    "w1177",
+    "w1263",
+    "w1226"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 638,
+    "judge": 993,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1028",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 35,
+   "rewrite_ms": null,
+   "gen_ms": 708,
+   "passage_tokens": 1113,
+   "doc_ids": [
+    "w2452",
+    "w2465",
+    "w2595",
+    "w2463"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 914,
+    "judge": 1264,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1444",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "In 1990.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 19,
+   "rewrite_ms": null,
+   "gen_ms": 932,
+   "passage_tokens": 816,
+   "doc_ids": [
+    "w2716",
+    "w2717",
+    "w2714",
+    "w2715",
+    "w2739"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 686,
+    "judge": 1045,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q901",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 17,
+   "rewrite_ms": null,
+   "gen_ms": 978,
+   "passage_tokens": 884,
+   "doc_ids": [
+    "w639",
+    "w637",
+    "w636",
+    "w638",
+    "w2891"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 716,
+    "judge": 1047,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q984",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Different species of kangaroos eat different diets: eastern grey kangaroos predominantly graze on a wide variety of grasses, while some other species (e.g. red kangaroos and swamp wallabies) include significant amounts of shrubs; smaller kangaroo species also consume hypogeal fungi.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 24,
+   "rewrite_ms": null,
+   "gen_ms": 1290,
+   "passage_tokens": 781,
+   "doc_ids": [
+    "w1741",
+    "w1722",
+    "w1745",
+    "w1729",
+    "w1742"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 715,
+    "judge": 1143,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q115",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 42,
+   "rewrite_ms": null,
+   "gen_ms": 706,
+   "passage_tokens": 551,
+   "doc_ids": [
+    "w748",
+    "w732",
+    "w726",
+    "w725",
+    "w735"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 517,
+    "judge": 863,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q840",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "He returned to practicing law in Virginia.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 20,
+   "rewrite_ms": null,
+   "gen_ms": 1021,
+   "passage_tokens": 770,
+   "doc_ids": [
+    "w2510",
+    "w2512",
+    "w2506",
+    "w2508",
+    "w2513"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 667,
+    "judge": 1014,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q867",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "He sold his family farm (Monroe Hill) in 1817, on the grounds of the University of Virginia.",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 30,
+   "rewrite_ms": null,
+   "gen_ms": 1071,
+   "passage_tokens": 950,
+   "doc_ids": [
+    "w2506",
+    "w2511",
+    "w2512",
+    "w2513",
+    "w2520"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 795,
+    "judge": 1186,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q862",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "The two nations moved closer toward the War of 1812.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 21,
+   "rewrite_ms": null,
+   "gen_ms": 1028,
+   "passage_tokens": 958,
+   "doc_ids": [
+    "w2511",
+    "w2534",
+    "w678",
+    "w662",
+    "w2283"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 718,
+    "judge": 1095,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q142",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": true,
+   "answer": "NO_ANSWER",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 22,
+   "rewrite_ms": null,
+   "gen_ms": 788,
+   "passage_tokens": 329,
+   "doc_ids": [
+    "w594",
+    "w143",
+    "w744",
+    "w619",
+    "w609"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 386,
+    "judge": 0,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q887",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 17,
+   "rewrite_ms": null,
+   "gen_ms": 631,
+   "passage_tokens": 1188,
+   "doc_ids": [
+    "w644",
+    "w642",
+    "w636",
+    "w658",
+    "w650"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 841,
+    "judge": 1176,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1709",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "his father was professor at the Columbia Theological Seminary",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 13,
+   "rewrite_ms": null,
+   "gen_ms": 1117,
+   "passage_tokens": 662,
+   "doc_ids": [
+    "w2132",
+    "w13",
+    "w2939",
+    "w48",
+    "w10"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 572,
+    "judge": 932,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q968",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Kangaroos use hopping as a means of locomotion.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 22,
+   "rewrite_ms": null,
+   "gen_ms": 913,
+   "passage_tokens": 779,
+   "doc_ids": [
+    "w1738",
+    "w1752",
+    "w1728",
+    "w1722",
+    "w1757"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 665,
+    "judge": 1005,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1688",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 17,
+   "rewrite_ms": null,
+   "gen_ms": 661,
+   "passage_tokens": 538,
+   "doc_ids": [
+    "w2134",
+    "w2133",
+    "w2232",
+    "w2239",
+    "w2223"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 465,
+    "judge": 791,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q123",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "unfaithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 30,
+   "rewrite_ms": null,
+   "gen_ms": 832,
+   "passage_tokens": 605,
+   "doc_ids": [
+    "w745",
+    "w1443",
+    "w1484",
+    "w129",
+    "w556"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 479,
+    "judge": 850,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q838",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "James Monroe married Elizabeth Kortright.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 21,
+   "rewrite_ms": null,
+   "gen_ms": 865,
+   "passage_tokens": 929,
+   "doc_ids": [
+    "w2507",
+    "w2522",
+    "w2521",
+    "w2506",
+    "w2520"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 746,
+    "judge": 1082,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1406",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": true,
+   "answer": "NO_ANSWER",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 28,
+   "rewrite_ms": null,
+   "gen_ms": 646,
+   "passage_tokens": 1142,
+   "doc_ids": [
+    "w2702",
+    "w2739",
+    "w2759",
+    "w2714",
+    "w2701"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 867,
+    "judge": 0,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1566",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "spherical",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 20,
+   "rewrite_ms": null,
+   "gen_ms": 828,
+   "passage_tokens": 947,
+   "doc_ids": [
+    "w2687",
+    "w2395",
+    "w1008",
+    "w953",
+    "w981"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 782,
+    "judge": 1113,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q924",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 30,
+   "rewrite_ms": null,
+   "gen_ms": 559,
+   "passage_tokens": 797,
+   "doc_ids": [
+    "w701",
+    "w187",
+    "w1808",
+    "w697",
+    "w1397"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 663,
+    "judge": 1000,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1374",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 42,
+   "rewrite_ms": null,
+   "gen_ms": 627,
+   "passage_tokens": 957,
+   "doc_ids": [
+    "w3078",
+    "w3082",
+    "w3079",
+    "w3076"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 771,
+    "judge": 1104,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q216",
+   "front_end": "naive_rag",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "After graduating from Amherst, at his father's urging, Coolidge moved to Northampton, Massachusetts to practice law.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 34,
+   "rewrite_ms": null,
+   "gen_ms": 1081,
+   "passage_tokens": 787,
+   "doc_ids": [
+    "w403",
+    "w405",
+    "w406",
+    "w456"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 653,
+    "judge": 1027,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1412",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "More than 2.78 million people use the bus network daily.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 107,
+   "rewrite_ms": null,
+   "gen_ms": 812,
+   "passage_tokens": 604,
+   "doc_ids": [
+    "w2811",
+    "w2809",
+    "w2860",
+    "w1703",
+    "w3121"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 511,
+    "judge": 866,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1466",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Reservoirs collect water from rainfall and are part of Singapore\u2019s water catchment areas for storing water to serve domestic needs.",
+   "correctness": "partially_correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 93,
+   "rewrite_ms": null,
+   "gen_ms": 1291,
+   "passage_tokens": 1224,
+   "doc_ids": [
+    "w2800",
+    "w2799",
+    "w2735",
+    "w2801",
+    "w2934"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 869,
+    "judge": 1289,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q611",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "1957.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 94,
+   "rewrite_ms": null,
+   "gen_ms": 854,
+   "passage_tokens": 881,
+   "doc_ids": [
+    "w1336",
+    "w1347",
+    "w1335",
+    "w1349",
+    "w1337"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 712,
+    "judge": 1043,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q609",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "no",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 95,
+   "rewrite_ms": null,
+   "gen_ms": 619,
+   "passage_tokens": 1029,
+   "doc_ids": [
+    "w1343",
+    "w1344",
+    "w1346",
+    "w3066",
+    "w767"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 796,
+    "judge": 1150,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q856",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Monroe introduced the Monroe Doctrine in his message to Congress on December 2, 1823.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 62,
+   "rewrite_ms": null,
+   "gen_ms": 1012,
+   "passage_tokens": 681,
+   "doc_ids": [
+    "w2506",
+    "w2516",
+    "w2533",
+    "w2517",
+    "w2532"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 583,
+    "judge": 944,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q923",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Massachusetts sent Adams to the first and second Continental Congresses in 1774.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 33,
+   "rewrite_ms": null,
+   "gen_ms": 1077,
+   "passage_tokens": 1361,
+   "doc_ids": [
+    "w651",
+    "w887",
+    "w649",
+    "w644",
+    "w642"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 962,
+    "judge": 1316,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q989",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 26,
+   "rewrite_ms": null,
+   "gen_ms": 917,
+   "passage_tokens": 563,
+   "doc_ids": [
+    "w1722",
+    "w1734",
+    "w1737",
+    "w1730",
+    "w1738"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 567,
+    "judge": 950,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1309",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "They have thick insulating layers\u2014polar bear fur and fat, and penguin insulating feathers (plus an air layer in their plumage).",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 30,
+   "rewrite_ms": null,
+   "gen_ms": 1102,
+   "passage_tokens": 812,
+   "doc_ids": [
+    "w2601",
+    "w963",
+    "w2597",
+    "w957",
+    "w2629"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 664,
+    "judge": 1060,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q532",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": true,
+   "answer": "NO_ANSWER",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 64,
+   "rewrite_ms": null,
+   "gen_ms": 702,
+   "passage_tokens": 740,
+   "doc_ids": [
+    "w1642",
+    "w1643",
+    "w1640",
+    "w1631",
+    "w1571"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 558,
+    "judge": 0,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1368",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes \u2014 By the official census 535,250 Roma live in Romania, though this figure is disputed by other sources.",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 40,
+   "rewrite_ms": null,
+   "gen_ms": 1049,
+   "passage_tokens": 1892,
+   "doc_ids": [
+    "w3102",
+    "w3104",
+    "w3083",
+    "w3107"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1425,
+    "judge": 1791,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q583",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 17,
+   "rewrite_ms": null,
+   "gen_ms": 728,
+   "passage_tokens": 755,
+   "doc_ids": [
+    "w2001",
+    "w2000",
+    "w2020",
+    "w2002",
+    "w2011"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 630,
+    "judge": 963,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1245",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 32,
+   "rewrite_ms": null,
+   "gen_ms": 683,
+   "passage_tokens": 856,
+   "doc_ids": [
+    "w993",
+    "w951",
+    "w995",
+    "w952",
+    "w994"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 728,
+    "judge": 1063,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q957",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 33,
+   "rewrite_ms": null,
+   "gen_ms": 821,
+   "passage_tokens": 1048,
+   "doc_ids": [
+    "w1741",
+    "w1745",
+    "w1743",
+    "w1722",
+    "w2378"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 820,
+    "judge": 1152,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1359",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": true,
+   "answer": "NO_ANSWER",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 64,
+   "rewrite_ms": null,
+   "gen_ms": 786,
+   "passage_tokens": 946,
+   "doc_ids": [
+    "w319",
+    "w502",
+    "w184",
+    "w1637",
+    "w877"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 734,
+    "judge": 0,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q512",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Finland is a Nordic country situated in Northern Europe, with borders with Sweden to the west, Russia to the east, and Norway to the north. Estonia lies to its south across the Gulf of Finland.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 31,
+   "rewrite_ms": null,
+   "gen_ms": 1541,
+   "passage_tokens": 613,
+   "doc_ids": [
+    "w1550",
+    "w1672",
+    "w1596",
+    "w1595",
+    "w1667"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 538,
+    "judge": 925,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q733",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 122,
+   "rewrite_ms": null,
+   "gen_ms": 604,
+   "passage_tokens": 1063,
+   "doc_ids": [
+    "w507",
+    "w1782",
+    "w321",
+    "w2199",
+    "w2194"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 808,
+    "judge": 1145,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q131",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Yes. It can be roughly translated as \u201cEssay on Determining the Relative Masses of the Elementary Molecules of Bodies\u201d.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 27,
+   "rewrite_ms": null,
+   "gen_ms": 1545,
+   "passage_tokens": 723,
+   "doc_ids": [
+    "w729",
+    "w739",
+    "w748",
+    "w742",
+    "w743"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 641,
+    "judge": 1016,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1218",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Sea otters eat shellfish and other invertebrates.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 32,
+   "rewrite_ms": null,
+   "gen_ms": 1003,
+   "passage_tokens": 625,
+   "doc_ids": [
+    "w1926",
+    "w1917",
+    "w1918",
+    "w1927",
+    "w1925"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 581,
+    "judge": 938,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1117",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 43,
+   "rewrite_ms": null,
+   "gen_ms": 801,
+   "passage_tokens": 719,
+   "doc_ids": [
+    "w184",
+    "w148",
+    "w198",
+    "w183",
+    "w157"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 607,
+    "judge": 953,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q326",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "By 1545.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 21,
+   "rewrite_ms": null,
+   "gen_ms": 905,
+   "passage_tokens": 836,
+   "doc_ids": [
+    "w2276",
+    "w2279",
+    "w2277",
+    "w2280",
+    "w2321"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 658,
+    "judge": 1016,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q920",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Adams\u2019s birthplace, which is now part of Adams National Historical Park.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 36,
+   "rewrite_ms": null,
+   "gen_ms": 892,
+   "passage_tokens": 1323,
+   "doc_ids": [
+    "w704",
+    "w638",
+    "w636",
+    "w689",
+    "w284"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 997,
+    "judge": 1344,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1346",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Qatar served as the headquarters and one of the main launching sites of the US invasion of Iraq in 2003.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 32,
+   "rewrite_ms": null,
+   "gen_ms": 933,
+   "passage_tokens": 1304,
+   "doc_ids": [
+    "w2549",
+    "w2095",
+    "w2589",
+    "w1791",
+    "w888"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1020,
+    "judge": 1408,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q744",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "In 1890.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 56,
+   "rewrite_ms": null,
+   "gen_ms": 844,
+   "passage_tokens": 542,
+   "doc_ids": [
+    "w829",
+    "w2254",
+    "w185",
+    "w85",
+    "w496"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 533,
+    "judge": 868,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q147",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Anders Celsius was the first to perform and publish careful experiments aiming at the definition of an international temperature scale on scientific grounds.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 25,
+   "rewrite_ms": null,
+   "gen_ms": 1142,
+   "passage_tokens": 633,
+   "doc_ids": [
+    "w145",
+    "w144",
+    "w139",
+    "w747",
+    "w143"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 547,
+    "judge": 931,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1050",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 24,
+   "rewrite_ms": null,
+   "gen_ms": 686,
+   "passage_tokens": 1251,
+   "doc_ids": [
+    "w2452",
+    "w2458",
+    "w2447",
+    "w2460",
+    "w2459"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 985,
+    "judge": 1315,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1679",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Grover Cleveland.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 27,
+   "rewrite_ms": null,
+   "gen_ms": 1022,
+   "passage_tokens": 1027,
+   "doc_ids": [
+    "w2129",
+    "w2144",
+    "w2145",
+    "w2140",
+    "w2153"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 745,
+    "judge": 1081,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1214",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 36,
+   "rewrite_ms": null,
+   "gen_ms": 730,
+   "passage_tokens": 548,
+   "doc_ids": [
+    "w1920",
+    "w1922",
+    "w1914",
+    "w1919",
+    "w1913"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 497,
+    "judge": 833,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q907",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "He served as Vice President from 1789 to 1797.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 25,
+   "rewrite_ms": null,
+   "gen_ms": 847,
+   "passage_tokens": 886,
+   "doc_ids": [
+    "w635",
+    "w670",
+    "w715",
+    "w636",
+    "w674"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 733,
+    "judge": 1093,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q992",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 19,
+   "rewrite_ms": null,
+   "gen_ms": 667,
+   "passage_tokens": 819,
+   "doc_ids": [
+    "w2445",
+    "w2452",
+    "w2496",
+    "w2459",
+    "w2447"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 714,
+    "judge": 1069,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q454",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "African elephants rarely lie down unless they are sick or wounded.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 23,
+   "rewrite_ms": null,
+   "gen_ms": 886,
+   "passage_tokens": 831,
+   "doc_ids": [
+    "w1229",
+    "w1268",
+    "w1281",
+    "w1177",
+    "w1175"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 676,
+    "judge": 1021,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1028",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 57,
+   "rewrite_ms": null,
+   "gen_ms": 657,
+   "passage_tokens": 1646,
+   "doc_ids": [
+    "w2452",
+    "w2465",
+    "w2595",
+    "w2463"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1259,
+    "judge": 1604,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1444",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "In 1990, Goh Chok Tong succeeded Lee as Prime Minister.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 22,
+   "rewrite_ms": null,
+   "gen_ms": 1002,
+   "passage_tokens": 836,
+   "doc_ids": [
+    "w2716",
+    "w2717",
+    "w2714",
+    "w2715",
+    "w2739"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 715,
+    "judge": 1088,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q901",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 31,
+   "rewrite_ms": null,
+   "gen_ms": 640,
+   "passage_tokens": 1120,
+   "doc_ids": [
+    "w639",
+    "w715",
+    "w637",
+    "w638",
+    "w636"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 887,
+    "judge": 1212,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q984",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Different species of kangaroos eat different diets: eastern grey kangaroos predominantly graze on a wide variety of grasses, while some other species (e.g. red kangaroos and swamp wallabies) include significant amounts of shrubs. The smaller species also consume hypogeal fungi.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 32,
+   "rewrite_ms": null,
+   "gen_ms": 1295,
+   "passage_tokens": 781,
+   "doc_ids": [
+    "w1741",
+    "w1745",
+    "w1722",
+    "w1729",
+    "w1742"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 714,
+    "judge": 1137,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q115",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 23,
+   "rewrite_ms": null,
+   "gen_ms": 793,
+   "passage_tokens": 551,
+   "doc_ids": [
+    "w748",
+    "w732",
+    "w726",
+    "w725",
+    "w735"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 517,
+    "judge": 869,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q840",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Out of office, Monroe returned to practicing law in Virginia until elected governor there.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 23,
+   "rewrite_ms": null,
+   "gen_ms": 903,
+   "passage_tokens": 840,
+   "doc_ids": [
+    "w2512",
+    "w2510",
+    "w2535",
+    "w2506",
+    "w2508"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 703,
+    "judge": 1065,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q867",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "He made two long tours in 1817.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 23,
+   "rewrite_ms": null,
+   "gen_ms": 984,
+   "passage_tokens": 1087,
+   "doc_ids": [
+    "w2506",
+    "w2520",
+    "w2511",
+    "w2512",
+    "w2513"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 856,
+    "judge": 1202,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q862",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "As a result, the two nations moved closer toward the War of 1812.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 44,
+   "rewrite_ms": null,
+   "gen_ms": 887,
+   "passage_tokens": 1226,
+   "doc_ids": [
+    "w2511",
+    "w2534",
+    "w678",
+    "w661",
+    "w662"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 917,
+    "judge": 1298,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q142",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": true,
+   "answer": "NO_ANSWER",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 39,
+   "rewrite_ms": null,
+   "gen_ms": 658,
+   "passage_tokens": 583,
+   "doc_ids": [
+    "w594",
+    "w143",
+    "w294",
+    "w744",
+    "w619"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 539,
+    "judge": 0,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q887",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 23,
+   "rewrite_ms": null,
+   "gen_ms": 633,
+   "passage_tokens": 1476,
+   "doc_ids": [
+    "w644",
+    "w642",
+    "w636",
+    "w658"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1015,
+    "judge": 1355,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1709",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Wilson lived in Columbia, South Carolina, from 1870-1874.",
+   "correctness": "partially_correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 26,
+   "rewrite_ms": null,
+   "gen_ms": 989,
+   "passage_tokens": 1047,
+   "doc_ids": [
+    "w2132",
+    "w13",
+    "w2158",
+    "w2939",
+    "w48"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 816,
+    "judge": 1189,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q968",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Kangaroos use hopping as a means of locomotion.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 17,
+   "rewrite_ms": null,
+   "gen_ms": 1064,
+   "passage_tokens": 781,
+   "doc_ids": [
+    "w1738",
+    "w1722",
+    "w1752",
+    "w1728",
+    "w1739"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 661,
+    "judge": 1002,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1688",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": true,
+   "answer": "NO_ANSWER",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 60,
+   "rewrite_ms": null,
+   "gen_ms": 837,
+   "passage_tokens": 516,
+   "doc_ids": [
+    "w2134",
+    "w2133",
+    "w2961",
+    "w2232",
+    "w2239"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 454,
+    "judge": 0,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q123",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 32,
+   "rewrite_ms": null,
+   "gen_ms": 910,
+   "passage_tokens": 871,
+   "doc_ids": [
+    "w745",
+    "w1443",
+    "w1484",
+    "w129",
+    "w556"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 646,
+    "judge": 993,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q838",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "James Monroe married Elizabeth Kortright.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 27,
+   "rewrite_ms": null,
+   "gen_ms": 768,
+   "passage_tokens": 932,
+   "doc_ids": [
+    "w2507",
+    "w2522",
+    "w2520",
+    "w2506",
+    "w2521"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 749,
+    "judge": 1084,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1406",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": true,
+   "answer": "NO_ANSWER",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 30,
+   "rewrite_ms": null,
+   "gen_ms": 962,
+   "passage_tokens": 1275,
+   "doc_ids": [
+    "w2702",
+    "w2739",
+    "w2715",
+    "w2701",
+    "w2759"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 944,
+    "judge": 0,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1566",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "spherical",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 28,
+   "rewrite_ms": null,
+   "gen_ms": 1070,
+   "passage_tokens": 816,
+   "doc_ids": [
+    "w2687",
+    "w2395",
+    "w2684",
+    "w953",
+    "w1008"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 679,
+    "judge": 1010,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q924",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 33,
+   "rewrite_ms": null,
+   "gen_ms": 766,
+   "passage_tokens": 1521,
+   "doc_ids": [
+    "w701",
+    "w187",
+    "w697",
+    "w1808",
+    "w707"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1112,
+    "judge": 1456,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1374",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 31,
+   "rewrite_ms": null,
+   "gen_ms": 895,
+   "passage_tokens": 1652,
+   "doc_ids": [
+    "w3078",
+    "w3082",
+    "w3079",
+    "w2130"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1209,
+    "judge": 1542,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q216",
+   "front_end": "context_expansion",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "After graduating from Amherst, at his father's urging, Coolidge moved to Northampton, Massachusetts to take up the practice of law. He apprenticed with a local firm, Hammond & Field, and in 1897 was admitted to the bar; in 1898 he opened his own law office in Northampton.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 28,
+   "rewrite_ms": null,
+   "gen_ms": 1249,
+   "passage_tokens": 1162,
+   "doc_ids": [
+    "w405",
+    "w403",
+    "w406",
+    "w456"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 951,
+    "judge": 1382,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1412",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "More than 2.78 million people use the bus network daily.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 915,
+   "rewrite_ms": null,
+   "gen_ms": 1055,
+   "passage_tokens": 51,
+   "doc_ids": [
+    "w2811"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 770,
+    "judge": 530,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1466",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Reservoirs are part of Singapore\u2019s network of reservoirs and water catchment areas, where rainfall is collected in these reservoirs or water catchment areas to serve domestic needs.",
+   "correctness": "partially_correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 884,
+   "rewrite_ms": null,
+   "gen_ms": 1102,
+   "passage_tokens": 122,
+   "doc_ids": [
+    "w2800",
+    "w2799"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1002,
+    "judge": 659,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q611",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Ghana became independent in 1957.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 964,
+   "rewrite_ms": null,
+   "gen_ms": 1060,
+   "passage_tokens": 87,
+   "doc_ids": [
+    "w1347"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1033,
+    "judge": 520,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q609",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": true,
+   "answer": "NO_ANSWER",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1110,
+   "rewrite_ms": null,
+   "gen_ms": 1126,
+   "passage_tokens": 58,
+   "doc_ids": [
+    "w1344"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 995,
+    "judge": 0,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q856",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "December 2, 1823",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1158,
+   "rewrite_ms": null,
+   "gen_ms": 1039,
+   "passage_tokens": 114,
+   "doc_ids": [
+    "w2506",
+    "w2516"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 712,
+    "judge": 547,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q923",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "him",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1560,
+   "rewrite_ms": null,
+   "gen_ms": 660,
+   "passage_tokens": 21,
+   "doc_ids": [
+    "w642"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1161,
+    "judge": 489,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q989",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 982,
+   "rewrite_ms": null,
+   "gen_ms": 841,
+   "passage_tokens": 31,
+   "doc_ids": [
+    "w1722"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 779,
+    "judge": 557,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1309",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "A polar bear\u2019s thick undercoat insulates it against the cold. Penguins\u2019 thick layer of insulating feathers also keeps them warm.",
+   "correctness": "partially_correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1048,
+   "rewrite_ms": null,
+   "gen_ms": 1112,
+   "passage_tokens": 329,
+   "doc_ids": [
+    "w2601",
+    "w2597",
+    "w963",
+    "w1916"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1069,
+    "judge": 750,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q532",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "the Soviet Union",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 952,
+   "rewrite_ms": null,
+   "gen_ms": 842,
+   "passage_tokens": 85,
+   "doc_ids": [
+    "w1571"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 915,
+    "judge": 556,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1368",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1284,
+   "rewrite_ms": null,
+   "gen_ms": 610,
+   "passage_tokens": 296,
+   "doc_ids": [
+    "w3102",
+    "w3104"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1433,
+    "judge": 676,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q583",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1142,
+   "rewrite_ms": null,
+   "gen_ms": 701,
+   "passage_tokens": 50,
+   "doc_ids": [
+    "w2001"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 924,
+    "judge": 482,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1245",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1056,
+   "rewrite_ms": null,
+   "gen_ms": 655,
+   "passage_tokens": 172,
+   "doc_ids": [
+    "w993",
+    "w951"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 759,
+    "judge": 584,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q957",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1245,
+   "rewrite_ms": null,
+   "gen_ms": 600,
+   "passage_tokens": 106,
+   "doc_ids": [
+    "w1741"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1046,
+    "judge": 514,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1359",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": true,
+   "answer": "NO_ANSWER",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1004,
+   "rewrite_ms": null,
+   "gen_ms": 617,
+   "passage_tokens": 52,
+   "doc_ids": [
+    "w2080"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 804,
+    "judge": 0,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q512",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Finland is a Nordic country in Northern Europe.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1171,
+   "rewrite_ms": null,
+   "gen_ms": 936,
+   "passage_tokens": 68,
+   "doc_ids": [
+    "w1550"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 639,
+    "judge": 503,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q733",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 835,
+   "rewrite_ms": null,
+   "gen_ms": 693,
+   "passage_tokens": 55,
+   "doc_ids": [
+    "w507"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 935,
+    "judge": 498,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q131",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 930,
+   "rewrite_ms": null,
+   "gen_ms": 751,
+   "passage_tokens": 55,
+   "doc_ids": [
+    "w729"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 744,
+    "judge": 529,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1218",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Sea otters eat shellfish and other invertebrates.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 765,
+   "rewrite_ms": null,
+   "gen_ms": 1042,
+   "passage_tokens": 53,
+   "doc_ids": [
+    "w1926"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 814,
+    "judge": 513,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1117",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1189,
+   "rewrite_ms": null,
+   "gen_ms": 770,
+   "passage_tokens": 174,
+   "doc_ids": [
+    "w184",
+    "w148"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 945,
+    "judge": 568,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q326",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "1545",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 876,
+   "rewrite_ms": null,
+   "gen_ms": 697,
+   "passage_tokens": 26,
+   "doc_ids": [
+    "w2276"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1060,
+    "judge": 480,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q920",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "His birthplace is now part of Adams National Historical Park.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1652,
+   "rewrite_ms": null,
+   "gen_ms": 989,
+   "passage_tokens": 22,
+   "doc_ids": [
+    "w638"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 991,
+    "judge": 488,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1346",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Qatar",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 897,
+   "rewrite_ms": null,
+   "gen_ms": 1191,
+   "passage_tokens": 36,
+   "doc_ids": [
+    "w2549"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 919,
+    "judge": 521,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q744",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "1890",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 989,
+   "rewrite_ms": null,
+   "gen_ms": 755,
+   "passage_tokens": 16,
+   "doc_ids": [
+    "w829"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 774,
+    "judge": 489,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q147",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Anders Celsius",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 796,
+   "rewrite_ms": null,
+   "gen_ms": 1181,
+   "passage_tokens": 54,
+   "doc_ids": [
+    "w145"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 707,
+    "judge": 517,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1050",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1123,
+   "rewrite_ms": null,
+   "gen_ms": 685,
+   "passage_tokens": 45,
+   "doc_ids": [
+    "w2458",
+    "w2452"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1306,
+    "judge": 487,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1679",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": true,
+   "answer": "NO_ANSWER",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1599,
+   "rewrite_ms": null,
+   "gen_ms": 678,
+   "passage_tokens": 761,
+   "doc_ids": [
+    "w2129",
+    "w2145",
+    "w2153",
+    "w534",
+    "w2136"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1328,
+    "judge": 0,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1214",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1155,
+   "rewrite_ms": null,
+   "gen_ms": 717,
+   "passage_tokens": 154,
+   "doc_ids": [
+    "w1920",
+    "w1914",
+    "w1922"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 829,
+    "judge": 548,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q907",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "He served as America\u2019s first Vice President from 1789 to 1797.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1202,
+   "rewrite_ms": null,
+   "gen_ms": 940,
+   "passage_tokens": 165,
+   "doc_ids": [
+    "w635",
+    "w670"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 974,
+    "judge": 623,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q992",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1195,
+   "rewrite_ms": null,
+   "gen_ms": 691,
+   "passage_tokens": 116,
+   "doc_ids": [
+    "w2445",
+    "w2452"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1067,
+    "judge": 549,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q454",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "In fact, African elephants rarely lie down unless they are sick or wounded.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 725,
+   "rewrite_ms": null,
+   "gen_ms": 1381,
+   "passage_tokens": 27,
+   "doc_ids": [
+    "w1229"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 955,
+    "judge": 499,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1028",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 986,
+   "rewrite_ms": null,
+   "gen_ms": 748,
+   "passage_tokens": 35,
+   "doc_ids": [
+    "w2452"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1239,
+    "judge": 488,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1444",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "In 1990.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 967,
+   "rewrite_ms": null,
+   "gen_ms": 894,
+   "passage_tokens": 20,
+   "doc_ids": [
+    "w2716"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 947,
+    "judge": 508,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q901",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 835,
+   "rewrite_ms": null,
+   "gen_ms": 738,
+   "passage_tokens": 22,
+   "doc_ids": [
+    "w639"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1006,
+    "judge": 463,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q984",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "different diets",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 964,
+   "rewrite_ms": null,
+   "gen_ms": 878,
+   "passage_tokens": 106,
+   "doc_ids": [
+    "w1741"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1007,
+    "judge": 521,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q115",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1193,
+   "rewrite_ms": null,
+   "gen_ms": 684,
+   "passage_tokens": 22,
+   "doc_ids": [
+    "w748"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 758,
+    "judge": 480,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q840",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "He returned to practicing law in Virginia.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 847,
+   "rewrite_ms": null,
+   "gen_ms": 727,
+   "passage_tokens": 41,
+   "doc_ids": [
+    "w2510"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 955,
+    "judge": 500,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q867",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": true,
+   "answer": "NO_ANSWER",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 812,
+   "rewrite_ms": null,
+   "gen_ms": 748,
+   "passage_tokens": 36,
+   "doc_ids": [
+    "w2506"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1103,
+    "judge": 0,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q862",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "As a result, the two nations moved closer toward the War of 1812.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1046,
+   "rewrite_ms": null,
+   "gen_ms": 949,
+   "passage_tokens": 95,
+   "doc_ids": [
+    "w2511"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1087,
+    "judge": 587,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q142",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": true,
+   "answer": "NO_ANSWER",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1061,
+   "rewrite_ms": null,
+   "gen_ms": 563,
+   "passage_tokens": 49,
+   "doc_ids": [
+    "w143"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 659,
+    "judge": 0,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q887",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1006,
+   "rewrite_ms": null,
+   "gen_ms": 747,
+   "passage_tokens": 245,
+   "doc_ids": [
+    "w644"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1276,
+    "judge": 607,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1709",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "he",
+   "correctness": "incorrect",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 986,
+   "rewrite_ms": null,
+   "gen_ms": 666,
+   "passage_tokens": 56,
+   "doc_ids": [
+    "w2132"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 850,
+    "judge": 494,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q968",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Kangaroos use hopping as a means of locomotion.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 911,
+   "rewrite_ms": null,
+   "gen_ms": 758,
+   "passage_tokens": 27,
+   "doc_ids": [
+    "w1738"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 917,
+    "judge": 496,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1688",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "unfaithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1049,
+   "rewrite_ms": null,
+   "gen_ms": 663,
+   "passage_tokens": 145,
+   "doc_ids": [
+    "w2134",
+    "w2223"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 798,
+    "judge": 532,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q123",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1168,
+   "rewrite_ms": null,
+   "gen_ms": 714,
+   "passage_tokens": 208,
+   "doc_ids": [
+    "w745",
+    "w1443"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 834,
+    "judge": 594,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q838",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Elizabeth Kortright",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 966,
+   "rewrite_ms": null,
+   "gen_ms": 954,
+   "passage_tokens": 30,
+   "doc_ids": [
+    "w2507"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1042,
+    "judge": 473,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1406",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "no",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 677,
+   "rewrite_ms": null,
+   "gen_ms": 808,
+   "passage_tokens": 28,
+   "doc_ids": [
+    "w2702"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1184,
+    "judge": 489,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1566",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "spherical",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 873,
+   "rewrite_ms": null,
+   "gen_ms": 641,
+   "passage_tokens": 31,
+   "doc_ids": [
+    "w2687"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1086,
+    "judge": 463,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q924",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 834,
+   "rewrite_ms": null,
+   "gen_ms": 648,
+   "passage_tokens": 51,
+   "doc_ids": [
+    "w701"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 959,
+    "judge": 492,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q1374",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "yes",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1124,
+   "rewrite_ms": null,
+   "gen_ms": 760,
+   "passage_tokens": 26,
+   "doc_ids": [
+    "w3078"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 1040,
+    "judge": 478,
+    "reasoning": 0
+   }
+  },
+  {
+   "qid": "q216",
+   "front_end": "contextual_compression",
+   "status": "ok",
+   "error": null,
+   "abstained": false,
+   "answer": "Coolidge moved to Northampton, Massachusetts to take up the practice of law.",
+   "correctness": "correct",
+   "faithfulness": "faithful",
+   "correctness_error": null,
+   "faithfulness_error": null,
+   "retrieval_ms": 1174,
+   "rewrite_ms": null,
+   "gen_ms": 1167,
+   "passage_tokens": 101,
+   "doc_ids": [
+    "w406"
+   ],
+   "rerank": "off",
+   "tokens": {
+    "rag": 992,
+    "judge": 558,
+    "reasoning": 0
+   }
+  }
+ ]
+}

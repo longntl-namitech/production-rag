@@ -65,6 +65,9 @@ from production_rag.core.llm import (
 )
 from production_rag.core.models import ContextOption, Row, SpecResult
 from production_rag.methods.context_expansion import pipeline as context_expansion
+from production_rag.methods.contextual_compression import pipeline as contextual_compression
+from production_rag.methods.contextual_compression.compress import MAX_TOKENS as COMPRESS_MAX_TOKENS
+from production_rag.methods.contextual_compression.compress import compress_messages
 from production_rag.methods.hybrid_fusion import pipeline as hybrid_fusion
 from production_rag.methods.multi_query import pipeline as multi_query
 from production_rag.methods.multi_query.rewrite import MAX_TOKENS as REWRITE_MAX_TOKENS
@@ -73,7 +76,14 @@ from production_rag.methods.naive_rag import pipeline as naive_rag
 from production_rag.methods.rerank import pipeline as rerank
 
 RESULTS = Path("results")
-ANSWER_METHODS = ("naive_rag", "hybrid_fusion", "rerank", "multi_query", "context_expansion")
+ANSWER_METHODS = (
+    "naive_rag",
+    "hybrid_fusion",
+    "rerank",
+    "multi_query",
+    "context_expansion",
+    "contextual_compression",
+)
 DEADLINE_MS = 30000
 GEN_MAX_TOKENS = 512
 ANSWER_IN_JUDGE = 512  # upper bound for the answer text inside each judge prompt
@@ -155,12 +165,26 @@ async def _context_expansion(
     )
 
 
+async def _contextual_compression(
+    question: str, collection: str, deps: Deps, llm: Any, k: int
+) -> Retrieved:
+    """With `llm=None` (the estimate) it returns the passages uncompressed."""
+    if llm is None:
+        return await _naive_rag(question, collection, deps, llm, k)
+    start = time.perf_counter()
+    result, usage = await contextual_compression.search(
+        question, collection, deps, llm, k=k, deadline_ms=DEADLINE_MS
+    )
+    return Retrieved(result.rows, usage, _ms(start), status=result.status, rerank=result.rerank)
+
+
 FRONT_ENDS: dict[str, Callable[[str, str, Deps, Any, int], Awaitable[Retrieved]]] = {
     "naive_rag": _naive_rag,
     "hybrid_fusion": _hybrid_fusion,
     "rerank": _rerank,
     "multi_query": _multi_query,
     "context_expansion": _context_expansion,
+    "contextual_compression": _contextual_compression,
 }
 
 
@@ -178,7 +202,7 @@ def _prompt_tokens(messages: list[dict[str, str]]) -> int:
 
 
 def llm_calls(method: str) -> int:
-    return 3 + (method == "multi_query")
+    return 3 + (method in ("multi_query", "contextual_compression"))
 
 
 def estimate_item(question: str, gold: str, rows: list[Row], method: str) -> int:
@@ -189,6 +213,8 @@ def estimate_item(question: str, gold: str, rows: list[Row], method: str) -> int
     total += 2 * JUDGE_MAX_TOKENS
     if method == "multi_query":
         total += _prompt_tokens(rewrite_messages(question)) + REWRITE_MAX_TOKENS
+    if method == "contextual_compression":  # generation is estimated on the uncompressed rows
+        total += _prompt_tokens(compress_messages(question, rows)) + COMPRESS_MAX_TOKENS
     return total
 
 

@@ -277,12 +277,39 @@ async def test_front_ends_all_return_rows(deps):
     for name in ANSWER_METHODS:
         got = await FRONT_ENDS[name]("solar panels", "c", deps, llm, 2)
         assert got.rows and got.status == "ok", name
-    assert len(llm.calls) == 1
+    assert len(llm.calls) == 2  # the multi_query rewrite and the compression call
 
 
 async def test_multi_query_without_llm_searches_the_question_only(deps):
     got = await FRONT_ENDS["multi_query"]("solar panels", "c", deps, None, 2)
     assert got.rows and got.rewrite_ms is None and got.usage.total == 0
+
+
+def test_compression_front_end_registered():
+    assert "contextual_compression" in ANSWER_METHODS
+    assert "contextual_compression" in FRONT_ENDS
+
+
+def test_llm_calls_for_compression():
+    assert answer.llm_calls("contextual_compression") == 4
+    assert answer.llm_calls("naive_rag") == 3
+
+
+def test_estimate_item_adds_compression_cost():
+    rows = [text_row("x" * 300)]
+    base = estimate_item("q" * 30, "g" * 30, rows, "naive_rag")
+    assert estimate_item("q" * 30, "g" * 30, rows, "contextual_compression") >= base + 256
+
+
+async def test_compression_without_llm_returns_uncompressed_rows(deps):
+    got = await FRONT_ENDS["contextual_compression"]("solar panels", "c", deps, None, 2)
+    assert got.rows and got.usage.total == 0 and got.rewrite_ms is None
+
+
+async def test_compression_front_end_compresses_and_counts_tokens(deps):
+    llm = FakeLLM(lambda m: json.dumps({"keep": ["1.1"]}))
+    got = await FRONT_ENDS["contextual_compression"]("solar panels", "c", deps, llm, 2)
+    assert len(got.rows) == 1 and got.usage.total == 15 and got.status == "ok"
 
 
 async def test_rerank_front_end_refuses_without_reranker(deps):
@@ -334,7 +361,7 @@ async def test_cli_estimate_only_makes_no_llm_calls(cli, monkeypatch, capsys):
     code = await answer.main(["--dataset", "mini_wiki", "--estimate-only", "--sample", "2"])
     assert code == 0 and fake.calls == []
     out = capsys.readouterr().out
-    assert "estimate: questions=2 methods=5 llm_calls=32 upper_bound_tokens=" in out
+    assert "estimate: questions=2 methods=6 llm_calls=40 upper_bound_tokens=" in out
     assert list(cli.iterdir()) == []
 
 
