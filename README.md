@@ -1,18 +1,57 @@
+<div align="center">
+
 # production-rag
 
-"Production" here means the methods come from production use, from naive to advanced RAG. Each one is written up next to runnable code and measured on public data. This is a lab to read and try methods in, not a deployable service.
+**RAG methods from production use, from naive to advanced.<br>Each one is runnable and measured on public data.**
 
-## How it fits together
+[![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Vector store: Qdrant](https://img.shields.io/badge/vector%20store-Qdrant-DC244C)](docker-compose.yml)
+[![Package manager: uv](https://img.shields.io/badge/package%20manager-uv-DE5FE9)](https://docs.astral.sh/uv/)
+[![Version 0.2.0](https://img.shields.io/badge/version-0.2.0-blue)](CHANGELOG.md)
+
+[Architecture](#architecture) · [Results](#results) · [Methods](#methods) · [Quickstart](#quickstart) · [Adding a method](#adding-a-method) · [Licenses](#models-data-and-licenses)
+
+</div>
+
+---
+
+"Production" here means the methods come from production use. Each method is written up next to runnable code and measured on public data. This is a lab to read and try methods in, not a deployable service.
+
+| | |
+|---|---|
+| **15 method folders** | Parsing and chunking, sparse, dense and hybrid retrieval, reranking, LLM query rewriting, context expansion and compression, fact check |
+| **4 public datasets** | SciFact and TVPL for retrieval, rag-mini-wikipedia and vi_RAG LegalRAG for answers; English and Vietnamese |
+| **Same shape everywhere** | Every method folder has a `README.md`, a `pipeline.py` and an `example.py` |
+| **Token-capped LLM runs** | LLM evals have an estimate-only mode and a token cap (`--max-tokens`) |
+
+## Architecture
 
 <p align="center"><img src="docs/diagrams/pipeline.svg" alt="Pipeline: files are parsed, chunked, optionally given an LLM context sentence, embedded and stored in Qdrant; a question is optionally rewritten, retrieved, reranked, given context and answered; core/eval measures every step." width="100%"></p>
 
-Each box is a method folder under [`src/production_rag/methods/`](src/production_rag/methods/), built on shared parts in `core/`. Every method has a `README.md` that explains it, a `pipeline.py` and an `example.py`.
+Each box is a method folder under [`src/production_rag/methods/`](src/production_rag/methods/), built on shared parts in `core/`. `core/eval/` runs the methods on the public datasets and writes `results/`.
 
 <p align="center"><img src="docs/diagrams/layout.svg" alt="Repository layout: methods/ folders use the core/ building blocks, and core/eval/ runs the methods on public datasets and writes results/." width="100%"></p>
+
+<details>
+<summary><b>Tech stack</b></summary>
+
+| Part | Default | Swap it with |
+|---|---|---|
+| Vector store | Qdrant (dense + BM25 sparse vectors, server-side fusion) | - |
+| Dense embeddings | `jinaai/jina-embeddings-v5-text-nano-retrieval` on CPU | any OpenAI-compatible `/embeddings` endpoint (`EMBEDDING_BASE_URL`) |
+| Sparse | fastembed `Qdrant/bm25` | - |
+| Reranker | `cross-encoder/mmarco-mMiniLMv2-L12-H384-v1` | the `Reranker` protocol |
+| LLM | OpenAI `gpt-5.4-nano` | `OPENAI_MODEL` |
+| Parsers | `pdfplumber`, `python-docx`, `python-pptx`, `openpyxl`, `markdownify` (pip only) | - |
+
+</details>
 
 ## Results
 
 Headline numbers only. Every table links to the full results, with all metrics and run notes. Latency is in-process on CPU (Apple silicon, one query at a time).
+
+<p align="center"><img src="docs/diagrams/results.svg" alt="Dot plot of retrieval nDCG@10 on SciFact and TVPL for each method, without and with LLM query rewriting." width="100%"></p>
 
 ### Retrieval
 
@@ -67,36 +106,46 @@ Correctness moved by up to 0.07 between two runs, so smaller gaps are noise. The
 
 ## Methods
 
-| Folder | Variants (eval names) | Extra | What it does |
-|---|---|---|---|
-| [`naive_rag`](src/production_rag/methods/naive_rag/README.md) | `naive_rag` | `local-models` + `OPENAI_API_KEY` | Fixed 800-char chunks, dense top 5, one prompt, generate |
-| [`dense`](src/production_rag/methods/dense/README.md) | `dense` | `local-models` | Jina v5 nano embeddings |
-| [`bm25`](src/production_rag/methods/bm25/README.md) | `bm25_no_idf`, `bm25`, `bm25_vi_stopwords` | none for search | BM25 without IDF, with IDF, and with Vietnamese stopwords removed first |
-| [`hybrid_fusion`](src/production_rag/methods/hybrid_fusion/README.md) | `hybrid_rrf`, `hybrid_dbsf`, `hybrid_weighted_rrf` | `local-models` | Dense + BM25 fused in Qdrant: reciprocal rank fusion, distribution-based score fusion, RRF with dense weighted 2:1 |
-| [`rerank`](src/production_rag/methods/rerank/README.md) | `hybrid_rrf_rerank` | `local-models` | Hybrid RRF, then a cross-encoder over the top candidates |
-| [`deadline_fanout`](src/production_rag/methods/deadline_fanout/README.md) | none | `local-models` | Deadline budget and spec fan-out; latency bench in its README |
-| [`multi_query`](src/production_rag/methods/multi_query/README.md) | none | `local-models` | Multi-query merge; answer numbers in its README |
-| [`context_expansion`](src/production_rag/methods/context_expansion/README.md) | none | `local-models` | Neighbour chunks or the full document around each hit; answer numbers in its README |
-| [`parse_and_chunk`](src/production_rag/methods/parse_and_chunk/README.md) | `chunk_recursive_800`, `chunk_recursive_800_o200`, `chunk_recursive_400`, `chunk_semantic` | `parse` + `local-models` | PDF, DOCX, PPTX, XLSX, HTML, Markdown to Markdown with pip-only parsers; fixed, recursive, heading-aware and semantic chunking |
-| [`fact_check`](src/production_rag/methods/fact_check/README.md) | none | `local-models` + `OPENAI_API_KEY` | claims from a statement, evidence per claim, verdict: supported, refuted, unverified; `not_relevant` when nothing is checkable |
-| [`hyde`](src/production_rag/methods/hyde/README.md) | none | `local-models` + `OPENAI_API_KEY` | An LLM-written hypothetical answer passage replaces the question for dense search; table in its README |
-| [`step_back`](src/production_rag/methods/step_back/README.md) | none | `local-models` + `OPENAI_API_KEY` | The question plus one LLM-written more general question, merged by best score; table in its README |
-| [`query_decomposition`](src/production_rag/methods/query_decomposition/README.md) | none | `local-models` + `OPENAI_API_KEY` | A multi-part question split by an LLM into up to 3 sub-questions, one search each, merged by best score; table in its README |
-| [`contextual_headers`](src/production_rag/methods/contextual_headers/README.md) | none | `local-models` + `OPENAI_API_KEY` | An LLM-written sentence per chunk that places it in its document, embedded with the chunk at index time; cached on disk; table in its README |
-| [`contextual_compression`](src/production_rag/methods/contextual_compression/README.md) | none | `local-models` + `OPENAI_API_KEY` | After retrieval an LLM keeps only the sentences that help answer the question, so the prompt carries fewer tokens; answer-eval numbers in its README |
+Grouped by the pipeline stage they change. `LLM` means the method needs `OPENAI_API_KEY`.
+
+| Stage | Method | Variants (eval names) | Extra | What it does |
+|---|---|---|---|---|
+| Baseline | [`naive_rag`](src/production_rag/methods/naive_rag/README.md) | `naive_rag` | `local-models`, LLM | Fixed 800-char chunks, dense top 5, one prompt, generate |
+| Ingest | [`parse_and_chunk`](src/production_rag/methods/parse_and_chunk/README.md) | `chunk_recursive_800`, `chunk_recursive_800_o200`, `chunk_recursive_400`, `chunk_semantic` | `parse`, `local-models` | PDF, DOCX, PPTX, XLSX, HTML, Markdown to Markdown with pip-only parsers; fixed, recursive, heading-aware and semantic chunking |
+| Ingest | [`contextual_headers`](src/production_rag/methods/contextual_headers/README.md) | none | `local-models`, LLM | An LLM-written sentence per chunk that places it in its document, embedded with the chunk at index time; cached on disk |
+| Query rewrite | [`multi_query`](src/production_rag/methods/multi_query/README.md) | none | `local-models` | Multi-query merge; numbers in its README |
+| Query rewrite | [`hyde`](src/production_rag/methods/hyde/README.md) | none | `local-models`, LLM | An LLM-written hypothetical answer passage replaces the question for dense search |
+| Query rewrite | [`step_back`](src/production_rag/methods/step_back/README.md) | none | `local-models`, LLM | The question plus one LLM-written more general question, merged by best score |
+| Query rewrite | [`query_decomposition`](src/production_rag/methods/query_decomposition/README.md) | none | `local-models`, LLM | A multi-part question split by an LLM into up to 3 sub-questions, one search each, merged by best score |
+| Retrieve | [`dense`](src/production_rag/methods/dense/README.md) | `dense` | `local-models` | Jina v5 nano embeddings |
+| Retrieve | [`bm25`](src/production_rag/methods/bm25/README.md) | `bm25_no_idf`, `bm25`, `bm25_vi_stopwords` | none for search | BM25 without IDF, with IDF, and with Vietnamese stopwords removed first |
+| Retrieve | [`hybrid_fusion`](src/production_rag/methods/hybrid_fusion/README.md) | `hybrid_rrf`, `hybrid_dbsf`, `hybrid_weighted_rrf` | `local-models` | Dense + BM25 fused in Qdrant: reciprocal rank fusion, distribution-based score fusion, RRF with dense weighted 2:1 |
+| Retrieve | [`deadline_fanout`](src/production_rag/methods/deadline_fanout/README.md) | none | `local-models` | Deadline budget and spec fan-out; latency bench in its README |
+| Rerank | [`rerank`](src/production_rag/methods/rerank/README.md) | `hybrid_rrf_rerank` | `local-models` | Hybrid RRF, then a cross-encoder over the top candidates |
+| Context | [`context_expansion`](src/production_rag/methods/context_expansion/README.md) | none | `local-models` | Neighbour chunks or the full document around each hit; answer numbers in its README |
+| Context | [`contextual_compression`](src/production_rag/methods/contextual_compression/README.md) | none | `local-models`, LLM | After retrieval an LLM keeps only the sentences that help answer the question, so the prompt carries fewer tokens |
+| Verify | [`fact_check`](src/production_rag/methods/fact_check/README.md) | none | `local-models`, LLM | Claims from a statement, evidence per claim, verdict: supported, refuted, unverified; `not_relevant` when nothing is checkable |
 
 ## Quickstart
 
+Needs Python 3.11+, [uv](https://docs.astral.sh/uv/) and Docker.
+
 ```bash
+# 1. start Qdrant and install
 docker compose up -d qdrant
 uv sync --extra local-models --extra eval
 
-# index SciFact and score two methods (downloads the dataset)
-uv run python -m production_rag.core.eval.run --dataset scifact --methods bm25 hybrid_fusion --query-limit 20 --name smoke
-
-# run one method's example
+# 2. run one method's example
 uv run python -m production_rag.methods.hybrid_fusion.example
 
+# 3. index SciFact and score two methods (downloads the dataset)
+uv run python -m production_rag.core.eval.run --dataset scifact --methods bm25 hybrid_fusion --query-limit 20 --name smoke
+```
+
+<details>
+<summary><b>More evals: answers, parsing, chunking, fact check</b></summary>
+
+```bash
 # answer eval (calls an LLM): estimate first, then run with a token cap
 export OPENAI_API_KEY=...
 uv run python -m production_rag.core.eval.answer --dataset mini_wiki --sample 20 --estimate-only
@@ -116,7 +165,10 @@ uv run --extra eval --extra local-models python -m production_rag.methods.fact_c
 
 Estimate the tokens before every LLM run and give every LLM run a cap.
 
-As a library:
+</details>
+
+<details>
+<summary><b>Use it as a library</b></summary>
 
 ```python
 import asyncio
@@ -143,6 +195,8 @@ async def main() -> None:
 asyncio.run(main())
 ```
 
+</details>
+
 ## Adding a method
 
 <p align="center"><img src="docs/diagrams/add_method.svg" alt="Adding a method: create the folder, register it in METHOD_NAMES, measure it on SciFact and TVPL, and report the table." width="100%"></p>
@@ -151,6 +205,8 @@ asyncio.run(main())
 2. Add the name to `METHOD_NAMES` in `src/production_rag/methods/__init__.py`.
 3. A new vector kind or backend goes in `core/`.
 4. Run the eval on both datasets, then `python -m production_rag.core.eval.report`.
+
+The diagrams are drawn by [`docs/diagrams/make_diagrams.py`](docs/diagrams/make_diagrams.py) (`uv run python docs/diagrams/make_diagrams.py`); the results chart reads its numbers from `results/*.json`.
 
 ## Tests
 
@@ -161,9 +217,12 @@ uv run --extra local-models pytest -m integration
 
 ## Roadmap
 
-Next: speculative search, LLM rerank, cache, embedding comparison, `cpu_embedding_batching`, testset generation, chunking compared on answer quality. Known gaps: [`BACKLOG.md`](BACKLOG.md).
+Next: speculative search, LLM rerank, cache, embedding comparison, `cpu_embedding_batching`, testset generation, chunking compared on answer quality. Known gaps: [`BACKLOG.md`](BACKLOG.md). Changes: [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Models, data and licenses
+
+<details>
+<summary><b>Models, datasets and their licenses</b></summary>
 
 - Dense: [`jinaai/jina-embeddings-v5-text-nano-retrieval`](https://huggingface.co/jinaai/jina-embeddings-v5-text-nano-retrieval), CC-BY-NC-4.0 (non-commercial). Swap it through the [`Embedder`](src/production_rag/core/embedders/base.py) protocol or point `EMBEDDING_BASE_URL` at an OpenAI-compatible `/embeddings` endpoint.
 - Sparse: fastembed `Qdrant/bm25`. Rerank: [`cross-encoder/mmarco-mMiniLMv2-L12-H384-v1`](https://huggingface.co/cross-encoder/mmarco-mMiniLMv2-L12-H384-v1).
@@ -174,7 +233,9 @@ Next: speculative search, LLM rerank, cache, embedding comparison, `cpu_embeddin
 - Parse extra: `pdfplumber`, `python-docx`, `python-pptx`, `openpyxl`, `markdownify` and `beautifulsoup4`, all MIT.
 - Parsing eval data: 7 arXiv papers (CC BY 4.0, except `arxiv-1602.06541v2`, CC BY-SA 4.0) with the [py-pdf/benchmarks](https://github.com/py-pdf/benchmarks) ground truth (BSD-3-Clause, pinned commit `18ee8c4`), and the [docling](https://github.com/docling-project/docling) test fixtures (MIT, pinned commit `a7760ab`). Downloaded at runtime, not stored here.
 - Fact-check data: [SciFact](https://huggingface.co/datasets/allenai/scifact) claims, CC BY-NC 2.0 (non-commercial) per the card, downloaded at runtime from allenai's release tarball and not stored here.
-- Diagram font: [Patrick Hand](https://fonts.google.com/specimen/Patrick+Hand) by Patrick Wagesreiter, SIL OFL 1.1 ([`docs/diagrams/OFL.txt`](docs/diagrams/OFL.txt)), cut to Latin characters and embedded in the SVGs. The diagrams are drawn by [`docs/diagrams/make_diagrams.py`](docs/diagrams/make_diagrams.py).
+- Diagram font: [Patrick Hand](https://fonts.google.com/specimen/Patrick+Hand) by Patrick Wagesreiter, SIL OFL 1.1 ([`docs/diagrams/OFL.txt`](docs/diagrams/OFL.txt)), cut to Latin characters and embedded in the SVGs.
 - Technique catalog: [nirdiamant/RAG_Techniques](https://github.com/nirdiamant/RAG_Techniques) was used to find which techniques this repo did not have yet. No code or prompts are taken from it (its license is not a standard one); each method README cites the paper or source it is based on.
 
-Code: MIT.
+</details>
+
+Code: [MIT](LICENSE).

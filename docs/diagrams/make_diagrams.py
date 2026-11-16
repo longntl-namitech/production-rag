@@ -10,6 +10,7 @@ anything.
 
 import base64
 import html
+import json
 import math
 import random
 from pathlib import Path
@@ -480,11 +481,101 @@ def add_method() -> Sketch:
     return s
 
 
+# (label, SciFact (file, key), TVPL (file, key)); numbers are read from results/*.json.
+RETRIEVAL = [
+    ("No LLM at query time", None, None),
+    ("naive_rag", ("scifact_naive_rag", "naive_rag"), ("tvpl_naive_rag", "naive_rag")),
+    ("dense", ("scifact", "dense"), ("tvpl", "dense")),
+    ("bm25", ("scifact", "bm25"), ("tvpl", "bm25")),
+    ("hybrid_rrf", ("scifact", "hybrid_rrf"), ("tvpl", "hybrid_rrf")),
+    ("hybrid_weighted_rrf", ("scifact", "hybrid_weighted_rrf"), ("tvpl", "hybrid_weighted_rrf")),
+    ("hybrid_rrf_rerank", ("scifact", "hybrid_rrf_rerank"), ("tvpl", "hybrid_rrf_rerank")),
+    ("LLM query rewrite (gpt-5.4-nano)", None, None),
+    ("multi_query", ("query_side_scifact", "multi_query"), ("query_side_tvpl", "multi_query")),
+    (
+        "hyde (passage + question)",
+        ("query_side_scifact", "hyde_passage_query"),
+        ("query_side_tvpl", "hyde_passage_query"),
+    ),
+    ("step_back", ("query_side_scifact", "step_back"), ("query_side_tvpl", "step_back")),
+    (
+        "query_decomposition",
+        ("query_decomposition_scifact", "query_decomposition"),
+        ("query_side_tvpl", "query_decomposition"),
+    ),
+]
+
+
+def _ndcg(ref: tuple[str, str]) -> float:
+    path = HERE.parent.parent / "results" / f"{ref[0]}.json"
+    return json.loads(path.read_text())["summary"][ref[1]]["ndcg@10"]
+
+
+def results_chart() -> Sketch:
+    lo, hi = 0.60, 0.85
+    x0, x1 = 560, 1680
+    s = Sketch(2000, 1120, seed=4)
+    s.heading(
+        "Retrieval at a glance",
+        "nDCG@10 on SciFact (English, 300 queries) and TVPL (Vietnamese legal, 1,000 queries).",
+    )
+
+    def px(v: float) -> float:
+        return x0 + (v - lo) / (hi - lo) * (x1 - x0)
+
+    def circle(cx: float, cy: float) -> None:
+        s.parts.append(f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="13" fill="{FILLS["blue"]}"/>')
+        s._stroke(f"M {cx + 13:.1f} {cy:.1f} A 13 13 0 1 1 {cx + 12.9:.1f} {cy - 1:.1f}")
+
+    def square(cx: float, cy: float) -> None:
+        x, y = cx - 13, cy - 13
+        s.parts.append(
+            f'<rect x="{x:.1f}" y="{y:.1f}" width="26" height="26" fill="{FILLS["pink"]}"/>'
+        )
+        s._stroke(s._rounded(x, y, 26, 26, 3), width=2.2)
+
+    # shape and fill both differ, so the two sets read apart without colour
+    circle(1180, 160)
+    s.text(1206, 168, "SciFact", 26)
+    square(1343, 160)
+    s.text(1370, 168, "TVPL", 26)
+    s.text(1960, 168, "SciFact / TVPL", 24, anchor="end")
+
+    top, row_h = 215, 62
+    y = top
+    for label, sci, tvpl in RETRIEVAL:
+        if sci is None:
+            s.text(40, y + 40, label, 28, bold=True)
+            y += row_h
+            continue
+        cy = y + row_h / 2
+        s.text(60, cy + 8, label, 25)
+        s._stroke(f"M {x0} {cy} {s._seg(x0, cy, x1, cy, bow=0.6)}", width=1.0, opacity=0.25)
+        a, b = _ndcg(sci), _ndcg(tvpl)
+        circle(px(a), cy)
+        square(px(b), cy)
+        s.text(1960, cy + 8, f"{a:.3f} / {b:.3f}", 24, anchor="end")
+        y += row_h
+
+    for i in range(6):
+        v = lo + i * 0.05
+        s._stroke(f"M {px(v):.1f} {top} L {px(v):.1f} {y}", width=1.0, opacity=0.35, dash="6 8")
+        s.text(px(v), y + 34, f"{v:.2f}", 22, anchor="middle")
+    s.text(
+        40,
+        y + 84,
+        "Query-rewrite rows come from separate runs (2026-11-13). Full tables in results/.",
+        22,
+    )
+    return s
+
+
 def main() -> None:
     for name, sketch in [
         ("pipeline", pipeline()),
         ("layout", layout()),
         ("add_method", add_method()),
+        ("results", results_chart()),
     ]:
         (HERE / f"{name}.svg").write_text(sketch.svg(), encoding="utf-8")
         print(f"wrote docs/diagrams/{name}.svg")
