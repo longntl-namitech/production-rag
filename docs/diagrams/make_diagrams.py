@@ -13,6 +13,7 @@ import html
 import json
 import math
 import random
+import textwrap
 from pathlib import Path
 
 HERE = Path(__file__).parent
@@ -572,24 +573,85 @@ def results_chart() -> Sketch:
 
 LEGEND = (
     "lilac: input  |  yellow: needs OPENAI_API_KEY  |  green: plain code  |  "
-    "blue: Qdrant or shared part  |  e.g.: made-up example"
+    "blue: Qdrant or shared part  |  e.g.: output of a real run"
 )
+
+# The example in every box is read from example_query.json, written by capture_example.py
+# (one real SciFact claim, run through each method with gpt-5.4-nano).
+EX = json.loads((HERE / "example_query.json").read_text(encoding="utf-8"))
+GOLD = EX["gold"]
+RET = EX["retrieval"]
+
+
+def cut(text: str, n: int) -> str:
+    text = " ".join(text.split())
+    return text if len(text) <= n else text[: n - 3].rstrip() + "..."
+
+
+def wrap(text: str, n: int, lines: int) -> list[str]:
+    """`text` wrapped to `n` characters, at most `lines` lines, the last one cut with '...'."""
+    parts = textwrap.wrap(" ".join(text.split()), n)
+    if len(parts) > lines:
+        parts = parts[:lines]
+        parts[-1] = cut(parts[-1] + " ...", n)
+    return parts
+
+
+def hits(rows: list[dict], n: int, count: int = 3) -> list[str]:
+    return [
+        cut(f"{i}. {h['doc']} {h['score']:.3f} {h['title']}", n)
+        for i, h in enumerate(rows[:count], 1)
+    ]
+
+
+def best(found: dict) -> dict:
+    return found["top3"][0]
+
+
+def rank_of(found: dict) -> str:
+    return f"gold doc rank {found['rank']}"
+
+
+def rank(name: str) -> str:
+    return rank_of(RET[name])
+
+
+BM, NI, HW = (best(RET[k]) for k in ("bm25", "bm25_no_idf", "hybrid_weighted_rrf"))
+
 
 # One flow per method folder: (subtitle, columns). A column is a list of boxes
 # (fill, title, bullets, icon, example lines); boxes in one column run side by side as
-# parallel steps. The example lines are made-up inputs and outputs that show the step.
+# parallel steps.
+NR, PC, CH = EX["naive_rag"], EX["parse_and_chunk"], EX["contextual_headers"]
+MQ, HY, SB, QD = EX["multi_query"], EX["hyde"], EX["step_back"], EX["query_decomposition"]
+RR, CE, CC, DF, FC = (
+    EX["rerank"],
+    EX["context_expansion"],
+    EX["contextual_compression"],
+    EX["deadline_fanout"],
+    EX["fact_check"],
+)
+Q = EX["query"]
 FLOWS = {
     "naive_rag": (
         "Fixed chunks, dense top 5, one prompt.",
         [
-            [("lilac", "Documents", ["raw text"], "doc", ["handbook.txt, 2,000 chars"])],
+            [
+                (
+                    "lilac",
+                    "Documents",
+                    ["raw text"],
+                    "doc",
+                    [f"doc {GOLD['doc']}, {GOLD['chars']:,} chars", *wrap(GOLD["title"], 34, 2)],
+                )
+            ],
             [
                 (
                     "green",
                     "Chunk",
                     ["fixed size", "up to 800 characters"],
                     "scissors",
-                    ["2,000 chars -> 3 chunks", "of at most 800 chars"],
+                    [f"{GOLD['chars']:,} chars -> {NR['gold_fixed_chunks']} chunks"],
                 )
             ],
             [
@@ -598,7 +660,10 @@ FLOWS = {
                     "Dense search",
                     ["query embedded", "top 5 chunks back"],
                     "search",
-                    ["'how many days of leave?'", "-> chunks 2, 7, 1, 9, 4"],
+                    [
+                        cut(f"{i}. {h['doc']} chunk {h['chunk']} ({h['score']:.3f})", 34)
+                        for i, h in enumerate(NR["top5"][:3], 1)
+                    ],
                 )
             ],
             [
@@ -607,7 +672,7 @@ FLOWS = {
                     "Generate",
                     ["passages stuffed in prompt", "NO_ANSWER if missing"],
                     "bubble",
-                    ["'12 days, see chunk 2'", "or NO_ANSWER"],
+                    [f"answer: {NR['answer']}"],
                 )
             ],
         ],
@@ -621,7 +686,7 @@ FLOWS = {
                     "Files",
                     ["PDF, DOCX, PPTX", "XLSX, HTML, Markdown"],
                     "folder",
-                    ["report.pdf", "slides.pptx"],
+                    [f"doc {GOLD['doc']} as .md", f"{PC['chars']:,} chars (title + text)"],
                 )
             ],
             [
@@ -630,7 +695,7 @@ FLOWS = {
                     "Parse",
                     ["one library per format", "output is Markdown"],
                     "doc",
-                    ["slides.pptx -> one '##'", "section per slide"],
+                    ["Markdown is read as is"],
                 )
             ],
             [
@@ -639,7 +704,11 @@ FLOWS = {
                     "Chunk",
                     ["fixed, recursive, markdown", "semantic (embeds sentences)"],
                     "scissors",
-                    ["recursive: paragraphs, then", "lines, sentences, words"],
+                    [
+                        f"fixed 800: {PC['fixed_800']} chunks",
+                        f"recursive 800: {PC['recursive_800']} chunks",
+                        f"semantic: {PC['semantic']} chunks",
+                    ],
                 )
             ],
             [
@@ -648,7 +717,10 @@ FLOWS = {
                     "Index",
                     ["dense vector per chunk", "BM25 vectors per chunk"],
                     "layers",
-                    ["chunk 12 -> 1 dense vector", "+ its BM25 vectors"],
+                    [
+                        f"recursive: {PC['recursive_800']} chunks ->",
+                        f"{PC['recursive_800']} dense + {PC['recursive_800']} BM25 vectors",
+                    ],
                 )
             ],
         ],
@@ -662,7 +734,11 @@ FLOWS = {
                     "Documents",
                     ["chunked at index time"],
                     "doc",
-                    ["page 'Leave policy'", "chunk: 'Staff get twelve days.'"],
+                    [
+                        f"doc {GOLD['doc']}: {CH['chunks']} chunks",
+                        "chunk 0 starts:",
+                        f"'{cut(CH['chunk'], 40)}'",
+                    ],
                 )
             ],
             [
@@ -671,7 +747,7 @@ FLOWS = {
                     "Context sentence",
                     ["LLM reads document + chunk", "200 token cap, cached on disk"],
                     "sparkle",
-                    ["'This chunk is from the annual", "leave section of the HR handbook.'"],
+                    wrap(CH["context"], 50, 4),
                 )
             ],
             [
@@ -684,7 +760,7 @@ FLOWS = {
                         "stored text stays the chunk",
                     ],
                     "layers",
-                    ["embedded: title + sentence + chunk", "stored: 'Staff get twelve days.'"],
+                    ["embedded: title + sentence + chunk", "stored: the raw chunk only"],
                 )
             ],
         ],
@@ -698,7 +774,10 @@ FLOWS = {
                     "Subqueries",
                     ["up to 8", "embedded in one call"],
                     "bubble",
-                    ["'annual leave days'", "'holiday entitlement'"],
+                    [
+                        "1. the original claim",
+                        *(f"{i}. {cut(s, 31)}" for i, s in enumerate(MQ["queries"][1:], 2)),
+                    ],
                 )
             ],
             [
@@ -707,7 +786,7 @@ FLOWS = {
                     "Search each",
                     ["same spec for every", "subquery"],
                     "search",
-                    ["each subquery returns", "its own ranked chunks"],
+                    [f"{len(MQ['queries'])} queries -> {len(MQ['queries'])} ranked lists"],
                 )
             ],
             [
@@ -716,7 +795,10 @@ FLOWS = {
                     "merge_max",
                     ["each chunk once", "with its best score"],
                     "layers",
-                    ["chunk 7: score 0.81 and 0.74", "-> kept once, at 0.81"],
+                    [
+                        f"doc {GOLD['doc']}: rank {MQ['rank']},",
+                        f"score {MQ['top3'][0]['score']:.3f} (its best)",
+                    ],
                 )
             ],
             [
@@ -725,7 +807,7 @@ FLOWS = {
                     "Rerank (optional)",
                     ["scored against", "rerank_query"],
                     "trophy",
-                    ["merged pool scored against", "the original question"],
+                    ["not used here: the base is", "hybrid_weighted_rrf"],
                 )
             ],
         ],
@@ -739,7 +821,7 @@ FLOWS = {
                     "Question",
                     ["short, or phrased unlike", "the documents"],
                     "bubble",
-                    ["'can leave be carried over?'"],
+                    wrap(Q, 33, 4),
                 )
             ],
             [
@@ -748,7 +830,7 @@ FLOWS = {
                     "Passage",
                     ["LLM writes an answer", "256 token cap"],
                     "pencil",
-                    ["'Unused leave may be carried", "over for a limited period.'"],
+                    wrap(HY["passage"], 33, 4),
                 )
             ],
             [
@@ -757,7 +839,10 @@ FLOWS = {
                     "Dense search",
                     ["passage embedded", "sparse leg skipped"],
                     "search",
-                    ["the passage is embedded,", "not the question"],
+                    [
+                        f"top hit {best(HY['hyde_passage'])['doc']}",
+                        f"({best(HY['hyde_passage'])['score']:.3f}), {rank_of(HY['hyde_passage'])}",
+                    ],
                 )
             ],
             [
@@ -766,7 +851,10 @@ FLOWS = {
                     "Merge",
                     ["hyde_passage: passage alone", "hyde_passage_query:", "question + passage"],
                     "layers",
-                    ["a chunk in both lists", "keeps its best score"],
+                    [
+                        f"hyde_passage: {rank_of(HY['hyde_passage'])}",
+                        f"hyde_passage_query: {rank_of(HY['hyde_passage_query'])}",
+                    ],
                 )
             ],
         ],
@@ -774,39 +862,19 @@ FLOWS = {
     "step_back": (
         "The question and one more general question retrieve together.",
         [
-            [
-                (
-                    "lilac",
-                    "Question",
-                    ["specific"],
-                    "bubble",
-                    ["'why did the 1929 crash", "hit German banks'"],
-                )
-            ],
+            [("lilac", "Question", ["specific"], "bubble", wrap(Q, 33, 4))],
             [
                 (
                     "yellow",
                     "Step-back",
                     ["LLM writes one more", "general question", "128 token cap"],
                     "pencil",
-                    ["'what caused the", "Great Depression?'"],
+                    wrap(SB["queries"][1], 33, 5),
                 )
             ],
             [
-                (
-                    "green",
-                    "Search question",
-                    [],
-                    "search",
-                    ["finds chunks on the", "1929 crash and banks"],
-                ),
-                (
-                    "green",
-                    "Search step-back",
-                    [],
-                    "search",
-                    ["finds chunks on the", "causes of the Depression"],
-                ),
+                ("green", "Search question", [], "search", ["the original claim"]),
+                ("green", "Search step-back", [], "search", ["the step-back question"]),
             ],
             [
                 (
@@ -814,7 +882,10 @@ FLOWS = {
                     "Merge",
                     ["each chunk once", "with its best score"],
                     "layers",
-                    ["a chunk found by both", "keeps its higher score"],
+                    [
+                        f"doc {GOLD['doc']}: rank {SB['rank']},",
+                        f"score {SB['top3'][0]['score']:.3f}",
+                    ],
                 )
             ],
         ],
@@ -822,28 +893,19 @@ FLOWS = {
     "query_decomposition": (
         "One search per part of the question.",
         [
-            [
-                (
-                    "lilac",
-                    "Question",
-                    ["asks several things"],
-                    "bubble",
-                    ["'who wrote it and when", "was it built'"],
-                )
-            ],
+            [("lilac", "Question", ["asks several things"], "bubble", wrap(Q, 33, 4))],
             [
                 (
                     "yellow",
                     "Split",
                     ["LLM writes up to 3", "sub-questions", "256 token cap"],
                     "scissors",
-                    ["1. 'who wrote it'", "2. 'when was it built'"],
+                    [f"{i}. {cut(s, 31)}" for i, s in enumerate(QD["queries"], 1)],
                 )
             ],
             [
-                ("green", "Search part 1", [], "search", ["'who wrote it'"]),
-                ("green", "Search part 2", [], "search", ["'when was it built'"]),
-                ("green", "Search part 3", [], "search", ["only if the LLM wrote a 3rd"]),
+                ("green", f"Search part {i}", [], "search", wrap(s, 33, 2))
+                for i, s in enumerate(QD["queries"], 1)
             ],
             [
                 (
@@ -851,7 +913,10 @@ FLOWS = {
                     "Merge",
                     ["each chunk once", "with its best score"],
                     "layers",
-                    ["one ranked list for", "the whole question"],
+                    [
+                        f"doc {GOLD['doc']}: rank {QD['rank']},",
+                        f"score {QD['top3'][0]['score']:.3f}",
+                    ],
                 )
             ],
         ],
@@ -859,14 +924,14 @@ FLOWS = {
     "dense": (
         "One embedding call per request, cosine search in Qdrant.",
         [
-            [("lilac", "Query", ["text"], "bubble", ["'can I carry over leave?'"])],
+            [("lilac", "Query", ["text"], "bubble", wrap(Q, 50, 3))],
             [
                 (
                     "green",
                     "Embed",
                     ["jina v5 nano, 768 dims", "or any OpenAI-compatible", "/embeddings endpoint"],
                     "sparkle",
-                    ["text -> 768 numbers,", "normalised"],
+                    ["claim -> 768 numbers, normalised", "(query prompt, not document)"],
                 )
             ],
             [
@@ -875,7 +940,7 @@ FLOWS = {
                     "Qdrant",
                     ["cosine similarity", "top k chunks"],
                     "box",
-                    ["nearest chunks first:", "chunk 4, chunk 9, chunk 1"],
+                    hits(RET["dense"]["top3"], 50),
                 )
             ],
         ],
@@ -883,14 +948,14 @@ FLOWS = {
     "bm25": (
         "Term weights in a sparse vector, with or without IDF.",
         [
-            [("lilac", "Query", ["text"], "bubble", ["'termination notice period'"])],
+            [("lilac", "Query", ["text"], "bubble", wrap(Q, 33, 4))],
             [
                 (
                     "green",
                     "Strip stopwords",
                     ["whole-syllable phrases", "bm25_vi_stopwords only"],
                     "scissors",
-                    ["a multi-syllable stopword", "phrase is removed whole"],
+                    [rank("bm25_vi_stopwords") + ",", f"{rank('bm25')} without"],
                 )
             ],
             [
@@ -899,7 +964,7 @@ FLOWS = {
                     "Encode",
                     ["fastembed Qdrant/bm25", "term-frequency weights"],
                     "pencil",
-                    ["termination, notice, period", "-> one weight each"],
+                    [],
                 )
             ],
             [
@@ -908,14 +973,20 @@ FLOWS = {
                     "sparse",
                     ["IDF applied by Qdrant", "bm25"],
                     "box",
-                    ["a rare term counts more"],
+                    [
+                        f"{rank('bm25')},",
+                        f"top hit {best(RET['bm25'])['doc']} ({best(RET['bm25'])['score']:.2f})",
+                    ],
                 ),
                 (
                     "blue",
                     "sparse_noidf",
                     ["no modifier", "bm25_no_idf"],
                     "box",
-                    ["every term, no rarity weight"],
+                    [
+                        f"{rank('bm25_no_idf')},",
+                        f"top {NI['doc']} ({NI['score']:.2f})",
+                    ],
                 ),
             ],
         ],
@@ -923,21 +994,21 @@ FLOWS = {
     "hybrid_fusion": (
         "Two legs fused inside Qdrant, one round trip.",
         [
-            [("lilac", "Query", ["text"], "bubble", ["'Article 12 leave'"])],
+            [("lilac", "Query", ["text"], "bubble", wrap(Q, 50, 3))],
             [
                 (
                     "blue",
                     "Dense leg",
                     ["prefetch, limit k * 4"],
                     "search",
-                    ["finds paraphrases of", "the question"],
+                    [f"{rank('dense')} ({best(RET['dense'])['score']:.3f})"],
                 ),
                 (
                     "blue",
                     "Sparse leg",
                     ["prefetch, limit k * 4"],
                     "search",
-                    ["finds the exact words", "'Article 12'"],
+                    [f"{rank('bm25')} (BM25 with IDF)"],
                 ),
             ],
             [
@@ -950,7 +1021,11 @@ FLOWS = {
                         "hybrid_weighted_rrf: dense 1.0, sparse 0.5",
                     ],
                     "layers",
-                    ["a chunk both legs rank well", "rises to the top"],
+                    [
+                        f"hybrid_rrf: {rank('hybrid_rrf')}",
+                        f"hybrid_dbsf: {rank('hybrid_dbsf')}",
+                        f"weighted_rrf: {rank('hybrid_weighted_rrf')} ({HW['score']:.3f})",
+                    ],
                 )
             ],
         ],
@@ -958,14 +1033,17 @@ FLOWS = {
     "rerank": (
         "Retrieve a wider pool, rescore it with a cross-encoder, cut to k.",
         [
-            [("lilac", "Query", ["text"], "bubble", ["'can I carry over leave?'", "k = 5"])],
+            [("lilac", "Query", ["text"], "bubble", wrap(Q, 33, 4))],
             [
                 (
                     "blue",
                     "Retrieve",
                     ["hybrid_rrf", "pool min(k * 4, 100)"],
                     "search",
-                    ["k = 5 -> pool of 20 chunks"],
+                    [
+                        f"k = 10 -> pool of {RR['pool']}",
+                        f"{rank_of(RR['before'])} ({RR['before']['top3'][0]['score']:.3f})",
+                    ],
                 )
             ],
             [
@@ -974,7 +1052,13 @@ FLOWS = {
                     "Cross-encoder",
                     ["mmarco-mMiniLMv2, local", "or a Cohere-compatible", "/rerank endpoint"],
                     "trophy",
-                    ["reads question + chunk", "together, one score each"],
+                    [
+                        "scores: "
+                        + ", ".join(
+                            f"{h['doc']} {h['score']:.2f}" for h in RR["after"]["top3"][:2]
+                        ),
+                        "(top 2, best first)",
+                    ],
                 )
             ],
             [
@@ -987,7 +1071,10 @@ FLOWS = {
                         "retrieval order is kept",
                     ],
                     "layers",
-                    ["20 scored -> best 5 kept"],
+                    [
+                        f"gold doc: rank {RR['before']['rank']} -> {RR['after']['rank']}",
+                        f"rerank took {RR['rerank_ms']} ms",
+                    ],
                 )
             ],
         ],
@@ -995,14 +1082,17 @@ FLOWS = {
     "context_expansion": (
         "Neighbour chunks or the whole document, added after ranking.",
         [
-            [("lilac", "Query", ["text"], "bubble", ["'can I carry over leave?'"])],
+            [("lilac", "Query", ["text"], "bubble", wrap(Q, 50, 3))],
             [
                 (
                     "blue",
                     "Search and rank",
                     ["scores never change"],
                     "search",
-                    ["hit: chunk 4 of doc 'faq-9'"],
+                    [
+                        f"top hit: doc {CE['hit']['doc']} chunk {CE['hit']['chunk']}",
+                        f"{CE['hit_chars']} chars, score {CE['hit']['score']:.3f}",
+                    ],
                 )
             ],
             [
@@ -1015,7 +1105,10 @@ FLOWS = {
                         "one filtered scroll per hit",
                     ],
                     "layers",
-                    ["prev=1, next=1 ->", "chunks 3, 4, 5 sent on"],
+                    [
+                        f"prev=1, next=1: {CE['hit_chars']} -> {CE['expanded_chars']:,} chars",
+                        f"all 5: {CE['total_chars'][0]:,} -> {CE['total_chars'][1]:,} chars",
+                    ],
                 )
             ],
         ],
@@ -1023,14 +1116,14 @@ FLOWS = {
     "contextual_compression": (
         "An LLM keeps only the sentences that help. It never writes new words.",
         [
-            [("lilac", "Question", ["text"], "bubble", ["'what year was it built?'"])],
+            [("lilac", "Question", ["text"], "bubble", wrap(Q, 33, 4))],
             [
                 (
                     "blue",
                     "Retrieve",
                     ["naive_rag", "800-char chunks, dense top 5"],
                     "search",
-                    ["top 5 passages"],
+                    [f"{CC['passages'][0]} passages, {CC['chars'][0]:,} chars"],
                 )
             ],
             [
@@ -1039,7 +1132,7 @@ FLOWS = {
                     "Pick sentences",
                     ["passages as numbered sentences", "LLM replies with ids to keep"],
                     "sparkle",
-                    ["[1.1] [1.2] [2.1] [2.2] ...", "keep: [1.2], [2.1]"],
+                    [f"sentences kept in {CC['passages'][1]} of {CC['passages'][0]} passages"],
                 )
             ],
             [
@@ -1048,7 +1141,10 @@ FLOWS = {
                     "Kept text",
                     ["original sentences, in order", "no kept sentence: passage dropped"],
                     "scissors",
-                    ["passage 3 has no kept id", "-> passage 3 dropped"],
+                    [
+                        f"{CC['chars'][0]:,} -> {CC['chars'][1]:,} chars",
+                        *wrap("first: " + CC["first_kept"], 33, 2),
+                    ],
                 )
             ],
         ],
@@ -1062,7 +1158,7 @@ FLOWS = {
                     "Request",
                     ["several specs", "deadline_ms, default 4000"],
                     "bolt",
-                    ["3 specs, deadline_ms=150"],
+                    ["dense, sparse, hybrid + rerank", "run at 2000 ms, then 150 ms"],
                 )
             ],
             [
@@ -1071,19 +1167,26 @@ FLOWS = {
                     "Embed once",
                     ["DeadlineExpired if the", "budget is gone first"],
                     "sparkle",
-                    ["one embedding, shared", "by all three specs"],
+                    [],
                 )
             ],
             [
-                ("green", "Spec 1", [], "search", ["dense: ok"]),
-                ("green", "Spec 2", [], "search", ["sparse: ok"]),
                 (
                     "green",
-                    "Spec 3",
+                    f"Spec {i}",
                     [],
                     "search",
-                    ["hybrid_rerank: rerank", "skipped, budget short"],
-                ),
+                    [
+                        f"{name}: {DF['2000']['specs'][name]['ms']} ms at 2000",
+                        f"{DF['150']['specs'][name]['ms']} ms at 150"
+                        + (
+                            f", rerank {DF['150']['specs'][name]['rerank']}"
+                            if DF["150"]["specs"][name]["rerank"] != "off"
+                            else ""
+                        ),
+                    ],
+                )
+                for i, name in enumerate(DF["2000"]["specs"], 1)
             ],
             [
                 (
@@ -1091,7 +1194,10 @@ FLOWS = {
                     "Result",
                     ["failed spec: status failed", "the others still return"],
                     "doc",
-                    ["a spec that raises is", "marked failed, not fatal"],
+                    [
+                        f"2000 ms budget: {DF['2000']['total_ms']} ms in all",
+                        f"150 ms budget: {DF['150']['total_ms']} ms in all",
+                    ],
                 )
             ],
         ],
@@ -1105,7 +1211,7 @@ FLOWS = {
                     "Statement",
                     ["answer, message,", "paragraph"],
                     "bubble",
-                    ["'The store opens at 9", "and has 12 staff.'"],
+                    wrap(Q, 26, 4),
                 )
             ],
             [
@@ -1114,7 +1220,7 @@ FLOWS = {
                     "Claims",
                     ["LLM, up to 5", "each with a query"],
                     "pencil",
-                    ["1. store opens at 9", "2. store has 12 staff"],
+                    [f"{len(FC['claims'])} claims, e.g.", *wrap(FC["claims"][1]["claim"], 26, 3)],
                 )
             ],
             [
@@ -1123,7 +1229,10 @@ FLOWS = {
                     "Evidence",
                     ["any retrieval variant", "none: unverified"],
                     "search",
-                    ["claim 1: passage found", "claim 2: none -> unverified"],
+                    [
+                        f"claim 1: top hit {FC['claims'][0]['evidence'][0]['doc']}",
+                        f"({FC['claims'][0]['evidence'][0]['score']:.3f}), the gold doc",
+                    ],
                 )
             ],
             [
@@ -1132,7 +1241,7 @@ FLOWS = {
                     "Judge",
                     ["supported, refuted,", "unverified"],
                     "trophy",
-                    ["claim 1: supported", "claim 2: no LLM call"],
+                    [f"claim {i}: {c['label']}" for i, c in enumerate(FC["claims"], 1)],
                 )
             ],
             [
@@ -1141,7 +1250,7 @@ FLOWS = {
                     "Aggregate",
                     ["any refuted: refuted", "else any unverified", "else supported"],
                     "layers",
-                    ["claim 2 unverified ->", "statement unverified"],
+                    [f"statement: {FC['label']}", f"gold label: {FC['gold_label']}"],
                 )
             ],
         ],
@@ -1151,7 +1260,7 @@ FLOWS = {
 
 def flow(subtitle: str, cols: list, seed: int, title: str) -> Sketch:
     """A row of boxes joined by arrows; a column with several boxes is a parallel step."""
-    margin, gap, top = 75, 80, 160
+    margin, gap, top = 75, 80, 205
 
     def box_h(box) -> float:
         lines = 1 if isinstance(box[1], str) else len(box[1])
@@ -1167,6 +1276,8 @@ def flow(subtitle: str, cols: list, seed: int, title: str) -> Sketch:
     mid = top + max(totals) / 2
     s = Sketch(2000, int(top + max(totals) + 110), seed)
     s.heading(title, subtitle)
+    s.text(40, 156, f"e.g. SciFact claim {EX['qid']}: {EX['query']}", 22)
+    s.text(40, 186, f"gold document: {GOLD['title']}", 22)
     centres: list[list[float]] = []
     for i, (col, h, total) in enumerate(zip(cols, heights, totals, strict=True)):
         x = margin + i * (w + gap)
