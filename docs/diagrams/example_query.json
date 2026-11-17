@@ -1,0 +1,593 @@
+{
+  "qid": "54",
+  "query": "AMP-activated protein kinase (AMPK) activation increases inflammation-related fibrosis in the lungs.",
+  "model": "gpt-5.4-nano",
+  "gold": {
+    "doc": "49556906",
+    "title": "Metformin reverses established lung fibrosis in a bleomycin model",
+    "chars": 1272
+  },
+  "naive_rag": {
+    "gold_fixed_chunks": 2,
+    "top5": [
+      {
+        "doc": "49556906",
+        "chunk": 0,
+        "score": 0.7587,
+        "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+      },
+      {
+        "doc": "49556906",
+        "chunk": 1,
+        "score": 0.6775,
+        "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+      },
+      {
+        "doc": "3973445",
+        "chunk": 0,
+        "score": 0.6583,
+        "title": "Phosphorylation of Janus kinase 1 (JAK1) by AMP-activated protein kina"
+      },
+      {
+        "doc": "24721866",
+        "chunk": 0,
+        "score": 0.6286,
+        "title": "Activation of AMP-activated protein kinase suppresses oxidized low-den"
+      },
+      {
+        "doc": "24721866",
+        "chunk": 2,
+        "score": 0.6184,
+        "title": "Activation of AMP-activated protein kinase suppresses oxidized low-den"
+      }
+    ],
+    "answer": "NO_ANSWER",
+    "abstained": true
+  },
+  "parse_and_chunk": {
+    "chars": 1341,
+    "fixed_800": 2,
+    "recursive_800": 2,
+    "semantic": 3
+  },
+  "contextual_headers": {
+    "chunk": "Fibrosis is a pathological result of a dysfunctional repair response to tissue injury and occurs in a number of organs, including the lungs1. Cellular metabolis",
+    "context": "At the start of the document, this passage introduces fibrosis as a dysfunctional repair response and explains that AMPK, a sensor of cellular bioenergetics, has an unclear role, before reporting that AMPK activity is lower in fibrotic regions with metabolically active, apoptosis-resistant myofibroblasts in humans with IPF and a mouse lung fibrosis model.",
+    "chunks": 2
+  },
+  "retrieval": {
+    "dense": {
+      "rank": 1,
+      "top3": [
+        {
+          "doc": "49556906",
+          "chunk": 0,
+          "score": 0.7363,
+          "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+        },
+        {
+          "doc": "3973445",
+          "chunk": 0,
+          "score": 0.6446,
+          "title": "Phosphorylation of Janus kinase 1 (JAK1) by AMP-activated protein kina"
+        },
+        {
+          "doc": "24721866",
+          "chunk": 0,
+          "score": 0.6219,
+          "title": "Activation of AMP-activated protein kinase suppresses oxidized low-den"
+        }
+      ]
+    },
+    "bm25": {
+      "rank": 4,
+      "top3": [
+        {
+          "doc": "3419709",
+          "chunk": 0,
+          "score": 30.257,
+          "title": "Treatment of nonalcoholic fatty liver disease: role of AMPK."
+        },
+        {
+          "doc": "3973445",
+          "chunk": 0,
+          "score": 29.3898,
+          "title": "Phosphorylation of Janus kinase 1 (JAK1) by AMP-activated protein kina"
+        },
+        {
+          "doc": "9899292",
+          "chunk": 0,
+          "score": 28.2688,
+          "title": "Role of AMP-activated protein kinase in mechanism of metformin action."
+        }
+      ]
+    },
+    "bm25_no_idf": {
+      "rank": 21,
+      "top3": [
+        {
+          "doc": "3419709",
+          "chunk": 0,
+          "score": 10.8259,
+          "title": "Treatment of nonalcoholic fatty liver disease: role of AMPK."
+        },
+        {
+          "doc": "5108807",
+          "chunk": 0,
+          "score": 10.2372,
+          "title": "CNTF reverses obesity-induced insulin resistance by activating skeleta"
+        },
+        {
+          "doc": "9899292",
+          "chunk": 0,
+          "score": 10.1074,
+          "title": "Role of AMP-activated protein kinase in mechanism of metformin action."
+        }
+      ]
+    },
+    "bm25_vi_stopwords": {
+      "rank": 9,
+      "top3": [
+        {
+          "doc": "3973445",
+          "chunk": 0,
+          "score": 33.1469,
+          "title": "Phosphorylation of Janus kinase 1 (JAK1) by AMP-activated protein kina"
+        },
+        {
+          "doc": "9752604",
+          "chunk": 0,
+          "score": 31.4363,
+          "title": "Activated AMPK boosts the Nrf2/HO-1 signaling axis—A role for the unfo"
+        },
+        {
+          "doc": "9899292",
+          "chunk": 0,
+          "score": 31.3749,
+          "title": "Role of AMP-activated protein kinase in mechanism of metformin action."
+        }
+      ]
+    },
+    "hybrid_rrf": {
+      "rank": 1,
+      "top3": [
+        {
+          "doc": "49556906",
+          "chunk": 0,
+          "score": 0.7,
+          "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+        },
+        {
+          "doc": "3973445",
+          "chunk": 0,
+          "score": 0.6667,
+          "title": "Phosphorylation of Janus kinase 1 (JAK1) by AMP-activated protein kina"
+        },
+        {
+          "doc": "3419709",
+          "chunk": 0,
+          "score": 0.625,
+          "title": "Treatment of nonalcoholic fatty liver disease: role of AMPK."
+        }
+      ]
+    },
+    "hybrid_dbsf": {
+      "rank": 1,
+      "top3": [
+        {
+          "doc": "49556906",
+          "chunk": 0,
+          "score": 2.7081,
+          "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+        },
+        {
+          "doc": "3973445",
+          "chunk": 0,
+          "score": 2.4958,
+          "title": "Phosphorylation of Janus kinase 1 (JAK1) by AMP-activated protein kina"
+        },
+        {
+          "doc": "3419709",
+          "chunk": 0,
+          "score": 2.3125,
+          "title": "Treatment of nonalcoholic fatty liver disease: role of AMPK."
+        }
+      ]
+    },
+    "hybrid_weighted_rrf": {
+      "rank": 1,
+      "top3": [
+        {
+          "doc": "49556906",
+          "chunk": 0,
+          "score": 0.6111,
+          "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+        },
+        {
+          "doc": "3973445",
+          "chunk": 0,
+          "score": 0.5333,
+          "title": "Phosphorylation of Janus kinase 1 (JAK1) by AMP-activated protein kina"
+        },
+        {
+          "doc": "3419709",
+          "chunk": 0,
+          "score": 0.4583,
+          "title": "Treatment of nonalcoholic fatty liver disease: role of AMPK."
+        }
+      ]
+    }
+  },
+  "rerank": {
+    "pool": 40,
+    "before": {
+      "rank": 1,
+      "top3": [
+        {
+          "doc": "49556906",
+          "chunk": 0,
+          "score": 0.7,
+          "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+        },
+        {
+          "doc": "3973445",
+          "chunk": 0,
+          "score": 0.6667,
+          "title": "Phosphorylation of Janus kinase 1 (JAK1) by AMP-activated protein kina"
+        },
+        {
+          "doc": "3419709",
+          "chunk": 0,
+          "score": 0.625,
+          "title": "Treatment of nonalcoholic fatty liver disease: role of AMPK."
+        }
+      ]
+    },
+    "after": {
+      "rank": 2,
+      "top3": [
+        {
+          "doc": "3973445",
+          "chunk": 0,
+          "score": 6.2561,
+          "title": "Phosphorylation of Janus kinase 1 (JAK1) by AMP-activated protein kina"
+        },
+        {
+          "doc": "49556906",
+          "chunk": 0,
+          "score": 6.0062,
+          "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+        },
+        {
+          "doc": "24721866",
+          "chunk": 0,
+          "score": 5.9135,
+          "title": "Activation of AMP-activated protein kinase suppresses oxidized low-den"
+        }
+      ]
+    },
+    "status": "ok",
+    "rerank_ms": 563
+  },
+  "multi_query": {
+    "queries": [
+      "AMP-activated protein kinase (AMPK) activation increases inflammation-related fibrosis in the lungs.",
+      "AMPK activation increases lung inflammation-associated fibrosis",
+      "activation of AMP-activated protein kinase promotes pulmonary fibrotic inflammation",
+      "AMPK signaling and lung fibrosis inflammatory response"
+    ],
+    "rank": 1,
+    "top3": [
+      {
+        "doc": "49556906",
+        "chunk": 0,
+        "score": 0.8333,
+        "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+      },
+      {
+        "doc": "3973445",
+        "chunk": 0,
+        "score": 0.5333,
+        "title": "Phosphorylation of Janus kinase 1 (JAK1) by AMP-activated protein kina"
+      },
+      {
+        "doc": "1590744",
+        "chunk": 0,
+        "score": 0.5333,
+        "title": "AMP-Activated Protein Kinase: An Ubiquitous Signaling Pathway With Key"
+      }
+    ]
+  },
+  "hyde": {
+    "passage": "AMP-activated protein kinase (AMPK) activation has been shown to promote inflammation-associated fibrotic remodeling in the lung. Studies using pharmacologic activators and genetic approaches report increased fibrotic markers, including collagen deposition and profibrotic signaling, following AMPK activation. These effects are linked to enhanced inflammatory pathway activity that drives lung fibrosis.",
+    "hyde_passage": {
+      "rank": 1,
+      "top3": [
+        {
+          "doc": "49556906",
+          "chunk": 0,
+          "score": 0.741,
+          "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+        },
+        {
+          "doc": "3973445",
+          "chunk": 0,
+          "score": 0.6425,
+          "title": "Phosphorylation of Janus kinase 1 (JAK1) by AMP-activated protein kina"
+        },
+        {
+          "doc": "24721866",
+          "chunk": 0,
+          "score": 0.6033,
+          "title": "Activation of AMP-activated protein kinase suppresses oxidized low-den"
+        }
+      ]
+    },
+    "hyde_passage_query": {
+      "rank": 1,
+      "top3": [
+        {
+          "doc": "49556906",
+          "chunk": 0,
+          "score": 0.741,
+          "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+        },
+        {
+          "doc": "3973445",
+          "chunk": 0,
+          "score": 0.6446,
+          "title": "Phosphorylation of Janus kinase 1 (JAK1) by AMP-activated protein kina"
+        },
+        {
+          "doc": "24721866",
+          "chunk": 0,
+          "score": 0.6219,
+          "title": "Activation of AMP-activated protein kinase suppresses oxidized low-den"
+        }
+      ]
+    }
+  },
+  "step_back": {
+    "queries": [
+      "AMP-activated protein kinase (AMPK) activation increases inflammation-related fibrosis in the lungs.",
+      "How does AMPK activation influence fibrotic and inflammation pathways in the lungs, and what mechanisms (e.g., macrophages, cytokines, TGF-β/SMAD, oxidative stress, or metabolic reprogramming) can link AMPK to increased pulmonary fibrosis?"
+    ],
+    "rank": 1,
+    "top3": [
+      {
+        "doc": "49556906",
+        "chunk": 0,
+        "score": 0.8333,
+        "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+      },
+      {
+        "doc": "3973445",
+        "chunk": 0,
+        "score": 0.5333,
+        "title": "Phosphorylation of Janus kinase 1 (JAK1) by AMP-activated protein kina"
+      },
+      {
+        "doc": "3419709",
+        "chunk": 0,
+        "score": 0.4583,
+        "title": "Treatment of nonalcoholic fatty liver disease: role of AMPK."
+      }
+    ]
+  },
+  "query_decomposition": {
+    "queries": [
+      "What evidence shows that AMPK activation increases inflammation-related pulmonary fibrosis?",
+      "Which molecular pathways or mechanisms link AMPK activation to increased inflammatory fibrosis in lung tissue?",
+      "Are there studies showing that inhibiting or modulating AMPK reduces inflammation-related fibrosis in the lungs?"
+    ],
+    "rank": 1,
+    "top3": [
+      {
+        "doc": "49556906",
+        "chunk": 0,
+        "score": 0.8333,
+        "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+      },
+      {
+        "doc": "3973445",
+        "chunk": 0,
+        "score": 0.4444,
+        "title": "Phosphorylation of Janus kinase 1 (JAK1) by AMP-activated protein kina"
+      },
+      {
+        "doc": "5172048",
+        "chunk": 0,
+        "score": 0.3111,
+        "title": "Focal adhesion kinase links mechanical force to skin fibrosis via infl"
+      }
+    ]
+  },
+  "context_expansion": {
+    "hit": {
+      "doc": "49556906",
+      "chunk": 0,
+      "score": 0.5476,
+      "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+    },
+    "hit_chars": 789,
+    "expanded_chars": 1272,
+    "total_chars": [
+      3668,
+      6587
+    ]
+  },
+  "contextual_compression": {
+    "passages": [
+      5,
+      3
+    ],
+    "chars": [
+      3156,
+      901
+    ],
+    "first_kept": "Here, we demonstrate that in humans with idiopathic pulmonary fibrosis (IPF) and in an experimental mouse model of lung fibrosis, AMPK activity is lower in fibrotic regions associated with metabolical"
+  },
+  "deadline_fanout": {
+    "2000": {
+      "total_ms": 424,
+      "specs": {
+        "dense": {
+          "status": "ok",
+          "rerank": "off",
+          "ms": 7
+        },
+        "sparse": {
+          "status": "ok",
+          "rerank": "off",
+          "ms": 8
+        },
+        "hybrid_rerank": {
+          "status": "ok",
+          "rerank": "ok",
+          "ms": 415
+        }
+      }
+    },
+    "150": {
+      "total_ms": 24,
+      "specs": {
+        "dense": {
+          "status": "ok",
+          "rerank": "off",
+          "ms": 5
+        },
+        "sparse": {
+          "status": "ok",
+          "rerank": "off",
+          "ms": 5
+        },
+        "hybrid_rerank": {
+          "status": "ok",
+          "rerank": "skipped_budget",
+          "ms": 10
+        }
+      }
+    }
+  },
+  "fact_check": {
+    "gold_label": "refuted",
+    "label": "refuted",
+    "claims": [
+      {
+        "claim": "AMP-activated protein kinase (AMPK) activation increases inflammation-related fibrosis in the lungs.",
+        "query": "AMPK activation increases inflammation-related fibrosis in the lungs study",
+        "label": "refuted",
+        "evidence": [
+          {
+            "doc": "49556906",
+            "chunk": 0,
+            "score": 0.8333,
+            "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+          },
+          {
+            "doc": "3973445",
+            "chunk": 0,
+            "score": 0.3733,
+            "title": "Phosphorylation of Janus kinase 1 (JAK1) by AMP-activated protein kina"
+          },
+          {
+            "doc": "3419709",
+            "chunk": 0,
+            "score": 0.3111,
+            "title": "Treatment of nonalcoholic fatty liver disease: role of AMPK."
+          },
+          {
+            "doc": "26025820",
+            "chunk": 0,
+            "score": 0.2857,
+            "title": "Induction of AMPK activity corrects early pathophysiological alteratio"
+          },
+          {
+            "doc": "24721866",
+            "chunk": 0,
+            "score": 0.25,
+            "title": "Activation of AMP-activated protein kinase suppresses oxidized low-den"
+          }
+        ],
+        "gold_in_evidence": true
+      },
+      {
+        "claim": "In lung tissue, AMPK activation is associated with increased fibrotic markers.",
+        "query": "lung AMPK activation fibrotic markers increased",
+        "label": "refuted",
+        "evidence": [
+          {
+            "doc": "49556906",
+            "chunk": 0,
+            "score": 0.8333,
+            "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+          },
+          {
+            "doc": "26025820",
+            "chunk": 0,
+            "score": 0.45,
+            "title": "Induction of AMPK activity corrects early pathophysiological alteratio"
+          },
+          {
+            "doc": "22621251",
+            "chunk": 0,
+            "score": 0.3733,
+            "title": "Ly6Chi monocytes direct alternatively activated profibrotic macrophage"
+          },
+          {
+            "doc": "24721866",
+            "chunk": 0,
+            "score": 0.2476,
+            "title": "Activation of AMP-activated protein kinase suppresses oxidized low-den"
+          },
+          {
+            "doc": "11535539",
+            "chunk": 0,
+            "score": 0.2361,
+            "title": "Mechanosignaling through YAP and TAZ drives fibroblast activation and "
+          }
+        ],
+        "gold_in_evidence": true
+      },
+      {
+        "claim": "AMPK activation increases expression of inflammation-related fibrosis mediators in lung cells.",
+        "query": "AMPK activation inflammation fibrosis mediators lung cells",
+        "label": "refuted",
+        "evidence": [
+          {
+            "doc": "49556906",
+            "chunk": 0,
+            "score": 0.8333,
+            "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+          },
+          {
+            "doc": "3973445",
+            "chunk": 0,
+            "score": 0.4444,
+            "title": "Phosphorylation of Janus kinase 1 (JAK1) by AMP-activated protein kina"
+          },
+          {
+            "doc": "9752604",
+            "chunk": 0,
+            "score": 0.25,
+            "title": "Activated AMPK boosts the Nrf2/HO-1 signaling axis—A role for the unfo"
+          },
+          {
+            "doc": "24721866",
+            "chunk": 0,
+            "score": 0.2323,
+            "title": "Activation of AMP-activated protein kinase suppresses oxidized low-den"
+          },
+          {
+            "doc": "3419709",
+            "chunk": 0,
+            "score": 0.2143,
+            "title": "Treatment of nonalcoholic fatty liver disease: role of AMPK."
+          }
+        ],
+        "gold_in_evidence": true
+      }
+    ]
+  },
+  "tokens": 9358
+}
