@@ -40,6 +40,7 @@ from production_rag.methods.multi_query.rewrite import rewrite
 from production_rag.methods.naive_rag import pipeline as naive_rag
 from production_rag.methods.query_decomposition.generate import queries_for as decompose_queries
 from production_rag.methods.rerank import pipeline as rerank
+from production_rag.methods.retrieval_sufficiency.pipeline import search as retrieval_sufficiency
 from production_rag.methods.step_back.generate import queries_for as step_back_queries
 
 QID = "54"
@@ -183,6 +184,15 @@ async def main() -> None:
         "candidates": len(candidates.rows),
         "before": found(candidates.rows, gold),
         "after": found(scored, gold),
+    }
+
+    # retrieval_sufficiency: the top 5 of hybrid_weighted_rrf and the model's verdict
+    verdict = await retrieval_sufficiency(q, FULL, deps, llm, k=5)
+    out["retrieval_sufficiency"] = {
+        "label": verdict.label,
+        "rows": len(verdict.rows),
+        "gold_in_top5": any(r.doc_id in gold for r in verdict.rows),
+        "top3": [hit(r) for r in verdict.rows[:3]],
     }
 
     # deadline_fanout: three specs under a 2000 ms and a 150 ms budget

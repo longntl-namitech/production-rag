@@ -638,5 +638,30 @@
         }
       ]
     }
+  },
+  "retrieval_sufficiency": {
+    "label": "sufficient",
+    "rows": 5,
+    "gold_in_top5": true,
+    "top3": [
+      {
+        "doc": "49556906",
+        "chunk": 0,
+        "score": 0.6111,
+        "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+      },
+      {
+        "doc": "3973445",
+        "chunk": 0,
+        "score": 0.5333,
+        "title": "Phosphorylation of Janus kinase 1 (JAK1) by AMP-activated protein kina"
+      },
+      {
+        "doc": "3419709",
+        "chunk": 0,
+        "score": 0.4583,
+        "title": "Treatment of nonalcoholic fatty liver disease: role of AMPK."
+      }
+    ]
   }
 }

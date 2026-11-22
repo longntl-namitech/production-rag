@@ -389,6 +389,7 @@ METHODS = [
     "contextual_headers",
     "contextual_compression",
     "llm_rerank",
+    "retrieval_sufficiency",
 ]
 NEEDS_LLM = {
     "naive_rag",
@@ -399,6 +400,7 @@ NEEDS_LLM = {
     "contextual_headers",
     "contextual_compression",
     "llm_rerank",
+    "retrieval_sufficiency",
 }
 CORE = [
     "embedders",
@@ -634,6 +636,7 @@ RR, CE, CC, DF, FC = (
     EX["fact_check"],
 )
 LR = EX["llm_rerank"]
+RS = EX["retrieval_sufficiency"]
 Q = EX["query"]
 FLOWS = {
     "naive_rag": (
@@ -1112,6 +1115,42 @@ FLOWS = {
                         f"prev=1, next=1: {CE['hit_chars']} -> {CE['expanded_chars']:,} chars",
                         f"all 5: {CE['total_chars'][0]:,} -> {CE['total_chars'][1]:,} chars",
                     ],
+                )
+            ],
+        ],
+    ),
+    "retrieval_sufficiency": (
+        "Retrieve the top 5, an LLM says whether they are enough to answer.",
+        [
+            [("lilac", "Question", ["text"], "bubble", wrap(Q, 33, 4))],
+            [
+                (
+                    "blue",
+                    "Retrieve",
+                    ["hybrid_weighted_rrf", "top 5 passages"],
+                    "search",
+                    [
+                        f"{RS['rows']} passages",
+                        f"gold doc in top 5: {'yes' if RS['gold_in_top5'] else 'no'}",
+                    ],
+                )
+            ],
+            [
+                (
+                    "yellow",
+                    "Judge",
+                    ["one LLM call, passages numbered", "judges from the passages only"],
+                    "sparkle",
+                    [f"label: {RS['label']}"],
+                )
+            ],
+            [
+                (
+                    "green",
+                    "Passages + label",
+                    ["no passages: insufficient, no call", "bad reply: no label, error"],
+                    "layers",
+                    ["nothing is searched again"],
                 )
             ],
         ],

@@ -1,0 +1,8034 @@
+{
+ "meta": {
+  "kind": "retrieval_sufficiency",
+  "dataset": "tvpl",
+  "date": "2026-11-23",
+  "requested": 1000,
+  "queries": 1000,
+  "documents": 10576,
+  "base": "hybrid_weighted_rrf",
+  "k": 5,
+  "model": "gpt-5.4-nano",
+  "complete": true,
+  "tokens": 1788419
+ },
+ "summary": {
+  "queries": 1000,
+  "failed": 0,
+  "agreement": 0.862,
+  "sufficient_rate": 0.843,
+  "gold_hit_rate": 0.903,
+  "confusion": {
+   "sufficient": {
+    "hit": 804,
+    "miss": 39
+   },
+   "insufficient": {
+    "hit": 99,
+    "miss": 58
+   }
+  }
+ },
+ "per_item": [
+  {
+   "query_id": "6ba61baf-d57c-4147-bf64-84cb3e2ec2e1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2223
+  },
+  {
+   "query_id": "79b60bdf-2e04-45da-88b3-758ac386cb03",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1511
+  },
+  {
+   "query_id": "4bfec374-39c8-46f8-b34b-ce34da9fb2e3",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1228
+  },
+  {
+   "query_id": "5fdd3c50-2db7-456b-b7c1-8e1d893d03f8",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1555
+  },
+  {
+   "query_id": "3c4e5b73-beb6-434d-aa28-81f14fac87ae",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2378
+  },
+  {
+   "query_id": "5d866128-3903-4110-bb6a-a313ac5e2170",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1487
+  },
+  {
+   "query_id": "4ccd506a-d7d9-4b94-9630-b634b5db887c",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1997
+  },
+  {
+   "query_id": "356d5b35-d7a5-4327-972c-bbeac449f822",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2266
+  },
+  {
+   "query_id": "1db799e8-39ea-44c2-8c30-8a10b8a3a52e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1433
+  },
+  {
+   "query_id": "dd814e42-5882-40b2-8413-a20bbcd811ab",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1294
+  },
+  {
+   "query_id": "584afbdd-47b3-49f7-a699-e901f517c1bb",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2853
+  },
+  {
+   "query_id": "7bb60df9-ac9e-424d-a84a-cd10ad26bbdb",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1654
+  },
+  {
+   "query_id": "0c54edb4-4b8d-4c02-b28a-a2e7b0fb3e0a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1618
+  },
+  {
+   "query_id": "b4606fda-e7c8-4400-8af1-ecbe1976612a",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1295
+  },
+  {
+   "query_id": "33e0ef1a-65f6-4dd3-ba67-ecd4e268f04f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2104
+  },
+  {
+   "query_id": "ff85bd3a-6658-4357-9a53-f510d2efbe0a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2191
+  },
+  {
+   "query_id": "0610fb60-d1eb-48f3-b1c4-b287c4902ae5",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1673
+  },
+  {
+   "query_id": "732cfe52-8fdf-4f43-8534-599ed2fa8c2f",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1745
+  },
+  {
+   "query_id": "3c24d1e7-437e-4fe0-8f4f-d0e30400ecec",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1330
+  },
+  {
+   "query_id": "2354cd30-857d-4ec4-95fe-1e0f64e8bdd1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 831
+  },
+  {
+   "query_id": "6d4b23fc-516f-49c3-bc4e-beb91d48e0ce",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1385
+  },
+  {
+   "query_id": "bd607f4c-4393-4e90-8ea1-8a8b209aba50",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1501
+  },
+  {
+   "query_id": "b6b6b7ee-5709-4032-9ea9-b6eb6a8fcfad",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1846
+  },
+  {
+   "query_id": "394526b8-0590-433a-98d7-2ea8c9d62e0b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1072
+  },
+  {
+   "query_id": "6a9410ef-6995-49bc-8306-f35d8329ab42",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1505
+  },
+  {
+   "query_id": "95503421-7cb2-4a8b-8fd5-a7bff272ad55",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1557
+  },
+  {
+   "query_id": "6156ba44-4d08-4161-a8c2-841f15f4a692",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1521
+  },
+  {
+   "query_id": "cb94fa56-dea2-41bc-9911-b64fae638dd9",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1873
+  },
+  {
+   "query_id": "e6577fbb-32c0-44fb-a7d2-9197bb38e869",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1728
+  },
+  {
+   "query_id": "eca563d7-6981-43aa-9200-d3f13f7dcc17",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1001
+  },
+  {
+   "query_id": "b36481da-1dfd-4cb7-9896-d333c28aa6c3",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1291
+  },
+  {
+   "query_id": "98b338bc-86f0-4e8a-a2e6-e478537918bf",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1631
+  },
+  {
+   "query_id": "b380f8a8-2226-48fd-925f-4232d9ad2e22",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2421
+  },
+  {
+   "query_id": "83d2fa10-9df8-4be2-a8b6-7d266e02b44a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1555
+  },
+  {
+   "query_id": "3026a770-f93b-43c4-8c18-74c6ba1faa9d",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1911
+  },
+  {
+   "query_id": "90cb4422-f990-41a4-9910-a93329cd2ed3",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1224
+  },
+  {
+   "query_id": "fa21c24a-71dd-4335-a459-e6d0ed18a097",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1906
+  },
+  {
+   "query_id": "6d6a6f23-2e33-409d-ab9e-57f7d5a6abc6",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1118
+  },
+  {
+   "query_id": "bc4db6e4-a5c5-4f96-9ac0-176132f4a763",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1495
+  },
+  {
+   "query_id": "e8270993-dfd6-4a85-b3da-16fdf080d079",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1763
+  },
+  {
+   "query_id": "37698a3d-6a25-4d9d-9be9-19cf251ce2f0",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2247
+  },
+  {
+   "query_id": "b878820b-530c-41cc-88c3-4e7feb2afb90",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1493
+  },
+  {
+   "query_id": "b9b89d8b-3f82-4c4c-89c6-f1a5a12550a9",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2145
+  },
+  {
+   "query_id": "dfc16812-0247-4b0a-ba4c-d73a6efc2010",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1809
+  },
+  {
+   "query_id": "48498a6c-4105-4752-ac59-bc414d1a354a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1968
+  },
+  {
+   "query_id": "7ab58665-148b-4432-840e-9f7a3c91c85b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2021
+  },
+  {
+   "query_id": "53088666-2eac-4418-b632-2aed2fcdebb2",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1130
+  },
+  {
+   "query_id": "4948aee0-38c8-4588-ac24-ff664eda5b88",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1364
+  },
+  {
+   "query_id": "d9eebed8-97ee-47d9-a8af-0655802fd57e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1333
+  },
+  {
+   "query_id": "957eb61d-b6be-48a8-a082-f7994ad6af2d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1992
+  },
+  {
+   "query_id": "69222a8b-8729-4a05-b502-564de49f26f7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1687
+  },
+  {
+   "query_id": "9b6bcd40-4758-4f4c-8a68-55e6f3bfd915",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3573
+  },
+  {
+   "query_id": "c0c21293-cd9f-4f6c-9057-86ef00021d4c",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1265
+  },
+  {
+   "query_id": "6ce2b8d1-62fd-4320-80e3-9a9f8f77a5f6",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1833
+  },
+  {
+   "query_id": "fe760995-bb9a-42a1-a1ce-9b3f949fa6a5",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1914
+  },
+  {
+   "query_id": "74e85bf3-fffd-4190-8001-da9d3e8e968d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1542
+  },
+  {
+   "query_id": "a5996f45-f6e3-4ffa-b94f-d34766698ab3",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1894
+  },
+  {
+   "query_id": "35909157-fe0b-4d67-a0bb-a87bed57b8ac",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2346
+  },
+  {
+   "query_id": "f28aff14-a06d-4f2e-a47f-08c7bf717b13",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1569
+  },
+  {
+   "query_id": "cd2ae67b-3b6f-4366-ba25-ed52a6446ad6",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1760
+  },
+  {
+   "query_id": "e66e38a7-88df-418d-8da6-10ff10c3b7e1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1273
+  },
+  {
+   "query_id": "61de4397-b1e8-4c61-a19e-4671ea8dfa31",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1135
+  },
+  {
+   "query_id": "ed1fc679-2029-4ff1-b732-a4d2cf50ac3a",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2740
+  },
+  {
+   "query_id": "620a8a1f-ba37-44b0-a69a-351f41081fd4",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2171
+  },
+  {
+   "query_id": "4f689e6e-8465-4915-b300-c96e06684d89",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1659
+  },
+  {
+   "query_id": "9980e855-d3de-45b1-beec-bd6a3ee51cf7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1381
+  },
+  {
+   "query_id": "35a4c41b-d3d1-4aae-aeea-23e90577d961",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1653
+  },
+  {
+   "query_id": "1ecc7f39-f997-49b4-8caa-382ab8a32d8b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2050
+  },
+  {
+   "query_id": "b3b4d866-e512-4509-a8a5-3bfd4456560d",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1967
+  },
+  {
+   "query_id": "c2475f06-4863-4bd1-9bf8-9e4165e37196",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2419
+  },
+  {
+   "query_id": "a322ed41-31a2-4708-8ac9-e290c3c616d8",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2820
+  },
+  {
+   "query_id": "00b51e48-bba7-463d-a261-01beff674ae8",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2053
+  },
+  {
+   "query_id": "b1493764-8583-4ace-8f55-bc02ed3f51cf",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2520
+  },
+  {
+   "query_id": "1154e4d4-736b-4b87-9529-9bcac0189f81",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2878
+  },
+  {
+   "query_id": "5d3c7305-5dab-4f5e-b58c-d90c830a95b1",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1676
+  },
+  {
+   "query_id": "3a2705f8-c324-48e0-9bf8-826dcdd2704e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1853
+  },
+  {
+   "query_id": "d015492c-ae1c-41a8-a3f1-0c7602252029",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1718
+  },
+  {
+   "query_id": "baa56318-2903-4735-9a22-975559f05d09",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1742
+  },
+  {
+   "query_id": "69452128-ad2f-4ae3-8889-83dc6dd2c3b1",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2268
+  },
+  {
+   "query_id": "418fdcb2-63c3-4fe4-9fcf-56c8c58ec885",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1944
+  },
+  {
+   "query_id": "acdb475b-d9ba-4638-8eb9-1246c4a426ec",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 3515
+  },
+  {
+   "query_id": "683345e1-9bee-47c8-a581-41c0dae11d56",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1938
+  },
+  {
+   "query_id": "933d462d-7ce7-4b60-81fa-264092360fdc",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1276
+  },
+  {
+   "query_id": "531ea45e-38fa-4b20-8204-3f1f631e1bd9",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1638
+  },
+  {
+   "query_id": "9ca9ea74-a531-49c3-82f7-4b529e174f1c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2660
+  },
+  {
+   "query_id": "d8be4e88-d09c-4b4e-a058-4480ead5c9f4",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1826
+  },
+  {
+   "query_id": "382d110d-5365-4d3c-9dea-f3a5582559e2",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1416
+  },
+  {
+   "query_id": "fd906c40-ad5a-4b03-a8da-43c5d5488e33",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2034
+  },
+  {
+   "query_id": "62c93bc1-b4da-47b2-b9a5-590993e5a901",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1764
+  },
+  {
+   "query_id": "cf65b0b0-1dd8-49ba-8a70-3fe335671ad4",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1716
+  },
+  {
+   "query_id": "572b34af-f0b9-48e8-89d0-d97759255a33",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2438
+  },
+  {
+   "query_id": "11187fc0-2f65-4f62-a620-05d8727ece0b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1831
+  },
+  {
+   "query_id": "f430abd2-f708-41e9-bce1-59eae2890f72",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1772
+  },
+  {
+   "query_id": "f8aeb0eb-61ed-40cf-82d0-e24bd45f75f7",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1249
+  },
+  {
+   "query_id": "0f97d945-0ad6-406b-8bdb-e802951bab2e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2198
+  },
+  {
+   "query_id": "9698155b-4b25-4db0-87b6-220fd9d5ee6b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1501
+  },
+  {
+   "query_id": "f5302970-f025-4f55-a2dc-ee282fe453f7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2092
+  },
+  {
+   "query_id": "ef43bc7b-0c69-42a1-acf2-1d9448e95843",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1788
+  },
+  {
+   "query_id": "8f14a9cb-2891-4510-9ed0-57c0b20ac7ab",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1297
+  },
+  {
+   "query_id": "4a6986f2-95c4-451d-b747-32d1b9fd68fc",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1709
+  },
+  {
+   "query_id": "7c1213f3-3473-4963-863a-5b0dd9ecfb76",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1681
+  },
+  {
+   "query_id": "4ed1dad8-969d-4d3a-8d3a-cfbbcc5805b9",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2543
+  },
+  {
+   "query_id": "4347fda8-df4d-4e2f-bdcf-57a75d4eb3be",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2709
+  },
+  {
+   "query_id": "e887adc2-094a-4ca1-ace6-0d5327b72199",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3170
+  },
+  {
+   "query_id": "2e139411-f111-47e4-9afe-b6c8a464503f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 978
+  },
+  {
+   "query_id": "5dac10b3-3431-435a-b188-de8d5378fab3",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1763
+  },
+  {
+   "query_id": "447b4875-0d3c-43e8-a67b-51b040dd381e",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1599
+  },
+  {
+   "query_id": "1ceb2251-25fe-4a51-8515-4481904088e9",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1934
+  },
+  {
+   "query_id": "b34776c8-ec7a-4753-94bf-46f652486c58",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1672
+  },
+  {
+   "query_id": "fa38f4c0-f342-4bb0-98c8-bbaeb6b6c954",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1450
+  },
+  {
+   "query_id": "e8e8681b-4b3a-4cce-8be1-c7c50b3e75f8",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 839
+  },
+  {
+   "query_id": "e3206d0d-c7e9-4479-92a3-82944f1d1d55",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2004
+  },
+  {
+   "query_id": "0fad3a0d-c526-4823-81d4-185763f2d1ae",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2192
+  },
+  {
+   "query_id": "b7f4164e-a233-487e-a755-97c9ec649da3",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1412
+  },
+  {
+   "query_id": "8f993df9-8f32-4350-8807-dcfaea1f4748",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2587
+  },
+  {
+   "query_id": "2657a24b-ae40-448e-a847-73df7d9d2cff",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2211
+  },
+  {
+   "query_id": "dbbec458-b257-4016-b00f-6dc038a9aeb5",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2124
+  },
+  {
+   "query_id": "0127c293-2242-4cf1-b931-4d93fad786ab",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1635
+  },
+  {
+   "query_id": "33edefc3-492f-42d9-94e3-14a81159e15b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1782
+  },
+  {
+   "query_id": "8255359b-2855-4c48-a78e-ed9f8ccc65a0",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2768
+  },
+  {
+   "query_id": "31dd0a42-562e-4020-a95d-d155907bc075",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1934
+  },
+  {
+   "query_id": "aa761cda-65a3-4bdb-b7d6-ea0dd11777cc",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1992
+  },
+  {
+   "query_id": "7ed1db1a-09cc-467f-a996-ea120baccc1c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1530
+  },
+  {
+   "query_id": "701d029f-65be-4945-af6c-ceaf7c520d08",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1723
+  },
+  {
+   "query_id": "ed121c68-3674-424e-b33e-649508f7b6e7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2132
+  },
+  {
+   "query_id": "fb20c1a8-2227-4abc-b2f8-b44bdadf7571",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1456
+  },
+  {
+   "query_id": "20609b41-7318-4fb2-908b-0e8b911ef83c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2016
+  },
+  {
+   "query_id": "c5097591-013a-4415-b93a-559a1049efd7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1258
+  },
+  {
+   "query_id": "d996cb19-49c7-4203-acae-d8c36b25dd8f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1672
+  },
+  {
+   "query_id": "9993c30d-8e42-4439-a7f4-976ca95b496a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1540
+  },
+  {
+   "query_id": "0e82fda2-ac2d-4411-a672-b45a4275724e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1883
+  },
+  {
+   "query_id": "02397034-c55c-46db-9b79-d12488cb6a6f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1075
+  },
+  {
+   "query_id": "8656e19a-9b48-4623-8a59-18ebde1b87dd",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1380
+  },
+  {
+   "query_id": "8c97325f-c2ea-47d9-8d79-5580645ce34a",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1500
+  },
+  {
+   "query_id": "3f7d5b78-91e8-4c68-8da9-86bba4885f0a",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1937
+  },
+  {
+   "query_id": "cf709452-3344-4706-a7bf-409a60c7313a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2209
+  },
+  {
+   "query_id": "ea415abf-4de7-407e-b9c3-a9494b24e507",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1723
+  },
+  {
+   "query_id": "de527da8-d44a-4386-b57b-3e1e50d525e2",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2151
+  },
+  {
+   "query_id": "d767e926-4683-4d78-8d9c-6fd195f23988",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2536
+  },
+  {
+   "query_id": "c688701d-0786-4f72-aa2f-07cbbba150fd",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2214
+  },
+  {
+   "query_id": "5c67a05d-befa-4c0c-b80c-2694d2cacf76",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2015
+  },
+  {
+   "query_id": "5529bc90-e1ba-46c4-b7e3-442f7d5e872c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1599
+  },
+  {
+   "query_id": "7c9b096c-accf-4a04-b7ae-321e5c2b347a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2135
+  },
+  {
+   "query_id": "0d050ff2-eb43-4dea-a73e-7c7c9a13c158",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1249
+  },
+  {
+   "query_id": "9d3dd341-e8c9-454e-9a95-364f9b92c716",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2164
+  },
+  {
+   "query_id": "d179fb48-89e5-4ebd-84fb-e7fcf548601d",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1415
+  },
+  {
+   "query_id": "408de32c-14f5-4d31-aad1-2964d9f31217",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1722
+  },
+  {
+   "query_id": "3beb6c85-40c3-4fb8-a58f-b98da6e97982",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1275
+  },
+  {
+   "query_id": "6b3081cd-5410-4367-a92e-13e86905b8ae",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2200
+  },
+  {
+   "query_id": "b1cd57c4-8084-4933-abdc-5ea96296a30e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2527
+  },
+  {
+   "query_id": "58e3851b-6652-4bee-aadc-d2ca4493637b",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2363
+  },
+  {
+   "query_id": "6b64c85a-caa5-4fec-84bb-1c49873500ce",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 711
+  },
+  {
+   "query_id": "b171854b-5ab5-4646-b540-9448d709c162",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1465
+  },
+  {
+   "query_id": "f72f3801-8bad-43a8-9148-9d3a05a00d4a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1445
+  },
+  {
+   "query_id": "620dcd71-0e10-4539-a927-282da33ea887",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2154
+  },
+  {
+   "query_id": "9547b6b7-3daa-4745-af25-e94bdea0a09f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1146
+  },
+  {
+   "query_id": "653a3ba5-0397-43b5-a7a8-18c7502ad844",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1853
+  },
+  {
+   "query_id": "f9180c9a-5eee-45c2-a119-fca635f8c5e6",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2059
+  },
+  {
+   "query_id": "781f258c-83a7-4914-832b-a72b89b85bfa",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1624
+  },
+  {
+   "query_id": "b2df1fa8-f4f5-4559-ae82-721ce330e7b0",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1847
+  },
+  {
+   "query_id": "53870672-dcf4-44ea-b422-1b03b43483b9",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1820
+  },
+  {
+   "query_id": "9341f9d2-3b23-4f2e-bd9b-dcacea249beb",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1756
+  },
+  {
+   "query_id": "b1d0e14b-3554-4c69-91be-347c3c30963e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1510
+  },
+  {
+   "query_id": "0f77f6f6-3f4d-4b3e-aa59-e7d533930681",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1538
+  },
+  {
+   "query_id": "8519dad6-20b8-4d73-adf5-69f53834f9f3",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1458
+  },
+  {
+   "query_id": "a66854c9-1c4f-4547-8de3-b2de6620cc2e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3009
+  },
+  {
+   "query_id": "c13c8261-5e08-4fb2-a016-a7f457361ff6",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1902
+  },
+  {
+   "query_id": "23f34bd7-5dd8-4f77-89e1-07455f173f6e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 987
+  },
+  {
+   "query_id": "1cb55f73-1a55-456c-8180-f6ab1dcc61a0",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1048
+  },
+  {
+   "query_id": "128d00f4-aa60-4aaa-978e-8d402ff712a6",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1714
+  },
+  {
+   "query_id": "fc5373ce-fa3a-4a20-8194-5192130267aa",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2458
+  },
+  {
+   "query_id": "019100b9-e572-40db-88a7-60fd659237ea",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2041
+  },
+  {
+   "query_id": "80722520-4390-484c-9fa7-198881c87457",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 870
+  },
+  {
+   "query_id": "4dccfdb0-bb34-4f90-83cf-f6caaa9ff8b4",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1410
+  },
+  {
+   "query_id": "bcd79ca6-ccd4-4235-8ccc-b6374be65854",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1480
+  },
+  {
+   "query_id": "c8ef09ce-9cf1-4bc1-af04-17358aa17e6c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1006
+  },
+  {
+   "query_id": "e856e820-94dd-4ade-9a75-f5ed62e77eaa",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2137
+  },
+  {
+   "query_id": "8bd74061-3dc6-416d-86d5-fbc32c86122c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1623
+  },
+  {
+   "query_id": "199b0400-d999-4b94-a44c-ac2427a26ae3",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1585
+  },
+  {
+   "query_id": "79129c48-ed76-4f39-b3b7-8d4e1afde46a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 834
+  },
+  {
+   "query_id": "dc4c223e-11d3-44d1-9d06-b62d914c7162",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1649
+  },
+  {
+   "query_id": "b5e32cf1-2877-4bdf-96fc-91e62f45469d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2374
+  },
+  {
+   "query_id": "3caca461-344d-4b27-8e8c-6ce31a8d3a3a",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1253
+  },
+  {
+   "query_id": "15b8e92d-4965-4d77-8250-ed4ae2f65df2",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1067
+  },
+  {
+   "query_id": "2dec1da6-c510-4b16-8af1-7c4792758041",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1175
+  },
+  {
+   "query_id": "9a5548eb-3c15-49ca-b7c8-5f770a46e95e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 813
+  },
+  {
+   "query_id": "4013dca2-3cc9-4b0b-ba24-c944fa8143d2",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2385
+  },
+  {
+   "query_id": "5a91e95a-6546-4372-877a-36a114f34b0c",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1590
+  },
+  {
+   "query_id": "80ead8c4-7cc6-41ac-bfd2-7325a8e22edb",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1538
+  },
+  {
+   "query_id": "7f5ba22f-b3bf-4607-9891-c0b1fb7757a9",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1772
+  },
+  {
+   "query_id": "fd6c146e-fd30-4993-98d7-185d205f7052",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1373
+  },
+  {
+   "query_id": "a2702ccd-5d5c-4978-962e-32cb841d0131",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2070
+  },
+  {
+   "query_id": "79be98fe-579f-4a7d-968e-db0d87f8048a",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1629
+  },
+  {
+   "query_id": "0d99e429-342c-4c14-99a6-0a33fd79b695",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1594
+  },
+  {
+   "query_id": "919d3da6-c410-4369-8e82-edfc88078e14",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2748
+  },
+  {
+   "query_id": "34916005-72bf-4901-b01b-b72a6e8f7363",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1549
+  },
+  {
+   "query_id": "28e2b1ee-dc0d-40c6-9341-59d372d1bb0e",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1248
+  },
+  {
+   "query_id": "974443c9-03fe-4445-9ac9-ac999c5df43a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2224
+  },
+  {
+   "query_id": "b8eff61b-7b64-4d3e-92ad-5dcd4f262864",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1544
+  },
+  {
+   "query_id": "f620abf8-7c19-4b70-84bc-50c1501a141a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1052
+  },
+  {
+   "query_id": "f55f8ebd-0cda-4b5b-a4d9-67595d29d6a9",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1966
+  },
+  {
+   "query_id": "b57e3f0f-4794-45ed-9441-765d33193049",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2356
+  },
+  {
+   "query_id": "11a072d9-5481-43e7-bdf1-3370b689e735",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2419
+  },
+  {
+   "query_id": "9360996a-e8ce-4f67-9fd1-09cc5ae440bf",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1894
+  },
+  {
+   "query_id": "df5f7cea-0fa1-4f7a-8b42-9f88333594d5",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1453
+  },
+  {
+   "query_id": "7c202c7e-8e65-4ac4-bfc6-9b0129021be6",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1088
+  },
+  {
+   "query_id": "34ec91f5-c40f-4d4d-a4ea-c46c897fde7b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1205
+  },
+  {
+   "query_id": "142e7584-7aa4-46d5-a2d4-53881432f20a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1807
+  },
+  {
+   "query_id": "87a39da0-62f8-47a5-befc-00386570d197",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1096
+  },
+  {
+   "query_id": "4433d91f-73e8-407f-8c47-0e1b28c7ac55",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2241
+  },
+  {
+   "query_id": "e42bbe46-38fa-4c02-b544-2b6aa4c81506",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1186
+  },
+  {
+   "query_id": "339349d4-50e3-4f8d-9c45-3b4855b9a9f1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1510
+  },
+  {
+   "query_id": "01d07533-bb0e-4261-94f3-b995ba0d4513",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2152
+  },
+  {
+   "query_id": "66c39ac6-8b5d-45a4-aa48-5feda1a1fdfd",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2039
+  },
+  {
+   "query_id": "3d5ddb20-2504-49a4-acaa-e00f178e927c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1857
+  },
+  {
+   "query_id": "2548365c-df69-4221-a072-aa84b797fefb",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1976
+  },
+  {
+   "query_id": "c85f803c-1091-4f34-9e45-80b1f9650593",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1410
+  },
+  {
+   "query_id": "9b93cde6-a531-422c-ac3a-abfebe3337e0",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1062
+  },
+  {
+   "query_id": "1d8b935e-1912-4c00-8f1f-5008a6218be9",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1014
+  },
+  {
+   "query_id": "9061a0c2-6a90-48c1-aad7-6089747528c7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1252
+  },
+  {
+   "query_id": "6e0b04c9-1b89-4d1a-ae1f-da630dd149cc",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2191
+  },
+  {
+   "query_id": "58280362-b194-496a-8f3d-c9df60accc59",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1921
+  },
+  {
+   "query_id": "133e1408-55c4-4394-a145-55f2c6298193",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1858
+  },
+  {
+   "query_id": "62d5bcc9-62c9-41f5-a018-943c68419d85",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1742
+  },
+  {
+   "query_id": "63244c3b-336c-4c29-856c-3e1262eb59c8",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2148
+  },
+  {
+   "query_id": "d8848e34-dc84-486b-804e-268bec52dbe3",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1086
+  },
+  {
+   "query_id": "b8816034-1447-4cb1-9b7d-2987dad9d486",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1544
+  },
+  {
+   "query_id": "4fd95ccd-451d-4e16-8193-176df75ccb2a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1595
+  },
+  {
+   "query_id": "f0bfece4-f2be-42a1-bb18-264a43f4d57a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1546
+  },
+  {
+   "query_id": "a4a257bd-92b3-4ef5-b8c9-c7cab54eff77",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1845
+  },
+  {
+   "query_id": "16af0434-a8d1-4109-97fb-d100a3a95652",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1541
+  },
+  {
+   "query_id": "e51e8988-bb2a-49da-97c4-9d6dd4326664",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2800
+  },
+  {
+   "query_id": "15740cf0-c2ed-4bbf-adc2-9a2dddea6787",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1356
+  },
+  {
+   "query_id": "2f5847e6-49d8-4535-8d19-deefbbceef62",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2170
+  },
+  {
+   "query_id": "384384e7-286b-42f6-859a-e83d1de5f89f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2132
+  },
+  {
+   "query_id": "de9f6757-fe03-4831-83ba-e1342281943b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1884
+  },
+  {
+   "query_id": "9b4ec755-8357-4508-bc37-582dba2b6b7f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1466
+  },
+  {
+   "query_id": "de8f3703-cc55-4b95-8439-e82b6277abd1",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1250
+  },
+  {
+   "query_id": "a5d4ffd1-fe35-40af-bf63-8bf6c71195b1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2399
+  },
+  {
+   "query_id": "7e03f10f-4414-454e-bff1-0739ed38e1e1",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2160
+  },
+  {
+   "query_id": "3d1338ea-a54d-44b5-b1aa-e88e74d152cd",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1869
+  },
+  {
+   "query_id": "e43c15d7-4e68-4722-aac6-d72cd6bff094",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1301
+  },
+  {
+   "query_id": "7d808043-4ec1-42ca-9c50-4bb8c713df30",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1377
+  },
+  {
+   "query_id": "6c6ecce6-ffc4-44fe-85e5-3e12aecc6acc",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1665
+  },
+  {
+   "query_id": "23f4e9f0-d633-4113-aa02-f6a076de9b10",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2182
+  },
+  {
+   "query_id": "9bc492d8-0d87-43e2-bbba-2a87d9441868",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1681
+  },
+  {
+   "query_id": "1578b253-5efc-450c-94f5-825d4aa842c5",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1732
+  },
+  {
+   "query_id": "0c7c1685-ab91-4f1f-b0f2-4c66a0eeaeef",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2246
+  },
+  {
+   "query_id": "4454ade8-dcc2-48f2-a9e6-2872f6e6a8b7",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1819
+  },
+  {
+   "query_id": "0668dc12-4fc3-4a98-adda-01ad38b9ac19",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1538
+  },
+  {
+   "query_id": "2bfaebd0-75b7-4802-b850-6985fdbe05f3",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1309
+  },
+  {
+   "query_id": "dab110aa-0a06-4db9-b315-c620210d8df7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1450
+  },
+  {
+   "query_id": "713f9909-c865-4455-bfe3-f6f8c7409553",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1458
+  },
+  {
+   "query_id": "25ce3966-51d7-4809-91e9-058921f1f621",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1439
+  },
+  {
+   "query_id": "8c3155e8-de76-43b0-9e97-17721df07c68",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1668
+  },
+  {
+   "query_id": "b14ad3a8-cd1d-4260-b1bd-03a918dc1f2d",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3317
+  },
+  {
+   "query_id": "41e27128-46cd-49d3-adc8-41ebcff928c5",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2073
+  },
+  {
+   "query_id": "798d4031-813d-483c-b308-0a44a284f0e9",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1476
+  },
+  {
+   "query_id": "1070f514-631d-4b41-8a5a-697f32c20b1d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1990
+  },
+  {
+   "query_id": "2d07491b-76e7-4754-8734-61c7eb86a696",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1749
+  },
+  {
+   "query_id": "270d195e-90f4-4e34-bbf3-ed749e3a466f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2042
+  },
+  {
+   "query_id": "810ea52a-2d02-4fd0-81f8-962d5a51dd95",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1387
+  },
+  {
+   "query_id": "a97adee7-add7-4fc8-bc2c-0f6e4e1dc8d3",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1345
+  },
+  {
+   "query_id": "a2456af9-5833-4e5a-8c26-8c7406f28c53",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1431
+  },
+  {
+   "query_id": "c58480b9-2294-4b70-a4ff-db2bd63b0cae",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 906
+  },
+  {
+   "query_id": "a3670dae-84a1-4211-8d4b-d2045ded7d2d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1503
+  },
+  {
+   "query_id": "6f9b1035-9b9f-475e-b331-0d9839712537",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1770
+  },
+  {
+   "query_id": "3d8bae1c-78eb-4493-90ab-5c82957bb06a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 858
+  },
+  {
+   "query_id": "3d52961a-fa0c-4fa0-abf3-ba57faf9e7c4",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2374
+  },
+  {
+   "query_id": "bd1c448d-7df3-41e7-9681-62956542f2e7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1527
+  },
+  {
+   "query_id": "7ea50ef1-c2f9-430f-ab59-2b3b81b1b9e5",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1788
+  },
+  {
+   "query_id": "015d8e2d-6617-42b6-a17a-8d561c85211b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1431
+  },
+  {
+   "query_id": "db8faef6-b52f-4d9c-a3c6-868090b53a90",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2757
+  },
+  {
+   "query_id": "0c250122-30cf-4732-bd8a-9b96a8dc48b7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1946
+  },
+  {
+   "query_id": "de0426b0-7c07-4737-8504-1b572d3bbe54",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1818
+  },
+  {
+   "query_id": "7374d323-8734-451f-9fb7-c4baad0ef086",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3618
+  },
+  {
+   "query_id": "8b5bd51a-5037-459a-888b-5c6de92154aa",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1940
+  },
+  {
+   "query_id": "5dff3e8c-6ac7-43a0-ad46-8d51c2b4d832",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2216
+  },
+  {
+   "query_id": "6644d2c4-38ac-4ab0-9bee-826f581399b5",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2177
+  },
+  {
+   "query_id": "9cb8c6eb-55d7-419e-8867-875171fb6c1a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1533
+  },
+  {
+   "query_id": "ad9c4e98-9861-420d-b808-adf045abbba9",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1381
+  },
+  {
+   "query_id": "403b78c6-3d64-4848-bd2d-d0b51e85bc47",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2059
+  },
+  {
+   "query_id": "ca4afda4-aec3-4487-b808-d7d188438cf0",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1742
+  },
+  {
+   "query_id": "ab073033-db63-4f7a-ade8-57988ecf5555",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1616
+  },
+  {
+   "query_id": "6cc1e9de-608b-469e-90c9-f299ff47b97d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1569
+  },
+  {
+   "query_id": "c156bf3a-b5a3-4096-b351-8a6bf3d9abbe",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1399
+  },
+  {
+   "query_id": "f3004da4-e088-4cac-b092-317c78a5aed7",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1853
+  },
+  {
+   "query_id": "e0134a5f-a446-4bd2-8d55-e1f036aeaab0",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3074
+  },
+  {
+   "query_id": "c210ea15-c3c1-485a-9cf0-8e1a6ba601f7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2655
+  },
+  {
+   "query_id": "4f1fa9c5-a1ec-446a-acaa-97ac57fa3593",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2232
+  },
+  {
+   "query_id": "9cf2a437-dc94-40e1-bbce-4ebd04643abe",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1621
+  },
+  {
+   "query_id": "c74e9265-802d-48bc-b32b-1b23f06af9e3",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1526
+  },
+  {
+   "query_id": "4de661c4-347d-4256-be86-4b68af542956",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1246
+  },
+  {
+   "query_id": "0c1cdf1e-fd18-4dcb-a57e-e692690d3701",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1075
+  },
+  {
+   "query_id": "f0a65012-8775-4da8-bc95-5972397c2d80",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1730
+  },
+  {
+   "query_id": "0dffef78-aa56-4e7b-b276-2151b81d6c4a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1756
+  },
+  {
+   "query_id": "c97b2b85-3085-4892-8453-a1da20af89ee",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1667
+  },
+  {
+   "query_id": "d1480d54-fa71-4813-82a2-b00814b3cbd6",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1475
+  },
+  {
+   "query_id": "4924706c-09d8-4a6b-9ab1-457840d49443",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1757
+  },
+  {
+   "query_id": "338821bd-c011-4e1f-ae8a-bffdec81e7b9",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1449
+  },
+  {
+   "query_id": "2a21fba7-81f7-46bb-b109-f1d922e81541",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1799
+  },
+  {
+   "query_id": "0224d9bd-c3c4-494e-83c6-bcc2c0241274",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1625
+  },
+  {
+   "query_id": "f7a43d60-31d3-456b-a6ef-a27b080a9c4b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1729
+  },
+  {
+   "query_id": "3689e93c-ee23-442c-8aba-478acf83441d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1330
+  },
+  {
+   "query_id": "80b47be7-22ae-4d41-8964-cda12932605b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2149
+  },
+  {
+   "query_id": "21a24b06-a900-44b8-adee-eaf62cf22750",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1320
+  },
+  {
+   "query_id": "cf999b19-72a3-441f-9972-fa6e90d0e655",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1664
+  },
+  {
+   "query_id": "efd7a945-cea9-4964-8f40-0f4a38fb49c2",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1996
+  },
+  {
+   "query_id": "d95c235f-60a3-45f3-8e58-12daf2464e9c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2223
+  },
+  {
+   "query_id": "172a62fb-b6c0-45e9-90da-dc00fadf536a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2335
+  },
+  {
+   "query_id": "587a9456-8c08-429d-8683-251bb459c0e4",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1892
+  },
+  {
+   "query_id": "b315516d-30c7-476e-a94f-d405234d4731",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2020
+  },
+  {
+   "query_id": "0b1c3d9c-1488-4605-9538-7214fbf85483",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1832
+  },
+  {
+   "query_id": "ddbba64d-86b1-4d06-93ee-60f5f6cc999b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1743
+  },
+  {
+   "query_id": "08e3c4bd-659e-401a-9bdc-8c7ad7137291",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1719
+  },
+  {
+   "query_id": "3ac0040f-44e9-4ad0-b3df-c1d39d744477",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3013
+  },
+  {
+   "query_id": "7d909d3c-a3a6-4e60-b168-7ad57437641c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2054
+  },
+  {
+   "query_id": "3ec61b88-6bf7-422b-ba55-f6db5c434f36",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2532
+  },
+  {
+   "query_id": "16335d63-65bd-41ad-a14e-4b7cfb0bd39a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1523
+  },
+  {
+   "query_id": "d1473670-71d2-4be3-b5cf-30244387303e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2153
+  },
+  {
+   "query_id": "b2e13712-3272-4815-93c2-720aa4cf1530",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1370
+  },
+  {
+   "query_id": "6add786a-4d70-4fc1-a5e8-b9ea44a0e89e",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1379
+  },
+  {
+   "query_id": "5dbc0fbf-8492-414d-85f8-63b195adf8a7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1440
+  },
+  {
+   "query_id": "cb7ad2d5-1c37-4092-907f-1253f2ea13c6",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2049
+  },
+  {
+   "query_id": "08af8a43-0b4f-401c-a993-d2154bf6e9a4",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1799
+  },
+  {
+   "query_id": "ff49ff1e-a8f0-413a-95b4-398424fb7643",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1496
+  },
+  {
+   "query_id": "26b5c7b0-f466-4342-b3c4-48df7cd37478",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2063
+  },
+  {
+   "query_id": "650882aa-fb20-4442-9511-cfcebdcf70bb",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1480
+  },
+  {
+   "query_id": "84bd1a9d-c837-416c-b8f1-6c33b14977ab",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1216
+  },
+  {
+   "query_id": "dd2d8a30-aeb9-45fa-ab92-facf18ef678e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1203
+  },
+  {
+   "query_id": "d26c8710-d5c1-481e-8a2e-0efee371fde7",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2066
+  },
+  {
+   "query_id": "0401d20f-4ac2-47dc-9627-ecd9ac0e50de",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1472
+  },
+  {
+   "query_id": "efedc25c-02e5-4e7e-95ed-904aeecf2d4e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2306
+  },
+  {
+   "query_id": "bccf1b86-2ad8-4ea7-9154-4c2ea6fca06c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1678
+  },
+  {
+   "query_id": "8e8c4610-796e-476d-a4ab-e1adbd43fda6",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1936
+  },
+  {
+   "query_id": "5b747258-c2fa-4103-83dd-e2081b3f4721",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1958
+  },
+  {
+   "query_id": "ff50c5a9-d9f5-4e6a-a1c0-b33f921c117b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2568
+  },
+  {
+   "query_id": "15018088-61fb-49a6-8c9a-7d04960b548b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1548
+  },
+  {
+   "query_id": "dada673f-9552-42b8-bc62-594d0c2568ad",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2189
+  },
+  {
+   "query_id": "b294cd9d-8451-4c0c-9d63-83f6e58959ed",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1415
+  },
+  {
+   "query_id": "d4cd9798-6acd-445f-aab9-82a7e0ecc73e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2158
+  },
+  {
+   "query_id": "055675e7-365d-443c-b02e-5b5c9f92b209",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1244
+  },
+  {
+   "query_id": "291c2240-b5cc-4559-a075-057520586081",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2910
+  },
+  {
+   "query_id": "9a75d90d-fe30-491d-8c03-05229497c2a6",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1891
+  },
+  {
+   "query_id": "c3cbf365-cee1-48a4-b90e-306111000184",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2643
+  },
+  {
+   "query_id": "93ee7e2a-1ab4-40bb-b0a7-79477fae26e2",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1681
+  },
+  {
+   "query_id": "36b6907f-eea5-4596-972c-e9dc2acf27d1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1744
+  },
+  {
+   "query_id": "90499737-2434-4107-bbe0-692cf225b870",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2827
+  },
+  {
+   "query_id": "5e24723f-29b8-4dfa-9036-d8dfdfb35523",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1843
+  },
+  {
+   "query_id": "767a6e70-1b5e-48e6-92b8-a578138819c3",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1856
+  },
+  {
+   "query_id": "f87f781b-9d8c-42a9-8694-82365dd9bcc4",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2895
+  },
+  {
+   "query_id": "26639eff-303a-475a-b1f3-6ed21d1d382a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2275
+  },
+  {
+   "query_id": "6ac270d9-784a-4bde-b61d-ca4d43abeaf7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1643
+  },
+  {
+   "query_id": "36d236c6-1c07-4249-ac16-b8fa2bd78645",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 4294
+  },
+  {
+   "query_id": "3388a3c0-8190-4e51-8ef9-2507cf5b934c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2692
+  },
+  {
+   "query_id": "4905e068-5470-44c7-8191-9c0a03e49be8",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1284
+  },
+  {
+   "query_id": "fae14c8a-1520-4cf3-aede-22548370ed3c",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1398
+  },
+  {
+   "query_id": "2aec6e11-8c18-483e-b380-33e647d8d73f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1079
+  },
+  {
+   "query_id": "17b4173d-0a3b-4894-9ad4-64d7d9d54edd",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2137
+  },
+  {
+   "query_id": "e501e30a-5ed5-4656-8738-3ce5c30f9c85",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1456
+  },
+  {
+   "query_id": "3a206280-06f8-4647-a9d5-80887b7a5ed7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2684
+  },
+  {
+   "query_id": "d54ee73f-ff4a-4c16-841e-a7adbed3306a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1158
+  },
+  {
+   "query_id": "0ac79059-9617-4844-a54b-6f2c77896ec8",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1482
+  },
+  {
+   "query_id": "c194e75f-b744-45b3-86d9-d19971429013",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2652
+  },
+  {
+   "query_id": "9581b38e-cab5-4060-8928-a251b03dfa3b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1176
+  },
+  {
+   "query_id": "9f1d3bf2-2188-4ee9-9757-f6c23d1b09b6",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1678
+  },
+  {
+   "query_id": "f2f105a7-8400-4de1-8264-89ff9c2484d1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1583
+  },
+  {
+   "query_id": "efce8ac8-1f3e-4093-869c-544f17981c50",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1126
+  },
+  {
+   "query_id": "d082f6ff-1a42-493e-a4ef-ef7c3095e577",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1215
+  },
+  {
+   "query_id": "f042c41e-cbda-42ea-b4c1-955fafe65fe8",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1353
+  },
+  {
+   "query_id": "d5d78e54-201b-4a37-b973-39b2bd65be36",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1328
+  },
+  {
+   "query_id": "ad07f326-de5f-41b3-89a2-8d12bac127d3",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2023
+  },
+  {
+   "query_id": "1c5e8139-7182-4c0c-8134-9dbd96b8252f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1747
+  },
+  {
+   "query_id": "ba4a9965-98c0-47a3-ac5b-95ef0e391dbd",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1931
+  },
+  {
+   "query_id": "dc0073f5-9c9c-436e-aba3-469efd3a73a7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3036
+  },
+  {
+   "query_id": "750eb9b4-3767-475d-977b-099b823fc139",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1523
+  },
+  {
+   "query_id": "8d9a8365-87c2-4d72-bb0c-5dc550e5ff71",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1964
+  },
+  {
+   "query_id": "9e5ae04c-016a-493d-9d14-e81c4855806b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1419
+  },
+  {
+   "query_id": "3320bcfa-5e6d-4945-8661-ed627cd89c8a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1878
+  },
+  {
+   "query_id": "54965372-38cf-4e9c-8a37-8fc68a4bc6be",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1863
+  },
+  {
+   "query_id": "8972c76d-ef38-42ca-b511-8e723cbc838f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1655
+  },
+  {
+   "query_id": "9cdd7b00-6487-4ac4-9d25-0bb5219d9caa",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1123
+  },
+  {
+   "query_id": "f3b86953-defd-457a-bc2c-9138a867b9d0",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1402
+  },
+  {
+   "query_id": "206ff698-627f-4f9d-9396-904e38be222b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1936
+  },
+  {
+   "query_id": "c8320313-dda7-437e-9ac3-f69deed98575",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1515
+  },
+  {
+   "query_id": "ad32f821-9212-478d-8d99-8468be156dd3",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1630
+  },
+  {
+   "query_id": "7e3b9e69-11c6-4917-a95b-1a268dcedbf9",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 890
+  },
+  {
+   "query_id": "0ad376cd-7b17-4214-aa77-f912c06ff4e3",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1834
+  },
+  {
+   "query_id": "bbe99703-2522-4948-af71-7ecf9c1c9b2d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2095
+  },
+  {
+   "query_id": "a3221a76-d68e-4048-9dcb-d3f926023e03",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2309
+  },
+  {
+   "query_id": "aba445bd-4449-4b9e-b0c7-d912151ce37c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2440
+  },
+  {
+   "query_id": "c932f257-aab4-4150-9766-5cd7749d3d7a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3035
+  },
+  {
+   "query_id": "ecbbeb64-e390-401a-844d-2fd3b3d3ce74",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1585
+  },
+  {
+   "query_id": "19832dcd-daf5-4f66-b069-ca1bc971f36f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2578
+  },
+  {
+   "query_id": "21482a5e-014b-42db-beca-76020b838cb1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2083
+  },
+  {
+   "query_id": "67e775eb-0c96-4461-9b9d-b0a37bfb4004",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1563
+  },
+  {
+   "query_id": "5914e6d0-d8cd-4699-ae6e-b1ad4460d438",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1354
+  },
+  {
+   "query_id": "01427031-f1a6-4f0c-adb4-9575a1228cec",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1564
+  },
+  {
+   "query_id": "3bb77824-a4c5-4d86-bc20-819c220247a0",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2312
+  },
+  {
+   "query_id": "de1b80e4-a003-422e-a43c-c90843e3349e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1407
+  },
+  {
+   "query_id": "885de0a9-68f0-431a-a2d6-8ae93a03befe",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1423
+  },
+  {
+   "query_id": "7e1c9c74-da31-4eea-99b4-66321656ee1c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1656
+  },
+  {
+   "query_id": "dd50bdb8-c9f0-4a82-8784-800128a029da",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1558
+  },
+  {
+   "query_id": "55582126-1651-4774-9e21-f27b807baffa",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1119
+  },
+  {
+   "query_id": "b430c5af-c340-468d-b595-a320220d5249",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1434
+  },
+  {
+   "query_id": "eb2b57d1-95b5-4707-b6c2-2e1787ac6aa1",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 998
+  },
+  {
+   "query_id": "7baa6ce9-736d-47ed-acb3-f16cece32e34",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1307
+  },
+  {
+   "query_id": "049b7797-4497-4169-8f3c-4380ba74fc2b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1500
+  },
+  {
+   "query_id": "24f68d69-434a-404d-8141-8d6d735a948d",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1111
+  },
+  {
+   "query_id": "2e55be77-2d26-43e9-9e35-e708a644c391",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3041
+  },
+  {
+   "query_id": "34b4d99f-d58f-4651-bd43-d472eed5ed44",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1421
+  },
+  {
+   "query_id": "1c18f5d7-7ea9-489b-958e-8912667299e3",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2044
+  },
+  {
+   "query_id": "e84d0754-6a2e-4b59-9bbc-d568cd877f44",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1822
+  },
+  {
+   "query_id": "a1bd4293-53e0-43fe-9138-c8673355d1d0",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2836
+  },
+  {
+   "query_id": "5777edf1-da48-4373-94bf-f48a7c47a05a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2519
+  },
+  {
+   "query_id": "83b53537-8a70-434e-93d2-df53e44f1b20",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2732
+  },
+  {
+   "query_id": "415108ce-75de-49d6-9b0d-f77a323dd156",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1393
+  },
+  {
+   "query_id": "066b0902-5e97-45bf-909b-ce0a1efda2f7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1885
+  },
+  {
+   "query_id": "41aaf337-888c-4d01-897f-1af2435fdf40",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1223
+  },
+  {
+   "query_id": "4bca8928-684e-4b1c-9351-16020abfe0cc",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1279
+  },
+  {
+   "query_id": "14568002-6784-4848-bdfb-06e42a38b02a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1341
+  },
+  {
+   "query_id": "17449249-64c8-4213-a1e8-b1c8ff12cafa",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1554
+  },
+  {
+   "query_id": "60336315-84d5-439e-a5b3-219346282272",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 683
+  },
+  {
+   "query_id": "b7193fb5-2b18-40bf-8bed-f010a930d1d8",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2330
+  },
+  {
+   "query_id": "ed2bdf1e-207e-4b22-9f43-aeef61f3a626",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1521
+  },
+  {
+   "query_id": "48e8578f-ca65-40b8-a391-5f7ea2b967a3",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1315
+  },
+  {
+   "query_id": "ab27cfd8-9d4a-48be-a698-b8d7b72c8779",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1286
+  },
+  {
+   "query_id": "cb999b08-aacc-4221-b959-821109556832",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3164
+  },
+  {
+   "query_id": "2dc382a6-c8c9-46ff-b7ae-f19a9d1cbad9",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1802
+  },
+  {
+   "query_id": "166a3be3-4328-48a8-904c-7492b5f0cb3a",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1744
+  },
+  {
+   "query_id": "921d831b-d630-449a-9678-a3668bc74bfa",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2278
+  },
+  {
+   "query_id": "1560ca9d-a278-4e0e-bd0c-a89b7fa2cc1a",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1830
+  },
+  {
+   "query_id": "d834280f-8f19-4836-959f-2b8125312e32",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1878
+  },
+  {
+   "query_id": "d92917f4-2511-44ef-961a-0cf00a7e2f81",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2211
+  },
+  {
+   "query_id": "472dbdf0-a9ab-4104-bf2a-d52e23225777",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2339
+  },
+  {
+   "query_id": "26022b99-c23f-472b-952c-6f6eb69bab04",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1140
+  },
+  {
+   "query_id": "b2575c7b-6b6f-4ae0-adb4-c96ba936e97c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2216
+  },
+  {
+   "query_id": "7fdf5feb-2e14-4231-a7d5-33c281ea5db9",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 843
+  },
+  {
+   "query_id": "b012995b-c371-4613-bbbc-d20dddcaa839",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2536
+  },
+  {
+   "query_id": "7d42b304-2cb2-415e-a964-ac2c5a184c0a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2370
+  },
+  {
+   "query_id": "65730e6e-45dd-46b8-bf17-81143a5b736a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2741
+  },
+  {
+   "query_id": "6d381544-fb8a-4a26-a0bf-dbee1bc1092f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1612
+  },
+  {
+   "query_id": "757e18ed-801e-45cd-9905-2b03af1079ab",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1520
+  },
+  {
+   "query_id": "f34abc4b-a1bd-42e6-bf97-7a0f8a97d2fe",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2282
+  },
+  {
+   "query_id": "e80eb6e1-0a8b-42c9-9fcc-e63054b7f997",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2126
+  },
+  {
+   "query_id": "ae42f6a8-52f8-4cce-88ee-314c5f727a14",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 910
+  },
+  {
+   "query_id": "765be1b9-240e-44d8-8e26-1f3c9bd6830f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1509
+  },
+  {
+   "query_id": "74eb88f6-6541-404a-90ec-78b9c28cf900",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2195
+  },
+  {
+   "query_id": "5737cf07-1430-49c7-ba67-2588d053b898",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2657
+  },
+  {
+   "query_id": "280a4e11-a337-4fe8-bdb6-21a2214b1ad8",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2247
+  },
+  {
+   "query_id": "23310dc0-211b-4f1e-837c-6c95c6585d87",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1679
+  },
+  {
+   "query_id": "41f1a97f-5ece-4ae9-8496-0d50be26d25a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2299
+  },
+  {
+   "query_id": "134487ea-a3a7-4b6a-91ca-7fdf44ac4b70",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1937
+  },
+  {
+   "query_id": "30efeb53-a464-4ee6-b95d-7917bbd5e997",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1568
+  },
+  {
+   "query_id": "69b66067-9973-43b2-a87f-4eeb73411cb6",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1153
+  },
+  {
+   "query_id": "3d52fe13-1405-4aac-bde4-671f308a2d1e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2152
+  },
+  {
+   "query_id": "5b27ad5c-f45c-418d-8725-4b225ba564cf",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1062
+  },
+  {
+   "query_id": "800c0ef5-47b8-436e-8a2c-497fac360281",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1809
+  },
+  {
+   "query_id": "290a7f16-d803-4da7-ab51-5e66826e92f6",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1657
+  },
+  {
+   "query_id": "2a506613-0ce6-4b4b-9d9d-f6d3d0c82619",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 904
+  },
+  {
+   "query_id": "ce15d929-eec5-433a-ac6c-9760aaa18c4c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3555
+  },
+  {
+   "query_id": "b8dd0d60-0bec-4533-a5f1-bac2fd4637a6",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2555
+  },
+  {
+   "query_id": "fbd92d21-8b01-4ceb-a71e-eacb6971ef08",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1388
+  },
+  {
+   "query_id": "2adb3bee-aa27-46ad-97fa-755da3b4c331",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1982
+  },
+  {
+   "query_id": "12b76850-e3d2-4b43-99a0-49f83938ee29",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1663
+  },
+  {
+   "query_id": "f1c7fa36-6453-4e68-b4cb-34da25f9a810",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1607
+  },
+  {
+   "query_id": "e4056244-77b2-4fcc-854e-6acbfaa58891",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1284
+  },
+  {
+   "query_id": "af6f43cf-9fee-4e6b-9d14-f4c7ded84418",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1678
+  },
+  {
+   "query_id": "381aac2e-d4a5-45a9-b579-83226107cb6f",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2534
+  },
+  {
+   "query_id": "c7dafbda-a4b8-4a83-b8f8-a4e8b839ae02",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1685
+  },
+  {
+   "query_id": "610fe069-031b-4d12-953e-5d8f0a67a847",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1482
+  },
+  {
+   "query_id": "c8238977-ea69-421d-abc9-46e2a05c1e26",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1661
+  },
+  {
+   "query_id": "8b3d9dd7-0a1f-48e1-8572-f20817e30b9d",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1701
+  },
+  {
+   "query_id": "98625d77-bb94-4845-8982-fe19d03772e3",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3224
+  },
+  {
+   "query_id": "3342f04e-ab79-4314-9387-b2e875719d24",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1246
+  },
+  {
+   "query_id": "00a8e002-7740-4b1e-8f06-634159cb2f7e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2408
+  },
+  {
+   "query_id": "ccc953a7-4e1f-4023-873d-8e78915a95b3",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1040
+  },
+  {
+   "query_id": "2496d89d-2c3a-4275-a77a-b57f5fd930c0",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1582
+  },
+  {
+   "query_id": "29666862-d9f4-4fff-bd3f-abf4412b88ca",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1157
+  },
+  {
+   "query_id": "7018b434-1f63-4125-9d1c-a2732bede3e8",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2495
+  },
+  {
+   "query_id": "bbd84dec-b843-4168-be9c-e0f7f734a72a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1512
+  },
+  {
+   "query_id": "065874de-6b4e-4b2b-b61e-a51125a91ac8",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2128
+  },
+  {
+   "query_id": "afe812b9-fc52-4e08-9c20-c557e93f7bdb",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1633
+  },
+  {
+   "query_id": "391521cb-465c-4bdd-85cb-e190d8518c88",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1221
+  },
+  {
+   "query_id": "005900e8-50e1-4d48-8c8f-73d1f0e149c3",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1329
+  },
+  {
+   "query_id": "d8d83c95-8c61-44be-b2bf-69994a57598d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2169
+  },
+  {
+   "query_id": "399720a7-e8e2-4222-adf0-3aeb76f6147d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1176
+  },
+  {
+   "query_id": "650ff1b6-1512-40c6-b692-7a71d0f25440",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2071
+  },
+  {
+   "query_id": "91c539af-0d23-4fdf-9939-d07107a9300c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1673
+  },
+  {
+   "query_id": "3db0fe2c-b97f-4cfd-8728-cfed21fc7078",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2200
+  },
+  {
+   "query_id": "b31eadb7-3cc8-45f6-b5e4-c457c4a5bf5f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2189
+  },
+  {
+   "query_id": "b662954b-fbc8-4c98-a9dc-a05fd37e54fe",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1444
+  },
+  {
+   "query_id": "07b8446f-1db5-4e5c-9f64-65cafec79d1b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2581
+  },
+  {
+   "query_id": "95bbb5ca-fd12-4eb5-b9d7-32998bfd07ea",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1533
+  },
+  {
+   "query_id": "97dd361d-470b-435f-84b7-e5c5bec1344d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1635
+  },
+  {
+   "query_id": "8a0fe9e5-a626-42a3-910d-430083653880",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2655
+  },
+  {
+   "query_id": "926e570d-e487-4603-a867-45e9117bfc25",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1160
+  },
+  {
+   "query_id": "2be8ae60-c739-4a28-9937-268fdde2c2aa",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1293
+  },
+  {
+   "query_id": "3c8ea064-a70b-4b70-b9b8-117dad1f88fb",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2125
+  },
+  {
+   "query_id": "41a690a1-1372-4bd5-84e9-cd9378aa6fb5",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1885
+  },
+  {
+   "query_id": "ec5f1857-ceae-4fa0-b2a6-414ce3868635",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1501
+  },
+  {
+   "query_id": "457d5ee0-439a-47e2-b7be-feb8e056ef7b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1712
+  },
+  {
+   "query_id": "b2a5d591-9bd3-4f2d-be0e-88645abf594d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1000
+  },
+  {
+   "query_id": "17cb796d-4019-4804-9e91-a16720270e46",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1259
+  },
+  {
+   "query_id": "fc0df74b-afe0-4c73-90fc-76babc09d72a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1840
+  },
+  {
+   "query_id": "b4b555d3-c6d1-42cb-b2ae-71b33f77f90f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1483
+  },
+  {
+   "query_id": "326e8dca-6499-43d1-8930-5e78e8a02859",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1379
+  },
+  {
+   "query_id": "cd96efe3-89bb-4e58-80a7-2fd59770b410",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1524
+  },
+  {
+   "query_id": "ab966fbd-1437-452c-afe9-b3e42c3fa340",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1560
+  },
+  {
+   "query_id": "e73859bd-e7eb-44c4-9500-9c3e17db02b7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1842
+  },
+  {
+   "query_id": "559437e1-5787-4589-9c55-fec0454db640",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1016
+  },
+  {
+   "query_id": "3f0f56c5-3713-48cf-8160-f50da6cd3568",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1510
+  },
+  {
+   "query_id": "9d59d0fb-888f-4cf3-8876-98999a8e57d6",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1622
+  },
+  {
+   "query_id": "0843db80-207f-463e-9cac-4636b0f9cdbd",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1029
+  },
+  {
+   "query_id": "a69c25c5-805a-41ed-bba0-6892e1cdedf1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1786
+  },
+  {
+   "query_id": "a4e1c0b4-3810-430d-8d74-f2a7ca636be8",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1134
+  },
+  {
+   "query_id": "8e99fd83-8e9b-48f9-8821-647af456f782",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1753
+  },
+  {
+   "query_id": "b3413785-1d71-4164-bfc9-a4a7f5babf71",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1594
+  },
+  {
+   "query_id": "a769efa5-530a-4204-9967-770774775be8",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1356
+  },
+  {
+   "query_id": "782d8b51-b6da-4a32-9fdc-e1ba95e33349",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2015
+  },
+  {
+   "query_id": "21868f67-1042-4063-b8ec-366d6adcd018",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1716
+  },
+  {
+   "query_id": "e88f87b4-b46d-4aa8-a41d-df20b9f8ed58",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1366
+  },
+  {
+   "query_id": "64867a92-2ea9-4291-8175-9857eb119f25",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3245
+  },
+  {
+   "query_id": "a7afc31d-74e7-4b9d-bf51-4988520f66fe",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1302
+  },
+  {
+   "query_id": "451d4bb5-b54b-4248-a3b3-6349e112d2d5",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1488
+  },
+  {
+   "query_id": "f9cb31ef-aadb-4bc3-b686-a77bd028eb4e",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1902
+  },
+  {
+   "query_id": "e9c37bcd-447b-42bc-9d10-edc19e25ca87",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2578
+  },
+  {
+   "query_id": "1439e6c1-9f0a-4338-b624-680b95f8977f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1246
+  },
+  {
+   "query_id": "c15cac7f-3f15-4c47-90ab-12aa3e596c49",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1927
+  },
+  {
+   "query_id": "b87e45bc-9544-4f59-8258-faefa033b01c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1912
+  },
+  {
+   "query_id": "2a248557-404e-4d87-8872-e53a1b12aa8d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2099
+  },
+  {
+   "query_id": "dffa45e2-98db-4dfe-9e2a-6e20ec33ffee",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1626
+  },
+  {
+   "query_id": "d59a4957-04c7-4031-b4b6-1f8f9de94fa9",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1192
+  },
+  {
+   "query_id": "bdeda626-874b-47ce-bf4b-599ba4160385",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1443
+  },
+  {
+   "query_id": "3a997722-6ba6-46f3-b412-f6598a5fd681",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3493
+  },
+  {
+   "query_id": "e9adeb70-512d-4d61-a19f-a67f953cb9be",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1481
+  },
+  {
+   "query_id": "118e8952-6d38-44bf-8977-ce28a9e19bd1",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2926
+  },
+  {
+   "query_id": "e87db63d-1b1a-4d33-bb42-a6def2352256",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1699
+  },
+  {
+   "query_id": "4d2221ad-f0a1-4bf3-9209-1f35d40774a9",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2322
+  },
+  {
+   "query_id": "0b103bf2-8fb2-4a07-8647-5b38b7970451",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1256
+  },
+  {
+   "query_id": "641e5569-5cb8-45bd-9c78-fb57be48bd5b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2361
+  },
+  {
+   "query_id": "b5b7f570-93fa-419c-aef3-cff5559ecd85",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2252
+  },
+  {
+   "query_id": "1235ced6-5cfd-4f62-9392-a90bee91cad8",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1352
+  },
+  {
+   "query_id": "d06b0d89-c405-4953-b620-67576da9f859",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1376
+  },
+  {
+   "query_id": "71ef5290-fcc2-470e-892d-ca1d5de878ac",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1471
+  },
+  {
+   "query_id": "b15f1ad5-cd6f-4380-b19d-3118e1a601e0",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1601
+  },
+  {
+   "query_id": "1119e915-1a50-44b3-b8d6-fcf3bc0183ca",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2879
+  },
+  {
+   "query_id": "92ba481a-96b6-4cce-aa55-b4395e48ffb0",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1453
+  },
+  {
+   "query_id": "c099479d-aeef-4447-85d1-ec04ceec44a1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1706
+  },
+  {
+   "query_id": "a773f116-7e92-44e0-879c-e97a769a0898",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1163
+  },
+  {
+   "query_id": "4197a7e4-f2aa-4a09-9a49-b46f028c5f0f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2502
+  },
+  {
+   "query_id": "b816a7a7-1b12-4d9a-ab13-9f7006be7f4c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1595
+  },
+  {
+   "query_id": "54b2f4ef-eb74-4c65-9aac-642d0c16a36c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2464
+  },
+  {
+   "query_id": "b41aa3e8-fa40-40cf-8f8b-f05a06afa99d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2687
+  },
+  {
+   "query_id": "ee43a195-f3dc-4004-990e-c1a8106825cd",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2682
+  },
+  {
+   "query_id": "a4aec07a-3e3e-498e-93ef-261b6f59d029",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1566
+  },
+  {
+   "query_id": "17fde630-1417-46c2-93be-1330d5d5889f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1863
+  },
+  {
+   "query_id": "a3c15163-b491-4fda-b5e2-3a0cf3d64321",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1601
+  },
+  {
+   "query_id": "a866b467-ce1e-40be-b041-305d02fa9d6a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1943
+  },
+  {
+   "query_id": "5c046ab5-bfe3-4ff9-829a-5102128bdc23",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1294
+  },
+  {
+   "query_id": "4e15cf5b-ec35-47f3-9be3-6a554e0bf76a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1769
+  },
+  {
+   "query_id": "ec8e80d6-2f2e-4d79-9e41-0fa8e713edd2",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1450
+  },
+  {
+   "query_id": "b09f1547-ab02-4631-a054-1b3178ca4189",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1029
+  },
+  {
+   "query_id": "53f1baec-2502-4eb7-9aa7-7b3ea8e2a3fc",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2577
+  },
+  {
+   "query_id": "0fbd3991-06ce-44a0-9a06-6086ff7dbec1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2530
+  },
+  {
+   "query_id": "0f370d21-27e5-48a2-b311-d1194e46ce05",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1667
+  },
+  {
+   "query_id": "06dd8efa-18a8-48bd-828b-a8e3829ada41",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1825
+  },
+  {
+   "query_id": "bb5d97cf-6409-45ca-ad3c-e9aa5842d566",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2307
+  },
+  {
+   "query_id": "dade4808-8f74-44df-9ab7-1a4673a67ea3",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2412
+  },
+  {
+   "query_id": "a815095f-ebbe-4b18-8751-39135b6a669a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2134
+  },
+  {
+   "query_id": "d2941078-f07e-48d1-be4f-553873751264",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1730
+  },
+  {
+   "query_id": "3614e44e-5614-4792-ae02-38c75ffcd443",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1841
+  },
+  {
+   "query_id": "be2f69e2-9f4e-4597-8247-d9f1d2dfee9c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1829
+  },
+  {
+   "query_id": "23abcd89-2476-465e-bd05-976419b50632",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1414
+  },
+  {
+   "query_id": "cdbe591a-c3c5-415c-a0b1-20538e788365",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1448
+  },
+  {
+   "query_id": "ccacb92f-937d-4d3e-b35f-2720d2bb2caf",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2272
+  },
+  {
+   "query_id": "f6c78242-ce5d-4911-b6f1-a7dc21bd1b6b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2026
+  },
+  {
+   "query_id": "21d8c7d4-47d6-4920-af82-0fe232bdbbfc",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2206
+  },
+  {
+   "query_id": "df2eb12e-a8bf-459c-beff-f42c847479ac",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2054
+  },
+  {
+   "query_id": "d58ec062-2ff6-4f7a-9f60-5ccb36ad5040",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1715
+  },
+  {
+   "query_id": "d42325bb-7cab-4f0c-bc6e-2340628f22b3",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1846
+  },
+  {
+   "query_id": "059067b8-f669-4293-aa30-3f3d06b35573",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2222
+  },
+  {
+   "query_id": "1912ba33-8037-4a46-9019-d4c5761a8291",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1904
+  },
+  {
+   "query_id": "cc961a35-2ce7-4260-8f33-83d51605ce0c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1095
+  },
+  {
+   "query_id": "48667991-a6f8-4ae9-a8f5-b1994d80bf10",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1383
+  },
+  {
+   "query_id": "6391f149-ab9b-40fe-8087-c217c6dc0ecf",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1536
+  },
+  {
+   "query_id": "2e9a1d2a-f744-428d-b8a9-9216f4844b60",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1339
+  },
+  {
+   "query_id": "0b7397e9-3c32-41e8-a6dc-5bc60ca73f58",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2120
+  },
+  {
+   "query_id": "ea69c5ea-ad8c-458a-9a76-c3eba09c1384",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2081
+  },
+  {
+   "query_id": "5348d01a-f0ee-420d-a24a-893602b4300f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1317
+  },
+  {
+   "query_id": "c334f5f2-dfe7-4242-b3fc-98ad2074b484",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1475
+  },
+  {
+   "query_id": "c8c3bd98-3b88-4c76-b1cb-d9bb8962221b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1664
+  },
+  {
+   "query_id": "ad3ac8dd-91d1-4fc4-b1e5-aabb3c4bd2c0",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2704
+  },
+  {
+   "query_id": "10c855ae-6ced-45fe-8626-c6d8f20fcfe7",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1573
+  },
+  {
+   "query_id": "52c8ad48-c7a2-49b1-8e8a-ef84720cefeb",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1818
+  },
+  {
+   "query_id": "73c209d3-5cd1-42af-9e56-0a274c20cef1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1430
+  },
+  {
+   "query_id": "d0a81565-e167-42ab-ab2c-35b9d10cb49d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1336
+  },
+  {
+   "query_id": "db7b53d1-5661-4674-ada1-a553c7686610",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1558
+  },
+  {
+   "query_id": "3cb2557d-6b64-4c33-aaca-bf0c8aa3ac4b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1740
+  },
+  {
+   "query_id": "3c7b72e7-63c9-4d6f-b78d-65b6cc6ea1ce",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1503
+  },
+  {
+   "query_id": "3f91f34a-f4c6-4fb9-9dc0-ddf02b9bc6b7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1967
+  },
+  {
+   "query_id": "0706d3df-068c-4a73-b68c-ec1a5eb90479",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3626
+  },
+  {
+   "query_id": "48a97603-a1b0-4b8b-9715-ab1b40b6f02a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1476
+  },
+  {
+   "query_id": "ed29a940-e75e-4963-b973-a330dd9899dc",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1970
+  },
+  {
+   "query_id": "1c04cb4c-c302-4908-8388-f800bb6f0fbd",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2763
+  },
+  {
+   "query_id": "7bc9a123-a058-42d4-9edb-970c47b1a2f2",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1594
+  },
+  {
+   "query_id": "45613e29-1e58-44ab-b733-cf567d40e80a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2305
+  },
+  {
+   "query_id": "c747dce8-eae8-4292-b2e8-0aac42f60269",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1693
+  },
+  {
+   "query_id": "4f3c8b4c-6a01-4a09-b8da-d65302002132",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2042
+  },
+  {
+   "query_id": "ce7eec07-92a9-43e6-82e8-7568978a1a4c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1964
+  },
+  {
+   "query_id": "0098e2e5-34b5-4d23-9cd6-eada7769ee9c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2048
+  },
+  {
+   "query_id": "fdba5d65-2cb3-4e67-8206-b3059b3906e2",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 941
+  },
+  {
+   "query_id": "67049828-fff6-4edd-9137-f6f42095231c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1534
+  },
+  {
+   "query_id": "1c88eec0-62d4-4c7d-9e08-d0f334cb4838",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1402
+  },
+  {
+   "query_id": "c42c7f2b-8f03-43c8-bebe-de50c20768db",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1639
+  },
+  {
+   "query_id": "2fb6c527-c8b4-40fd-b1a5-a190aa513030",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2221
+  },
+  {
+   "query_id": "1b0bcc8e-27dc-4d38-a124-d4e5f96b75fa",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1499
+  },
+  {
+   "query_id": "fa45343a-81ba-4ef8-aa2b-8824f1fff244",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1279
+  },
+  {
+   "query_id": "1ba4e27f-df78-4b9f-a334-a00ab633f287",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1778
+  },
+  {
+   "query_id": "dbdf7061-ca4c-47ac-a68c-35b4d631eddc",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1621
+  },
+  {
+   "query_id": "495592e6-dfb8-4559-ae48-93c1c678b931",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1986
+  },
+  {
+   "query_id": "4e85a6e9-7b9e-4576-88c9-560b8d8227a1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1577
+  },
+  {
+   "query_id": "ec409dbf-8b17-4504-b502-530b81878a78",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1481
+  },
+  {
+   "query_id": "17bc1718-f9da-48c6-9f5a-a0b20b32f8f6",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2731
+  },
+  {
+   "query_id": "0b780aca-d9df-4354-aa0d-32470bb22837",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 814
+  },
+  {
+   "query_id": "9f8c7c96-3172-4f18-a698-f66dbfafd9f7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2643
+  },
+  {
+   "query_id": "547b7111-99cd-4bf8-aa5f-b3f725a6634a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1308
+  },
+  {
+   "query_id": "bd4c2096-8464-4a53-b529-3a63e34f83f9",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 710
+  },
+  {
+   "query_id": "3a6b0e89-3ece-4ff2-b60b-4180cc008d3d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1787
+  },
+  {
+   "query_id": "bc25894c-3094-42e1-b4cc-48d63dd7aa55",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2463
+  },
+  {
+   "query_id": "fc5eea33-0314-495b-8ff8-1df11c9478e3",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1098
+  },
+  {
+   "query_id": "47b6eae1-5076-461f-9622-5c25a8d520be",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2186
+  },
+  {
+   "query_id": "3977d1bf-1326-4763-9423-4cb7ccb4b6fb",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1226
+  },
+  {
+   "query_id": "63e55d2d-3d65-43fb-b393-6c4d4c08dafe",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1748
+  },
+  {
+   "query_id": "f379cbf3-483a-4e71-b504-13f90b168f42",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1168
+  },
+  {
+   "query_id": "da51e72d-7ba8-45b0-a8f5-c0a35d97bb3c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2507
+  },
+  {
+   "query_id": "f03db005-45ae-43a2-b936-2c4a88bf7c87",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2108
+  },
+  {
+   "query_id": "20673618-065e-4b77-845e-e28c48ca9bb0",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1633
+  },
+  {
+   "query_id": "d2662df7-d961-489f-8d9d-37474fc192a4",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2026
+  },
+  {
+   "query_id": "b36e57ec-5c60-4bcf-8b2c-ae1c5e6e2285",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2972
+  },
+  {
+   "query_id": "458e9f3d-4672-45ba-953f-be16c1bd0683",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1573
+  },
+  {
+   "query_id": "a72b88a3-0f6e-4ffa-99b6-2dd460d33013",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2513
+  },
+  {
+   "query_id": "acf121b5-8614-4ed1-98c5-0b920c7beee3",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1906
+  },
+  {
+   "query_id": "65b1f367-f7d4-4440-81ee-09fca50420e6",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1631
+  },
+  {
+   "query_id": "814103bc-6739-40db-b478-ed0ee605fbbc",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1527
+  },
+  {
+   "query_id": "77c85e22-b5ae-4630-bbc4-d3a7e04f1af1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1674
+  },
+  {
+   "query_id": "bd686277-f68c-48b2-afa3-8d7410be97cb",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2446
+  },
+  {
+   "query_id": "028e0c4a-2785-459c-90f6-d786ff87b429",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1765
+  },
+  {
+   "query_id": "2be40c46-ba8c-46f6-ae0d-1e6d0198efb5",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 795
+  },
+  {
+   "query_id": "b94e1855-fb4c-4474-9353-6d679bc23ab6",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1613
+  },
+  {
+   "query_id": "bfcc36cc-5f9d-4de7-8ea4-ebe51a86c96b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1607
+  },
+  {
+   "query_id": "61bf0e2a-0092-4c9c-adc4-986ddf23ca7b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2449
+  },
+  {
+   "query_id": "4be64f3f-fbc7-482a-8777-514b0da3e41e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1233
+  },
+  {
+   "query_id": "6e131376-7e00-4e08-90d2-6d13581f37ef",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1730
+  },
+  {
+   "query_id": "0832b242-2104-4e0f-8e8e-bb5642d73b5d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1892
+  },
+  {
+   "query_id": "c27f3717-84c2-45a5-9f0f-c446328798a1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 894
+  },
+  {
+   "query_id": "5a4c9e31-043c-4636-9ac1-0b3c19c2dcd4",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1574
+  },
+  {
+   "query_id": "ea5ba88d-d2d6-4d0f-a8dc-144cc756ce9b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2267
+  },
+  {
+   "query_id": "730de578-c843-4b19-bf43-4cc7b0c0fdb1",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 3109
+  },
+  {
+   "query_id": "fe8c04e5-81ae-4323-830f-86e483adc273",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1871
+  },
+  {
+   "query_id": "e0c8c32b-319b-42b1-acdb-1e2e3797be8b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3018
+  },
+  {
+   "query_id": "fcdb36de-8799-4ac5-9f84-c5805047b279",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1606
+  },
+  {
+   "query_id": "0022638d-6527-4605-af39-f1746f6251a5",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2120
+  },
+  {
+   "query_id": "f3bf1495-dfb0-4f12-a32b-bda4a7d16751",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1944
+  },
+  {
+   "query_id": "3468f448-3547-443b-b77d-2c62ec0c3eae",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1579
+  },
+  {
+   "query_id": "b06e5f5f-532b-46ed-82da-3e5b27ef3037",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1031
+  },
+  {
+   "query_id": "8ab09275-86f7-4c2c-9927-d61367413120",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1554
+  },
+  {
+   "query_id": "6416b81c-5f5c-412a-aba5-f499a5a14b48",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2674
+  },
+  {
+   "query_id": "b8bc1991-5a31-4bc7-a43c-da6c4caaafcc",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2708
+  },
+  {
+   "query_id": "073b9bca-d488-4a33-b101-7e8de18cced3",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1530
+  },
+  {
+   "query_id": "a7461937-8723-4cc1-8d93-506faef38a99",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1907
+  },
+  {
+   "query_id": "7126a54f-d4f3-40a5-83f4-4bdd942e13d2",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1810
+  },
+  {
+   "query_id": "38be1a42-8197-466d-92f1-4de07c1194f1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2073
+  },
+  {
+   "query_id": "0e7578ef-1b48-4ab2-98a1-267f2c17a1d4",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1534
+  },
+  {
+   "query_id": "89e6e89e-e9b9-4562-939c-f2c0f4f03757",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2047
+  },
+  {
+   "query_id": "b90c6ad2-4e76-4853-ae07-8ad3260d8733",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1140
+  },
+  {
+   "query_id": "0bd183e7-c7eb-4c6a-9e38-83fa0373b4b8",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2141
+  },
+  {
+   "query_id": "1d989d25-aaaf-4e6b-856d-b0d13b749922",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1532
+  },
+  {
+   "query_id": "1fc88bb1-f95c-4ae7-8057-5bb2dc368a26",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1137
+  },
+  {
+   "query_id": "2d09a746-6417-407d-b1a8-fcfc4fb6354f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1523
+  },
+  {
+   "query_id": "98e8fc8b-766b-4176-9db9-5e822a988923",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1338
+  },
+  {
+   "query_id": "47d21b1c-be8b-4769-b8c0-b6fbf40a971d",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2004
+  },
+  {
+   "query_id": "ef1bbc0e-9cae-400e-976a-6ca5648d1dba",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2160
+  },
+  {
+   "query_id": "cb2cea0a-4f83-4fe0-930e-fa4dc75b9353",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1290
+  },
+  {
+   "query_id": "f014b828-29d0-4b64-97e4-7e3278c99706",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1318
+  },
+  {
+   "query_id": "c412657c-cc77-4379-ac31-41c9eb61dde1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1349
+  },
+  {
+   "query_id": "f1ae072c-d9de-45ae-ba84-32d5217b3271",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2055
+  },
+  {
+   "query_id": "002906e6-fcca-4477-a852-160b687a0f2d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1385
+  },
+  {
+   "query_id": "c3baaf7b-f7b7-43b0-905d-0e016084edad",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1726
+  },
+  {
+   "query_id": "073d4b1e-7d6a-428c-8856-02d419ebd865",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1616
+  },
+  {
+   "query_id": "8e7fc726-8e2f-4ddc-b550-51eb472f8967",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2113
+  },
+  {
+   "query_id": "e7bbd427-fc72-4098-9aa1-48fef584a378",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1392
+  },
+  {
+   "query_id": "905b3eab-6faf-40bb-a959-74568b825f9c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1581
+  },
+  {
+   "query_id": "21188237-63a5-47bd-9831-9c126658cd39",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2552
+  },
+  {
+   "query_id": "a9c4c0e2-d339-48c5-b1ce-2200b7d080ad",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1851
+  },
+  {
+   "query_id": "221a9800-b447-4b2c-9dcc-fe4cca6973cc",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1708
+  },
+  {
+   "query_id": "fa53797e-21e5-4306-9712-3a5ba7f7b790",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1817
+  },
+  {
+   "query_id": "562d473c-75c6-44b8-9558-b6d64ad22090",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1580
+  },
+  {
+   "query_id": "8eda654c-490f-4460-98b1-8ef148ef6aa0",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1542
+  },
+  {
+   "query_id": "3fc3fe2c-59c0-452b-ad6b-a3a476ae971d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1481
+  },
+  {
+   "query_id": "30ac9a4a-6cd7-4697-969e-5b794fcae442",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1352
+  },
+  {
+   "query_id": "f0f3db2c-e747-4213-b43c-a69282c3ae12",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2670
+  },
+  {
+   "query_id": "3f2e341b-354f-474c-8b31-9f92f019e9c2",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1411
+  },
+  {
+   "query_id": "1f31e426-2154-4e85-81fa-04dbab3943c9",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1788
+  },
+  {
+   "query_id": "a2648b6f-e6c7-4571-9d11-28a73e3e4f66",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1578
+  },
+  {
+   "query_id": "f542e06f-08b4-4586-805c-9396851ee50f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2151
+  },
+  {
+   "query_id": "7a549e78-1121-40d3-b1f9-82009be01784",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2353
+  },
+  {
+   "query_id": "cf362bba-d6c4-4b96-9f71-8c197ec1120b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2169
+  },
+  {
+   "query_id": "773eb5bb-80d8-40b5-ba0a-5b810907c7af",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2054
+  },
+  {
+   "query_id": "ae2e6b93-a037-4280-a429-42a9ee8513aa",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1494
+  },
+  {
+   "query_id": "50cca201-4fad-4c70-a7ad-df273fb0a5d9",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1856
+  },
+  {
+   "query_id": "cf91b20c-8ac1-41cc-82e4-15cbb82c6e00",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1823
+  },
+  {
+   "query_id": "4ef923fd-63e6-490c-bdbe-834a0dea890f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1414
+  },
+  {
+   "query_id": "2a693bc7-d198-48ff-aeaf-9bc1bebb3a5c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 845
+  },
+  {
+   "query_id": "f2f3a596-1460-4691-93c8-90e553b24801",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1269
+  },
+  {
+   "query_id": "dfe50c8a-353e-4e59-8838-5a07b76dbf47",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1794
+  },
+  {
+   "query_id": "a0b26133-8642-44e3-bce0-0f897d668fb0",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1597
+  },
+  {
+   "query_id": "7f07401b-8e34-402e-b69c-e52db0f50a94",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1957
+  },
+  {
+   "query_id": "1339a120-c127-421d-b6e5-91bb05b520fc",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 957
+  },
+  {
+   "query_id": "8038bcfb-4711-499a-b315-927e7c1c5c47",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2283
+  },
+  {
+   "query_id": "bd671f0a-ca61-4c0d-ac09-fd543255fb24",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1881
+  },
+  {
+   "query_id": "c5ded383-3b8f-4b6e-9c27-b407b06c18a2",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2332
+  },
+  {
+   "query_id": "031bb5f6-0e80-4385-a594-bdb738b05621",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1758
+  },
+  {
+   "query_id": "13667031-78a3-402b-b875-966b89b3b201",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1528
+  },
+  {
+   "query_id": "d8bce61c-b1f9-4afc-85f6-41add7f259ae",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2158
+  },
+  {
+   "query_id": "1ddd2107-3026-466c-adfb-5bbc621e9606",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1683
+  },
+  {
+   "query_id": "c63db736-f2cb-44e9-b7e2-e26f39023bde",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2097
+  },
+  {
+   "query_id": "80326de8-d5f4-45e8-9512-a6b25997ba77",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1342
+  },
+  {
+   "query_id": "56762a0c-525c-4dae-aaf9-46448f614e0e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1950
+  },
+  {
+   "query_id": "322710d4-0ab9-4d0a-9a17-0829e0689777",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2071
+  },
+  {
+   "query_id": "fcf93617-018b-4535-b6f5-31d7106a1aae",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1391
+  },
+  {
+   "query_id": "87d3bca3-ff09-4061-b8d3-4fb546c6cf14",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1147
+  },
+  {
+   "query_id": "0469f907-22ac-4d53-a1e2-86db0979eea4",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2318
+  },
+  {
+   "query_id": "7ebbfb50-f5b5-47c1-a826-71dbd18367d8",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2413
+  },
+  {
+   "query_id": "c56cc463-2770-499f-a1fc-f808209e44b5",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1405
+  },
+  {
+   "query_id": "0856d5dd-72d2-433f-914e-4187076f7859",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1692
+  },
+  {
+   "query_id": "43d24061-656a-487d-b284-d21e3ed8dc75",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2103
+  },
+  {
+   "query_id": "dbe4f478-cf6a-4e99-935e-8d82e51a2cfb",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1794
+  },
+  {
+   "query_id": "8a3c2dcf-9aea-4051-9ac2-98b3bb242e3d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1254
+  },
+  {
+   "query_id": "0f72ee8a-4344-48f3-b891-25ce766cb2ee",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1569
+  },
+  {
+   "query_id": "7a237f3e-debf-4da6-a5c4-ab141b79579c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1461
+  },
+  {
+   "query_id": "b37f0d27-efdb-45aa-9225-7c337c24c2fa",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2033
+  },
+  {
+   "query_id": "004751de-f627-49fc-87ba-f8988ddb7080",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1844
+  },
+  {
+   "query_id": "b0d1ea1e-5aed-4362-bc61-5f6cfec638f7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1766
+  },
+  {
+   "query_id": "36d31792-8de8-4548-a9e8-4acb680970fb",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1941
+  },
+  {
+   "query_id": "b03f3afd-ea98-4456-98a1-e71f02523f88",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1436
+  },
+  {
+   "query_id": "14ce7b2c-013c-4fad-9185-1db053c3cc6f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1805
+  },
+  {
+   "query_id": "9adca59a-f3f1-499c-9a2c-bf5baccf03a6",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1426
+  },
+  {
+   "query_id": "3ebc0977-2029-460c-99da-f5366198a503",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2022
+  },
+  {
+   "query_id": "4423cd73-9f33-4c92-ae0b-67684e422c44",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2236
+  },
+  {
+   "query_id": "98d3d55e-95c0-43cb-9d9c-76dd21e0714b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1770
+  },
+  {
+   "query_id": "a07cde80-1fa5-4241-bbce-3460511dfce3",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1135
+  },
+  {
+   "query_id": "7dd97236-be38-46f4-a119-859e04b1ffc5",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1404
+  },
+  {
+   "query_id": "d6bb8c49-007a-496f-bb62-ac25b51d325c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2065
+  },
+  {
+   "query_id": "c8b41544-d6bd-4d2a-ab4a-4b3c59f18151",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1920
+  },
+  {
+   "query_id": "54c63b63-e22b-4434-8fdb-608e829061fb",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1152
+  },
+  {
+   "query_id": "096f4cfa-88eb-4d36-8f6a-4442cfd92f96",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2853
+  },
+  {
+   "query_id": "27cfeb7e-bd49-40dc-8f56-37a4c8a82575",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2356
+  },
+  {
+   "query_id": "840f668a-de2c-4ca8-a65d-4117c0f8ba56",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1296
+  },
+  {
+   "query_id": "1767b4ff-3252-44cf-b91d-d3f44a31f5d9",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2771
+  },
+  {
+   "query_id": "65e485f8-634a-4e98-91e0-8ac0bf70d2fd",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 3152
+  },
+  {
+   "query_id": "5b2c5b53-f447-46b0-a20b-6e23fb1bb324",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1269
+  },
+  {
+   "query_id": "7573ed90-d558-4583-a0ef-5214041677d1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2215
+  },
+  {
+   "query_id": "958c07e6-7614-4f92-9b3d-abd8e0aa52e8",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1630
+  },
+  {
+   "query_id": "f9b4ef4e-84bd-47c9-9b38-ebe519f77898",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1779
+  },
+  {
+   "query_id": "a6fcfcb1-3fa7-460f-8d8c-f72ae13500d4",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1854
+  },
+  {
+   "query_id": "d858c43a-0804-41dd-900a-aa7cfafcdced",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1432
+  },
+  {
+   "query_id": "77c6ce25-16ee-4e72-a17f-106d58fbe803",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2662
+  },
+  {
+   "query_id": "04cd92a2-2c21-46f8-ad22-2e3e64472e67",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2322
+  },
+  {
+   "query_id": "06075a21-ed63-4a38-9761-780a3c16a4f7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1398
+  },
+  {
+   "query_id": "4ddbe04a-945a-487b-a58f-dcab10e2acd1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2110
+  },
+  {
+   "query_id": "6b3923b2-40e9-4c2b-a398-458215d9cc31",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1859
+  },
+  {
+   "query_id": "1bb3e9a4-6abc-46fd-9f49-4cc251eec41d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2671
+  },
+  {
+   "query_id": "e6780f6f-aa9b-4dea-8976-bef2da52246d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2230
+  },
+  {
+   "query_id": "644e3f1e-cee4-4b6e-8ace-9bdef8a54341",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1699
+  },
+  {
+   "query_id": "38b65c54-9414-4db4-b55f-82d58dafe785",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2363
+  },
+  {
+   "query_id": "adfb6649-71d1-4d01-a29d-8e2804d4cd95",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1388
+  },
+  {
+   "query_id": "84200e7e-53b1-48c1-b4b9-9038298e396b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1602
+  },
+  {
+   "query_id": "6a51d7d5-57a1-42dd-b469-4ed2c8191be5",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1416
+  },
+  {
+   "query_id": "1aec5289-9123-40d7-a7a6-7a5097f1de2b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1774
+  },
+  {
+   "query_id": "b1065b95-64f3-41ea-8988-e5803da0bfba",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1701
+  },
+  {
+   "query_id": "5e81e9c7-dc72-4b2b-b0df-6d99c304d603",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1648
+  },
+  {
+   "query_id": "b5a85c4b-99cb-4b81-809b-bfda16e0a092",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1265
+  },
+  {
+   "query_id": "323f1279-b861-4e8d-a94f-ef56e2971b49",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2025
+  },
+  {
+   "query_id": "c98238f4-c55d-461c-bc3f-69506fdd8b2d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1035
+  },
+  {
+   "query_id": "65b032d5-2cd6-49a7-a706-1a3e1ae0e280",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1134
+  },
+  {
+   "query_id": "2b4c7dd8-cd5a-491d-a971-7710675446ec",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2453
+  },
+  {
+   "query_id": "54d28b2b-9cc9-45f6-89e1-e4f8663e2eca",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1985
+  },
+  {
+   "query_id": "300d2418-b618-48e7-9b26-79fad21c6694",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2149
+  },
+  {
+   "query_id": "8c35b258-5cd8-41f5-942d-abff44f89089",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2081
+  },
+  {
+   "query_id": "25d1d2c3-da70-4726-9417-a8448d7e1142",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1285
+  },
+  {
+   "query_id": "90de5a8b-5f84-4f2f-a3fd-769d13395243",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1654
+  },
+  {
+   "query_id": "a6dde40e-e744-4941-a12f-45b7875f396e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1411
+  },
+  {
+   "query_id": "669424fd-8a80-4e70-92ea-a70dc12f303e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1416
+  },
+  {
+   "query_id": "4d7ebe3c-f992-4286-8a1c-3ddc485e5920",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1417
+  },
+  {
+   "query_id": "f9477cfb-01ef-4e66-9c63-f3e6f2edaaf4",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2233
+  },
+  {
+   "query_id": "d69aff36-9ed0-44a8-b599-47b52f6e5be2",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1657
+  },
+  {
+   "query_id": "85fc9bde-f102-4119-8dfc-3bf8865ecf42",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1374
+  },
+  {
+   "query_id": "32a27a28-e34f-4bb6-8aba-2e4b786fbcff",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2463
+  },
+  {
+   "query_id": "20cdd99e-c74f-462c-b227-e8d4ca87fcc4",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1539
+  },
+  {
+   "query_id": "8996018a-a5bb-4007-8447-fdfacc2a3ea4",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1906
+  },
+  {
+   "query_id": "ac1e9ee6-e359-4522-b825-6885a1e347a8",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2532
+  },
+  {
+   "query_id": "c407c751-4b74-4916-9d5a-89d5c1602be6",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1410
+  },
+  {
+   "query_id": "b01aae4e-8852-48d2-a246-00397a883a19",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1478
+  },
+  {
+   "query_id": "a23474dd-afc8-4983-afd8-bd9ee54fa7ae",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1502
+  },
+  {
+   "query_id": "a6cfd597-3a1f-4341-aebe-b54fdad3707f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1755
+  },
+  {
+   "query_id": "1fbe103d-3ffa-44ef-b32d-576f8c6848ce",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1153
+  },
+  {
+   "query_id": "99936278-3ae2-40b7-8073-8ff7ee904e9a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1356
+  },
+  {
+   "query_id": "ace2d359-cf68-4504-b6aa-eee876ee6c84",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1800
+  },
+  {
+   "query_id": "d3f7e660-8dc4-4c92-9a5a-103201fca99b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1078
+  },
+  {
+   "query_id": "49052a3a-acf3-4a58-a7cb-d34716ab5655",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1853
+  },
+  {
+   "query_id": "6ce01927-e759-44e1-b41f-6ffb0c1fe218",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1311
+  },
+  {
+   "query_id": "7c634f2e-aec5-4c8a-8579-b68c61bdba17",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1628
+  },
+  {
+   "query_id": "9cdc6f88-589c-469e-9b91-b19ef87e3570",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2090
+  },
+  {
+   "query_id": "c8936463-e49b-4e18-b60f-767e7a03e009",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2638
+  },
+  {
+   "query_id": "e49b407f-aa30-4599-aa4c-3baddf8096ae",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1918
+  },
+  {
+   "query_id": "1c88ffbe-2d92-44bb-ad52-68dcdc876542",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1997
+  },
+  {
+   "query_id": "dd84c789-081f-4b11-b573-35ee237b51c5",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1863
+  },
+  {
+   "query_id": "3b729bc0-3cbe-4245-b932-eddbcd8e08c8",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1583
+  },
+  {
+   "query_id": "1bc7a101-028e-496a-8893-15a389f991e4",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1278
+  },
+  {
+   "query_id": "94359ba9-952d-4f31-be36-b5052b3869c1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2006
+  },
+  {
+   "query_id": "05711f0b-da9c-45b4-b64d-6643a958a5c9",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 915
+  },
+  {
+   "query_id": "8ba4703f-5983-4aab-9144-f40f42b59025",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1673
+  },
+  {
+   "query_id": "954ba874-0d72-4f9f-9a82-8b43ff698b09",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2422
+  },
+  {
+   "query_id": "ae39b3a7-3004-4cc3-8444-329d22698342",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1076
+  },
+  {
+   "query_id": "f3960ac5-955e-4137-821c-f3736161809b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1611
+  },
+  {
+   "query_id": "ad500adb-e3e3-4b8b-949d-538f5aefdb3a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1298
+  },
+  {
+   "query_id": "d75ab477-1b9d-4b14-b6cb-5ef42536ef97",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1492
+  },
+  {
+   "query_id": "a1fd9bb4-9656-4cb0-a3e5-21595edb2823",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1100
+  },
+  {
+   "query_id": "408f1762-eee0-41a2-bf65-16f7a68449bb",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1190
+  },
+  {
+   "query_id": "2c04412e-3778-4be8-9b39-13454f186670",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1331
+  },
+  {
+   "query_id": "5820db53-5831-4946-9b5d-3b4a104d6afe",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1642
+  },
+  {
+   "query_id": "d25a3e07-6bb5-4678-aaab-7397e9c0427f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3368
+  },
+  {
+   "query_id": "2a8fda84-ff26-4441-b30c-8aacc5c5c5de",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1334
+  },
+  {
+   "query_id": "fef6b05a-41d2-440b-be6e-c38eb383d3b2",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 991
+  },
+  {
+   "query_id": "54cfa358-89bb-4ee8-8ffb-b5f139bf9845",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1740
+  },
+  {
+   "query_id": "32d48269-6755-4dc8-aab5-421abe21340a",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2162
+  },
+  {
+   "query_id": "a5a8a734-17d2-4126-8654-b4fc1f21b2f3",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1729
+  },
+  {
+   "query_id": "ab7395ce-ccf7-4c97-a2b7-cb7fbe8ae29c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1532
+  },
+  {
+   "query_id": "d88de8d1-0b53-4dda-b090-846f3c4384e9",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1743
+  },
+  {
+   "query_id": "549d88eb-06d2-4273-90f5-f252a0938fee",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2012
+  },
+  {
+   "query_id": "a897633c-26fa-4ba2-9bb8-d523fcaba9f1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1373
+  },
+  {
+   "query_id": "ed8529bd-fe02-45d0-a8c2-a6b94d9d1a93",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2016
+  },
+  {
+   "query_id": "1e49f7da-eedc-47db-b143-c271a88a05b7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1980
+  },
+  {
+   "query_id": "70e9cc92-817e-489c-acce-8bc193b25e16",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2533
+  },
+  {
+   "query_id": "bc661c7a-5ddb-488a-9dd9-a61bd4ceb4a4",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1315
+  },
+  {
+   "query_id": "b78b2d86-cc25-44b9-ba98-924e3b833be0",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1504
+  },
+  {
+   "query_id": "02dd9778-dbc6-4666-97ba-eb47df73b6b5",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1916
+  },
+  {
+   "query_id": "4de08609-ec1c-44da-9085-f56b01e29566",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1270
+  },
+  {
+   "query_id": "76eb7ba5-e510-475d-a29c-610a952434f1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2223
+  },
+  {
+   "query_id": "cff4dcf3-34fa-4962-9011-5d94e7f8aecf",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1005
+  },
+  {
+   "query_id": "72d29a53-bb75-4ab5-b7b1-52976f432461",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2684
+  },
+  {
+   "query_id": "4a1c26f1-9063-4290-8a1f-1abeafd11123",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2240
+  },
+  {
+   "query_id": "9ca329d8-c56a-4cca-b0c0-858c103a7c2d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2231
+  },
+  {
+   "query_id": "781e9ec3-7c9c-47ed-abd4-46b90ca6bb5f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2379
+  },
+  {
+   "query_id": "8d531cf0-c353-4b88-af82-d3934300621b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1542
+  },
+  {
+   "query_id": "4a80e2ea-f563-4799-8ea8-3b5ee73984ac",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1826
+  },
+  {
+   "query_id": "11ce41a3-216b-465f-918c-68094f2dda50",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2641
+  },
+  {
+   "query_id": "8461c3a1-010e-4680-a76f-07a942b1e326",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1879
+  },
+  {
+   "query_id": "23e31103-b8ea-4ee1-b81f-2f133ff8367f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2114
+  },
+  {
+   "query_id": "3c364f1b-5c4b-425f-8885-6c7a27ca26e9",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2367
+  },
+  {
+   "query_id": "60608452-8bd3-4e8b-88bb-831ac7a6ddcc",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1941
+  },
+  {
+   "query_id": "6b93523d-c040-4eff-af8a-0b26ad6c92fc",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1838
+  },
+  {
+   "query_id": "7a9701d5-48f3-4892-a956-7fc12a3cb776",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1632
+  },
+  {
+   "query_id": "f6d79804-7a60-4427-acd9-3c0aa5e7e2b6",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1448
+  },
+  {
+   "query_id": "992623d9-5c46-4b49-85dc-78a4d95d787d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1852
+  },
+  {
+   "query_id": "0c391ad1-fe52-4368-a770-302522a771d2",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1978
+  },
+  {
+   "query_id": "c805ff58-4609-408b-ac81-aa874b02524e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1951
+  },
+  {
+   "query_id": "f0e4207c-0659-442b-be0b-5becf3ec721c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1517
+  },
+  {
+   "query_id": "9e835c2c-5d0c-4d4e-901a-55de7494353b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1248
+  },
+  {
+   "query_id": "c2b2f3b1-8dcc-49f6-b5e8-c9aab38c20aa",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2658
+  },
+  {
+   "query_id": "b0d55664-5af3-4852-ab97-a622e1c56217",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1682
+  },
+  {
+   "query_id": "93859a64-1f87-471b-910d-0aa1d6f3ccf4",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2223
+  },
+  {
+   "query_id": "ad6e2426-3587-4981-9208-e99e021a3e41",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2195
+  },
+  {
+   "query_id": "287dd3f7-7535-453c-8df6-de2e17498346",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1689
+  },
+  {
+   "query_id": "07d99bcc-bb25-40c8-9766-771a29d1b8a1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1847
+  },
+  {
+   "query_id": "6c096445-5a26-47b7-8860-0905807cda87",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1810
+  },
+  {
+   "query_id": "486adb0f-b8d2-49f9-acdd-ebd8b516e17d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2584
+  },
+  {
+   "query_id": "1d3fad2b-8279-4ef3-9885-dff89ea5b5ba",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1557
+  },
+  {
+   "query_id": "039aa96a-4c62-49bb-994c-60a5d532c8e1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1300
+  },
+  {
+   "query_id": "06a8ad46-c984-4b63-ae78-b767afeeebbc",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3055
+  },
+  {
+   "query_id": "ad37438a-daeb-4fa1-8abe-901471a60ad6",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2298
+  },
+  {
+   "query_id": "62e1d04c-f257-4f52-9767-272c3b832344",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1503
+  },
+  {
+   "query_id": "467ed55c-6f8c-4573-8e51-2e50bda21a28",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1275
+  },
+  {
+   "query_id": "533b81cd-8663-46a2-978c-f8feb9befc36",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2022
+  },
+  {
+   "query_id": "be56a024-aabc-4b03-bf08-b0915919537e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1697
+  },
+  {
+   "query_id": "4ca14e30-61eb-4dd2-a24c-418d9ebf3631",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2222
+  },
+  {
+   "query_id": "8b0f948f-b3c5-4afc-b915-1b02b4fc0ac4",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2971
+  },
+  {
+   "query_id": "2be58e76-66c6-44ad-92ff-999136541df5",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1775
+  },
+  {
+   "query_id": "e247dddd-76f8-4bb6-ba56-83b86ba14605",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1732
+  },
+  {
+   "query_id": "b463de14-9add-45a4-97d7-13946cc499c7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2180
+  },
+  {
+   "query_id": "db214051-d60c-4973-9de8-8ced45886e5b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1347
+  },
+  {
+   "query_id": "2152e76d-a18e-453d-8e3b-d90632c70e82",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1651
+  },
+  {
+   "query_id": "3137d3eb-3311-482c-a984-25e21e13a68d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1516
+  },
+  {
+   "query_id": "f501d03b-5070-41b3-99a0-607b0e314b3d",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 992
+  },
+  {
+   "query_id": "16906bde-4f98-4778-8ff6-4079a177b4a3",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1242
+  },
+  {
+   "query_id": "bb559abe-1f60-49f1-a7c3-886758cb49bf",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2276
+  },
+  {
+   "query_id": "7b01867c-3a8a-4d36-b297-f03bc5731b31",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1931
+  },
+  {
+   "query_id": "1a958d01-2a10-40c0-a007-be00b3b5c313",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2053
+  },
+  {
+   "query_id": "ef5f180b-35a4-490d-9e8a-808fc80fd407",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1558
+  },
+  {
+   "query_id": "82bfce1a-1602-47b8-836b-c003596d99a2",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1246
+  },
+  {
+   "query_id": "6a1cb327-e547-4910-93e9-d9e1ac74ff5b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1775
+  },
+  {
+   "query_id": "53e6bb51-6a87-4c58-914f-5a0e2fe16d3e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1561
+  },
+  {
+   "query_id": "2e284b18-88e3-42b9-bae4-24a599b6c3b5",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1719
+  },
+  {
+   "query_id": "c89f17c8-1938-4b56-b1c8-c9f92e39ff16",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2602
+  },
+  {
+   "query_id": "fd539a27-604a-486a-bad2-252a3af65783",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1270
+  },
+  {
+   "query_id": "1e9313a3-3a69-4a1d-9398-a8e10ce75622",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1084
+  },
+  {
+   "query_id": "c4796f28-d902-4e1a-809e-760e4f6b2417",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 3557
+  },
+  {
+   "query_id": "0f17efd5-4819-4593-917d-0a414210680e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2276
+  },
+  {
+   "query_id": "b9482b93-696a-4150-bd55-d876143c2821",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1529
+  },
+  {
+   "query_id": "458a5972-4080-4020-a0f6-8e30cf6a0b7b",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1622
+  },
+  {
+   "query_id": "9911bbf5-c61e-4982-b29e-b09762726b87",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1086
+  },
+  {
+   "query_id": "cfa29985-00a2-483c-a09c-91b9210b637a",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1529
+  },
+  {
+   "query_id": "50ec7734-a042-4f8c-acbc-bb6b838e6762",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1535
+  },
+  {
+   "query_id": "fd0ea959-187e-41f7-9b5b-dc5ac8d989a9",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1513
+  },
+  {
+   "query_id": "6c08ab77-0183-46df-9c79-2254af3d04da",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1389
+  },
+  {
+   "query_id": "c47e914a-3e21-446f-b7fc-bb89daecd98f",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1713
+  },
+  {
+   "query_id": "dc2545c1-5e6e-45e5-87e6-56bed3957dbc",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1817
+  },
+  {
+   "query_id": "ad54687e-5e8f-4af7-a2b0-1485c71d38d2",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1941
+  },
+  {
+   "query_id": "8516de10-988c-4284-a0ab-c4a8f6e66502",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1854
+  },
+  {
+   "query_id": "704e75a3-0cef-4556-b506-6ecd96fad710",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1786
+  },
+  {
+   "query_id": "9cb9042d-b419-47f6-aadb-9ffe078973b8",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2206
+  },
+  {
+   "query_id": "3e611f33-df60-4425-9009-24e9527ef95e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2047
+  },
+  {
+   "query_id": "877d0afa-05d6-4c59-b1f0-4e3daf0c8b6f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1802
+  },
+  {
+   "query_id": "e786a9ad-1810-402e-a8b5-4c7db80e4b7f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1559
+  },
+  {
+   "query_id": "0d54e718-d427-4f72-99af-d1dac8505077",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 678
+  },
+  {
+   "query_id": "22ae8f5b-f36e-447f-96cc-bdcb5a060278",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1584
+  },
+  {
+   "query_id": "cce3b525-002f-4672-a3d0-a1191055fd7f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1500
+  },
+  {
+   "query_id": "55c662a4-0acd-43a1-9541-3615357b8102",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1910
+  },
+  {
+   "query_id": "b14218a1-09cd-46d5-9bf0-ee4d0b1112fb",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2637
+  },
+  {
+   "query_id": "e09ef77d-4fe2-4873-a6cc-cd590a1dbbca",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1979
+  },
+  {
+   "query_id": "7a7897d6-2dc4-4a9a-825d-8dbe8d5212c0",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1322
+  },
+  {
+   "query_id": "90698197-1684-487d-a6bf-31f6f3ed2c56",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1191
+  },
+  {
+   "query_id": "b28aac3f-7356-488e-a145-ff76f0049dba",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2258
+  },
+  {
+   "query_id": "a23e2071-3b35-4834-96fe-cf7c3cf9b43c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2263
+  },
+  {
+   "query_id": "ee697a22-63a0-48bb-8a30-f3bfe43f52c4",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2617
+  },
+  {
+   "query_id": "14d3846a-0dea-4fa7-b03f-d5c73e0ae489",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1301
+  },
+  {
+   "query_id": "c8a4b210-62b9-4216-aad3-6bf8307a0c0f",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1064
+  },
+  {
+   "query_id": "aa0e4d93-787b-4169-9d67-9ba441540d7d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1833
+  },
+  {
+   "query_id": "d390548d-73ee-4700-91db-a1d366c40cae",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2112
+  },
+  {
+   "query_id": "edec3267-1886-43b9-9424-b1afb6568605",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2042
+  },
+  {
+   "query_id": "043b605f-3dc5-475d-8ea7-1e7ff77bdac7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1578
+  },
+  {
+   "query_id": "74696480-663c-4fac-a0a1-4a4bcde379b7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1274
+  },
+  {
+   "query_id": "80076c28-d6fb-49f5-bac5-66ac08164442",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1507
+  },
+  {
+   "query_id": "20137b79-0837-4a86-a5a1-eaeb23d19e69",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2169
+  },
+  {
+   "query_id": "b164b538-c025-44a6-b0cd-6569b2b99a26",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1835
+  },
+  {
+   "query_id": "219960d9-6cb7-4265-9450-4957acfd4593",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1542
+  },
+  {
+   "query_id": "e7001b68-483e-4e16-aa69-f872362792e7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1836
+  },
+  {
+   "query_id": "15edf967-3622-491e-88fd-1a484e7721ae",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1429
+  },
+  {
+   "query_id": "7ff1b7f6-c899-4174-9617-dd74016de25d",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1968
+  },
+  {
+   "query_id": "63f91344-4886-4fbb-a3ab-4c910645570d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1411
+  },
+  {
+   "query_id": "562dab00-a010-42c0-af83-0391c5a2066c",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1998
+  },
+  {
+   "query_id": "1f1b83b3-9a69-49ea-8dbf-360ac5914acc",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1739
+  },
+  {
+   "query_id": "e7ede847-da9a-4cd6-8dda-a71b73325c7a",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1739
+  },
+  {
+   "query_id": "b80e3e52-b719-414b-a950-3b21039e716d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1506
+  },
+  {
+   "query_id": "080d0eb5-fa49-44f1-88db-7fa9779f32e1",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1249
+  },
+  {
+   "query_id": "3478a8e4-0f67-48ae-8949-d07f8a89e17d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1626
+  },
+  {
+   "query_id": "c18a85f0-98d1-4130-a65f-70d1982e0c6b",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1308
+  },
+  {
+   "query_id": "cbd0d928-0270-488f-ac1b-a73b000bef91",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2773
+  },
+  {
+   "query_id": "5637938d-a498-4f82-99a9-4230c22d1f02",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1373
+  },
+  {
+   "query_id": "015f728f-9880-4219-8868-8cd4c6698b62",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1666
+  },
+  {
+   "query_id": "04e91652-a095-43dd-b0e0-37c1ebf521e4",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1448
+  },
+  {
+   "query_id": "2c1fadd1-a40a-4c68-ade9-9c3c72297f45",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1218
+  },
+  {
+   "query_id": "4a8d5e68-d982-41c2-9ff8-3ad4f5aaa874",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1353
+  },
+  {
+   "query_id": "0f5d3a3b-0259-4431-a29c-0757d0f644fb",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1336
+  },
+  {
+   "query_id": "d333871e-3eb3-4fd9-b85f-b3ecf9d7f81b",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1802
+  },
+  {
+   "query_id": "3391a9d2-47fb-4cf6-a39e-a52dab273617",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1971
+  },
+  {
+   "query_id": "7be29750-0973-4be9-9d10-134d38077eaa",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1892
+  },
+  {
+   "query_id": "f3e3d2d1-ad94-4557-9539-3688655ba351",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2247
+  },
+  {
+   "query_id": "bb5e63e6-d756-4061-9aec-7f1b0ecc6d26",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1300
+  },
+  {
+   "query_id": "ba716dd3-b6c1-4b6d-b18a-0a9b0f59a737",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1451
+  },
+  {
+   "query_id": "28d0beea-04b9-4772-9fce-1dcc6e7842d9",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1792
+  },
+  {
+   "query_id": "7c7e5ab6-689f-4d6c-945c-9b595dda0a40",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1694
+  },
+  {
+   "query_id": "a2bb86b4-31fa-4537-8030-9ef529073330",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2182
+  },
+  {
+   "query_id": "60dde310-bb67-46e2-95a4-3fd907bd2ad8",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1577
+  },
+  {
+   "query_id": "0e981ca6-7cdb-404f-a9e3-bb66daea571e",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1905
+  },
+  {
+   "query_id": "05465454-4597-4e80-aae2-f3d420e9f0b2",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2530
+  },
+  {
+   "query_id": "cb21b145-ee18-4f62-9fcf-fde896df953d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 878
+  },
+  {
+   "query_id": "729a22b9-322a-493d-9abe-f5526cc8dad7",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3040
+  },
+  {
+   "query_id": "c7c159af-3a95-47e4-942d-98c1824c5e41",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2051
+  },
+  {
+   "query_id": "d978e08a-b31d-47b2-9c1e-a7e278ff239b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1111
+  },
+  {
+   "query_id": "4b40a4dc-4beb-486f-a538-f238bb139711",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1603
+  },
+  {
+   "query_id": "3a95b50f-8fbd-485c-8f47-dab71310c46b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1600
+  },
+  {
+   "query_id": "4b1bd790-dbf5-4cc0-904f-84a61bbe27f4",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1290
+  },
+  {
+   "query_id": "2ab11b51-248d-4dba-a61c-4fa5aebfd45d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1625
+  },
+  {
+   "query_id": "0c8f67d9-8375-4083-854a-f1e5ef870779",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1500
+  },
+  {
+   "query_id": "e42ff70b-4740-4a08-85a0-0133bb36861f",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 941
+  },
+  {
+   "query_id": "dbbb76a3-2702-46e6-b8df-fecd48e32cc2",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1201
+  },
+  {
+   "query_id": "0b501166-28ed-4f99-84e4-ba567213c903",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1987
+  },
+  {
+   "query_id": "10f2e688-cfd8-4c5b-9530-c788837165a2",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2444
+  },
+  {
+   "query_id": "70bb857f-2552-4deb-9229-c1bb6f177ca4",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1901
+  },
+  {
+   "query_id": "4319945c-693c-45ef-9e6e-7e48ae80a780",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1412
+  },
+  {
+   "query_id": "7403a3b8-3b4a-4909-a879-33609f2f1330",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2276
+  },
+  {
+   "query_id": "8685c853-95dc-4f9f-9ffc-5e198fd6c43b",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2105
+  },
+  {
+   "query_id": "a07d04d5-77f6-4e89-bdbb-2c330f1a6044",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1821
+  },
+  {
+   "query_id": "956029ed-6cdd-4f94-be5a-a12c909b8714",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1425
+  },
+  {
+   "query_id": "5e62f220-7961-47c7-a5d0-8f4b4d2bc566",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1163
+  },
+  {
+   "query_id": "5627cf59-c0ec-4ab9-ac36-15ba843cab7d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2544
+  },
+  {
+   "query_id": "766059bb-5fcd-4a81-965b-e6f4c13a08a0",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1176
+  },
+  {
+   "query_id": "eb7e59f1-32c9-4d0b-b90d-ee50273c062d",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2022
+  }
+ ]
+}
