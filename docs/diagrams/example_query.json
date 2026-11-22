@@ -663,5 +663,14 @@
         "title": "Treatment of nonalcoholic fatty liver disease: role of AMPK."
       }
     ]
+  },
+  "guardrails": {
+    "topic": "biomedical research",
+    "verdicts": {
+      "prompt_injection": false,
+      "off_topic": false
+    },
+    "status": "ok",
+    "rows": 5
   }
 }

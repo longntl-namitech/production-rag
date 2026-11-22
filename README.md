@@ -20,7 +20,7 @@
 
 | | |
 |---|---|
-| **17 method folders** | Parsing and chunking, sparse, dense and hybrid retrieval, reranking (cross-encoder and LLM), LLM query rewriting, context expansion and compression, fact check, retrieval sufficiency |
+| **18 method folders** | Parsing and chunking, sparse, dense and hybrid retrieval, reranking (cross-encoder and LLM), LLM query rewriting, context expansion and compression, fact check, retrieval sufficiency, input guardrails |
 | **4 public datasets** | SciFact and TVPL for retrieval, rag-mini-wikipedia and vi_RAG LegalRAG for answers; English and Vietnamese |
 | **Same shape everywhere** | Every method folder has a `README.md`, a `pipeline.py` and an `example.py` |
 | **Token-capped LLM runs** | LLM evals have an estimate-only mode and a token cap (`--max-tokens`) |
@@ -115,6 +115,7 @@ Grouped by the pipeline stage they change. `LLM` means the method needs `OPENAI_
 | Baseline | [`naive_rag`](src/production_rag/methods/naive_rag/README.md) | `naive_rag` | `local-models`, LLM | Fixed 800-char chunks, dense top 5, one prompt, generate |
 | Ingest | [`parse_and_chunk`](src/production_rag/methods/parse_and_chunk/README.md) | `chunk_recursive_800`, `chunk_recursive_800_o200`, `chunk_recursive_400`, `chunk_semantic` | `parse`, `local-models` | PDF, DOCX, PPTX, XLSX, HTML, Markdown to Markdown with pip-only parsers; fixed, recursive, heading-aware and semantic chunking |
 | Ingest | [`contextual_headers`](src/production_rag/methods/contextual_headers/README.md) | none | `local-models`, LLM | An LLM-written sentence per chunk that places it in its document, embedded with the chunk at index time; cached on disk |
+| Guard | [`guardrails`](src/production_rag/methods/guardrails/README.md) | none | `local-models`, LLM | Before any search, a separate yes/no LLM check per hazard (prompt injection, off-topic) on the question; not measured, no public data |
 | Query rewrite | [`multi_query`](src/production_rag/methods/multi_query/README.md) | none | `local-models` | Multi-query merge; numbers in its README |
 | Query rewrite | [`hyde`](src/production_rag/methods/hyde/README.md) | none | `local-models`, LLM | An LLM-written hypothetical answer passage replaces the question for dense search |
 | Query rewrite | [`step_back`](src/production_rag/methods/step_back/README.md) | none | `local-models`, LLM | The question plus one LLM-written more general question, merged by best score |
