@@ -30,10 +30,10 @@ from production_rag.methods.contextual_headers.context import add_context
 from production_rag.methods.deadline_fanout import pipeline as deadline_fanout
 from production_rag.methods.dense import pipeline as dense
 from production_rag.methods.fact_check.pipeline import fact_check
+from production_rag.methods.guardrails.pipeline import search as guardrails
 from production_rag.methods.hybrid_fusion import pipeline as hybrid_fusion
 from production_rag.methods.hyde import pipeline as hyde
 from production_rag.methods.hyde.generate import queries_for as hyde_queries
-from production_rag.methods.guardrails.pipeline import search as guardrails
 from production_rag.methods.llm_rerank.rerank import CANDIDATES as RERANK_CANDIDATES
 from production_rag.methods.llm_rerank.rerank import rerank as llm_rerank
 from production_rag.methods.multi_query import pipeline as multi_query
