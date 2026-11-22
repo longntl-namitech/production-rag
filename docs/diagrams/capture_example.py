@@ -33,6 +33,8 @@ from production_rag.methods.fact_check.pipeline import fact_check
 from production_rag.methods.hybrid_fusion import pipeline as hybrid_fusion
 from production_rag.methods.hyde import pipeline as hyde
 from production_rag.methods.hyde.generate import queries_for as hyde_queries
+from production_rag.methods.llm_rerank.rerank import CANDIDATES as RERANK_CANDIDATES
+from production_rag.methods.llm_rerank.rerank import rerank as llm_rerank
 from production_rag.methods.multi_query import pipeline as multi_query
 from production_rag.methods.multi_query.rewrite import rewrite
 from production_rag.methods.naive_rag import pipeline as naive_rag
@@ -172,6 +174,15 @@ async def main() -> None:
         "passages": [len(top5.rows), len(kept)],
         "chars": [sum(len(r.text) for r in top5.rows), sum(len(r.text) for r in kept)],
         "first_kept": kept[0].text[:200] if kept else None,
+    }
+
+    # llm_rerank: the top 20 of naive_rag, scored by the model, then sorted
+    candidates = await naive_rag.search(q, C800, deps, k=RERANK_CANDIDATES)
+    scored, _ = await llm_rerank(llm, q, candidates.rows)
+    out["llm_rerank"] = {
+        "candidates": len(candidates.rows),
+        "before": found(candidates.rows, gold),
+        "after": found(scored, gold),
     }
 
     # deadline_fanout: three specs under a 2000 ms and a 150 ms budget

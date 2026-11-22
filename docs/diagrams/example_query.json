@@ -589,5 +589,54 @@
       }
     ]
   },
-  "tokens": 9358
+  "tokens": 9358,
+  "llm_rerank": {
+    "candidates": 20,
+    "before": {
+      "rank": 1,
+      "top3": [
+        {
+          "doc": "49556906",
+          "chunk": 0,
+          "score": 0.7587,
+          "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+        },
+        {
+          "doc": "49556906",
+          "chunk": 1,
+          "score": 0.6775,
+          "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+        },
+        {
+          "doc": "3973445",
+          "chunk": 0,
+          "score": 0.6583,
+          "title": "Phosphorylation of Janus kinase 1 (JAK1) by AMP-activated protein kina"
+        }
+      ]
+    },
+    "after": {
+      "rank": 1,
+      "top3": [
+        {
+          "doc": "49556906",
+          "chunk": 1,
+          "score": 0.6775,
+          "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+        },
+        {
+          "doc": "49556906",
+          "chunk": 0,
+          "score": 0.7587,
+          "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+        },
+        {
+          "doc": "3973445",
+          "chunk": 1,
+          "score": 0.6038,
+          "title": "Phosphorylation of Janus kinase 1 (JAK1) by AMP-activated protein kina"
+        }
+      ]
+    }
+  }
 }
