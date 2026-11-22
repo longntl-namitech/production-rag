@@ -70,6 +70,12 @@ def test_query_decomposition_arm_registered():
     assert arm.variant == "hybrid_weighted_rrf" and arm.estimate("who wrote it and when") > 0
 
 
+def test_llm_rerank_arm_registered():
+    arm = ARMS["llm_rerank"]
+    assert arm.variant == "naive_rag" and arm.estimate("q") > 0
+    assert ARMS["naive_rag"].estimate("q") == 0
+
+
 def test_contextual_headers_arm_has_own_collection():
     arm = ARMS["contextual_headers"]
     assert arm.suffix == "-ctx" and arm.variant == "chunk_recursive_800"

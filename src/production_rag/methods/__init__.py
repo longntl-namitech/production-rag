@@ -20,6 +20,7 @@ METHOD_NAMES: tuple[str, ...] = (
     "query_decomposition",
     "contextual_headers",
     "contextual_compression",
+    "llm_rerank",
 )
 
 
