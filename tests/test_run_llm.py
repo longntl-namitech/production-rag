@@ -70,6 +70,12 @@ def test_query_decomposition_arm_registered():
     assert arm.variant == "hybrid_weighted_rrf" and arm.estimate("who wrote it and when") > 0
 
 
+def test_llm_rerank_arm_registered():
+    arm = ARMS["llm_rerank"]
+    assert arm.variant == "naive_rag" and arm.estimate("q") > 0
+    assert ARMS["naive_rag"].estimate("q") == 0
+
+
 def test_contextual_headers_arm_has_own_collection():
     arm = ARMS["contextual_headers"]
     assert arm.suffix == "-ctx" and arm.variant == "chunk_recursive_800"
@@ -97,6 +103,16 @@ async def test_run_arm_no_fallback_when_tokens_were_used_or_arm_has_no_llm():
     _, _, used = await run_arm(_arm(10, 100), _dataset(), "c", None, None, 1)
     _, _, baseline = await run_arm(_arm(0, 0), _dataset(), "c", None, None, 1)
     assert used == 0 and baseline == 0
+
+
+async def test_run_arm_counts_unusable_llm_replies_even_when_tokens_were_used():
+    async def search(question, collection, deps, llm, k):
+        result = SpecResult(status="ok", rows=[], elapsed_ms=1, error="unusable reply")
+        return result, Usage(10, 0)
+
+    arm = Arm("x", "dense", search, lambda question: 100)
+    _, usage, fallbacks = await run_arm(arm, _dataset(), "c", None, None, 1)
+    assert fallbacks == 10 and usage.total == 100
 
 
 def test_fail_if_all_fell_back():

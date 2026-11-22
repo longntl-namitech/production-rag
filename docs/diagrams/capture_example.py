@@ -30,19 +30,24 @@ from production_rag.methods.contextual_headers.context import add_context
 from production_rag.methods.deadline_fanout import pipeline as deadline_fanout
 from production_rag.methods.dense import pipeline as dense
 from production_rag.methods.fact_check.pipeline import fact_check
+from production_rag.methods.guardrails.pipeline import search as guardrails
 from production_rag.methods.hybrid_fusion import pipeline as hybrid_fusion
 from production_rag.methods.hyde import pipeline as hyde
 from production_rag.methods.hyde.generate import queries_for as hyde_queries
+from production_rag.methods.llm_rerank.rerank import CANDIDATES as RERANK_CANDIDATES
+from production_rag.methods.llm_rerank.rerank import rerank as llm_rerank
 from production_rag.methods.multi_query import pipeline as multi_query
 from production_rag.methods.multi_query.rewrite import rewrite
 from production_rag.methods.naive_rag import pipeline as naive_rag
 from production_rag.methods.query_decomposition.generate import queries_for as decompose_queries
 from production_rag.methods.rerank import pipeline as rerank
+from production_rag.methods.retrieval_sufficiency.pipeline import search as retrieval_sufficiency
 from production_rag.methods.step_back.generate import queries_for as step_back_queries
 
 QID = "54"
 FULL = "eval-scifact"
 C800 = "eval-scifact-c800"
+GUARD_TOPIC = "biomedical research"
 OUT = Path(__file__).parent / "example_query.json"
 
 
@@ -172,6 +177,33 @@ async def main() -> None:
         "passages": [len(top5.rows), len(kept)],
         "chars": [sum(len(r.text) for r in top5.rows), sum(len(r.text) for r in kept)],
         "first_kept": kept[0].text[:200] if kept else None,
+    }
+
+    # llm_rerank: the top 20 of naive_rag, scored by the model, then sorted
+    candidates = await naive_rag.search(q, C800, deps, k=RERANK_CANDIDATES)
+    scored, _ = await llm_rerank(llm, q, candidates.rows)
+    out["llm_rerank"] = {
+        "candidates": len(candidates.rows),
+        "before": found(candidates.rows, gold),
+        "after": found(scored, gold),
+    }
+
+    # retrieval_sufficiency: the top 5 of hybrid_weighted_rrf and the model's verdict
+    verdict = await retrieval_sufficiency(q, FULL, deps, llm, k=5)
+    out["retrieval_sufficiency"] = {
+        "label": verdict.label,
+        "rows": len(verdict.rows),
+        "gold_in_top5": any(r.doc_id in gold for r in verdict.rows),
+        "top3": [hit(r) for r in verdict.rows[:3]],
+    }
+
+    # guardrails: the two input checks on the query, then naive_rag when none is flagged
+    guarded, checks, _ = await guardrails(q, C800, deps, llm, topic=GUARD_TOPIC, k=5)
+    out["guardrails"] = {
+        "topic": GUARD_TOPIC,
+        "verdicts": {v.hazard: v.flagged for v in checks},
+        "status": guarded.status,
+        "rows": len(guarded.rows),
     }
 
     # deadline_fanout: three specs under a 2000 ms and a 150 ms budget

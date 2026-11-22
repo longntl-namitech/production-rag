@@ -589,5 +589,88 @@
       }
     ]
   },
-  "tokens": 9358
+  "tokens": 9358,
+  "llm_rerank": {
+    "candidates": 20,
+    "before": {
+      "rank": 1,
+      "top3": [
+        {
+          "doc": "49556906",
+          "chunk": 0,
+          "score": 0.7587,
+          "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+        },
+        {
+          "doc": "49556906",
+          "chunk": 1,
+          "score": 0.6775,
+          "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+        },
+        {
+          "doc": "3973445",
+          "chunk": 0,
+          "score": 0.6583,
+          "title": "Phosphorylation of Janus kinase 1 (JAK1) by AMP-activated protein kina"
+        }
+      ]
+    },
+    "after": {
+      "rank": 1,
+      "top3": [
+        {
+          "doc": "49556906",
+          "chunk": 1,
+          "score": 0.6775,
+          "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+        },
+        {
+          "doc": "49556906",
+          "chunk": 0,
+          "score": 0.7587,
+          "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+        },
+        {
+          "doc": "3973445",
+          "chunk": 1,
+          "score": 0.6038,
+          "title": "Phosphorylation of Janus kinase 1 (JAK1) by AMP-activated protein kina"
+        }
+      ]
+    }
+  },
+  "retrieval_sufficiency": {
+    "label": "sufficient",
+    "rows": 5,
+    "gold_in_top5": true,
+    "top3": [
+      {
+        "doc": "49556906",
+        "chunk": 0,
+        "score": 0.6111,
+        "title": "Metformin reverses established lung fibrosis in a bleomycin model"
+      },
+      {
+        "doc": "3973445",
+        "chunk": 0,
+        "score": 0.5333,
+        "title": "Phosphorylation of Janus kinase 1 (JAK1) by AMP-activated protein kina"
+      },
+      {
+        "doc": "3419709",
+        "chunk": 0,
+        "score": 0.4583,
+        "title": "Treatment of nonalcoholic fatty liver disease: role of AMPK."
+      }
+    ]
+  },
+  "guardrails": {
+    "topic": "biomedical research",
+    "verdicts": {
+      "prompt_injection": false,
+      "off_topic": false
+    },
+    "status": "ok",
+    "rows": 5
+  }
 }

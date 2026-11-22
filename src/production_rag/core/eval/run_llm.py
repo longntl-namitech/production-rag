@@ -45,6 +45,9 @@ from production_rag.methods.hyde import pipeline as hyde
 from production_rag.methods.hyde.generate import MAX_TOKENS as HYDE_MAX_TOKENS
 from production_rag.methods.hyde.generate import hyde_messages
 from production_rag.methods.hyde.generate import queries_for as hyde_queries
+from production_rag.methods.llm_rerank import pipeline as llm_rerank
+from production_rag.methods.llm_rerank.rerank import UNUSABLE
+from production_rag.methods.llm_rerank.rerank import estimate_tokens_per_query as rerank_tokens
 from production_rag.methods.multi_query import pipeline as multi_query
 from production_rag.methods.multi_query.rewrite import MAX_TOKENS as REWRITE_MAX_TOKENS
 from production_rag.methods.multi_query.rewrite import rewrite, rewrite_messages
@@ -146,6 +149,12 @@ async def _query_decomposition(
     return result, usage
 
 
+async def _llm_rerank(
+    question: str, collection: str, deps: Deps, llm: Any, k: int
+) -> tuple[SpecResult, Usage]:
+    return await llm_rerank.search(question, collection, deps, llm, k=k, deadline_ms=DEADLINE_MS)
+
+
 async def _index_headers(deps: Deps, llm: Any, ds: Dataset, collection: str) -> Usage:
     done = await contextual_headers.index(deps, llm, DiskCache(), collection, ds.corpus)
     return done.usage
@@ -170,6 +179,8 @@ ARMS: dict[str, Arm] = {
         _baseline("dense"),
         _baseline("hybrid_weighted_rrf"),
         _baseline("chunk_recursive_800"),
+        _baseline("naive_rag"),
+        Arm("llm_rerank", "naive_rag", _llm_rerank, lambda question: rerank_tokens()),
         Arm(
             "multi_query",
             "hybrid_weighted_rrf",
@@ -306,7 +317,8 @@ async def run_arm(
                 used = Usage()
             ms = (time.perf_counter() - t0) * 1000
         usage += used
-        fallbacks += arm.estimate(question) > 0 and used.total == 0
+        # a failed call used no token; a reply the method could not use still cost tokens
+        fallbacks += arm.estimate(question) > 0 and (used.total == 0 or result.error == UNUSABLE)
         return result_row(arm.name, qid, result, ms, ds.qrels[qid])
 
     rows = await asyncio.gather(*(one(qid, q) for qid, q in ds.queries.items()))

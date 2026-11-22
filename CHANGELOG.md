@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- `guardrails`: a separate yes/no LLM check per hazard (prompt injection, off-topic) on the question before any search; a check with no usable answer fails closed; not measured, covered by unit tests with a fake model.
+- `retrieval_sufficiency`: after retrieval an LLM says whether the top 5 passages are enough to answer the question; own eval against a "gold document in the top 5" proxy.
+- `llm_rerank`: an LLM scores the top 20 dense results from 0 to 10 and the best 5 are kept; measured in the retrieval eval (`core/eval/run_llm.py`, rows `naive_rag` and `llm_rerank`).
+
 ## v0.3.0 - 2026-11-16
 
 First batch of techniques from the [RAG_Techniques](https://github.com/nirdiamant/RAG_Techniques) catalog.

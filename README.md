@@ -20,7 +20,7 @@
 
 | | |
 |---|---|
-| **15 method folders** | Parsing and chunking, sparse, dense and hybrid retrieval, reranking, LLM query rewriting, context expansion and compression, fact check |
+| **18 method folders** | Parsing and chunking, sparse, dense and hybrid retrieval, reranking (cross-encoder and LLM), LLM query rewriting, context expansion and compression, fact check, retrieval sufficiency, input guardrails |
 | **4 public datasets** | SciFact and TVPL for retrieval, rag-mini-wikipedia and vi_RAG LegalRAG for answers; English and Vietnamese |
 | **Same shape everywhere** | Every method folder has a `README.md`, a `pipeline.py` and an `example.py` |
 | **Token-capped LLM runs** | LLM evals have an estimate-only mode and a token cap (`--max-tokens`) |
@@ -91,6 +91,8 @@ Correctness moved by up to 0.07 between two runs, so smaller gaps are noise. The
 | LLM query rewriting (nDCG@10, SciFact / TVPL) | `hybrid_weighted_rrf` baseline: 0.770 / 0.808; HyDE passage + question: 0.762 / **0.826**; step-back: **0.778** / 0.803; decomposition: 0.770 / 0.786; multi-query: 0.775 / 0.809 | [SciFact](results/query_side_scifact.md), [TVPL](results/query_side_tvpl.md), [decomposition SciFact rerun](results/query_decomposition_scifact.md) |
 | Contextual chunk headers (sample: 100 queries, 350 / 500 docs) | 0.919 / 0.969 against 0.928 / 0.967 without; the sample is too easy to show a gain | [SciFact](results/contextual_headers_scifact.md), [TVPL](results/contextual_headers_tvpl.md) |
 | Contextual compression (answer correctness, 50 mini_wiki / 40 vi_legal questions) | 0.800 / 0.562 against `naive_rag` 0.810 / 0.575, with 88% / 72% fewer passage tokens | [mini_wiki](results/contextual_compression_mini_wiki.md), [vi_legal](results/contextual_compression_vi_legal.md) |
+| LLM rerank (nDCG@10, SciFact / TVPL) | `llm_rerank` **0.768** / **0.849** against `naive_rag` 0.751 / 0.815, at about 1.9 s per query and 0.9M / 4.1M tokens; one run each | [SciFact](results/scifact_llm.md), [TVPL](results/tvpl_llm.md) |
+| Retrieval sufficiency (agreement with "gold in top 5", SciFact / TVPL) | 0.513 / 0.862; when the label is `sufficient`, a gold document is in the top 5 for 93% / 95%; one run each | [SciFact](results/retrieval_sufficiency_scifact.md), [TVPL](results/retrieval_sufficiency_tvpl.md) |
 | Parsing (token recall / precision, 15 public files) | all 0.954 / 0.959; pdf 0.982 / 0.920; xlsx recall 0.629 against docling's own output | [parse quality](results/parse_quality.md) |
 | Fact check (300 SciFact claims) | accuracy 0.703 and 0.740 over two runs; refuted recall 0.375 in run 1 | [run 1](results/fact_check_scifact.md), [runs compared](results/fact_check_scifact_runs.md) |
 
@@ -113,6 +115,7 @@ Grouped by the pipeline stage they change. `LLM` means the method needs `OPENAI_
 | Baseline | [`naive_rag`](src/production_rag/methods/naive_rag/README.md) | `naive_rag` | `local-models`, LLM | Fixed 800-char chunks, dense top 5, one prompt, generate |
 | Ingest | [`parse_and_chunk`](src/production_rag/methods/parse_and_chunk/README.md) | `chunk_recursive_800`, `chunk_recursive_800_o200`, `chunk_recursive_400`, `chunk_semantic` | `parse`, `local-models` | PDF, DOCX, PPTX, XLSX, HTML, Markdown to Markdown with pip-only parsers; fixed, recursive, heading-aware and semantic chunking |
 | Ingest | [`contextual_headers`](src/production_rag/methods/contextual_headers/README.md) | none | `local-models`, LLM | An LLM-written sentence per chunk that places it in its document, embedded with the chunk at index time; cached on disk |
+| Guard | [`guardrails`](src/production_rag/methods/guardrails/README.md) | none | `local-models`, LLM | Before any search, a separate yes/no LLM check per hazard (prompt injection, off-topic) on the question; not measured, no public data |
 | Query rewrite | [`multi_query`](src/production_rag/methods/multi_query/README.md) | none | `local-models` | Multi-query merge; numbers in its README |
 | Query rewrite | [`hyde`](src/production_rag/methods/hyde/README.md) | none | `local-models`, LLM | An LLM-written hypothetical answer passage replaces the question for dense search |
 | Query rewrite | [`step_back`](src/production_rag/methods/step_back/README.md) | none | `local-models`, LLM | The question plus one LLM-written more general question, merged by best score |
@@ -122,8 +125,10 @@ Grouped by the pipeline stage they change. `LLM` means the method needs `OPENAI_
 | Retrieve | [`hybrid_fusion`](src/production_rag/methods/hybrid_fusion/README.md) | `hybrid_rrf`, `hybrid_dbsf`, `hybrid_weighted_rrf` | `local-models` | Dense + BM25 fused in Qdrant: reciprocal rank fusion, distribution-based score fusion, RRF with dense weighted 2:1 |
 | Retrieve | [`deadline_fanout`](src/production_rag/methods/deadline_fanout/README.md) | none | `local-models` | Deadline budget and spec fan-out; latency bench in its README |
 | Rerank | [`rerank`](src/production_rag/methods/rerank/README.md) | `hybrid_rrf_rerank` | `local-models` | Hybrid RRF, then a cross-encoder over the top candidates |
+| Rerank | [`llm_rerank`](src/production_rag/methods/llm_rerank/README.md) | none | `local-models`, LLM | An LLM scores the top 20 dense results from 0 to 10 and the best 5 are kept; the score is not a probability |
 | Context | [`context_expansion`](src/production_rag/methods/context_expansion/README.md) | none | `local-models` | Neighbour chunks or the full document around each hit; answer numbers in its README |
 | Context | [`contextual_compression`](src/production_rag/methods/contextual_compression/README.md) | none | `local-models`, LLM | After retrieval an LLM keeps only the sentences that help answer the question, so the prompt carries fewer tokens |
+| Verify | [`retrieval_sufficiency`](src/production_rag/methods/retrieval_sufficiency/README.md) | none | `local-models`, LLM | After retrieval an LLM says whether the top 5 passages are enough to answer the question; nothing is searched again |
 | Verify | [`fact_check`](src/production_rag/methods/fact_check/README.md) | none | `local-models`, LLM | Claims from a statement, evidence per claim, verdict: supported, refuted, unverified; `not_relevant` when nothing is checkable |
 
 ## Quickstart
