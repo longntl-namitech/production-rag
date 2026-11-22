@@ -105,6 +105,16 @@ async def test_run_arm_no_fallback_when_tokens_were_used_or_arm_has_no_llm():
     assert used == 0 and baseline == 0
 
 
+async def test_run_arm_counts_unusable_llm_replies_even_when_tokens_were_used():
+    async def search(question, collection, deps, llm, k):
+        result = SpecResult(status="ok", rows=[], elapsed_ms=1, error="unusable reply")
+        return result, Usage(10, 0)
+
+    arm = Arm("x", "dense", search, lambda question: 100)
+    _, usage, fallbacks = await run_arm(arm, _dataset(), "c", None, None, 1)
+    assert fallbacks == 10 and usage.total == 100
+
+
 def test_fail_if_all_fell_back():
     with pytest.raises(SystemExit, match="x"):
         fail_if_all_fell_back("x", 10, 10)

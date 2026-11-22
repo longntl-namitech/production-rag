@@ -46,6 +46,7 @@ from production_rag.methods.hyde.generate import MAX_TOKENS as HYDE_MAX_TOKENS
 from production_rag.methods.hyde.generate import hyde_messages
 from production_rag.methods.hyde.generate import queries_for as hyde_queries
 from production_rag.methods.llm_rerank import pipeline as llm_rerank
+from production_rag.methods.llm_rerank.rerank import UNUSABLE
 from production_rag.methods.llm_rerank.rerank import estimate_tokens_per_query as rerank_tokens
 from production_rag.methods.multi_query import pipeline as multi_query
 from production_rag.methods.multi_query.rewrite import MAX_TOKENS as REWRITE_MAX_TOKENS
@@ -316,7 +317,8 @@ async def run_arm(
                 used = Usage()
             ms = (time.perf_counter() - t0) * 1000
         usage += used
-        fallbacks += arm.estimate(question) > 0 and used.total == 0
+        # a failed call used no token; a reply the method could not use still cost tokens
+        fallbacks += arm.estimate(question) > 0 and (used.total == 0 or result.error == UNUSABLE)
         return result_row(arm.name, qid, result, ms, ds.qrels[qid])
 
     rows = await asyncio.gather(*(one(qid, q) for qid, q in ds.queries.items()))

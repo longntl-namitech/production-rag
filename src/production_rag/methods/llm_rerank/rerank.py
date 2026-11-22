@@ -10,6 +10,7 @@ from production_rag.core.models import Row
 from production_rag.core.query_llm import ask
 
 CANDIDATES = 20
+UNUSABLE = "unusable reply"  # the `error` of a search result that kept the search order
 MAX_TOKENS = 512
 MAX_SCORE = 10
 PASSAGE_TOKENS = 250  # upper bound for one 800-character chunk
@@ -71,10 +72,13 @@ def _parser(count: int):
     return parse
 
 
-async def rerank(llm, question: str, rows: list[Row]) -> tuple[list[Row], Usage]:
-    """The rows sorted by score, ties in base order; the rows unchanged when nothing is usable."""
+async def rerank_checked(llm, question: str, rows: list[Row]) -> tuple[list[Row], Usage, bool]:
+    """The rows sorted by score, ties in base order, and whether the reply was usable.
+
+    The rows come back unchanged, with False, when nothing is usable. No rows is usable.
+    """
     if not rows:
-        return rows, Usage()
+        return rows, Usage(), True
     scores, usage = await ask(
         llm,
         rerank_messages(question, rows),
@@ -83,9 +87,15 @@ async def rerank(llm, question: str, rows: list[Row]) -> tuple[list[Row], Usage]
         parse=_parser(len(rows)),
     )
     if scores is None:
-        return rows, usage
+        return rows, usage, False
     order = sorted(range(1, len(rows) + 1), key=lambda pid: -scores[pid])  # stable: ties keep order
-    return [rows[pid - 1] for pid in order], usage
+    return [rows[pid - 1] for pid in order], usage, True
+
+
+async def rerank(llm, question: str, rows: list[Row]) -> tuple[list[Row], Usage]:
+    """`rerank_checked` without the flag."""
+    rows, usage, _ = await rerank_checked(llm, question, rows)
+    return rows, usage
 
 
 def estimate_tokens_per_query() -> int:
