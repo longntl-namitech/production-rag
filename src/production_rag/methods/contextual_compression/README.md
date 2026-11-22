@@ -14,7 +14,7 @@
 | **Extra** | `local-models` |
 | **LLM** | at query time (`OPENAI_API_KEY`) |
 | **Eval variants** | answer eval only (`contextual_compression` front end) |
-| **Compare with** | [`context_expansion`](../context_expansion/README.md): that one adds text around a hit, this one removes text from it |
+| **Compare with** | [`context_expansion`](../context_expansion/README.md): that one adds text around a hit, this one removes text from it. The context-compaction use case of the decision-models post by Aurimas Griciunas (score each piece of context and drop the stale ones instead of summarising) is close to this: sentences are kept by id and never rewritten |
 | **Headline** | 88% fewer passage tokens on mini_wiki and 72% on vi_legal, with correctness within noise of `naive_rag` (0.800 / 0.562 against 0.810 / 0.575) |
 
 ## When to use

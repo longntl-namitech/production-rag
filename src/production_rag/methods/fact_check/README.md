@@ -14,6 +14,7 @@
 | **Extra** | `local-models` for the default hybrid evidence search (`base="bm25"` works without it) |
 | **LLM** | `OPENAI_API_KEY` (model `OPENAI_MODEL`, default `gpt-5.4-nano`) |
 | **Eval variants** | own eval, `production_rag.methods.fact_check.eval` |
+| **Compare with** | the citation-checking use case of the decision-models post by Aurimas Griciunas (does a source support, contradict or not address a claim) is this method: `supported`, `refuted`, `unverified` |
 | **Headline** | Accuracy 0.703 and 0.740 over two runs on 300 SciFact claims; refuted recall 0.375 in run 1 |
 
 ## When to use

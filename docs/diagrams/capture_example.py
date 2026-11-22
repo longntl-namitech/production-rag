@@ -33,6 +33,7 @@ from production_rag.methods.fact_check.pipeline import fact_check
 from production_rag.methods.hybrid_fusion import pipeline as hybrid_fusion
 from production_rag.methods.hyde import pipeline as hyde
 from production_rag.methods.hyde.generate import queries_for as hyde_queries
+from production_rag.methods.guardrails.pipeline import search as guardrails
 from production_rag.methods.llm_rerank.rerank import CANDIDATES as RERANK_CANDIDATES
 from production_rag.methods.llm_rerank.rerank import rerank as llm_rerank
 from production_rag.methods.multi_query import pipeline as multi_query
@@ -46,6 +47,7 @@ from production_rag.methods.step_back.generate import queries_for as step_back_q
 QID = "54"
 FULL = "eval-scifact"
 C800 = "eval-scifact-c800"
+GUARD_TOPIC = "biomedical research"
 OUT = Path(__file__).parent / "example_query.json"
 
 
@@ -193,6 +195,15 @@ async def main() -> None:
         "rows": len(verdict.rows),
         "gold_in_top5": any(r.doc_id in gold for r in verdict.rows),
         "top3": [hit(r) for r in verdict.rows[:3]],
+    }
+
+    # guardrails: the two input checks on the query, then naive_rag when none is flagged
+    guarded, checks, _ = await guardrails(q, C800, deps, llm, topic=GUARD_TOPIC, k=5)
+    out["guardrails"] = {
+        "topic": GUARD_TOPIC,
+        "verdicts": {v.hazard: v.flagged for v in checks},
+        "status": guarded.status,
+        "rows": len(guarded.rows),
     }
 
     # deadline_fanout: three specs under a 2000 ms and a 150 ms budget

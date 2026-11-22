@@ -390,6 +390,7 @@ METHODS = [
     "contextual_compression",
     "llm_rerank",
     "retrieval_sufficiency",
+    "guardrails",
 ]
 NEEDS_LLM = {
     "naive_rag",
@@ -401,6 +402,7 @@ NEEDS_LLM = {
     "contextual_compression",
     "llm_rerank",
     "retrieval_sufficiency",
+    "guardrails",
 }
 CORE = [
     "embedders",
@@ -637,6 +639,7 @@ RR, CE, CC, DF, FC = (
 )
 LR = EX["llm_rerank"]
 RS = EX["retrieval_sufficiency"]
+GR = EX["guardrails"]
 Q = EX["query"]
 FLOWS = {
     "naive_rag": (
@@ -1115,6 +1118,37 @@ FLOWS = {
                         f"prev=1, next=1: {CE['hit_chars']} -> {CE['expanded_chars']:,} chars",
                         f"all 5: {CE['total_chars'][0]:,} -> {CE['total_chars'][1]:,} chars",
                     ],
+                )
+            ],
+        ],
+    ),
+    "guardrails": (
+        "Two separate yes/no LLM checks on the question, then search.",
+        [
+            [("lilac", "Question", ["text"], "bubble", wrap(Q, 33, 4))],
+            [
+                (
+                    "yellow",
+                    "Prompt injection",
+                    ["own LLM call, yes or no", "changes or reveals the rules?"],
+                    "sparkle",
+                    [f"flagged: {GR['verdicts']['prompt_injection']}"],
+                ),
+                (
+                    "yellow",
+                    "Off topic",
+                    ["own LLM call, yes or no", f"not about {GR['topic']}?"],
+                    "sparkle",
+                    [f"flagged: {GR['verdicts']['off_topic']}"],
+                ),
+            ],
+            [
+                (
+                    "blue",
+                    "Retrieve",
+                    ["naive_rag, only if nothing is", "flagged; no verdict: fail closed"],
+                    "search",
+                    [f"{GR['rows']} passages"],
                 )
             ],
         ],
