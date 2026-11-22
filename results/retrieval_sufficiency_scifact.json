@@ -1,0 +1,2434 @@
+{
+ "meta": {
+  "kind": "retrieval_sufficiency",
+  "dataset": "scifact",
+  "date": "2026-11-23",
+  "requested": 300,
+  "queries": 300,
+  "documents": 5183,
+  "base": "hybrid_weighted_rrf",
+  "k": 5,
+  "model": "gpt-5.4-nano",
+  "complete": true,
+  "tokens": 514405
+ },
+ "summary": {
+  "queries": 300,
+  "failed": 0,
+  "agreement": 0.5133333333333333,
+  "sufficient_rate": 0.4166666666666667,
+  "gold_hit_rate": 0.8433333333333334,
+  "confusion": {
+   "sufficient": {
+    "hit": 116,
+    "miss": 9
+   },
+   "insufficient": {
+    "hit": 137,
+    "miss": 38
+   }
+  }
+ },
+ "per_item": [
+  {
+   "query_id": "1",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1432
+  },
+  {
+   "query_id": "3",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1391
+  },
+  {
+   "query_id": "5",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2235
+  },
+  {
+   "query_id": "13",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2507
+  },
+  {
+   "query_id": "36",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2334
+  },
+  {
+   "query_id": "42",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2083
+  },
+  {
+   "query_id": "48",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1728
+  },
+  {
+   "query_id": "49",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1477
+  },
+  {
+   "query_id": "50",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1269
+  },
+  {
+   "query_id": "51",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1847
+  },
+  {
+   "query_id": "53",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1483
+  },
+  {
+   "query_id": "54",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1501
+  },
+  {
+   "query_id": "56",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1552
+  },
+  {
+   "query_id": "57",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1592
+  },
+  {
+   "query_id": "70",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1574
+  },
+  {
+   "query_id": "72",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2420
+  },
+  {
+   "query_id": "75",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1748
+  },
+  {
+   "query_id": "94",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1669
+  },
+  {
+   "query_id": "99",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1469
+  },
+  {
+   "query_id": "100",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1364
+  },
+  {
+   "query_id": "113",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1841
+  },
+  {
+   "query_id": "115",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1315
+  },
+  {
+   "query_id": "118",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1469
+  },
+  {
+   "query_id": "124",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2733
+  },
+  {
+   "query_id": "127",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1424
+  },
+  {
+   "query_id": "128",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1770
+  },
+  {
+   "query_id": "129",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3046
+  },
+  {
+   "query_id": "130",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3046
+  },
+  {
+   "query_id": "132",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1876
+  },
+  {
+   "query_id": "133",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1773
+  },
+  {
+   "query_id": "137",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1862
+  },
+  {
+   "query_id": "141",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1512
+  },
+  {
+   "query_id": "142",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2513
+  },
+  {
+   "query_id": "143",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2541
+  },
+  {
+   "query_id": "146",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2454
+  },
+  {
+   "query_id": "148",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1206
+  },
+  {
+   "query_id": "163",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1791
+  },
+  {
+   "query_id": "171",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1563
+  },
+  {
+   "query_id": "179",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2247
+  },
+  {
+   "query_id": "180",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1474
+  },
+  {
+   "query_id": "183",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1394
+  },
+  {
+   "query_id": "185",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2061
+  },
+  {
+   "query_id": "198",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1796
+  },
+  {
+   "query_id": "208",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1660
+  },
+  {
+   "query_id": "212",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1772
+  },
+  {
+   "query_id": "213",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2358
+  },
+  {
+   "query_id": "216",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1370
+  },
+  {
+   "query_id": "217",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1241
+  },
+  {
+   "query_id": "218",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1554
+  },
+  {
+   "query_id": "219",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1555
+  },
+  {
+   "query_id": "230",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1717
+  },
+  {
+   "query_id": "232",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2135
+  },
+  {
+   "query_id": "233",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1733
+  },
+  {
+   "query_id": "236",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1767
+  },
+  {
+   "query_id": "237",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1687
+  },
+  {
+   "query_id": "238",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1117
+  },
+  {
+   "query_id": "239",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1187
+  },
+  {
+   "query_id": "248",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1576
+  },
+  {
+   "query_id": "249",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1945
+  },
+  {
+   "query_id": "261",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1998
+  },
+  {
+   "query_id": "268",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1546
+  },
+  {
+   "query_id": "269",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1546
+  },
+  {
+   "query_id": "274",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3340
+  },
+  {
+   "query_id": "275",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1823
+  },
+  {
+   "query_id": "279",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1516
+  },
+  {
+   "query_id": "294",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1428
+  },
+  {
+   "query_id": "295",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1329
+  },
+  {
+   "query_id": "298",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1232
+  },
+  {
+   "query_id": "300",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1372
+  },
+  {
+   "query_id": "303",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1455
+  },
+  {
+   "query_id": "312",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1415
+  },
+  {
+   "query_id": "314",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1299
+  },
+  {
+   "query_id": "324",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1272
+  },
+  {
+   "query_id": "327",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1250
+  },
+  {
+   "query_id": "338",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2238
+  },
+  {
+   "query_id": "343",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2558
+  },
+  {
+   "query_id": "350",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1271
+  },
+  {
+   "query_id": "354",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1187
+  },
+  {
+   "query_id": "362",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1271
+  },
+  {
+   "query_id": "380",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1499
+  },
+  {
+   "query_id": "384",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3056
+  },
+  {
+   "query_id": "385",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1267
+  },
+  {
+   "query_id": "386",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2769
+  },
+  {
+   "query_id": "388",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1541
+  },
+  {
+   "query_id": "399",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2357
+  },
+  {
+   "query_id": "410",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1438
+  },
+  {
+   "query_id": "411",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1870
+  },
+  {
+   "query_id": "415",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2154
+  },
+  {
+   "query_id": "421",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1086
+  },
+  {
+   "query_id": "431",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1262
+  },
+  {
+   "query_id": "436",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1358
+  },
+  {
+   "query_id": "437",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1626
+  },
+  {
+   "query_id": "439",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1536
+  },
+  {
+   "query_id": "440",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1636
+  },
+  {
+   "query_id": "443",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1227
+  },
+  {
+   "query_id": "452",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1262
+  },
+  {
+   "query_id": "475",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1495
+  },
+  {
+   "query_id": "478",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1312
+  },
+  {
+   "query_id": "491",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1568
+  },
+  {
+   "query_id": "501",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1638
+  },
+  {
+   "query_id": "502",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1934
+  },
+  {
+   "query_id": "507",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1668
+  },
+  {
+   "query_id": "508",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1239
+  },
+  {
+   "query_id": "513",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2279
+  },
+  {
+   "query_id": "514",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2371
+  },
+  {
+   "query_id": "516",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2475
+  },
+  {
+   "query_id": "517",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2315
+  },
+  {
+   "query_id": "521",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2483
+  },
+  {
+   "query_id": "525",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1434
+  },
+  {
+   "query_id": "527",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1317
+  },
+  {
+   "query_id": "528",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1620
+  },
+  {
+   "query_id": "532",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2088
+  },
+  {
+   "query_id": "533",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2283
+  },
+  {
+   "query_id": "535",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2770
+  },
+  {
+   "query_id": "536",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1510
+  },
+  {
+   "query_id": "539",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2374
+  },
+  {
+   "query_id": "540",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1153
+  },
+  {
+   "query_id": "544",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1626
+  },
+  {
+   "query_id": "549",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1284
+  },
+  {
+   "query_id": "551",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1367
+  },
+  {
+   "query_id": "552",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1796
+  },
+  {
+   "query_id": "554",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1348
+  },
+  {
+   "query_id": "560",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1348
+  },
+  {
+   "query_id": "569",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 967
+  },
+  {
+   "query_id": "575",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1340
+  },
+  {
+   "query_id": "577",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1254
+  },
+  {
+   "query_id": "578",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1479
+  },
+  {
+   "query_id": "587",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1381
+  },
+  {
+   "query_id": "589",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2554
+  },
+  {
+   "query_id": "593",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1997
+  },
+  {
+   "query_id": "597",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2273
+  },
+  {
+   "query_id": "598",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2488
+  },
+  {
+   "query_id": "613",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1368
+  },
+  {
+   "query_id": "619",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1757
+  },
+  {
+   "query_id": "623",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1542
+  },
+  {
+   "query_id": "628",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1761
+  },
+  {
+   "query_id": "636",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2209
+  },
+  {
+   "query_id": "637",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1306
+  },
+  {
+   "query_id": "641",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1986
+  },
+  {
+   "query_id": "644",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2073
+  },
+  {
+   "query_id": "649",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2319
+  },
+  {
+   "query_id": "659",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1734
+  },
+  {
+   "query_id": "660",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2228
+  },
+  {
+   "query_id": "674",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1694
+  },
+  {
+   "query_id": "684",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1817
+  },
+  {
+   "query_id": "690",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1826
+  },
+  {
+   "query_id": "691",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1446
+  },
+  {
+   "query_id": "692",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2036
+  },
+  {
+   "query_id": "693",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2187
+  },
+  {
+   "query_id": "700",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1217
+  },
+  {
+   "query_id": "702",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1248
+  },
+  {
+   "query_id": "715",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1307
+  },
+  {
+   "query_id": "716",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1281
+  },
+  {
+   "query_id": "718",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1474
+  },
+  {
+   "query_id": "721",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1674
+  },
+  {
+   "query_id": "723",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1253
+  },
+  {
+   "query_id": "727",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1310
+  },
+  {
+   "query_id": "728",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1369
+  },
+  {
+   "query_id": "729",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1511
+  },
+  {
+   "query_id": "742",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1840
+  },
+  {
+   "query_id": "743",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2277
+  },
+  {
+   "query_id": "744",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1184
+  },
+  {
+   "query_id": "756",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1349
+  },
+  {
+   "query_id": "759",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2404
+  },
+  {
+   "query_id": "768",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2163
+  },
+  {
+   "query_id": "770",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2764
+  },
+  {
+   "query_id": "775",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1386
+  },
+  {
+   "query_id": "781",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1604
+  },
+  {
+   "query_id": "783",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1457
+  },
+  {
+   "query_id": "784",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1519
+  },
+  {
+   "query_id": "785",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1764
+  },
+  {
+   "query_id": "793",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1095
+  },
+  {
+   "query_id": "800",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1461
+  },
+  {
+   "query_id": "805",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1561
+  },
+  {
+   "query_id": "808",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1529
+  },
+  {
+   "query_id": "811",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1848
+  },
+  {
+   "query_id": "814",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1751
+  },
+  {
+   "query_id": "820",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1273
+  },
+  {
+   "query_id": "821",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1263
+  },
+  {
+   "query_id": "823",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2113
+  },
+  {
+   "query_id": "830",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1373
+  },
+  {
+   "query_id": "831",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1603
+  },
+  {
+   "query_id": "832",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1596
+  },
+  {
+   "query_id": "834",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1316
+  },
+  {
+   "query_id": "837",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1904
+  },
+  {
+   "query_id": "839",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1317
+  },
+  {
+   "query_id": "845",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1174
+  },
+  {
+   "query_id": "847",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1592
+  },
+  {
+   "query_id": "852",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2191
+  },
+  {
+   "query_id": "859",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1402
+  },
+  {
+   "query_id": "870",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1501
+  },
+  {
+   "query_id": "873",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1437
+  },
+  {
+   "query_id": "879",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1143
+  },
+  {
+   "query_id": "880",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1792
+  },
+  {
+   "query_id": "882",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2404
+  },
+  {
+   "query_id": "887",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1200
+  },
+  {
+   "query_id": "903",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1645
+  },
+  {
+   "query_id": "904",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1339
+  },
+  {
+   "query_id": "907",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1283
+  },
+  {
+   "query_id": "911",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2099
+  },
+  {
+   "query_id": "913",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2136
+  },
+  {
+   "query_id": "914",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1743
+  },
+  {
+   "query_id": "921",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1862
+  },
+  {
+   "query_id": "922",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1616
+  },
+  {
+   "query_id": "936",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1668
+  },
+  {
+   "query_id": "956",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1622
+  },
+  {
+   "query_id": "957",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1494
+  },
+  {
+   "query_id": "960",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1942
+  },
+  {
+   "query_id": "967",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1457
+  },
+  {
+   "query_id": "971",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3878
+  },
+  {
+   "query_id": "975",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1522
+  },
+  {
+   "query_id": "982",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1369
+  },
+  {
+   "query_id": "985",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1544
+  },
+  {
+   "query_id": "993",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1702
+  },
+  {
+   "query_id": "1012",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2110
+  },
+  {
+   "query_id": "1014",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1349
+  },
+  {
+   "query_id": "1019",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1670
+  },
+  {
+   "query_id": "1020",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1302
+  },
+  {
+   "query_id": "1021",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1302
+  },
+  {
+   "query_id": "1024",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1102
+  },
+  {
+   "query_id": "1029",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1716
+  },
+  {
+   "query_id": "1041",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1378
+  },
+  {
+   "query_id": "1049",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1330
+  },
+  {
+   "query_id": "1062",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1279
+  },
+  {
+   "query_id": "1086",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2486
+  },
+  {
+   "query_id": "1088",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1536
+  },
+  {
+   "query_id": "1089",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1340
+  },
+  {
+   "query_id": "1099",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1830
+  },
+  {
+   "query_id": "1100",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1521
+  },
+  {
+   "query_id": "1104",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2798
+  },
+  {
+   "query_id": "1107",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1235
+  },
+  {
+   "query_id": "1110",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1883
+  },
+  {
+   "query_id": "1121",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1856
+  },
+  {
+   "query_id": "1130",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1620
+  },
+  {
+   "query_id": "1132",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1427
+  },
+  {
+   "query_id": "1137",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1569
+  },
+  {
+   "query_id": "1140",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2134
+  },
+  {
+   "query_id": "1144",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2337
+  },
+  {
+   "query_id": "1146",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1870
+  },
+  {
+   "query_id": "1150",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1525
+  },
+  {
+   "query_id": "1163",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1193
+  },
+  {
+   "query_id": "1175",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1800
+  },
+  {
+   "query_id": "1179",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1562
+  },
+  {
+   "query_id": "1180",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1773
+  },
+  {
+   "query_id": "1185",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1619
+  },
+  {
+   "query_id": "1187",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1291
+  },
+  {
+   "query_id": "1191",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1069
+  },
+  {
+   "query_id": "1194",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1477
+  },
+  {
+   "query_id": "1196",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1059
+  },
+  {
+   "query_id": "1197",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1060
+  },
+  {
+   "query_id": "1199",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1889
+  },
+  {
+   "query_id": "1200",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1468
+  },
+  {
+   "query_id": "1202",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1380
+  },
+  {
+   "query_id": "1204",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1268
+  },
+  {
+   "query_id": "1207",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1716
+  },
+  {
+   "query_id": "1213",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1545
+  },
+  {
+   "query_id": "1216",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1213
+  },
+  {
+   "query_id": "1221",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1619
+  },
+  {
+   "query_id": "1225",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2238
+  },
+  {
+   "query_id": "1226",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1645
+  },
+  {
+   "query_id": "1232",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1505
+  },
+  {
+   "query_id": "1241",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1543
+  },
+  {
+   "query_id": "1245",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2207
+  },
+  {
+   "query_id": "1259",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3264
+  },
+  {
+   "query_id": "1262",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1154
+  },
+  {
+   "query_id": "1266",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2031
+  },
+  {
+   "query_id": "1270",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1951
+  },
+  {
+   "query_id": "1271",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1920
+  },
+  {
+   "query_id": "1272",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1414
+  },
+  {
+   "query_id": "1273",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1600
+  },
+  {
+   "query_id": "1274",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1515
+  },
+  {
+   "query_id": "1278",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1502
+  },
+  {
+   "query_id": "1279",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1770
+  },
+  {
+   "query_id": "1280",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2183
+  },
+  {
+   "query_id": "1281",
+   "predicted": "sufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 2165
+  },
+  {
+   "query_id": "1282",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2066
+  },
+  {
+   "query_id": "1290",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2496
+  },
+  {
+   "query_id": "1292",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1798
+  },
+  {
+   "query_id": "1298",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1964
+  },
+  {
+   "query_id": "1303",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1825
+  },
+  {
+   "query_id": "1316",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1330
+  },
+  {
+   "query_id": "1319",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1348
+  },
+  {
+   "query_id": "1320",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1622
+  },
+  {
+   "query_id": "1332",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1631
+  },
+  {
+   "query_id": "1335",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1470
+  },
+  {
+   "query_id": "1336",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1469
+  },
+  {
+   "query_id": "1337",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1334
+  },
+  {
+   "query_id": "1339",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1899
+  },
+  {
+   "query_id": "1344",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2295
+  },
+  {
+   "query_id": "1352",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1621
+  },
+  {
+   "query_id": "1359",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 3224
+  },
+  {
+   "query_id": "1362",
+   "predicted": "insufficient",
+   "gold_hit": false,
+   "status": "ok",
+   "error": null,
+   "tokens": 1751
+  },
+  {
+   "query_id": "1363",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1545
+  },
+  {
+   "query_id": "1368",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2139
+  },
+  {
+   "query_id": "1370",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2136
+  },
+  {
+   "query_id": "1379",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 2255
+  },
+  {
+   "query_id": "1382",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1402
+  },
+  {
+   "query_id": "1385",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1256
+  },
+  {
+   "query_id": "1389",
+   "predicted": "sufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1399
+  },
+  {
+   "query_id": "1395",
+   "predicted": "insufficient",
+   "gold_hit": true,
+   "status": "ok",
+   "error": null,
+   "tokens": 1739
+  }
+ ]
+}

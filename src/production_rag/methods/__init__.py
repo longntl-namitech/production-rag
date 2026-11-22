@@ -21,6 +21,7 @@ METHOD_NAMES: tuple[str, ...] = (
     "contextual_headers",
     "contextual_compression",
     "llm_rerank",
+    "retrieval_sufficiency",
 )
 
 
