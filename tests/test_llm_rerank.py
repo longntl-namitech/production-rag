@@ -8,7 +8,7 @@ from production_rag.core.llm import BudgetExceeded, Usage
 from production_rag.core.models import SpecResult
 from production_rag.methods import METHOD_NAMES
 from production_rag.methods.llm_rerank import pipeline as llm_rerank
-from production_rag.methods.llm_rerank.rerank import rerank, rerank_messages
+from production_rag.methods.llm_rerank.rerank import rerank, rerank_checked, rerank_messages
 
 QUESTION = "how do solar panels make power"
 
@@ -106,6 +106,32 @@ async def test_search_reranks_candidates_and_keeps_k(monkeypatch):
     assert asked == {"question": "q" * 2000, "k": llm_rerank.CANDIDATES}
     assert [r.doc_id for r in result.rows] == ["d20", "d1", "d2", "d3", "d4"]
     assert usage == Usage(10, 5)
+
+
+@pytest.mark.parametrize("text", UNUSABLE)
+async def test_rerank_checked_flags_unusable_reply(text):
+    original = rows()
+    out, _, usable = await rerank_checked(reply(text), QUESTION, original)
+    assert out == original and usable is False
+
+
+async def test_rerank_checked_usable_reply_and_empty_rows():
+    _, _, usable = await rerank_checked(reply(scores((1, 2), (2, 9), (3, 5))), QUESTION, rows())
+    assert usable is True
+    _, _, usable = await rerank_checked(reply(scores()), QUESTION, [])
+    assert usable is True
+
+
+async def test_search_marks_unusable_reply_and_keeps_search_order(monkeypatch):
+    async def fake_search(question, collection, deps, *, k, deadline_ms):
+        return SpecResult(status="ok", rows=rows(), elapsed_ms=1)
+
+    monkeypatch.setattr(llm_rerank.naive_rag, "search", fake_search)
+    result, usage = await llm_rerank.search("q", "c", None, reply("nope"), k=2)
+    assert result.status == "ok" and result.error == "unusable reply"
+    assert [r.doc_id for r in result.rows] == ["d1", "d2"] and usage == Usage(10, 5)
+    result, _ = await llm_rerank.search("q", "c", None, reply(scores((1, 0), (2, 0), (3, 9))), k=2)
+    assert result.error is None and [r.doc_id for r in result.rows] == ["d3", "d1"]
 
 
 async def test_search_without_rows_makes_no_call(monkeypatch):

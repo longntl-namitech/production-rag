@@ -4,7 +4,7 @@ from production_rag.core.deps import Deps
 from production_rag.core.llm import Usage
 from production_rag.core.models import SpecResult
 from production_rag.core.registry import MethodConfig
-from production_rag.methods.llm_rerank.rerank import CANDIDATES, rerank
+from production_rag.methods.llm_rerank.rerank import CANDIDATES, UNUSABLE, rerank_checked
 from production_rag.methods.naive_rag import pipeline as naive_rag
 
 __all__ = ["CANDIDATES", "DEFAULT", "VARIANTS", "search"]
@@ -29,5 +29,6 @@ async def search(
     )
     if result.status != "ok" or not result.rows:
         return result, Usage()
-    rows, usage = await rerank(llm, question[:2000], result.rows)
-    return result.model_copy(update={"rows": rows[:k]}), usage
+    rows, usage, usable = await rerank_checked(llm, question[:2000], result.rows)
+    update = {"rows": rows[:k], "error": None if usable else UNUSABLE}
+    return result.model_copy(update=update), usage
