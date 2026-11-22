@@ -388,6 +388,7 @@ METHODS = [
     "query_decomposition",
     "contextual_headers",
     "contextual_compression",
+    "llm_rerank",
 ]
 NEEDS_LLM = {
     "naive_rag",
@@ -397,6 +398,7 @@ NEEDS_LLM = {
     "query_decomposition",
     "contextual_headers",
     "contextual_compression",
+    "llm_rerank",
 }
 CORE = [
     "embedders",
@@ -631,6 +633,7 @@ RR, CE, CC, DF, FC = (
     EX["deadline_fanout"],
     EX["fact_check"],
 )
+LR = EX["llm_rerank"]
 Q = EX["query"]
 FLOWS = {
     "naive_rag": (
@@ -1109,6 +1112,42 @@ FLOWS = {
                         f"prev=1, next=1: {CE['hit_chars']} -> {CE['expanded_chars']:,} chars",
                         f"all 5: {CE['total_chars'][0]:,} -> {CE['total_chars'][1]:,} chars",
                     ],
+                )
+            ],
+        ],
+    ),
+    "llm_rerank": (
+        "Retrieve 20 candidates, an LLM scores each one, keep the best 5.",
+        [
+            [("lilac", "Question", ["text"], "bubble", wrap(Q, 33, 4))],
+            [
+                (
+                    "blue",
+                    "Retrieve",
+                    ["naive_rag", "800-char chunks, dense top 20"],
+                    "search",
+                    [
+                        f"{LR['candidates']} candidates",
+                        f"gold doc: {rank_of(LR['before'])}",
+                    ],
+                )
+            ],
+            [
+                (
+                    "yellow",
+                    "Score",
+                    ["one LLM call, passages numbered", "reply: a 0 to 10 score each"],
+                    "sparkle",
+                    ["scores sort the candidates", "ties keep search order"],
+                )
+            ],
+            [
+                (
+                    "green",
+                    "Top 5",
+                    ["unusable reply or failed call:", "search order is kept"],
+                    "layers",
+                    [f"gold doc: rank {LR['before']['rank']} -> {LR['after']['rank']}"],
                 )
             ],
         ],

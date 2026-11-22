@@ -20,7 +20,7 @@
 
 | | |
 |---|---|
-| **15 method folders** | Parsing and chunking, sparse, dense and hybrid retrieval, reranking, LLM query rewriting, context expansion and compression, fact check |
+| **16 method folders** | Parsing and chunking, sparse, dense and hybrid retrieval, reranking (cross-encoder and LLM), LLM query rewriting, context expansion and compression, fact check |
 | **4 public datasets** | SciFact and TVPL for retrieval, rag-mini-wikipedia and vi_RAG LegalRAG for answers; English and Vietnamese |
 | **Same shape everywhere** | Every method folder has a `README.md`, a `pipeline.py` and an `example.py` |
 | **Token-capped LLM runs** | LLM evals have an estimate-only mode and a token cap (`--max-tokens`) |
@@ -91,6 +91,7 @@ Correctness moved by up to 0.07 between two runs, so smaller gaps are noise. The
 | LLM query rewriting (nDCG@10, SciFact / TVPL) | `hybrid_weighted_rrf` baseline: 0.770 / 0.808; HyDE passage + question: 0.762 / **0.826**; step-back: **0.778** / 0.803; decomposition: 0.770 / 0.786; multi-query: 0.775 / 0.809 | [SciFact](results/query_side_scifact.md), [TVPL](results/query_side_tvpl.md), [decomposition SciFact rerun](results/query_decomposition_scifact.md) |
 | Contextual chunk headers (sample: 100 queries, 350 / 500 docs) | 0.919 / 0.969 against 0.928 / 0.967 without; the sample is too easy to show a gain | [SciFact](results/contextual_headers_scifact.md), [TVPL](results/contextual_headers_tvpl.md) |
 | Contextual compression (answer correctness, 50 mini_wiki / 40 vi_legal questions) | 0.800 / 0.562 against `naive_rag` 0.810 / 0.575, with 88% / 72% fewer passage tokens | [mini_wiki](results/contextual_compression_mini_wiki.md), [vi_legal](results/contextual_compression_vi_legal.md) |
+| LLM rerank (nDCG@10, SciFact / TVPL) | `llm_rerank` **0.768** / **0.849** against `naive_rag` 0.751 / 0.815, at about 1.9 s per query and 0.9M / 4.1M tokens; one run each | [SciFact](results/scifact_llm.md), [TVPL](results/tvpl_llm.md) |
 | Parsing (token recall / precision, 15 public files) | all 0.954 / 0.959; pdf 0.982 / 0.920; xlsx recall 0.629 against docling's own output | [parse quality](results/parse_quality.md) |
 | Fact check (300 SciFact claims) | accuracy 0.703 and 0.740 over two runs; refuted recall 0.375 in run 1 | [run 1](results/fact_check_scifact.md), [runs compared](results/fact_check_scifact_runs.md) |
 
@@ -122,6 +123,7 @@ Grouped by the pipeline stage they change. `LLM` means the method needs `OPENAI_
 | Retrieve | [`hybrid_fusion`](src/production_rag/methods/hybrid_fusion/README.md) | `hybrid_rrf`, `hybrid_dbsf`, `hybrid_weighted_rrf` | `local-models` | Dense + BM25 fused in Qdrant: reciprocal rank fusion, distribution-based score fusion, RRF with dense weighted 2:1 |
 | Retrieve | [`deadline_fanout`](src/production_rag/methods/deadline_fanout/README.md) | none | `local-models` | Deadline budget and spec fan-out; latency bench in its README |
 | Rerank | [`rerank`](src/production_rag/methods/rerank/README.md) | `hybrid_rrf_rerank` | `local-models` | Hybrid RRF, then a cross-encoder over the top candidates |
+| Rerank | [`llm_rerank`](src/production_rag/methods/llm_rerank/README.md) | none | `local-models`, LLM | An LLM scores the top 20 dense results from 0 to 10 and the best 5 are kept; the score is not a probability |
 | Context | [`context_expansion`](src/production_rag/methods/context_expansion/README.md) | none | `local-models` | Neighbour chunks or the full document around each hit; answer numbers in its README |
 | Context | [`contextual_compression`](src/production_rag/methods/contextual_compression/README.md) | none | `local-models`, LLM | After retrieval an LLM keeps only the sentences that help answer the question, so the prompt carries fewer tokens |
 | Verify | [`fact_check`](src/production_rag/methods/fact_check/README.md) | none | `local-models`, LLM | Claims from a statement, evidence per claim, verdict: supported, refuted, unverified; `not_relevant` when nothing is checkable |
