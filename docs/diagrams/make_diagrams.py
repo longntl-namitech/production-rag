@@ -1413,12 +1413,139 @@ def flow(subtitle: str, cols: list, seed: int, title: str) -> Sketch:
     return s
 
 
+# (method, flow steps, what it does), in the README's stage order.
+TABLE = [
+    (
+        "naive_rag",
+        ["Query", "Embed", "Qdrant", "Top 5", "LLM"],
+        "Fixed 800-char chunks, dense top 5, one prompt, generate",
+    ),
+    (
+        "parse_and_chunk",
+        ["Document", "Parse", "Chunk", "Index"],
+        "Files to Markdown, then fixed, recursive, heading-aware or semantic chunks",
+    ),
+    (
+        "contextual_headers",
+        ["Chunk", "LLM + document", "Header + chunk", "Embed"],
+        "An LLM sentence per chunk places it in its document, embedded at index time",
+    ),
+    (
+        "guardrails",
+        ["Question", "LLM check", "Pass or block", "Search"],
+        "A yes/no LLM check per hazard before any search",
+    ),
+    (
+        "multi_query",
+        ["Question", "Variants", "Search each", "Merge"],
+        "Several phrasings of the question, results merged",
+    ),
+    (
+        "hyde",
+        ["Question", "LLM passage", "Embed", "Dense search"],
+        "A hypothetical answer passage replaces the question for dense search",
+    ),
+    (
+        "step_back",
+        ["Question", "LLM broader", "Search both", "Merge by best"],
+        "The question plus one more general question, merged by best score",
+    ),
+    (
+        "query_decomposition",
+        ["Question", "LLM split", "Search each", "Merge"],
+        "A multi-part question split into up to 3 sub-questions",
+    ),
+    ("dense", ["Query", "Embed", "Qdrant", "Top 5"], "Jina v5 nano embeddings"),
+    (
+        "bm25",
+        ["Query", "Sparse vector", "Qdrant", "Top 5"],
+        "BM25 without IDF, with IDF, and with Vietnamese stopwords removed",
+    ),
+    (
+        "hybrid_fusion",
+        ["Query", "Dense + BM25", "Fuse", "Top 5"],
+        "Reciprocal rank fusion, distribution-based fusion, or weighted RRF",
+    ),
+    (
+        "deadline_fanout",
+        ["Query", "Fan out specs", "Deadline", "Merge"],
+        "Deadline budget and spec fan-out",
+    ),
+    (
+        "rerank",
+        ["Query", "Hybrid RRF", "Cross-encoder", "Top 5"],
+        "Hybrid RRF, then a cross-encoder over the top candidates",
+    ),
+    (
+        "llm_rerank",
+        ["Query", "Dense top 20", "LLM score 0-10", "Best 5"],
+        "An LLM scores the top 20 dense results, the best 5 are kept",
+    ),
+    (
+        "context_expansion",
+        ["Hit", "Neighbours or document", "Passages"],
+        "Neighbour chunks or the full document around each hit",
+    ),
+    (
+        "contextual_compression",
+        ["Hits", "LLM keeps sentences", "Shorter prompt"],
+        "An LLM keeps only the sentences that help answer the question",
+    ),
+    (
+        "retrieval_sufficiency",
+        ["Top 5", "LLM judge", "Enough or not"],
+        "An LLM says whether the top 5 passages are enough to answer",
+    ),
+    (
+        "fact_check",
+        ["Statement", "Claims", "Evidence", "Verdict"],
+        "Claims, evidence per claim, verdict: supported, refuted, unverified",
+    ),
+]
+
+
+def methods_table() -> Sketch:
+    pitch, top = 88, 150
+    s = Sketch(2000, top + len(TABLE) * pitch + 50, seed=5)
+    s.heading(
+        f"{len(TABLE)} RAG methods in this repo",
+        "Each row is one folder under src/production_rag/methods/, with its flow and what it does.",
+    )
+    fx, fw, dx, dw = 440, 920, 1390, 570
+    for i, (name, steps, text) in enumerate(TABLE):
+        y = top + i * pitch
+        fill = "yellow" if name in NEEDS_LLM else "green"
+        s.label_box(40, y, 370, 70, fill, f"{i + 1}. {name}", size=26)
+        slot = fw / len(steps)
+        for j, step in enumerate(steps):
+            cx = fx + slot * (j + 0.5)
+            s.text(cx, y + 43, step, 22, anchor="middle")
+            if j:
+                ax = fx + slot * j
+                s.arrow((ax - 24, y + 35), (ax + 24, y + 35), head=10)
+        path = s._rounded(dx, y, dw, 70, 14)
+        s.parts.append(f'<path d="{path}" fill="{FILLS["paper"]}"/>')
+        s._stroke(path, width=2.0)
+        lines = wrap(text, 62, 2)
+        for k, line in enumerate(lines):
+            s.text(dx + 18, y + (30 if k == 0 else 54) if len(lines) > 1 else y + 42, line, 21)
+    s.text(
+        1960,
+        top + len(TABLE) * pitch + 30,
+        "yellow: calls an LLM (needs OPENAI_API_KEY)",
+        22,
+        anchor="end",
+    )
+    return s
+
+
 def main() -> None:
     for name, sketch in [
         ("pipeline", pipeline()),
         ("layout", layout()),
         ("add_method", add_method()),
         ("results", results_chart()),
+        ("methods_table", methods_table()),
     ]:
         (HERE / f"{name}.svg").write_text(sketch.svg(), encoding="utf-8")
         print(f"wrote docs/diagrams/{name}.svg")

@@ -108,6 +108,8 @@ Correctness moved by up to 0.07 between two runs, so smaller gaps are noise. The
 
 ## Methods
 
+<p align="center"><img src="docs/diagrams/methods_table.svg" alt="Table of the 18 method folders in pipeline order, each with its flow from input to output and a one-line description; methods that call an LLM are yellow." width="100%"></p>
+
 Grouped by the pipeline stage they change. `LLM` means the method needs `OPENAI_API_KEY`.
 
 | Stage | Method | Variants (eval names) | Extra | What it does |
